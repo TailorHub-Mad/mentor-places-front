@@ -1,5 +1,7 @@
 # Trading SaaS
 
+## Modify all (TODO) with new project's info before starting
+ 
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
@@ -33,7 +35,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About
 
-Dashboard with relevant information for the investor or trader. Includes news, charts, economic calendar and asset information.
+(TODO)
 
 ### Built With
 
@@ -57,7 +59,7 @@ Dashboard with relevant information for the investor or trader. Includes news, c
 
 1. Clone the repo:
     ```
-    git@github.com:TailorHub-Mad/trading-saas-panel.git
+    git@github.com:TailorHub-Mad/next-tailwind-scaffolding.git (TODO)
     ```
 
 2. Install dependencies:
@@ -74,7 +76,7 @@ Add required environment variables
 NEXT_PUBLIC_API_URL
 ```
 
-The application relies on an API for its functionality. For it to work correctly, you will have to connect it with the preproduction API or to set up the server locally. For the second case please refer to the [API repository](https://github.com/TailorHub-Mad/trading-saas-api) and follow the instructions.
+The application relies on an API for its functionality. For it to work correctly, you will have to connect it with the preproduction API or to set up the server locally. For the second case please refer to the [API repository](https://github.com/TailorHub-Mad/api) (TODO) and follow the instructions.
 
 ### Development
 
@@ -97,7 +99,7 @@ yarn run dev
 
 <!-- CONTACT -->
 ## Contact
-- Email: laura.decos@tailor-hub.com or gabriel.cebrian@tailor-hub.com
+- Email: owner@tailor-hub.com (TODO)
 
 
 
