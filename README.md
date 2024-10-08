@@ -1,7 +1,7 @@
-# Trading SaaS
-
 ## Modify all (TODO) with new project's info before starting
- 
+
+# Project Name (TODO)
+
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
