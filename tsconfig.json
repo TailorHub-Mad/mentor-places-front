@@ -1,0 +1,75 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@components/*": [
+        "./src/app/ui/components/*"
+      ],
+      "@fonts/*": [
+        "./src/app/ui/fonts/*"
+      ],
+      "@layouts/*": [
+        "./src/app/ui/layouts/*"
+      ],
+      "@styles/*": [
+        "./src/app/ui/styles/*"
+      ],
+      "@theme/*": [
+        "./src/app/ui/theme/*"
+      ],
+      "@views/*": [
+        "./src/app/ui/views/*"
+      ],
+      "@configs/*": [
+        "./src/app/lib/configs/*"
+      ],
+      "@hooks/*": [
+        "./src/app/lib/hooks/*"
+      ],
+      "@services/*": [
+        "./src/app/lib/services/*"
+      ],
+      "@interfaces/*": [
+        "./src/app/lib/interfaces/*"
+      ],
+      "@utils/*": [
+        "./src/app/lib/utils/*"
+      ],
+      "@i18n/*": [
+        "./src/app/i18n/*"
+      ]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "./src/app/lib/placeholder-data.js",
+    "scripts/seed.js"
+, "middleware.js"  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

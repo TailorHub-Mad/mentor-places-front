@@ -1,0 +1,26 @@
+import { createLocalizedPathnamesNavigation, Pathnames } from 'next-intl/navigation'
+import { locales } from './i18n.settings'
+
+export const localePrefix = 'always' // default
+
+// The `pathnames` object holds pairs of internal
+// and external paths, separated by locale.
+export const pathnames = {
+  // If all locales use the same pathname, a
+  // single external path can be provided.
+  '/': '/',
+  '/about-us': '/about-us',
+
+  // If locales use different paths, you can
+  // specify each external path per locale.
+  '/collaborations': {
+    es: '/colaboraciones',
+    en: '/collaborations'
+  }
+} satisfies Pathnames<typeof locales>
+
+export const { Link, redirect, usePathname, useRouter, getPathname } = createLocalizedPathnamesNavigation({
+  locales,
+  localePrefix,
+  pathnames
+})

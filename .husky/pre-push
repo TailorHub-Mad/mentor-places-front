@@ -1,0 +1,13 @@
+# Prevents force-pushing to main and develop
+echo "🔎 Checking branch name..."
+
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+PROTECTED_BRANCHES="^(main|develop)"
+
+if [[ "$BRANCH" =~ $PROTECTED_BRANCHES ]]; then
+  echo -e "🚫 Cannot push to remote $BRANCH branch, please create your own branch and use PR." && exit 1
+else
+  echo "✅ $BRANCH branch checked."
+fi
+
+exit 0

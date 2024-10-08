@@ -1,0 +1,20 @@
+{
+  "menu": {
+    "dashboard": "Dashboard",
+    "graphics": "Gráficos",
+    "calendar": "Calendario económico",
+    "assets": "Activos"
+  },
+  "graficos": {
+    "title": "Bienvenido a la página gráficos!",
+    "back-to-home": "Volver a la home"
+  },
+  "calendar": {
+    "title": "Bienvenido a la página calendario económico!",
+    "back-to-home": "Volver a la home"
+  },
+  "assets": {
+    "title": "Bienvenido a la página activos!",
+    "back-to-home": "Back to home"
+  }
+}

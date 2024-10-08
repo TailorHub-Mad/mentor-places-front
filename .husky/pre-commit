@@ -1,0 +1,21 @@
+# Prevents commit to main and develop
+echo "🔎 Checking branch name..."
+
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+PROTECTED_BRANCHES="^(main|develop)"
+
+if [[ "$BRANCH" =~ $PROTECTED_BRANCHES ]]; then
+  echo "🚫 Cannot commit $BRANCH branch, please create your own branch." && exit 1
+else
+  echo "✅ $BRANCH branch checked."
+fi
+
+FILES=$(git diff --cached --name-only --diff-filter=ACMR | sed 's| |\\ |g')
+echo $FILES
+
+yarn run format --config .prettierrc $FILES --ignore-unknown --write
+git update-index --again
+
+yarn pre-commit
+
+exit 0

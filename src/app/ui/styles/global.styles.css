@@ -1,0 +1,62 @@
+@import './fonts.css';
+@import './typography.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  overflow-x: clip;
+}
+
+body {
+  position: relative;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.fader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999999;
+  pointer-events: none;
+  background: #F1F1ED;
+  animation-timing-function: ease;
+}
+
+.fade-out {
+  opacity: 0;
+  animation-name: fade-out;
+}
+
+.fade-in {
+  opacity: 1;
+  animation-name: fade-in;
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

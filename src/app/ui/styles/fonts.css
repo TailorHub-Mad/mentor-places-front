@@ -1,0 +1,20 @@
+@font-face {
+  src: url('../../../../public/fonts/gt-planar-light.otf') format('opentype');
+  font-family: 'gt-planar-light';
+  font-style: normal;
+  font-weight: 300;
+}
+
+@font-face {
+  src: url('../../../../public/fonts/gt-planar-regular.otf') format('opentype');
+  font-family: 'gt-planar-regular';
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  src: url('../../../../public/fonts/gt-planar-medium.otf') format('opentype');
+  font-family: 'gt-planar-medium';
+  font-style: normal;
+  font-weight: 500;
+}

@@ -1,0 +1,7 @@
+node_modules/
+package.json
+yarn.lock
+src/styles/**
+tsconfig.json
+*.css
+*.mdx
