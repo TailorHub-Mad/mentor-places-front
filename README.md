@@ -100,6 +100,8 @@ yarn run dev
 
 ## Deployment
 
+**Important**: If Vercel is used, it will be neccessary to add `ENABLE_EXPERIMENTAL_COREPACK=true` to environment variables. Also, a specific configuration have been done in order to make Vercel deployment work. For more information please visit: [Vercel Deploy Yarn 4 in Notion](https://www.notion.so/modulor/Vercel-Deploy-Yarn-4-11bb7f79b9ae8085a12afdfd64bdc0dd?pvs=4)
+
 ### Preproduction
 
 _Pending - preproduction environment does not existe yet_
