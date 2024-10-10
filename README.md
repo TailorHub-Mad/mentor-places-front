@@ -57,7 +57,7 @@
   npm install --global yarn
   ```
 
-  If already have yarn installed, make sure is version 4. If not, run:
+  Once yarn is installed, or you already had it installed, make sure is version 4. If not, run:
 
   ```
   corepack enable
