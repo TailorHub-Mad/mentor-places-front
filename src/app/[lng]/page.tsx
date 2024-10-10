@@ -1,7 +1,7 @@
 'use client'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
-import { FC, useContext } from 'react'
+import { type FC, useContext } from 'react'
 import ThemeContext from '../lib/providers/ThemeProvider'
 
 const Page: FC = () => {

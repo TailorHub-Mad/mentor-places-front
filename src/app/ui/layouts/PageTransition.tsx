@@ -1,7 +1,7 @@
 'use client'
-import React, { useEffect, useRef } from 'react'
+import React, { type FC, useEffect, useRef } from 'react'
 
-const PageTransition: React.FC = () => {
+const PageTransition: FC = () => {
   const pageRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
