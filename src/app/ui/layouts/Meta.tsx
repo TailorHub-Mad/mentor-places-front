@@ -1,4 +1,4 @@
-import { IMetaProps } from '../../lib/interfaces/global.type'
+import { type IMetaProps } from '../../lib/interfaces/global.type'
 import Head from 'next/head'
 import React, { type FC } from 'react'
 
