@@ -1,5 +1,5 @@
 'use client'
-import { FC } from 'react'
+import { type FC } from 'react'
 import { locales } from '../../../i18n.settings'
 import { Link, usePathname } from '../../../navigation'
 

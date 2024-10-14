@@ -1,5 +1,5 @@
 import PageTransition from '@layouts/PageTransition'
-import { FC } from 'react'
+import { type FC } from 'react'
 import { Providers } from '../lib/providers'
 import Meta from '@layouts/Meta'
 import { Footer } from '@layouts/Footer'

@@ -1,9 +1,8 @@
-import { IMetaProps } from '../../lib/interfaces/global.type'
-
+import { type IMetaProps } from '../../lib/interfaces/global.type'
 import Head from 'next/head'
-import React from 'react'
+import React, { type FC } from 'react'
 
-const Meta: React.FC<IMetaProps> = ({ title, description }) => {
+const Meta: FC<IMetaProps> = ({ title, description }) => {
   return (
     <Head>
       <title>{title || ''}</title>
