@@ -1,14 +1,13 @@
 export enum EColor {
-  SAAS_LIGHT = '#D633FF',
-  SAAS_DARK = '#0E031E',
-  RED = '#E80054',
-  PINK = '#F72585',
-  ORANGE = '#FF4D00',
-  ORANGE2 = '#FF8C00',
-  YELLOW = '#FFC300',
-  GREEN = '#5ED400',
-  BLUE = '#00D5FF',
-  PURPLE = '#7209B7',
+  WHITE = '#FFFFFF',
   BLACK = '#000000',
-  WHITE = '#F1F2F4'
+  GRAY = '#F4F4F4',
+  YELLOW = '#FFEEBC',
+  ORANGE = '#FF7033',
+  GRENN_LIGHT = '#CEFD62',
+  GREEN_DARK = '#0E5642',
+  BLUE_LIGHT = '#C1D4FF',
+  BLUE = '#3470F2',
+  LILAC = '#CEBCFA',
+  EGGPLANT = '#64003B'
 }

@@ -1,6 +1,4 @@
-## Modify all (TODO) with new project's info before starting
-
-# Project Name (TODO)
+# Mentor Places
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -36,7 +34,7 @@
 
 ## About
 
-(TODO)
+Mentor places is a platform to view university courses. In order to view the content, it connects to Directus to access all the information and perform the desired searches.
 
 ### Built With
 
@@ -69,7 +67,7 @@
 1. Clone the repo:
 
    ```
-   git@github.com:TailorHub-Mad/next-tailwind-scaffolding.git (TODO)
+   git@github.com:TailorHub-Mad/mentor-places-front.git
    ```
 
 2. Install dependencies:
@@ -86,7 +84,7 @@ Add required environment variables
 NEXT_PUBLIC_API_URL
 ```
 
-The application relies on an API for its functionality. For it to work correctly, you will have to connect it with the preproduction API or to set up the server locally. For the second case please refer to the [API repository](https://github.com/TailorHub-Mad/api) (TODO) and follow the instructions.
+The application relies on an API for its functionality. For it to work correctly, you will have to connect it with the preproduction API or to set up the server locally.
 
 ### Development
 
@@ -114,7 +112,7 @@ _Pending - production environment does not existe yet_
 
 ## Contact
 
-- Email: owner@tailor-hub.com (TODO)
+- Email: gabriel-cebrian@tailor-hub.com
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
