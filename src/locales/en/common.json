@@ -1,24 +1,5 @@
 {
   "menu": {
-    "dashboard": "Dashboard",
-    "graphics": "Graphics",
-    "calendar": "Economic calendar",
-    "assets": "Assets"
-  },
-  "graficos": {
-    "title": "Hi from graphs page!",
-    "back-to-home": "Back to home"
-  },
-  "collaborations": {
-    "title": "Hi from calendar page!",
-    "back-to-home": "Back to home"
-  },
-  "assets": {
-    "title": "Hi from asssets page!",
-    "back-to-home": "Back to home"
-  },
-  "fr": {
-    "title": "Hi from asssets page!",
-    "back-to-home": "Back to home"
+    "example": "example"
   }
 }

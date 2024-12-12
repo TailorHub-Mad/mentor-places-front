@@ -1,27 +1,6 @@
 @font-face {
-  src: url('../../../../public/fonts/gt-planar-light.otf') format('opentype');
-  font-family: 'gt-planar-light';
-  font-style: normal;
-  font-weight: 300;
-}
-
-@font-face {
-  src: url('../../../../public/fonts/gt-planar-regular.otf') format('opentype');
-  font-family: 'gt-planar-regular';
-  font-style: normal;
-  font-weight: 400;
-}
-
-@font-face {
-  src: url('../../../../public/fonts/gt-planar-medium.otf') format('opentype');
-  font-family: 'gt-planar-medium';
-  font-style: normal;
-  font-weight: 500;
-}
-
-@font-face {
   src: url('../../../../public/fonts/InstrumentSans-Italic.ttf') format('opentype');
-  font-family: 'intrument-sans';
+  font-family: 'intrument-sans-italic';
   font-style: italic;
   font-weight: 400;
 }
@@ -33,72 +12,17 @@
   font-weight: 400;
 }
 
-@font-face {
-  src: url('../../../../public/fonts/ABCArizonaMix-Bold-Trial.otf') format('opentype');
-  font-family: 'arizona-mix';
-  font-style: normal;
-  font-weight: 700;
-}
-
-@font-face {
-  src: url('../../../../public/fonts/ABCArizonaMix-BoldItalic-Trial.otf') format('opentype');
-  font-family: 'arizona-mix';
-  font-style: italic;
-  font-weight: 700;
-}
 
 @font-face {
   src: url('../../../../public/fonts/ABCArizonaMix-Light-Trial.otf') format('opentype');
-  font-family: 'arizona-mix';
+  font-family: 'arizona-mix-light';
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 @font-face {
   src: url('../../../../public/fonts/ABCArizonaMix-LightItalic-Trial.otf') format('opentype');
-  font-family: 'arizona-mix';
+  font-family: 'arizona-mix-light-italic';
   font-style: italic;
-  font-weight: 400;
-}
-
-@font-face {
-  src: url('../../../../public/fonts/ABCArizonaMix-Medium-Trial.otf') format('opentype');
-  font-family: 'arizona-mix';
-  font-style: normal;
-  font-weight: 500;
-}
-
-@font-face {
-  src: url('../../../../public/fonts/ABCArizonaMix-MediumItalic-Trial.otf') format('opentype');
-  font-family: 'arizona-mix';
-  font-style: italic;
-  font-weight: 500;
-}
-
-@font-face {
-  src: url('../../../../public/fonts/ABCArizonaMix-Regular-Trial.otf') format('opentype');
-  font-family: 'arizona-mix';
-  font-style: normal;
-  font-weight: 400;
-}
-
-@font-face {
-  src: url('../../../../public/fonts/ABCArizonaMix-RegularItalic-Trial.otf') format('opentype');
-  font-family: 'arizona-mix';
-  font-style: italic;
-  font-weight: 400;
-}
-
-@font-face {
-  src: url('../../../../public/fonts/ABCArizonaMix-Thin-Trial.otf') format('opentype');
-  font-family: 'arizona-mix';
-  font-style: normal;
-  font-weight: 200;
-}
-
-@font-face {
-  src: url('../../../../public/fonts/ABCArizonaMix-ThinItalic-Trial.otf') format('opentype');
-  font-family: 'arizona-mix';
-  font-style: italic;
-  font-weight: 200;
+  font-weight: 300;
 }

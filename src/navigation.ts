@@ -9,13 +9,12 @@ export const pathnames = {
   // If all locales use the same pathname, a
   // single external path can be provided.
   '/': '/',
-  '/about-us': '/about-us',
 
   // If locales use different paths, you can
   // specify each external path per locale.
-  '/collaborations': {
-    es: '/colaboraciones',
-    en: '/collaborations'
+  '/test': {
+    es: '/prueba',
+    en: '/test'
   }
 } satisfies Pathnames<typeof locales>
 

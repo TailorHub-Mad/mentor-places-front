@@ -1,31 +1,35 @@
+.xxl {
+  @apply font-xxl text-xxl leading-xxl text-BLACK;
+}
+
+.xxl_m {
+  @apply font-xxl-mobile text-xxl-mobile leading-xxl-mobile text-BLACK;
+}
+
 .xl {
-  @apply font-xl text-xl leading-xl text-WHITE;
+  @apply font-xl text-xl leading-xl text-BLACK;
+}
+
+.xl_m {
+  @apply font-xl-mobile text-xl-mobile leading-xl-mobile text-BLACK;
 }
 
 .l {
-  @apply font-l text-l leading-l  text-WHITE;;
+  @apply font-l text-l leading-l  text-BLACK;;
+}
+
+.l_m {
+  @apply font-l-mobile text-l-mobile leading-l-mobile  text-BLACK;;
 }
 
 .m {
-  @apply font-m text-m leading-m  text-WHITE;;
+  @apply font-m text-m leading-m  text-BLACK;;
 }
 
-.m-medium {
-  @apply font-m-medium text-m-medium leading-m-medium  text-WHITE;;
+.m_m {
+  @apply font-m-mobile text-m-mobile leading-m-mobile  text-BLACK;;
 }
 
 .s {
-  @apply font-s text-s leading-s  text-WHITE;;
-}
-
-.s-medium {
-  @apply font-s-medium text-s-medium leading-s-medium  text-WHITE;;
-}
-
-.s-light {
-  @apply font-s-light text-s-light leading-s-light  text-WHITE;;
-}
-
-.xs {
-  @apply font-xs text-xs leading-xs  text-WHITE;;
+  @apply font-s text-s leading-s  text-BLACK;;
 }
