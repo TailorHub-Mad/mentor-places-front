@@ -5,7 +5,7 @@ const buttonVariants = {
   base: cx('px-8 xy-24', 'transition-colors duration-200 ease-in-out', 's', 'rounded-full'),
   variant: {
     primary: cx('bg-BLACK hover:bg-WHITE text-WHITE hover:text-BLACK'),
-    secondary: cx('bg-WHITE hover:bg-BLACK text-BLACK hover:text-WHITE', 'shadow-[0_px_4px_4px_0px_#0000000D]')
+    secondary: cx('bg-WHITE hover:bg-BLACK text-BLACK hover:text-WHITE', 'shadow-button')
   }
 }
 
