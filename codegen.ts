@@ -3,9 +3,9 @@ import type { CodegenConfig } from '@graphql-codegen/cli'
 const config: CodegenConfig = {
   overwrite: true,
   schema: {
-    'http://localhost:8055/graphql': {
+    [process.env.NEXT_PUBLIC_URL_DIRECTUS as string]: {
       headers: {
-        Authorization: `Bearer yoKjITtlTBwejTUwtRzHxrNquDlwXu_Z`
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_DIRECTUS}`
       }
     }
   },
