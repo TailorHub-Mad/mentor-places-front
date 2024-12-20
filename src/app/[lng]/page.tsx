@@ -1,17 +1,28 @@
-'use client'
 import { type FC } from 'react'
+import client from '../lib/configs/apolloClient'
+import { unstable_setRequestLocale } from 'next-intl/server'
+import { GetCoursesDocument, GetCoursesQuery, GetCoursesQueryVariables } from '../../graphql/generated/client'
+import TestComponent from '@components/TestComponent'
 
-const Page: FC = () => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const Page: FC = async ({ params: { lng } }: any) => {
+  unstable_setRequestLocale(lng)
+  const { data } = await client.query<GetCoursesQuery, GetCoursesQueryVariables>({
+    query: GetCoursesDocument,
+    variables: {
+      filter: {
+        id: {
+          _eq: 'C002'
+        }
+      }
+    }
+  })
+
   return (
     <>
-      <p className="xxl text-YELLOW_60">XXL</p>
-      <p className="xxl_m text-YELLOW_80">XXL Mobile</p>
-      <p className="xl text-YELLOW">XL</p>
-      <p className="xl_m text-BLUE_LIGHT_80">XL Mobile</p>
-      <p className="l text-BLUE_LIGHT_60">L</p>
-      <p className="l_m text-BLUE_LIGHT">L Mobile</p>
-      <p className="m">M</p>
-      <p className="m_m">M Mobile</p>
+      <h1>Page</h1>
+      <p>{data.courses[0].id}</p>
+      <TestComponent />
     </>
   )
 }

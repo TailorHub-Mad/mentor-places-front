@@ -5,6 +5,8 @@ import Meta from '@layouts/Meta'
 import { Footer } from '@layouts/Footer'
 import { NextIntlClientProvider, useMessages } from 'next-intl'
 import '../ui/styles/global.styles.css'
+import { unstable_setRequestLocale } from 'next-intl/server'
+import { locales } from '../../i18n.settings'
 
 interface IRootLayout {
   children: React.ReactNode
@@ -12,6 +14,7 @@ interface IRootLayout {
 }
 
 const RootLayout: FC<IRootLayout> = ({ children, params: { locale } }) => {
+  unstable_setRequestLocale(locale)
   const messages = useMessages()
 
   return (
@@ -32,3 +35,7 @@ const RootLayout: FC<IRootLayout> = ({ children, params: { locale } }) => {
 }
 
 export default RootLayout
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }))
+}

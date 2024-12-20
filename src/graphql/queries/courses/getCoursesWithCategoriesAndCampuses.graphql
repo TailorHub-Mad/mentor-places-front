@@ -1,0 +1,21 @@
+query GetCoursesWithCategoriesAndCampuses($filter: courses_filter) {
+  courses(filter: $filter) {
+    id
+    learning_format_id
+    learning_pace_id
+    categories {
+      id
+      name
+      description
+    }
+    campuses_courses {
+      id
+      campuses {
+        id
+        name
+        city
+        country
+      }
+    }
+  }
+}

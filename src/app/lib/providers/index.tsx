@@ -1,5 +1,8 @@
 'use client'
 
+import { ApolloProvider } from '@apollo/client'
+import client from '../configs/apolloClient'
+
 export function Providers({ children }: { children: React.ReactNode }) {
-  return <>{children}</>
+  return <ApolloProvider client={client}>{children}</ApolloProvider>
 }

@@ -1,0 +1,14 @@
+query GetScholarships($filter: scholarships_filter) {
+  scholarships(filter: $filter) {
+    id
+    name
+    description
+    is_active
+    enum
+    academic_course
+    languages_id {
+      id
+      name
+    }
+  }
+}
