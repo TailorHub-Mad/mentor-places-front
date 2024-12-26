@@ -10,7 +10,11 @@ export default {
   theme: {
     screens: breakpoints,
     colors: EColor,
-    extend: {},
+    extend: {
+      boxShadow: {
+        button: '0px 2px 4px 0px #0000000F' // Tu sombra personalizada
+      }
+    },
     fontFamily,
     fontSize,
     lineHeight
