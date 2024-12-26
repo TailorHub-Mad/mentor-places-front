@@ -8,6 +8,9 @@
 # testing
 /coverage
 
+# IDE
+/.idea
+
 # next.js
 /.next/
 /out/
@@ -36,6 +39,8 @@ yarn-error.log*
 next-env.d.ts
 
 *storybook.log
+
+/storybook-static
 
 # yarn https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
 .yarn/*
