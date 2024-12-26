@@ -3,14 +3,18 @@ import Button from '../Button/Button'
 import Link from 'next/link'
 import Logo from '@components/Logo'
 
-// TODO
-const navLinks = [
-  { name: 'Másters', href: '#' },
-  { name: 'Universidades', href: '#' },
-  { name: 'Nosotros', href: '#' }
-]
+interface NavLink {
+  name: string
+  href: string
+}
 
-const Nav = () => {
+export interface NavProps {
+  navLinks?: NavLink[]
+}
+
+const Nav = (props: NavProps) => {
+  const { navLinks } = props || {}
+
   return (
     <nav className={cx('flex items-center justify-between py-4 px-8')}>
       <div className="flex items-center gap-2">
@@ -19,7 +23,7 @@ const Nav = () => {
       </div>
 
       <ul className="flex items-center space-x-6">
-        {navLinks.map((link) => (
+        {navLinks?.map((link) => (
           <Button variant="secondary" key={link.name}>
             <Link href={link.href}>{link.name}</Link>
           </Button>
