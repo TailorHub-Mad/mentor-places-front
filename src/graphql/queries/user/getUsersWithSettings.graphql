@@ -1,0 +1,29 @@
+query GetUsersWithSettings($filter: users_filter) {
+  users(filter: $filter) {
+    id
+    first_name
+    family_name
+    family_name_2
+    middle_name
+    birth_date
+    postal_code
+    city
+    address
+    email
+    role
+    user_setting {
+      id
+      unconstrained_value
+      settings {
+        id
+        description
+        constrained
+        allowed_setting_value {
+          id
+          item_value
+          caption
+        }
+      }
+    }
+  }
+}

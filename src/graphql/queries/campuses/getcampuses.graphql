@@ -1,0 +1,16 @@
+query GetCampuses($filter: campuses_filter) {
+  campuses(filter: $filter) {
+    id
+    name
+    type
+    intro
+    description
+    street_address
+    city
+    postal_code
+    country
+    phone
+    images
+    institutions_id
+  }
+}

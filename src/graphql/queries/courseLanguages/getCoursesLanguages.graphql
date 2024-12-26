@@ -1,0 +1,7 @@
+query GetCoursesLanguages($filter: course_languages_filter) {
+  course_languages(filter: $filter) {
+    id
+    name
+    direction
+  }
+}
