@@ -1,7 +1,7 @@
-import { AssetCardProps } from '@components/asset-card/AssetCard'
+import { AssetCardProps, AssetCardVariant } from '@components/asset-card/AssetCard'
 
 export const MOCK_ASSET_CARD: AssetCardProps = {
-  type: 'withIcons',
+  variant: AssetCardVariant.withIcons,
   data: {
     title: 'Máster universitario en Marketing Digital',
     universityName: 'Universidad Alfonso X el Sabio (UAX)',
@@ -11,7 +11,8 @@ export const MOCK_ASSET_CARD: AssetCardProps = {
     duration: '9 meses',
     ranking: 5,
     reviewScore: 4.4,
-    price: '1000 €'
+    price: '1000 €',
+    ctaText: 'Más información'
   }
 }
 

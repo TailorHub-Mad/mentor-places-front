@@ -2,7 +2,7 @@ import { cx } from '@utils/cx'
 import { forwardRef, type FC } from 'react'
 
 const buttonVariants = {
-  base: cx('px-8 xy-24', 'transition-colors duration-200 ease-in-out', 's', 'rounded-full'),
+  base: cx('px-[24px] py-[8px]', 'transition-colors duration-200 ease-in-out', 's', 'rounded-full'),
   variant: {
     primary: cx('bg-BLACK hover:bg-WHITE text-WHITE hover:text-BLACK'),
     secondary: cx('bg-WHITE hover:bg-BLACK text-BLACK hover:text-WHITE', 'shadow-button')
