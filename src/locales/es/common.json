@@ -1,5 +1,13 @@
 {
   "menu": {
     "example": "Ejemplo"
+  },
+  "assetCard": {
+    "format": "formato",
+    "price": "precio",
+    "ranking": "ranking",
+    "duration": "duración",
+    "reviewScore": "valoración",
+    "language": "idioma"
   }
 }

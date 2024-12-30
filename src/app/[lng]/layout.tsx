@@ -6,7 +6,7 @@ import { Footer } from '@layouts/Footer'
 import { NextIntlClientProvider, useMessages } from 'next-intl'
 import '../ui/styles/global.styles.css'
 import { unstable_setRequestLocale } from 'next-intl/server'
-import { locales } from '../../i18n.settings'
+import { LOCALES } from '../../i18n.settings'
 
 interface IRootLayout {
   children: React.ReactNode
@@ -21,15 +21,15 @@ const RootLayout: FC<IRootLayout> = ({ children, params: { locale } }) => {
     <html lang={locale}>
       <head />
       <Meta />
-      <Providers>
-        <NextIntlClientProvider messages={messages}>
+      <NextIntlClientProvider messages={messages}>
+        <Providers>
           <body className="bg-SAAS_DARK dark:bg-BLACK">
             <main>{children}</main>
             <Footer />
             <PageTransition />
           </body>
-        </NextIntlClientProvider>
-      </Providers>
+        </Providers>
+      </NextIntlClientProvider>
     </html>
   )
 }
@@ -37,5 +37,5 @@ const RootLayout: FC<IRootLayout> = ({ children, params: { locale } }) => {
 export default RootLayout
 
 export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }))
+  return LOCALES.map((locale) => ({ locale }))
 }
