@@ -1,8 +1,6 @@
 import { FC } from 'react'
-import { LogoFavicon } from '@components/icons/LogoFavicon'
 import { cx } from '@utils/cx'
-import Link from 'next/link'
-import Image from 'next/image'
+import { BlogPostCard } from '@components/ContentCard/components/BlogPostCard'
 
 export enum ContentCardVariant {
   BLOG_POST_PHOTO = 'BLOG_POST_PHOTO',
@@ -18,64 +16,54 @@ interface ContentCardProps {
     title: string
     description?: string
     price?: number
-    number?: number
     date?: string
     url?: string
+    infoHeaderTitle?: string
   }
 }
 
 export const ContentCard: FC<ContentCardProps> = ({ variant, data }) => {
-  const { imageSrc, title, description, date, url } = data || {}
+  const { imageSrc, title, description, date, url, infoHeaderTitle = '1' } = data || {}
 
   switch (variant) {
     case ContentCardVariant.BLOG_POST_PHOTO:
     case ContentCardVariant.BLOG_POST_TEXT:
       return <BlogPostCard imageSrc={imageSrc} title={title} description={description} date={date} variant={variant} url={url} />
+    case ContentCardVariant.INFO_CARD_NUMBER:
+    case ContentCardVariant.INFO_CARD_PRICE:
+      return <InfoCard variant={variant} infoHeaderTitle={infoHeaderTitle} title={title} description={description} />
     default:
       return <span>ContentCard</span>
   }
 }
 
-interface BlogPostCardProps {
-  imageSrc?: string
+interface InfoCardProps {
+  variant: ContentCardVariant
+  infoHeaderTitle: string
   title: string
   description?: string
-  date?: string
-  variant?: ContentCardVariant
-  url?: string
 }
 
-const BlogPostCard: FC<BlogPostCardProps> = ({ imageSrc, title, description, date, variant, url }) => {
+const InfoCard: FC<InfoCardProps> = ({ variant, infoHeaderTitle, title, description }) => {
   return (
     <div
-      className={cx('blog-post-card w-[437px] p-[32px] rounded-xl  transition-colors', {
-        'bg-GRAY hover:bg-YELLOW': ContentCardVariant.BLOG_POST_PHOTO,
-        'bg-YELLOW ': ContentCardVariant.BLOG_POST_TEXT
+      className={cx('p-[32px] ', {
+        'bg-GRAY w-[245px]': variant === ContentCardVariant.INFO_CARD_PRICE,
+        'bg-YELLOW w-[437px]': variant === ContentCardVariant.INFO_CARD_NUMBER
       })}>
-      {variant === ContentCardVariant.BLOG_POST_PHOTO && (
-        <div className="blog-post-card__header mb-[41px] relative">
-          <>
-            {imageSrc && (
-              <div className="image-wrapper relative overflow-hidden h-[185px] rounded-xl mb-[21px]">
-                <Image width={500} height={500} src={imageSrc} alt={title} className="absolute" />
-              </div>
-            )}
-            <span className="bg-BLUE px-2 py-1 text-WHITE rounded-xl text-s font-s font-thin">Learn</span>
-          </>
-        </div>
-      )}
-      <div className="blog-post-card__content relative">
-        {variant === ContentCardVariant.BLOG_POST_TEXT && <LogoFavicon className="absolute -right-3 -top-3  w-8 h-8 " strokeBg="black" />}
-        <Link href={url || ''}>
-          <h4 className="font-m text-m mb-[24px]">{title}</h4>
-        </Link>
-        <p className="font-s text-s">{description}</p>
+      <div className="info-card__header mb-[140px]">
+        <span
+          className={cx('font-m text-wrap', {
+            'text-xl': variant === ContentCardVariant.INFO_CARD_NUMBER,
+            'text-[35px]': variant === ContentCardVariant.INFO_CARD_PRICE
+          })}>
+          {infoHeaderTitle}
+        </span>
       </div>
-      {date && (
-        <div className="blog-post-card__footer mt-4">
-          <span className="font-s text-s">{date}</span>
-        </div>
-      )}
+      <div className="info-card__content">
+        <h4 className={'font-m text-s'}>{title}</h4>
+        {description && <p className="text-BLACK/60">{description}</p>}
+      </div>
     </div>
   )
 }

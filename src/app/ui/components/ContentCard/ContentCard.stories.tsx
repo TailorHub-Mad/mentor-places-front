@@ -36,15 +36,23 @@ export const BlogPostText: Story = {
   }
 }
 
-export const InfoCardNumber: Story = {
-  args: {
-    data: undefined,
-    variant: ContentCardVariant.INFO_CARD_NUMBER
-  }
-}
 export const InfoCardPrice: Story = {
   args: {
-    data: undefined,
+    data: {
+      title: 'Precio oficial',
+      infoHeaderTitle: '12.000€/año'
+    },
     variant: ContentCardVariant.INFO_CARD_PRICE
+  }
+}
+
+export const InfoCardNumber: Story = {
+  args: {
+    data: {
+      title: 'Conocimientos',
+      infoHeaderTitle: '1.',
+      description: 'actualizados con certificaciones en soft skills y metodologías ágiles'
+    },
+    variant: ContentCardVariant.INFO_CARD_NUMBER
   }
 }
