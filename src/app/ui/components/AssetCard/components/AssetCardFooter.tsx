@@ -1,6 +1,6 @@
 import Button from '@components/Button/Button'
 import React, { FC } from 'react'
-import { AssetCardVariant } from '@components/asset-card/AssetCard'
+import { AssetCardVariant } from '@components/AssetCard/AssetCard'
 
 interface AssetCardFooterProps {
   ctaText: string | undefined

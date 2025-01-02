@@ -1,7 +1,7 @@
 import { LogoFavicon } from '@components/icons/LogoFavicon'
 import { cx } from '@utils/cx'
 import React, { FC } from 'react'
-import { AssetCardVariant } from '@components/asset-card/AssetCard'
+import { AssetCardVariant } from '@components/AssetCard/AssetCard'
 
 interface AssetCardHeaderProps {
   title: string

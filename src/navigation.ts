@@ -1,5 +1,5 @@
 import { createLocalizedPathnamesNavigation, Pathnames } from 'next-intl/navigation'
-import { locales } from './i18n.settings'
+import { LOCALES } from './i18n.settings'
 
 export const localePrefix = 'always' // default
 
@@ -16,10 +16,10 @@ export const pathnames = {
     es: '/prueba',
     en: '/test'
   }
-} satisfies Pathnames<typeof locales>
+} satisfies Pathnames<typeof LOCALES>
 
 export const { Link, redirect, usePathname, useRouter, getPathname } = createLocalizedPathnamesNavigation({
-  locales,
+  locales: LOCALES,
   localePrefix,
   pathnames
 })
