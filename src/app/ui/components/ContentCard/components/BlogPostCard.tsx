@@ -17,7 +17,7 @@ interface BlogPostCardProps {
 export const BlogPostCard: FC<BlogPostCardProps> = ({ imageSrc, title, description, date, variant, url }) => {
   return (
     <div
-      className={cx('blog-post-card w-[437px] p-[32px] rounded-xl  transition-colors', {
+      className={cx('blog-post-card w-[437px] p-[25px] md:p-[32px] rounded-xl max-w-full', {
         'bg-GRAY hover:bg-YELLOW': variant === ContentCardVariant.BLOG_POST_PHOTO,
         'bg-YELLOW ': variant === ContentCardVariant.BLOG_POST_TEXT
       })}>
@@ -25,11 +25,11 @@ export const BlogPostCard: FC<BlogPostCardProps> = ({ imageSrc, title, descripti
         <div className="blog-post-card__header mb-[41px] relative">
           <>
             {imageSrc && (
-              <div className="image-wrapper relative overflow-hidden h-[185px] rounded-xl mb-[21px]">
+              <div className="image-wrapper relative overflow-hidden h-[160px] md:h-[185px] rounded-xl mb-[21px]">
                 <Image width={500} height={500} src={imageSrc} alt={title} className="absolute" />
               </div>
             )}
-            <span className="bg-BLUE px-2 py-1 text-WHITE rounded-xl text-s font-s font-thin">Learn</span>
+            <span className="bg-BLUE px-[10px] py-[5px] text-WHITE rounded-xl text-s font-s font-thin">Learn</span>
           </>
         </div>
       )}

@@ -40,7 +40,7 @@ export const InfoCardPrice: Story = {
   args: {
     data: {
       title: 'Precio oficial',
-      infoHeaderTitle: '12.000€/año'
+      infoHeaderTitle: '12.000 €/año'
     },
     variant: ContentCardVariant.INFO_CARD_PRICE
   }
@@ -50,7 +50,7 @@ export const InfoCardNumber: Story = {
   args: {
     data: {
       title: 'Conocimientos',
-      infoHeaderTitle: '1.',
+      infoHeaderTitle: '2.',
       description: 'actualizados con certificaciones en soft skills y metodologías ágiles'
     },
     variant: ContentCardVariant.INFO_CARD_NUMBER

@@ -15,21 +15,21 @@
 }
 
 .l {
-  @apply font-l text-l leading-l  text-BLACK;;
+  @apply font-l text-l leading-l  text-BLACK;
 }
 
 .l_m {
-  @apply font-l-mobile text-l-mobile leading-l-mobile  text-BLACK;;
+  @apply font-l-mobile text-l-mobile leading-l-mobile  text-BLACK;
 }
 
 .m {
-  @apply font-m text-m leading-m  text-BLACK;;
+  @apply font-m text-m leading-m  text-BLACK;
 }
 
 .m_m {
-  @apply font-m-mobile text-m-mobile leading-m-mobile  text-BLACK;;
+  @apply font-m-mobile text-m-mobile leading-m-mobile  text-BLACK;
 }
 
 .s {
-  @apply font-s text-s leading-s  text-BLACK;;
+  @apply font-s text-s leading-s  text-BLACK;
 }
