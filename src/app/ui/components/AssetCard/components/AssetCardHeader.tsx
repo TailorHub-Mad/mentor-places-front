@@ -1,7 +1,8 @@
 import { LogoFavicon } from '@components/icons/LogoFavicon'
 import { cx } from '@utils/cx'
 import React, { FC } from 'react'
-import { AssetCardVariant } from '@components/asset-card/AssetCard'
+import { AssetCardVariant } from '@components/AssetCard/AssetCard'
+import Image from 'next/image'
 
 interface AssetCardHeaderProps {
   title: string
@@ -22,13 +23,15 @@ export const AssetCardHeader: FC<AssetCardHeaderProps> = ({ title, universityNam
               {ranking && (
                 <span className="absolute -top-4 right-8 px-2.5 py-1 bg-BLUE text-WHITE font-m font-thin rounded-md">Top {ranking}</span>
               )}
-              <img className="rounded-[8px]" src={imageSrc} alt={title} />
+              <Image className="rounded-[8px]" src={imageSrc} alt={title} width={500} height={500} />
             </div>
           )}
-          <div className="university-logo flex items-center gap-2">
-            {universityLogo && <img src={universityLogo} alt={universityName} />}
-            {universityName && <span>{universityName}</span>}
-          </div>
+          {(universityLogo || universityName) && (
+            <div className="university-logo flex items-center gap-2 my-[8px]">
+              {universityLogo && <Image src={universityLogo} alt={universityName || ''} width={50} height={50} />}
+              {universityName && <span>{universityName}</span>}
+            </div>
+          )}
           <h3 className="font-m text-m leading-m mb-[38px]">{title}</h3>
         </div>
       )
@@ -42,7 +45,7 @@ export const AssetCardHeader: FC<AssetCardHeaderProps> = ({ title, universityNam
           </div>
           <div className="px-[30px]">
             <h3 className="font-m text-m leading-m mb-[20px]">{title}</h3>
-            <hr className={cx('border-b border-BLACK/10 mb-[34px]')} />
+            <div className={cx('h-[1px]  bg-BLACK/10 mb-[34px]')} />
           </div>
         </div>
       )

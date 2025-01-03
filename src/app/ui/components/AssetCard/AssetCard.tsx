@@ -5,9 +5,9 @@ import { StarIcon } from '../icons/StarIcon'
 import { EuroIcon } from '../icons/EuroIcon'
 import { useTranslations } from 'next-intl'
 import { ClockIcon } from '../icons/ClockIcon'
-import { AssetCardHeader } from '@components/asset-card/components/AssetCardHeader'
-import { AssetCardFooter } from '@components/asset-card/components/AssetCardFooter'
-import { AssetCardFeatureItem } from '@components/asset-card/components/AssetCardFeatureItem'
+import { AssetCardHeader } from '@components/AssetCard/components/AssetCardHeader'
+import { AssetCardFooter } from '@components/AssetCard/components/AssetCardFooter'
+import { AssetCardFeatureItem } from '@components/AssetCard/components/AssetCardFeatureItem'
 
 export const AssetCard: FC<AssetCardProps> = (props) => {
   const { data, variant } = props || {}
@@ -31,9 +31,9 @@ export const AssetCard: FC<AssetCardProps> = (props) => {
         <AssetCardFeatureItem variant={variant} label={t('assetCard.reviewScore')} text={reviewScore} icon={<StarIcon />} />
         <AssetCardFeatureItem variant={variant} label={t('assetCard.price')} text={price} icon={<EuroIcon />} />
         <AssetCardFeatureItem variant={variant} label={t('assetCard.duration')} text={duration} icon={<ClockIcon />} />
-        <AssetCardFeatureItem variant={variant} label={t('assetCard.language')} text={language} />
+        <AssetCardFeatureItem variant={variant} label={t('assetCard.language')} text={language} className="border-b border-BLACK/10" />
       </div>
-      <AssetCardFooter ctaText={ctaText} variant={variant} />
+      <AssetCardFooter ctaText={ctaText} variant={variant} universityLogo={universityLogo} universityName={universityName} />
     </div>
   )
 }

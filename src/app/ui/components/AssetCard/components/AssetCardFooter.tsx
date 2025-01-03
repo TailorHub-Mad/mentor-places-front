@@ -1,6 +1,7 @@
 import Button from '@components/Button/Button'
 import React, { FC } from 'react'
-import { AssetCardVariant } from '@components/asset-card/AssetCard'
+import { AssetCardVariant } from '@components/AssetCard/AssetCard'
+import Image from 'next/image'
 
 interface AssetCardFooterProps {
   ctaText: string | undefined
@@ -10,13 +11,11 @@ interface AssetCardFooterProps {
 }
 
 export const AssetCardFooter: FC<AssetCardFooterProps> = ({ ctaText, variant, universityLogo, universityName }) => {
-  if (!ctaText) return null
-
   switch (variant) {
     case AssetCardVariant.withoutIcons:
       return (
         <div className="university-logo flex items-center gap-2 px-[30px] pb-[34px]">
-          {universityLogo && <img src={universityLogo} alt={universityName} />}
+          {universityLogo && <Image src={universityLogo} alt={universityName || ''} width={30} height={30} />}
           {universityName && <span>{universityName}</span>}
         </div>
       )

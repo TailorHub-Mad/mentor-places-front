@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
-import { AssetCard, AssetCardVariant } from '@components/asset-card/AssetCard'
-import { MOCK_ASSET_CARD, MOCK_ASSET_IMAGE_SRC } from '@components/asset-card/mock'
+import { AssetCard, AssetCardVariant } from '@components/AssetCard/AssetCard'
+import { MOCK_ASSET_CARD, MOCK_ASSET_IMAGE_SRC } from '@components/AssetCard/mock'
 
 const meta: Meta<typeof AssetCard> = {
   component: AssetCard,
