@@ -2,8 +2,8 @@ import { FC } from 'react'
 import { cx } from '@utils/cx'
 import Image from 'next/image'
 import { LogoFavicon } from '@components/icons/LogoFavicon'
-import Link from 'next/link'
 import { ContentCardVariant } from '@components/ContentCard/ContentCard'
+import { ConditionalLink } from '@components/ConditionalLink/ConditionalLink'
 
 interface BlogPostCardProps {
   imageSrc?: string
@@ -35,9 +35,9 @@ export const BlogPostCard: FC<BlogPostCardProps> = ({ imageSrc, title, descripti
       )}
       <div className="blog-post-card__content relative">
         {variant === ContentCardVariant.BLOG_POST_TEXT && <LogoFavicon className="absolute -right-3 -top-3  w-8 h-8 " strokeBg="black" />}
-        <Link href={url || ''}>
+        <ConditionalLink href={url}>
           <h4 className="font-m text-m mb-[24px]">{title}</h4>
-        </Link>
+        </ConditionalLink>
         <p className="font-s text-s">{description}</p>
       </div>
       {date && (
