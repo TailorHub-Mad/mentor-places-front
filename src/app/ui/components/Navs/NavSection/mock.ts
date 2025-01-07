@@ -1,6 +1,6 @@
-import { SectionNavigationProps } from '@components/SectionNavigation/SectionNavigation'
+import { NavSectionProps } from '@components/Navs/NavSection/NavSection'
 
-export const SECTION_NAVIGATION_MOCK: SectionNavigationProps = {
+export const NAV_SECTION_MOCK: NavSectionProps = {
   navItems: [
     {
       title: 'La institución',

@@ -1,5 +1,5 @@
 import { cx } from '@utils/cx'
-import Button from '../Button/Button'
+import Button from '../../Button/Button'
 import Link from 'next/link'
 import Logo from '@components/Logo'
 
@@ -12,7 +12,7 @@ export interface NavProps {
   navLinks?: NavLink[]
 }
 
-const Nav = (props: NavProps) => {
+const NavMain = (props: NavProps) => {
   const { navLinks } = props || {}
 
   return (
@@ -38,4 +38,4 @@ const Nav = (props: NavProps) => {
   )
 }
 
-export default Nav
+export default NavMain
