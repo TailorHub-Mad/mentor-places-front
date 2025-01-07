@@ -13762,6 +13762,7 @@
         react-cookie: "npm:^7.2.0"
         react-dom: "npm:18.3.1"
         storybook: "npm:^8.3.5"
+        swiper: "npm:^11.2.0"
         tailwind-merge: "npm:^2.5.2"
         tailwind-variants: "npm:^0.2.1"
         tailwindcss: "npm:^3.4.13"
@@ -14727,6 +14728,13 @@
       dependencies:
         tslib: "npm:^2.0.3"
       checksum: 10c0/6a47c1926e06395ead750905e103be388aeec8c9697f20b14bc3e1e86fcb4fc78e5033197afe6cc8bbed80f0a4ee1f184b0fa22eec7f4a767bdfd278683d52eb
+      languageName: node
+      linkType: hard
+    
+    "swiper@npm:^11.2.0":
+      version: 11.2.0
+      resolution: "swiper@npm:11.2.0"
+      checksum: 10c0/88092316a95026875d84f85be76d9fb3634015186401e9099995bf673cf9d10d35e227b073ed15de898eac391f12b98c22092f6c755f33b4f129e824a80a11ff
       languageName: node
       linkType: hard
     

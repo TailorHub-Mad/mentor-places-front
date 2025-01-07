@@ -9,7 +9,7 @@ export enum ContentCardVariant {
   INFO_CARD_NUMBER = 'INFO_CARD_NUMBER'
 }
 
-interface ContentCardProps {
+export interface ContentCardProps {
   variant: ContentCardVariant
   data: {
     imageSrc?: string
