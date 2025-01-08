@@ -4,7 +4,7 @@ interface LogoFaviconProps extends SVGProps<SVGSVGElement> {
   strokeBg?: 'white' | 'black'
 }
 
-export const LogoFavicon: FC<LogoFaviconProps> = (props) => {
+const LogoFavicon: FC<LogoFaviconProps> = (props) => {
   const { strokeBg, ...restProps } = props
 
   return (
@@ -40,3 +40,5 @@ export const LogoFavicon: FC<LogoFaviconProps> = (props) => {
     </svg>
   )
 }
+
+export default LogoFavicon

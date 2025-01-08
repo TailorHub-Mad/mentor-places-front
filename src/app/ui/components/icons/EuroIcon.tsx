@@ -1,6 +1,6 @@
 import type { SVGProps } from 'react'
 
-export const EuroIcon = (props: SVGProps<SVGSVGElement>) => {
+const EuroIcon = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <g clipPath="url(#clip0_18984_5148)">
@@ -21,3 +21,5 @@ export const EuroIcon = (props: SVGProps<SVGSVGElement>) => {
     </svg>
   )
 }
+
+export default EuroIcon
