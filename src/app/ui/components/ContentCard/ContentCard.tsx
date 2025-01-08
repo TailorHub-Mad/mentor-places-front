@@ -22,7 +22,7 @@ export interface ContentCardProps {
   }
 }
 
-export const ContentCard: FC<ContentCardProps> = ({ variant, data }) => {
+const ContentCard: FC<ContentCardProps> = ({ variant, data }) => {
   const { imageSrc, title, description, date, url, infoHeaderTitle = '1' } = data || {}
 
   switch (variant) {
@@ -36,3 +36,5 @@ export const ContentCard: FC<ContentCardProps> = ({ variant, data }) => {
       return <span>Variant no implemented</span>
   }
 }
+
+export default ContentCard

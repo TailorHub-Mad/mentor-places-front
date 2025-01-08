@@ -1,5 +1,5 @@
-import { Meta, StoryObj } from '@storybook/react'
-import { ContentCard, ContentCardVariant } from '@components/ContentCard/ContentCard'
+import type { Meta, StoryObj } from '@storybook/react'
+import ContentCard, { ContentCardVariant } from '@components/ContentCard/ContentCard'
 import { CONTENT_CARD_BASE_MOCKS } from '@components/ContentCard/mocks'
 
 const meta: Meta<typeof ContentCard> = {

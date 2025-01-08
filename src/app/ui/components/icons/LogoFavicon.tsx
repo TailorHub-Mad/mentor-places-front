@@ -1,4 +1,4 @@
-import { FC, SVGProps } from 'react'
+import type { FC, SVGProps } from 'react'
 
 interface LogoFaviconProps extends SVGProps<SVGSVGElement> {
   strokeBg?: 'white' | 'black'

@@ -5,7 +5,8 @@ import 'firebase/compat/database'
 import 'firebase/compat/storage'
 import firebaseConfig from './config'
 import { getAuth } from 'firebase/auth'
-import { Messaging, getMessaging, getToken } from 'firebase/messaging'
+import type { Messaging } from 'firebase/messaging'
+import { getMessaging, getToken } from 'firebase/messaging'
 
 export class Firebase {
   init: app.app.App

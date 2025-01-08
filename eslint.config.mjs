@@ -32,7 +32,14 @@ export default [
   },
   {
     rules: {
-      'no-console': ['warn', { allow: ['error'] }]
+      'no-console': ['warn', { allow: ['error'] }],
+      '@typescript-eslint/consistent-type-imports': [
+        'error',
+        {
+          prefer: 'type-imports', // Use `import type` for all type imports
+          fixStyle: 'separate-type-imports' // Moves type imports to a separate statement when autofixed
+        }
+      ]
     }
   },
   eslintConfigPrettier
