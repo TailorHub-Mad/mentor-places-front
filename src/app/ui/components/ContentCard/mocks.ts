@@ -1,4 +1,5 @@
-import { ContentCardProps, ContentCardVariant } from '@components/ContentCard/ContentCard'
+import type { ContentCardProps } from '@components/ContentCard/ContentCard'
+import { ContentCardVariant } from '@components/ContentCard/ContentCard'
 
 export const CONTENT_CARD_BASE_MOCKS: ContentCardProps = {
   variant: ContentCardVariant.BLOG_POST_PHOTO,

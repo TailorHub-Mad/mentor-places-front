@@ -1,5 +1,5 @@
 import CustomSwiper from '@components/Swiper/CustomSwiper'
-import { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { CUSTOM_SWIPER_CONTENT_CARD_MOCK, CUSTOM_SWIPER_IMAGE_MOCK } from '@components/Swiper/mock'
 import { SwiperNavigationPosition } from '@components/Swiper/components/SwiperNatigation'
 

@@ -1,4 +1,4 @@
-import { CustomSwiperProps } from '@components/Swiper/CustomSwiper'
+import type { CustomSwiperProps } from '@components/Swiper/CustomSwiper'
 import { ContentCard, ContentCardVariant } from '@components/ContentCard/ContentCard'
 import Image from 'next/image'
 

@@ -1,4 +1,5 @@
-import React, { FC, useEffect, useState } from 'react'
+import type { FC } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSwiper } from 'swiper/react'
 import ChevronArrowLeft from '@components/icons/ChevronArrowLeft'
 import ChevronArrowRight from '@components/icons/ChevronArrowRight'
