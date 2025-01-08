@@ -1,6 +1,6 @@
 'use client'
 import { type FC } from 'react'
-import { locales } from '../../../i18n.settings'
+import { LOCALES } from '../../../i18n.settings'
 import { Link, usePathname } from '../../../navigation'
 
 export const Footer: FC = () => {
@@ -8,7 +8,7 @@ export const Footer: FC = () => {
 
   return (
     <footer style={{ marginTop: 50 }}>
-      {locales.map((locale) => {
+      {LOCALES.map((locale) => {
         return (
           <Link key={locale} href={pathname} locale={locale}>
             <p className="s">{locale}</p>

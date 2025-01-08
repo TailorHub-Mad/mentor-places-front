@@ -23,7 +23,7 @@ const RootLayout: FC<IRootLayout> = ({ children, params: { locale } }) => {
       <Meta />
       <NextIntlClientProvider messages={messages}>
         <Providers>
-          <body className="bg-SAAS_DARK dark:bg-BLACK">
+          <body>
             <main>{children}</main>
             <Footer />
             <PageTransition />
