@@ -10,7 +10,7 @@ interface AssetCardFeatureItemProps {
   className?: string
 }
 
-export const AssetCardFeatureItem: FC<AssetCardFeatureItemProps> = ({ label, text, icon, variant, className }) => {
+const AssetCardFeatureItem: FC<AssetCardFeatureItemProps> = ({ label, text, icon, variant, className }) => {
   switch (variant) {
     case AssetCardVariant.withIcons:
       return (
@@ -27,5 +27,17 @@ export const AssetCardFeatureItem: FC<AssetCardFeatureItemProps> = ({ label, tex
           <span className="font-m text-m text-BLACK">{text}</span>
         </div>
       )
+    case AssetCardVariant.index:
+      return (
+        <div className="flex flex-col">
+          <div className={cx('flex items-center gap-2 border-b border-BLACK/10 py-[10px]', className)}>
+            {icon}
+            <span className="font-s text-s ">{text}</span>
+          </div>
+          <span className="font-s text-s capitalize text-BLACK/60">{label}</span>
+        </div>
+      )
   }
 }
+
+export default AssetCardFeatureItem

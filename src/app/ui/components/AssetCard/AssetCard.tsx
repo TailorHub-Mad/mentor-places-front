@@ -7,7 +7,8 @@ import { useTranslations } from 'next-intl'
 import { ClockIcon } from '../icons/ClockIcon'
 import { AssetCardHeader } from '@components/AssetCard/components/AssetCardHeader'
 import { AssetCardFooter } from '@components/AssetCard/components/AssetCardFooter'
-import { AssetCardFeatureItem } from '@components/AssetCard/components/AssetCardFeatureItem'
+import AssetCardFeatureItem from '@components/AssetCard/components/AssetCardFeatureItem'
+import type { AssetCardData } from '@interfaces/assetCard.interface'
 
 const AssetCard: FC<AssetCardProps> = (props) => {
   const { data, variant } = props || {}
@@ -42,23 +43,11 @@ export default AssetCard
 
 export enum AssetCardVariant {
   withIcons = 'withIcons',
-  withoutIcons = 'withoutIcons'
+  withoutIcons = 'withoutIcons',
+  index = 'index'
 }
 
 export interface AssetCardProps {
   variant: AssetCardVariant
-  data: {
-    title: string
-    universityName?: string
-    universityLogo?: string
-    format?: string
-    price?: string
-    duration?: string
-    ranking?: number
-    reviewScore?: number
-    imageSrc?: string
-    ctaText?: string
-    ctaHref?: string
-    language?: string
-  }
+  data: AssetCardData
 }
