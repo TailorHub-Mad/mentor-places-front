@@ -6,9 +6,9 @@ const ChevronArrowLeft: FC<React.SVGProps<SVGSVGElement>> = (props) => {
       <path
         d="M7.33203 14.6693L0.665365 8.0026L7.33203 1.33594"
         stroke="black"
-        stroke-width="1.33333"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.33333"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   )
