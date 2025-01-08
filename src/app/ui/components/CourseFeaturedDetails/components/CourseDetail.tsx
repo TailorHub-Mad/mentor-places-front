@@ -1,10 +1,10 @@
 'use client'
 
 import AwardIcon from '@components/icons/AwardIcon'
-import { ClockIcon } from '@components/icons/ClockIcon'
+import ClockIcon from '@components/icons/ClockIcon'
 import LocationIcon from '@components/icons/LocationIcon'
 import MessageIcon from '@components/icons/MessageIcon'
-import { ScreenIcon } from '@components/icons/ScreenIcon'
+import ScreenIcon from '@components/icons/ScreenIcon'
 import useBreakpoint from '@hooks/useBreakpoint'
 import { useTranslations } from 'next-intl'
 import type { SVGProps, FC } from 'react'

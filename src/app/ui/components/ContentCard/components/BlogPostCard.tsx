@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { cx } from '@utils/cx'
 import Image from 'next/image'
-import { LogoFavicon } from '@components/icons/LogoFavicon'
+import LogoFavicon from '@components/icons/LogoFavicon'
 import { ContentCardVariant } from '@components/ContentCard/ContentCard'
 import { ConditionalLink } from '@components/ConditionalLink/ConditionalLink'
 
