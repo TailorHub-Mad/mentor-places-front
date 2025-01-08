@@ -1,5 +1,5 @@
 import Button from '@components/Button/Button'
-import React, { FC } from 'react'
+import React, { type FC } from 'react'
 import { AssetCardVariant } from '@components/AssetCard/AssetCard'
 import Image from 'next/image'
 

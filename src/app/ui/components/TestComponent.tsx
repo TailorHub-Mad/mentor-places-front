@@ -1,5 +1,5 @@
 'use client'
-import type { FC } from 'react'
+import type { type FC } from 'react'
 
 import { useGetCoursesQuery } from '../../../graphql/generated/client'
 // TODO: TEST USER HOOKS COURSES

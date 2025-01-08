@@ -1,6 +1,6 @@
 import { LogoFavicon } from '@components/icons/LogoFavicon'
 import { cx } from '@utils/cx'
-import React, { FC } from 'react'
+import React, { type FC } from 'react'
 import { AssetCardVariant } from '@components/AssetCard/AssetCard'
 import Image from 'next/image'
 
