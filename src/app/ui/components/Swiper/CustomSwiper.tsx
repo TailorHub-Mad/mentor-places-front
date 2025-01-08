@@ -12,7 +12,7 @@ export interface CustomSwiperProps {
 
 const CustomSwiper: FC<CustomSwiperProps> = ({ items, swiperOptions }) => {
   return (
-    <div className="custom-swiper-container">
+    <div className="custom-swiper-container relative">
       <SwiperCore modules={[Navigation]} {...swiperOptions}>
         {items?.map((item, index) => <SwiperCoreSlide key={index}>{item}</SwiperCoreSlide>)}
         <SwiperNavigation />
