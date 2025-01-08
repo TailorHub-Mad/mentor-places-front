@@ -16,14 +16,12 @@ type Story = StoryObj<typeof CustomSwiper>
 
 export const ContentCard: Story = {
   args: {
-    ...CUSTOM_SWIPER_CONTENT_CARD_MOCK,
-    slidesPerView: 2
+    ...CUSTOM_SWIPER_CONTENT_CARD_MOCK
   }
 }
 
 export const Image: Story = {
   args: {
-    ...CUSTOM_SWIPER_IMAGE_MOCK,
-    slidesPerView: 1
+    ...CUSTOM_SWIPER_IMAGE_MOCK
   }
 }

@@ -20,7 +20,7 @@ const ImageMock = <Image src={imageSrcMock} alt={''} width={1000} height={500} /
 export const CUSTOM_SWIPER_CONTENT_CARD_MOCK: CustomSwiperProps = {
   items: [ContentCardMock, ContentCardMock, ContentCardMock, ContentCardMock, ContentCardMock, ContentCardMock],
   swiperOptions: {
-    navigation: true,
+    navigation: false,
     slidesPerView: 2
   }
 }
@@ -28,6 +28,6 @@ export const CUSTOM_SWIPER_CONTENT_CARD_MOCK: CustomSwiperProps = {
 export const CUSTOM_SWIPER_IMAGE_MOCK: CustomSwiperProps = {
   items: [ImageMock, ImageMock, ImageMock, ImageMock, ImageMock, ImageMock],
   swiperOptions: {
-    navigation: true
+    navigation: false
   }
 }
