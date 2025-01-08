@@ -1,5 +1,5 @@
 import type { CustomSwiperProps } from '@components/Swiper/CustomSwiper'
-import { ContentCard, ContentCardVariant } from '@components/ContentCard/ContentCard'
+import ContentCard, { ContentCardVariant } from '@components/ContentCard/ContentCard'
 import Image from 'next/image'
 
 const imageSrcMock = '/images/blog-post-example-mentor.jpeg'
