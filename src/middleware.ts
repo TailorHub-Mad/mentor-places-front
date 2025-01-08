@@ -1,10 +1,10 @@
-import { defaultLocale, locales } from './i18n.settings'
+import { defaultLocale, LOCALES } from './i18n.settings'
 import createMiddleware from 'next-intl/middleware'
 import { localePrefix, pathnames } from './navigation'
 
 export default createMiddleware({
   defaultLocale, // Used when no locale matches
-  locales, // A list of all locales that are supported
+  locales: LOCALES, // A list of all locales that are supported
   localePrefix,
   pathnames
 })
