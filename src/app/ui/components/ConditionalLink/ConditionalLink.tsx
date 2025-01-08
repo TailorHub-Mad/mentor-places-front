@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import React, { FC, PropsWithChildren } from 'react'
+import type { FC, PropsWithChildren } from 'react'
+import React from 'react'
 import { cx } from '@utils/cx'
 
 type Props = {

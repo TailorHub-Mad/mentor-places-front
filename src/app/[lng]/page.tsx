@@ -1,7 +1,8 @@
 import { type FC } from 'react'
 import client from '../lib/configs/apolloClient'
 import { unstable_setRequestLocale } from 'next-intl/server'
-import { GetCoursesDocument, GetCoursesQuery, GetCoursesQueryVariables } from '../../graphql/generated/client'
+import type { GetCoursesQuery, GetCoursesQueryVariables } from '../../graphql/generated/client'
+import { GetCoursesDocument } from '../../graphql/generated/client'
 import TestComponent from '@components/TestComponent'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

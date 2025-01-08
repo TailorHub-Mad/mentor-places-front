@@ -1,4 +1,4 @@
-import { NavSectionProps } from '@components/Navs/NavSection/NavSection'
+import type { NavSectionProps } from '@components/Navs/NavSection/NavSection'
 
 export const NAV_SECTION_MOCK: NavSectionProps = {
   navItems: [

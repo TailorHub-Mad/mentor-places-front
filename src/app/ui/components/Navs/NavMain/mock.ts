@@ -1,4 +1,4 @@
-import { NavProps } from '@components/Navs/NavMain/NavMain'
+import type { NavProps } from '@components/Navs/NavMain/NavMain'
 
 export const NAV_MAIN_MOCKS: NavProps = {
   navLinks: [
