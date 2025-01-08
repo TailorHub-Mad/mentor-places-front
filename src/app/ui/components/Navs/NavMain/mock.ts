@@ -1,6 +1,6 @@
-import { NavProps } from '@components/Nav/Nav'
+import type { NavProps } from '@components/Navs/NavMain/NavMain'
 
-export const mock: NavProps = {
+export const NAV_MAIN_MOCKS: NavProps = {
   navLinks: [
     { name: 'Másters', href: '#' },
     { name: 'Universidades', href: '#' },

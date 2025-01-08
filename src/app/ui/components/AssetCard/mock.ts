@@ -1,4 +1,5 @@
-import { AssetCardProps, AssetCardVariant } from '@components/AssetCard/AssetCard'
+import type { AssetCardProps } from '@components/AssetCard/AssetCard'
+import { AssetCardVariant } from '@components/AssetCard/AssetCard'
 
 export const MOCK_ASSET_CARD: AssetCardProps = {
   variant: AssetCardVariant.withIcons,

@@ -1,4 +1,5 @@
-import { createLocalizedPathnamesNavigation, Pathnames } from 'next-intl/navigation'
+import type { Pathnames } from 'next-intl/navigation'
+import { createLocalizedPathnamesNavigation } from 'next-intl/navigation'
 import { LOCALES } from './i18n.settings'
 
 export const localePrefix = 'always' // default

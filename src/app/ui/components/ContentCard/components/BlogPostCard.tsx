@@ -1,9 +1,9 @@
-import { FC } from 'react'
+import { type FC } from 'react'
 import { cx } from '@utils/cx'
 import Image from 'next/image'
 import { LogoFavicon } from '@components/icons/LogoFavicon'
 import { ContentCardVariant } from '@components/ContentCard/ContentCard'
-import { ConditionalLink } from '@components/ConditionalLink/ConditionalLink'
+import ConditionalLink from '@components/ConditionalLink/ConditionalLink'
 
 interface BlogPostCardProps {
   imageSrc?: string
@@ -23,14 +23,12 @@ export const BlogPostCard: FC<BlogPostCardProps> = ({ imageSrc, title, descripti
       })}>
       {variant === ContentCardVariant.BLOG_POST_PHOTO && (
         <div className="blog-post-card__header mb-[41px] relative">
-          <>
-            {imageSrc && (
-              <div className="image-wrapper relative overflow-hidden h-[160px] md:h-[185px] rounded-xl mb-[21px]">
-                <Image width={500} height={500} src={imageSrc} alt={title} className="absolute" />
-              </div>
-            )}
-            <span className="bg-BLUE px-[10px] py-[5px] text-WHITE rounded-xl text-s font-s font-thin">Learn</span>
-          </>
+          {imageSrc && (
+            <div className="image-wrapper relative overflow-hidden h-[160px] md:h-[185px] rounded-xl mb-[21px]">
+              <Image width={500} height={500} src={imageSrc} alt={title} className="absolute" />
+            </div>
+          )}
+          <span className="bg-BLUE px-[10px] py-[5px] text-WHITE rounded-xl text-s font-s font-thin">Learn</span>
         </div>
       )}
       <div className="blog-post-card__content relative">

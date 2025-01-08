@@ -1,19 +1,32 @@
 import Link from 'next/link'
+import type { FC, PropsWithChildren } from 'react'
 import React from 'react'
+import { cx } from '@utils/cx'
 
 type Props = {
   href?: string
-  children: React.ReactNode
+  className?: string
+  disabled?: boolean
 }
 
-export const ConditionalLink: React.FC<Props> = ({ href, children }) => {
-  if (!href) {
-    return <span>{children}</span>
+const ConditionalLink: FC<PropsWithChildren<Props>> = (props) => {
+  const { href, className, children, disabled } = props
+  if (!href || disabled) {
+    return (
+      <span
+        className={cx(className, {
+          'cursor-not-allowed ': disabled && href
+        })}>
+        {children}
+      </span>
+    )
   }
 
   return (
-    <Link href={href}>
-      <a>{children}</a>
+    <Link href={href} className={className}>
+      {children}
     </Link>
   )
 }
+
+export default ConditionalLink

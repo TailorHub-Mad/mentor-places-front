@@ -1,6 +1,6 @@
 import { cx } from '@utils/cx'
 import { ScreenIcon } from '../icons/ScreenIcon'
-import React, { FC } from 'react'
+import React, { type FC } from 'react'
 import { StarIcon } from '../icons/StarIcon'
 import { EuroIcon } from '../icons/EuroIcon'
 import { useTranslations } from 'next-intl'
@@ -9,7 +9,7 @@ import { AssetCardHeader } from '@components/AssetCard/components/AssetCardHeade
 import { AssetCardFooter } from '@components/AssetCard/components/AssetCardFooter'
 import { AssetCardFeatureItem } from '@components/AssetCard/components/AssetCardFeatureItem'
 
-export const AssetCard: FC<AssetCardProps> = (props) => {
+const AssetCard: FC<AssetCardProps> = (props) => {
   const { data, variant } = props || {}
 
   const { title, ranking, duration, ctaText, format, imageSrc, language, price, reviewScore, universityLogo, universityName } = data
@@ -37,6 +37,8 @@ export const AssetCard: FC<AssetCardProps> = (props) => {
     </div>
   )
 }
+
+export default AssetCard
 
 export enum AssetCardVariant {
   withIcons = 'withIcons',
