@@ -54,3 +54,10 @@ export const Image: Story = {
     ...CUSTOM_SWIPER_IMAGE_MOCK
   }
 }
+
+export const ImageNavRightTop: Story = {
+  args: {
+    ...CUSTOM_SWIPER_IMAGE_MOCK,
+    position: SwiperNavigationPosition.TOP_RIGHT
+  }
+}
