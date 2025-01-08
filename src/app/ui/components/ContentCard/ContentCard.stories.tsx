@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
-import { ContentCard, ContentCardVariant } from '@components/ContentCard/ContentCard'
+import ContentCard, { ContentCardVariant } from '@components/ContentCard/ContentCard'
 
 const meta: Meta<typeof ContentCard> = {
   component: ContentCard,

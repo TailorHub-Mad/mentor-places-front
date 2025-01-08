@@ -1,4 +1,4 @@
-import { NavSection } from '@components/Navs/NavSection/NavSection'
+import NavSection from '@components/Navs/NavSection/NavSection'
 import { Meta, StoryObj } from '@storybook/react'
 import { NAV_SECTION_MOCK } from '@components/Navs/NavSection/mock'
 

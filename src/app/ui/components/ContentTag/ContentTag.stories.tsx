@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
-import { ContentTag } from '@components/ContentTag/ContentTag'
+import ContentTag from '@components/ContentTag/ContentTag'
 
 const meta: Meta<typeof ContentTag> = {
   component: ContentTag,

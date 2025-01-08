@@ -1,14 +1,14 @@
 import { FC } from 'react'
-import { ConditionalLink } from '@components/ConditionalLink/ConditionalLink'
+import ConditionalLink from '@components/ConditionalLink/ConditionalLink'
 import { cx } from '@utils/cx'
 
 interface ContentTagProps {
+  title: string
   href?: string
-  title?: string
 }
 
-export const ContentTag: FC<ContentTagProps> = (props) => {
-  const { href, title } = props || {}
+const ContentTag: FC<ContentTagProps> = (props) => {
+  const { href, title } = props
 
   return (
     <ConditionalLink className="content-tag" href={href}>
@@ -16,3 +16,5 @@ export const ContentTag: FC<ContentTagProps> = (props) => {
     </ConditionalLink>
   )
 }
+
+export default ContentTag

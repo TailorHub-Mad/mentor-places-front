@@ -1,21 +1,21 @@
 import Link from 'next/link'
-import React from 'react'
-import { cx } from '@utils/cx'
+import React, { FC, PropsWithChildren } from 'react'
 
 type Props = {
   href?: string
-  children: React.ReactNode
   className?: string
 }
 
-export const ConditionalLink: React.FC<Props> = ({ href, children, className }) => {
+const ConditionalLink: FC<PropsWithChildren<Props>> = ({ href, children, className }) => {
   if (!href) {
-    return <span className={cx(className)}>{children}</span>
+    return <span className={className}>{children}</span>
   }
 
   return (
-    <Link href={href} className={cx(className)}>
+    <Link href={href} className={className}>
       {children}
     </Link>
   )
 }
+
+export default ConditionalLink
