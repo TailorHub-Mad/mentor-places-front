@@ -1,6 +1,6 @@
 import { cx } from '@utils/cx'
 import { ScreenIcon } from '../icons/ScreenIcon'
-import React, { FC } from 'react'
+import React, { type FC } from 'react'
 import { StarIcon } from '../icons/StarIcon'
 import { EuroIcon } from '../icons/EuroIcon'
 import { useTranslations } from 'next-intl'

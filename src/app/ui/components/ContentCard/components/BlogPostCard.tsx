@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { type FC } from 'react'
 import { cx } from '@utils/cx'
 import Image from 'next/image'
 import { LogoFavicon } from '@components/icons/LogoFavicon'

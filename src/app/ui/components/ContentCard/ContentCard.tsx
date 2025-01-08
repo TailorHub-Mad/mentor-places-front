@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { type FC } from 'react'
 import { BlogPostCard } from '@components/ContentCard/components/BlogPostCard'
 import { InfoCard } from '@components/ContentCard/components/InfoCard'
 

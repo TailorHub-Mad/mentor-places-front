@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { type FC } from 'react'
 import ContentTag from '@components/ContentTag/ContentTag'
 
 export interface NavSectionProps {

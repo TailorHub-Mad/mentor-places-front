@@ -2,6 +2,7 @@
 import type { FC } from 'react'
 
 import { useGetCoursesQuery } from '../../../graphql/generated/client'
+
 // TODO: TEST USER HOOKS COURSES
 const TestComponent: FC = () => {
   const { data, loading, error } = useGetCoursesQuery({

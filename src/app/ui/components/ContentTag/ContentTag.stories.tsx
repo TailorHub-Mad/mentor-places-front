@@ -21,6 +21,14 @@ export const ButtonTag: Story = {
   }
 }
 
+export const ButtonTagDisabled: Story = {
+  args: {
+    title: 'Presencial',
+    href: '#title-on-same-page',
+    disabled: true
+  }
+}
+
 export const InfoTag: Story = {
   args: {
     title: 'Descuentos (5%)'
@@ -29,5 +37,12 @@ export const InfoTag: Story = {
 export const InfoTagLongText: Story = {
   args: {
     title: 'Top 5 Marketing Digital Online'
+  }
+}
+
+export const InfoTagLongTextDisabled: Story = {
+  args: {
+    title: 'Top 5 Marketing Digital Online',
+    disabled: true
   }
 }
