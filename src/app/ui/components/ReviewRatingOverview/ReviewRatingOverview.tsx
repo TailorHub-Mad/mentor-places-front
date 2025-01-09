@@ -19,9 +19,9 @@ const ReviewRatingOverview: FC<ReviewRatingOverviewProps> = ({ reviewsByRate }) 
   const totalReviews = allReviews.reduce((total, num) => total + num, 0)
 
   return (
-    <div className="review-rating-overview bg-YELLOW p-[20px] flex flex-col">
-      <div className="review-rating-overview__header">
-        <span>{t('opinions')}</span>
+    <div className="review-rating-overview bg-YELLOW p-[20px] flex flex-col flex-grow">
+      <div className="review-rating-overview__header ">
+        <span className="text-BLACK/40 text-s">{t('opinions')}</span>
       </div>
       <div className="flex flex-col-reverse">
         {allReviews.map((count, index) => (

@@ -16,5 +16,13 @@
     "language": "Idioma",
     "campus": "Campus",
     "startDate": "Fecha de inicio"
-  }
+  },
+  "rating": {
+    "1": "Malo",
+    "2": "Mejorable",
+    "3": "Normal",
+    "4": "Muy bueno",
+    "5": "Excelente"
+  },
+  "opinions": "Opiniones"
 }
