@@ -1,33 +1,21 @@
 'use client'
 
-import AwardIcon from '@components/icons/AwardIcon'
-import ClockIcon from '@components/icons/ClockIcon'
-import LocationIcon from '@components/icons/LocationIcon'
-import MessageIcon from '@components/icons/MessageIcon'
-import ScreenIcon from '@components/icons/ScreenIcon'
 import useBreakpoint from '@hooks/useBreakpoint'
 import { useTranslations } from 'next-intl'
-import type { SVGProps, FC } from 'react'
+import React, { type FC } from 'react'
+import { AssetIconsArray } from '@utils/AssetIconsArray'
 
-export type TCourseDetailType = 'duration' | 'format' | 'language' | 'campus' | 'startDate'
+export type TCourseDetailType = 'duration' | 'format' | 'language' | 'campus' | 'startDate' | 'price' | 'rating'
 
 interface ICourseDetailProps {
   type: TCourseDetailType
   value: string
 }
 
-const icons: Record<TCourseDetailType, (props: SVGProps<SVGSVGElement>) => JSX.Element> = {
-  duration: ClockIcon,
-  format: ScreenIcon,
-  language: MessageIcon,
-  campus: LocationIcon,
-  startDate: AwardIcon
-}
-
 const CourseDetail: FC<ICourseDetailProps> = ({ type, value }) => {
   const t = useTranslations()
   const { isMobile, isVerticalTablet } = useBreakpoint()
-  const Icon = icons[type]
+  const Icon = AssetIconsArray[type]
 
   return (
     <div>

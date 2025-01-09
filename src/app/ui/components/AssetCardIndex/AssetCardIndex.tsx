@@ -2,12 +2,8 @@ import React, { type FC } from 'react'
 import Image from 'next/image'
 import WishListButton from '@components/WishListButton/WishListButton'
 import type { AssetCardData } from '@interfaces/assetCard.interface'
-import AssetCardFeatureItem from '@components/AssetCard/components/AssetCardFeatureItem'
+import AssetDetailCard from '@components/AssetCard/components/AssetDetailCard'
 import { AssetCardVariant } from '@components/AssetCard/AssetCard'
-import { EuroIcon } from '@components/icons/EuroIcon'
-import { ScreenIcon } from '@components/icons/ScreenIcon'
-import { StarIcon } from '@components/icons/StarIcon'
-import { ClockIcon } from '@components/icons/ClockIcon'
 import { useTranslations } from 'next-intl'
 import Button from '@components/Button/Button'
 
@@ -19,7 +15,7 @@ export interface AssetCardIndexProps extends AssetCardData {
 }
 
 const AssetCardIndex: FC<AssetCardIndexProps> = (props) => {
-  const { universityLogo, universityName, assetThumbnailUrl, title, format, price, duration, ctaText, reviewScore } = props
+  const { universityLogo, universityName, assetThumbnailUrl, title, ctaText, details } = props
 
   const t = useTranslations()
 
@@ -47,17 +43,18 @@ const AssetCardIndex: FC<AssetCardIndexProps> = (props) => {
         </div>
         <div className="asset-card-index__content__info mb-[30px]">
           <h3 className="font-s text-m-mobile lg:text-m mb-[20px]">{title}</h3>
-          <div className="md:flex items-center gap-[12px] grid grid-cols-2">
-            <AssetCardFeatureItem variant={AssetCardVariant.index} label={t('assetCard.format')} text={format} icon={<ScreenIcon />} />
-            <AssetCardFeatureItem
-              variant={AssetCardVariant.index}
-              label={t('assetCard.reviewScore')}
-              text={reviewScore}
-              icon={<StarIcon />}
-            />
-            <AssetCardFeatureItem variant={AssetCardVariant.index} label={t('assetCard.price')} text={price} icon={<EuroIcon />} />
-            <AssetCardFeatureItem variant={AssetCardVariant.index} label={t('assetCard.duration')} text={duration} icon={<ClockIcon />} />
-          </div>
+          {details && (
+            <div className="md:flex items-center gap-[12px] grid grid-cols-2">
+              {details.map((item, index) => (
+                <AssetDetailCard
+                  key={`asset-detail-card-${item.value}-${index}`}
+                  variant={AssetCardVariant.index}
+                  text={item.value}
+                  type={item.type}
+                />
+              ))}
+            </div>
+          )}
         </div>
         <div className="asset-card-index__content__footer flex items-center gap-[16px]">
           <Button variant="primary">{ctaText}</Button>

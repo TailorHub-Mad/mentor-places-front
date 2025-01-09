@@ -1,4 +1,4 @@
-import { LogoFavicon } from '@components/icons/LogoFavicon'
+import LogoFavicon from '@components/icons/LogoFavicon'
 import { cx } from '@utils/cx'
 import React, { type FC } from 'react'
 import { AssetCardVariant } from '@components/AssetCard/AssetCard'
