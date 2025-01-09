@@ -3,10 +3,10 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 const REVIEW_CARD_MOCK = {
   review:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae sapien eget diam efficitur efficitur. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.',
-  date: '2021-01-01',
+    'El máster de marketing digital cubrió mis expectativas. Tuve la oportunidad de conocer estudiantes y profesores brillantes y necesitados',
+  date: '2024-01-01',
   rating: 4,
-  studiedAt: '2021'
+  enrolledTo: 'Estudiante máster'
 }
 
 const meta: Meta<typeof ReviewCard> = {
