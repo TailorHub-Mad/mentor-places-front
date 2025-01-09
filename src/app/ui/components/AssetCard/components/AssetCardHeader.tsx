@@ -13,7 +13,7 @@ interface AssetCardHeaderProps {
   variant: AssetCardVariant
 }
 
-export const AssetCardHeader: FC<AssetCardHeaderProps> = ({ title, universityName, universityLogo, imageSrc, ranking, variant }) => {
+const AssetCardHeader: FC<AssetCardHeaderProps> = ({ title, universityName, universityLogo, imageSrc, ranking, variant }) => {
   switch (variant) {
     case AssetCardVariant.withIcons:
       return (
@@ -51,3 +51,5 @@ export const AssetCardHeader: FC<AssetCardHeaderProps> = ({ title, universityNam
       )
   }
 }
+
+export default AssetCardHeader

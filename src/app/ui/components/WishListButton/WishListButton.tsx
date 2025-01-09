@@ -5,7 +5,6 @@ import { cx } from '@utils/cx'
 
 interface WishListButtonProps {
   isOnWishList?: boolean
-  onClick: () => void
   isDisabled?: boolean
   isFetching?: boolean
   className?: string
@@ -14,7 +13,6 @@ interface WishListButtonProps {
 
 const WishListButton: FC<WishListButtonProps> = ({
   isOnWishList = false,
-  onClick,
   isDisabled = false,
   isFetching = false,
   className,
@@ -22,9 +20,14 @@ const WishListButton: FC<WishListButtonProps> = ({
 }) => {
   const t = useTranslations()
 
+  //TODO: Implement real feature
+  const handleWishlistAction = () => {
+    console.log('Handle add/remove from wishlist')
+  }
+
   const handleOnClick = () => {
     if (isDisabled || isFetching) return
-    onClick()
+    handleWishlistAction()
   }
 
   return (
@@ -34,14 +37,7 @@ const WishListButton: FC<WishListButtonProps> = ({
           'cursor-not-allowed': isDisabled || isFetching
         })}
         onClick={handleOnClick}>
-        {!isTextHidden && (
-          <span className="mr-4">
-            {
-              //TODO: Add localized strings
-              isOnWishList ? t('Eliminar de fav') : t('Añadir a fav')
-            }
-          </span>
-        )}
+        {!isTextHidden && <span className="mr-4">{isOnWishList ? t('actions.remove') : t('actions.add')}</span>}
         <HeartIcon />
       </button>
     </>

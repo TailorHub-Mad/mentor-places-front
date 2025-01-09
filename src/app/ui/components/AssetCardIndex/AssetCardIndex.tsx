@@ -29,7 +29,7 @@ const AssetCardIndex: FC<AssetCardIndexProps> = (props) => {
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat'
         }}>
-        <WishListButton onClick={() => console.log('Wishlist button clicked')} isTextHidden className="absolute top-[14px] right-[14px]" />
+        <WishListButton isTextHidden className="absolute md:hidden top-[14px] right-[14px]" />
       </div>
       <div className="asset-card-index__content flex flex-col flex-grow justify-between">
         <div className="asset-card-index__content__header flex flex-row justify-between items-center mb-[34px]">
@@ -39,7 +39,7 @@ const AssetCardIndex: FC<AssetCardIndexProps> = (props) => {
               {universityName && <span>{universityName}</span>}
             </div>
           )}
-          <WishListButton className="hidden md:block" onClick={() => console.log('Wishlist button clicked')} />
+          <WishListButton className="hidden md:flex" />
         </div>
         <div className="asset-card-index__content__info mb-[30px]">
           <h3 className="font-s text-m-mobile lg:text-m mb-[20px]">{title}</h3>
@@ -62,7 +62,7 @@ const AssetCardIndex: FC<AssetCardIndexProps> = (props) => {
             <input className="mr-2" type="checkbox" name="asset-card-index" id="asset-card-index" />
             {/* TODO: Add localized string */}
             <label htmlFor="asset-card-index" className="checkbox__label">
-              {t('Comparar')}
+              {t('actions.compare')}
             </label>
           </div>
         </div>

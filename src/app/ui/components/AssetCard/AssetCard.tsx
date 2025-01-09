@@ -1,8 +1,8 @@
 import { cx } from '@utils/cx'
 import type { FC } from 'react'
 import React from 'react'
-import { AssetCardHeader } from '@components/AssetCard/components/AssetCardHeader'
-import { AssetCardFooter } from '@components/AssetCard/components/AssetCardFooter'
+import AssetCardHeader from '@components/AssetCard/components/AssetCardHeader'
+import AssetCardFooter from '@components/AssetCard/components/AssetCardFooter'
 import AssetDetailCard from '@components/AssetCard/components/AssetDetailCard'
 import type { AssetCardData } from '@interfaces/assetCard.interface'
 

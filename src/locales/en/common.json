@@ -18,5 +18,10 @@
     "startDate": "Start date",
     "rating": "Rating",
     "price": "Price"
+  },
+  "actions": {
+    "compare": "Compare",
+    "remove": "Remove",
+    "add": "Add"
   }
 }

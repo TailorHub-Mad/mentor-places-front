@@ -18,5 +18,10 @@
     "startDate": "Fecha de inicio",
     "rating": "Valoraciones",
     "price": "Precio"
+  },
+  "actions": {
+    "compare": "Comparar",
+    "remove": "Eliminar",
+    "add": "Añadir"
   }
 }

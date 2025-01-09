@@ -10,7 +10,7 @@ interface AssetCardFooterProps {
   universityName?: string
 }
 
-export const AssetCardFooter: FC<AssetCardFooterProps> = ({ ctaText, variant, universityLogo, universityName }) => {
+const AssetCardFooter: FC<AssetCardFooterProps> = ({ ctaText, variant, universityLogo, universityName }) => {
   switch (variant) {
     case AssetCardVariant.withoutIcons:
       return (
@@ -27,3 +27,5 @@ export const AssetCardFooter: FC<AssetCardFooterProps> = ({ ctaText, variant, un
       )
   }
 }
+
+export default AssetCardFooter
