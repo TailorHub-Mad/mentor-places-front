@@ -9,5 +9,12 @@
     "duration": "duración",
     "reviewScore": "valoración",
     "language": "idioma"
+  },
+  "courseDetails": {
+    "duration": "Duración",
+    "format": "Formato",
+    "language": "Idioma",
+    "campus": "Campus",
+    "startDate": "Fecha de inicio"
   }
 }

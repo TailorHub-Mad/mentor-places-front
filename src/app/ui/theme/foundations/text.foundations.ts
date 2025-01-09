@@ -32,8 +32,8 @@ export const fontFamily: Record<ETEXT_VARIANTS, [string, string]> = {
 }
 
 enum ETEXT_SIZES {
-  XLL = '80px',
-  XLL_MOBILE = '48px',
+  XXL = '80px',
+  XXL_MOBILE = '48px',
   XL = '56px',
   XL_MOBILE = '48px',
   L = '48px',
@@ -44,9 +44,9 @@ enum ETEXT_SIZES {
 }
 
 export const fontSize: Record<ETEXT_VARIANTS, string> = {
-  xxl: ETEXT_SIZES.XLL,
-  'xxl-italic': ETEXT_SIZES.XLL,
-  'xxl-mobile': ETEXT_SIZES.XLL_MOBILE,
+  xxl: ETEXT_SIZES.XXL,
+  'xxl-italic': ETEXT_SIZES.XXL,
+  'xxl-mobile': ETEXT_SIZES.XXL_MOBILE,
   xl: ETEXT_SIZES.XL,
   'xl-italic': ETEXT_SIZES.XL,
   'xl-mobile': ETEXT_SIZES.XL_MOBILE,
