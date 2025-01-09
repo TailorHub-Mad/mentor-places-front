@@ -1,11 +1,11 @@
 import { useParams } from 'next/navigation'
 
-interface DateStringProps {
+interface LocaleDateStringProps {
   date: Date
   options: Intl.DateTimeFormatOptions
 }
 
-export const useDateString = ({ date, options }: DateStringProps) => {
+export const useLocaleDateString = ({ date, options }: LocaleDateStringProps) => {
   const { locale } = useParams()
 
   return date.toLocaleDateString(locale, options)

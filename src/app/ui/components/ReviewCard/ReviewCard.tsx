@@ -1,7 +1,7 @@
 import type { FC } from 'react'
 import LogoFavicon from '@components/icons/LogoFavicon'
-import { cx } from '@utils/cx'
-import { useDateString } from '@hooks/useDateString'
+import { useLocaleDateString } from '@hooks/useDateString'
+import RatingBullets from '@components/ReviewCard/components/RatingBullets'
 
 interface ReviewCardProps {
   review: string
@@ -13,7 +13,7 @@ interface ReviewCardProps {
 const ReviewCard: FC<ReviewCardProps> = ({ review, rating, date, enrolledTo }) => {
   const dateObj = new Date(date)
 
-  const localizedShortMonthYear = useDateString({
+  const localizedDateString = useLocaleDateString({
     date: dateObj,
     options: {
       month: 'short',
@@ -26,12 +26,12 @@ const ReviewCard: FC<ReviewCardProps> = ({ review, rating, date, enrolledTo }) =
       <LogoFavicon width={50} height={50} strokeBg={'black'} />
       <div className="review-card__content flex flex-col flex-grow justify-end gap-[22px]">
         <div className="review-card__rating">
-          <RatingBullet rating={rating} />
+          <RatingBullets rating={rating} />
         </div>
         <div className="review-card__review font-s text-m-mobile font-thin">{review}</div>
         <div className="review-card__footer flex items-center text-BLACK/60 text-s">
-          {date && <span className="capitalize">{localizedShortMonthYear}</span>}
-          {enrolledTo && <span>&nbsp;- {enrolledTo}</span>}
+          <span className="capitalize">{localizedDateString}</span>
+          <span>&nbsp;- {enrolledTo}</span>
         </div>
       </div>
     </div>
@@ -39,16 +39,3 @@ const ReviewCard: FC<ReviewCardProps> = ({ review, rating, date, enrolledTo }) =
 }
 
 export default ReviewCard
-
-const RatingBullet: FC<{ rating: number }> = ({ rating }) => {
-  const stars = Array.from({ length: 5 }, (_, i) => {
-    return (
-      <div
-        key={`raging-bullet-${i}`}
-        className={cx('p-[8px] border border-BLACK rounded-full', {
-          'bg-BLACK': i < rating
-        })}></div>
-    )
-  })
-  return <div className="rating-bullet flex items-center gap-[6px]">{stars}</div>
-}
