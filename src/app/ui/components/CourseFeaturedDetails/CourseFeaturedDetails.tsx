@@ -1,5 +1,6 @@
 import { type FC } from 'react'
-import CourseDetail, { TCourseDetailType } from './components/CourseDetail'
+import type { TCourseDetailType } from './components/CourseDetail'
+import CourseDetail from './components/CourseDetail'
 
 interface ICourseFeaturedDetailsProps {
   duration: string
