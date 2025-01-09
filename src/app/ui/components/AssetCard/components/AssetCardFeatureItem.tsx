@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { type FC } from 'react'
 import { AssetCardVariant } from '@components/AssetCard/AssetCard'
 import { cx } from '@utils/cx'
 

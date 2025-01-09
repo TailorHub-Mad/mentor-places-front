@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { type FC } from 'react'
 import { cx } from '@utils/cx'
 import { ContentCardVariant } from '@components/ContentCard/ContentCard'
 

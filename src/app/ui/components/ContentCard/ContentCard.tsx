@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { type FC } from 'react'
 import { BlogPostCard } from '@components/ContentCard/components/BlogPostCard'
 import { InfoCard } from '@components/ContentCard/components/InfoCard'
 
@@ -22,7 +22,7 @@ interface ContentCardProps {
   }
 }
 
-export const ContentCard: FC<ContentCardProps> = ({ variant, data }) => {
+const ContentCard: FC<ContentCardProps> = ({ variant, data }) => {
   const { imageSrc, title, description, date, url, infoHeaderTitle = '1' } = data || {}
 
   switch (variant) {
@@ -36,3 +36,5 @@ export const ContentCard: FC<ContentCardProps> = ({ variant, data }) => {
       return <span>Variant no implemented</span>
   }
 }
+
+export default ContentCard

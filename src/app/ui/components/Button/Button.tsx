@@ -1,5 +1,5 @@
 import { cx } from '@utils/cx'
-import { forwardRef, type FC } from 'react'
+import React, { forwardRef, type FC } from 'react'
 
 const buttonVariants = {
   base: cx('px-[24px] py-[8px]', 'transition-colors duration-200 ease-in-out', 's', 'rounded-full'),
