@@ -1,6 +1,8 @@
 import { type FC } from 'react'
-import ImageMuralCard, { IImageMuralCardProps } from './components/ImageMuralCard'
-import TextMuralCard, { ITextMuralCardProps } from './components/TextMuralCard'
+import type { IImageMuralCardProps } from './components/ImageMuralCard'
+import ImageMuralCard from './components/ImageMuralCard'
+import type { ITextMuralCardProps } from './components/TextMuralCard'
+import TextMuralCard from './components/TextMuralCard'
 
 type TMuralCard = IImageMuralCardProps | ITextMuralCardProps
 

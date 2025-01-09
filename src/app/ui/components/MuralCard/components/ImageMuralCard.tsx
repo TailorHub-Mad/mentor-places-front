@@ -6,7 +6,7 @@ export interface IImageMuralCardProps {
 }
 
 const ImageMuralCard: FC<IImageMuralCardProps> = ({ src }) => {
-  return <div className={`rounded-lg bg-cover bg-center h-80 w-56`} style={{ backgroundImage: `url(${src})` }} />
+  return <div className={`rounded-lg bg-cover bg-center h-[535px] w-[322px]`} style={{ backgroundImage: `url(${src})` }} />
 }
 
 export default ImageMuralCard
