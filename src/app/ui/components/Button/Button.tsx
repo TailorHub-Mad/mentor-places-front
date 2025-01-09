@@ -1,5 +1,6 @@
 import { cx } from '@utils/cx'
 import React, { forwardRef, type FC } from 'react'
+import Link from 'next/link'
 
 const buttonVariants = {
   base: cx('px-[24px] py-[8px]', 'transition-colors duration-200 ease-in-out', 's', 'rounded-full'),
@@ -13,9 +14,17 @@ export type variantButtons = keyof typeof buttonVariants.variant
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: variantButtons
+  href?: string
 }
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ variant = 'primary', children, ...rest }, ref) => {
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ variant = 'primary', href, children, ...rest }, ref) => {
+  if (href)
+    return (
+      <Link href={href} className={cx(buttonVariants.base, buttonVariants.variant[variant])}>
+        {children}
+      </Link>
+    )
+
   return (
     <button ref={ref} className={cx(buttonVariants.base, buttonVariants.variant[variant])} {...rest}>
       {children}
