@@ -4,7 +4,7 @@ import useBreakpoint from '@hooks/useBreakpoint'
 import { useTranslations } from 'next-intl'
 import React, { type FC } from 'react'
 import { AssetIconsArray } from '@utils/AssetIconsArray'
-import type { TAssetDetailType } from '@interfaces/assetCard.interface'
+import type { TAssetDetailType } from '@interfaces/assetDetail.type'
 
 interface ICourseDetailProps {
   type: string

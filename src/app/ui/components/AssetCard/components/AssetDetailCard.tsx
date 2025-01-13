@@ -4,7 +4,7 @@ import { cx } from '@utils/cx'
 import { AssetIconsArray } from '@utils/AssetIconsArray'
 import { useTranslations } from 'next-intl'
 import useBreakpoint from '@hooks/useBreakpoint'
-import type { TAssetDetailType } from '@interfaces/assetCard.interface'
+import type { TAssetDetailType } from '@interfaces/assetDetail.type'
 
 interface AssetCardFeatureItemProps {
   text: string | number
