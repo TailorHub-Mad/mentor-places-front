@@ -1,4 +1,4 @@
-import React, { type FC } from 'react'
+import type { FC, MouseEventHandler } from 'react'
 import Image from 'next/image'
 import WishListButton from '@components/WishListButton/WishListButton'
 import type { IAssetCardData } from '@interfaces/assetCard.interface'
@@ -8,19 +8,33 @@ import { useTranslations } from 'next-intl'
 import Button from '@components/Button/Button'
 
 export interface AssetCardIndexProps extends IAssetCardData {
+  title: string
   universityLogo?: string
   universityName?: string
   assetThumbnailUrl?: string
-  title: string
+  isOnFavPage?: boolean
+  isOnComparePage?: boolean
+  handleRemove?: MouseEventHandler<HTMLButtonElement>
 }
 
 const AssetCardIndex: FC<AssetCardIndexProps> = (props) => {
-  const { universityLogo, universityName, assetThumbnailUrl, title, ctaText, details, ctaHref } = props
+  const {
+    universityLogo,
+    universityName,
+    assetThumbnailUrl,
+    title,
+    ctaText,
+    details,
+    ctaHref,
+    isOnFavPage = false,
+    isOnComparePage = false,
+    handleRemove
+  } = props
 
   const t = useTranslations()
 
   return (
-    <div className="asset-card-index__wrapper flex flex-col md:flex-row relative py-[24px] px-[32px] shadow-md rounded-[8px] bg-WHITE max-w-full">
+    <div className="asset-card-index__wrapper flex flex-col md:flex-row relative md:py-[24px] py-[20px] md:px-[32px] px-[22px] shadow-md rounded-[8px] bg-WHITE max-w-full">
       <div
         className="asset-card-index__image relative overflow-hidden h-[275px] w-auto md:w-[275px] md:h-[300px] md:mr-[50px] rounded-[8px] mb-[32px] md:mb-0"
         style={{
@@ -29,7 +43,7 @@ const AssetCardIndex: FC<AssetCardIndexProps> = (props) => {
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat'
         }}>
-        <WishListButton isTextHidden className="absolute md:hidden top-[14px] right-[14px]" />
+        {!isOnFavPage && <WishListButton isTextHidden className="absolute md:hidden top-[14px] right-[14px]" />}
       </div>
       <div className="asset-card-index__content flex flex-col flex-grow justify-between">
         <div className="asset-card-index__content__header flex flex-row justify-between items-center mb-[34px]">
@@ -39,7 +53,7 @@ const AssetCardIndex: FC<AssetCardIndexProps> = (props) => {
               {universityName && <span>{universityName}</span>}
             </div>
           )}
-          <WishListButton className="hidden md:flex" />
+          {!isOnFavPage && <WishListButton className="hidden md:flex" />}
         </div>
         <div className="asset-card-index__content__info mb-[30px]">
           <h3 className="font-s text-m-mobile lg:text-m mb-[20px]">{title}</h3>
@@ -56,16 +70,22 @@ const AssetCardIndex: FC<AssetCardIndexProps> = (props) => {
             </div>
           )}
         </div>
-        <div className="asset-card-index__content__footer flex items-center gap-[16px]">
+        <div className="asset-card-index__content__footer flex items-center gap-[6px] md:gap-[16px]">
           <Button variant="primary" href={ctaHref}>
             {ctaText}
           </Button>
-          <div className="checkbox flex items-center">
-            <input className="mr-2" type="checkbox" name="asset-card-index" id="asset-card-index" />
-            <label htmlFor="asset-card-index" className="checkbox__label">
-              {t('actions.compare')}
-            </label>
-          </div>
+          {isOnFavPage || isOnComparePage ? (
+            <Button variant="text" onClick={handleRemove}>
+              {t('actions.remove')}
+            </Button>
+          ) : (
+            <div className="checkbox flex items-center">
+              <input className="mr-2" type="checkbox" name="asset-card-index" id="asset-card-index" />
+              <label htmlFor="asset-card-index" className="checkbox__label">
+                {t('actions.compare')}
+              </label>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl'
 import useBreakpoint from '@hooks/useBreakpoint'
 
 interface AssetCardFeatureItemProps {
-  text: string | number | undefined
+  text: string | number
   type: TCourseDetailType
   variant: EAssetCardVariant
   className?: string

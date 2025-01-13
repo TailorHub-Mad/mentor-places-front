@@ -19,3 +19,17 @@ type Story = StoryObj<typeof AssetCardIndex>
 export const Default: Story = {
   args: ASSET_CARD_INDEX_MOCK
 }
+
+export const IsOnFavPage: Story = {
+  args: {
+    ...ASSET_CARD_INDEX_MOCK,
+    isOnFavPage: true
+  }
+}
+
+export const IsOnComparePage: Story = {
+  args: {
+    ...ASSET_CARD_INDEX_MOCK,
+    isOnComparePage: true
+  }
+}

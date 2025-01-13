@@ -31,16 +31,14 @@ const WishListButton: FC<WishListButtonProps> = ({
   }
 
   return (
-    <>
-      <button
-        className={cx('flex items-center rounded-[8px] shadow px-[12px] py-[14px] bg-WHITE', className, {
-          'cursor-not-allowed': isDisabled || isFetching
-        })}
-        onClick={handleOnClick}>
-        {!isTextHidden && <span className="mr-4">{isOnWishList ? t('actions.remove') : t('actions.add')}</span>}
-        <HeartIcon />
-      </button>
-    </>
+    <button
+      className={cx('flex items-center rounded-[8px] shadow px-[12px] py-[14px] bg-WHITE', className, {
+        'cursor-not-allowed': isDisabled || isFetching
+      })}
+      onClick={handleOnClick}>
+      {!isTextHidden && <span className="mr-4">{isOnWishList ? t('actions.remove') : t('actions.add')}</span>}
+      <HeartIcon />
+    </button>
   )
 }
 
