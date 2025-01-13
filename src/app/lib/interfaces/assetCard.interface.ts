@@ -1,4 +1,4 @@
-import type { TCourseDetailType } from '@components/CourseFeaturedDetails/components/CourseDetail'
+import type { TAssetDetailType } from '@interfaces/assetDetail.type'
 
 export interface IAssetCardData {
   title: string
@@ -12,6 +12,6 @@ export interface IAssetCardData {
 }
 
 export interface IAssetCardDetail {
-  type: TCourseDetailType
+  type: TAssetDetailType
   value: string | number
 }

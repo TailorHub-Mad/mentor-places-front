@@ -4,18 +4,17 @@ import useBreakpoint from '@hooks/useBreakpoint'
 import { useTranslations } from 'next-intl'
 import React, { type FC } from 'react'
 import { AssetIconsArray } from '@utils/AssetIconsArray'
-
-export type TCourseDetailType = 'duration' | 'format' | 'language' | 'campus' | 'startDate' | 'price' | 'rating'
+import type { TAssetDetailType } from '@interfaces/assetCard.interface'
 
 interface ICourseDetailProps {
-  type: TCourseDetailType
+  type: string
   value: string
 }
 
 const CourseDetail: FC<ICourseDetailProps> = ({ type, value }) => {
   const t = useTranslations()
   const { isMobile, isVerticalTablet } = useBreakpoint()
-  const Icon = AssetIconsArray[type]
+  const Icon = AssetIconsArray[type as TAssetDetailType]
 
   return (
     <div>

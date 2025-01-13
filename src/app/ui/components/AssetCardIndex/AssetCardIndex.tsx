@@ -79,6 +79,7 @@ const AssetCardIndex: FC<AssetCardIndexProps> = (props) => {
               {t('actions.remove')}
             </Button>
           ) : (
+            //TODO: Add CheckboxInput component when completed
             <div className="checkbox flex items-center">
               <input className="mr-2" type="checkbox" name="asset-card-index" id="asset-card-index" />
               <label htmlFor="asset-card-index" className="checkbox__label">

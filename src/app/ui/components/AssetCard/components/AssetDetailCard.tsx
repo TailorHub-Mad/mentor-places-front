@@ -1,14 +1,14 @@
 import React, { type FC } from 'react'
 import { EAssetCardVariant } from '@components/AssetCard/AssetCard'
 import { cx } from '@utils/cx'
-import type { TCourseDetailType } from '@components/CourseFeaturedDetails/components/CourseDetail'
 import { AssetIconsArray } from '@utils/AssetIconsArray'
 import { useTranslations } from 'next-intl'
 import useBreakpoint from '@hooks/useBreakpoint'
+import type { TAssetDetailType } from '@interfaces/assetCard.interface'
 
 interface AssetCardFeatureItemProps {
   text: string | number
-  type: TCourseDetailType
+  type: TAssetDetailType
   variant: EAssetCardVariant
   className?: string
 }
