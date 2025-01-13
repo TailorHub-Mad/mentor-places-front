@@ -1,5 +1,5 @@
 import React, { type FC } from 'react'
-import { AssetCardVariant } from '@components/AssetCard/AssetCard'
+import { EAssetCardVariant } from '@components/AssetCard/AssetCard'
 import { cx } from '@utils/cx'
 import type { TCourseDetailType } from '@components/CourseFeaturedDetails/components/CourseDetail'
 import { AssetIconsArray } from '@utils/AssetIconsArray'
@@ -9,7 +9,7 @@ import useBreakpoint from '@hooks/useBreakpoint'
 interface AssetCardFeatureItemProps {
   text: string | number | undefined
   type: TCourseDetailType
-  variant: AssetCardVariant
+  variant: EAssetCardVariant
   className?: string
 }
 
@@ -20,7 +20,7 @@ const AssetDetailCard: FC<AssetCardFeatureItemProps> = ({ text, type, variant, c
   const Icon = AssetIconsArray[type]
 
   switch (variant) {
-    case AssetCardVariant.withIcons:
+    case EAssetCardVariant.withIcons:
       return (
         <div className={cx('flex items-center gap-2 border-b border-BLACK/10 py-[10px]', className)}>
           <Icon width={isMobile || isVerticalTablet ? 14 : 24} />
@@ -28,14 +28,14 @@ const AssetDetailCard: FC<AssetCardFeatureItemProps> = ({ text, type, variant, c
           <span className="font-s text-s text-BLACK/60">{text}</span>
         </div>
       )
-    case AssetCardVariant.withoutIcons:
+    case EAssetCardVariant.withoutIcons:
       return (
         <div className={cx('flex flex-col pb-[20px]', className)}>
           <span className="font-s text-s capitalize text-BLACK/60">{t(`courseDetails.${type}`)}</span>
           <span className="font-m text-m text-BLACK">{text}</span>
         </div>
       )
-    case AssetCardVariant.index:
+    case EAssetCardVariant.index:
       return (
         <div className="flex flex-col">
           <div className={cx('flex items-center gap-2 border-b border-BLACK/10 py-[10px]', className)}>

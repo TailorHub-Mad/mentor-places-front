@@ -1,13 +1,13 @@
 import React, { type FC } from 'react'
 import Image from 'next/image'
 import WishListButton from '@components/WishListButton/WishListButton'
-import type { AssetCardData } from '@interfaces/assetCard.interface'
+import type { IAssetCardData } from '@interfaces/assetCard.interface'
 import AssetDetailCard from '@components/AssetCard/components/AssetDetailCard'
-import { AssetCardVariant } from '@components/AssetCard/AssetCard'
+import { EAssetCardVariant } from '@components/AssetCard/AssetCard'
 import { useTranslations } from 'next-intl'
 import Button from '@components/Button/Button'
 
-export interface AssetCardIndexProps extends AssetCardData {
+export interface AssetCardIndexProps extends IAssetCardData {
   universityLogo?: string
   universityName?: string
   assetThumbnailUrl?: string
@@ -48,7 +48,7 @@ const AssetCardIndex: FC<AssetCardIndexProps> = (props) => {
               {details.map((item, index) => (
                 <AssetDetailCard
                   key={`asset-detail-card-${item.value}-${index}`}
-                  variant={AssetCardVariant.index}
+                  variant={EAssetCardVariant.index}
                   text={item.value}
                   type={item.type}
                 />

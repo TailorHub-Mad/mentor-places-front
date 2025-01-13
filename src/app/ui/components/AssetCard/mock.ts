@@ -1,8 +1,8 @@
-import type { AssetCardProps } from '@components/AssetCard/AssetCard'
-import { AssetCardVariant } from '@components/AssetCard/AssetCard'
-import type { AssetCardDetail } from '@interfaces/assetCard.interface'
+import type { IAssetCardProps } from '@components/AssetCard/AssetCard'
+import { EAssetCardVariant } from '@components/AssetCard/AssetCard'
+import type { IAssetCardDetail } from '@interfaces/assetCard.interface'
 
-export const ASSET_CARD_DETAILS_MOCK: AssetCardDetail[] = [
+export const ASSET_CARD_DETAILS_MOCK: IAssetCardDetail[] = [
   {
     type: 'format',
     value: 'online'
@@ -25,8 +25,8 @@ export const ASSET_CARD_DETAILS_MOCK: AssetCardDetail[] = [
   }
 ]
 
-export const MOCK_ASSET_CARD: AssetCardProps = {
-  variant: AssetCardVariant.withIcons,
+export const MOCK_ASSET_CARD: IAssetCardProps = {
+  variant: EAssetCardVariant.withIcons,
   data: {
     title: 'Máster universitario en Marketing Digital',
     universityName: 'Universidad Alfonso X el Sabio (UAX)',

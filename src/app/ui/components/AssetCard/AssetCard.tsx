@@ -4,10 +4,10 @@ import React from 'react'
 import AssetCardHeader from '@components/AssetCard/components/AssetCardHeader'
 import AssetCardFooter from '@components/AssetCard/components/AssetCardFooter'
 import AssetDetailCard from '@components/AssetCard/components/AssetDetailCard'
-import type { AssetCardData } from '@interfaces/assetCard.interface'
+import type { IAssetCardData } from '@interfaces/assetCard.interface'
 
-const AssetCard: FC<AssetCardProps> = (props) => {
-  const { data, variant } = props || {}
+const AssetCard: FC<IAssetCardProps> = (props) => {
+  const { data, variant } = props
 
   const { title, ctaText, imageSrc, universityLogo, universityName, ranking, details } = data
 
@@ -35,13 +35,13 @@ const AssetCard: FC<AssetCardProps> = (props) => {
 
 export default AssetCard
 
-export enum AssetCardVariant {
+export enum EAssetCardVariant {
   withIcons = 'withIcons',
   withoutIcons = 'withoutIcons',
   index = 'index'
 }
 
-export interface AssetCardProps {
-  variant: AssetCardVariant
-  data: AssetCardData
+export interface IAssetCardProps {
+  variant: EAssetCardVariant
+  data: IAssetCardData
 }

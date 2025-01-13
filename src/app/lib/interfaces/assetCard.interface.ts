@@ -1,6 +1,6 @@
 import type { TCourseDetailType } from '@components/CourseFeaturedDetails/components/CourseDetail'
 
-export interface AssetCardData {
+export interface IAssetCardData {
   title: string
   universityName?: string
   universityLogo?: string
@@ -8,10 +8,10 @@ export interface AssetCardData {
   ctaText?: string
   ctaHref?: string
   ranking?: number
-  details?: AssetCardDetail[]
+  details?: IAssetCardDetail[]
 }
 
-export interface AssetCardDetail {
+export interface IAssetCardDetail {
   type: TCourseDetailType
   value: string | number
 }
