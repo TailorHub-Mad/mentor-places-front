@@ -1,11 +1,15 @@
 import type { FC } from 'react'
 import { cx } from '@utils/cx'
 
-const RatingBullets: FC<{ rating: number }> = ({ rating }) => {
+interface IRatingBulletsProps {
+  rating: number
+}
+
+const RatingBullets: FC<IRatingBulletsProps> = ({ rating }) => {
   const stars = Array.from({ length: 5 }, (_, i) => {
     return (
       <div
-        key={`raging-bullet-${i}`}
+        key={`rating-bullet-${i}-${rating}`}
         className={cx('p-[8px] border border-BLACK rounded-full', {
           'bg-BLACK': i < rating
         })}></div>
