@@ -7,17 +7,16 @@ export default {
   component: FilterInputCheckbox
 } as Meta
 
-// Template for creating stories
 const Template: StoryFn<IFilterInputCheckboxProps> = (args) => {
   const [isChecked, setIsChecked] = useState(args.checked)
 
   useEffect(() => {
-    setIsChecked(args.checked) // Sync with Storybook's args when they update
-  }, [args.checked]) // Watch for changes in args
+    setIsChecked(args.checked)
+  }, [args.checked])
 
   const handleChange = () => {
     setIsChecked(!isChecked)
-    args.onChange(args.id, !isChecked) // Notify Storybook about changes
+    args.onChange(args.id, !isChecked)
   }
 
   return <FilterInputCheckbox {...args} checked={isChecked} onChange={handleChange} />
@@ -40,7 +39,6 @@ Disabled.args = {
   disabled: true
 }
 
-// **Without Count Story**
 export const WithoutCount = Template.bind({})
 WithoutCount.args = {
   ...FILTER_INPUT_CHECKBOX_MOCKS,

@@ -34,14 +34,7 @@ const FilterInputCheckbox: FC<IFilterInputCheckboxProps> = ({
   return (
     <div className={cx('filter-input-checkbox flex items-center justify-between', className)}>
       <div className="filter-input-checkbox__wrapper">
-        <input
-          className={cx('hidden', inputClassName)}
-          id={id}
-          type="checkbox"
-          checked={checked}
-          onChange={handleIsChecked}
-          disabled={disabled}
-        />
+        <input className="hidden" id={id} type="checkbox" checked={checked} onChange={handleIsChecked} disabled={disabled} />
         <label
           htmlFor={id}
           className={cx('filter-input-checkbox__label flex items-center gap-3', {
@@ -56,7 +49,7 @@ const FilterInputCheckbox: FC<IFilterInputCheckboxProps> = ({
                 'bg-BLACK': checked
               }
             )}>
-            <CheckIcon className="" />
+            <CheckIcon />
           </div>
           <span className={labelClassName}>{label}</span>
         </label>
