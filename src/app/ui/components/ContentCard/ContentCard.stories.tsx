@@ -3,6 +3,7 @@ import ContentCard, { ContentCardVariant } from '@components/ContentCard/Content
 import { CONTENT_CARD_BASE_MOCKS } from '@components/ContentCard/mocks'
 
 const meta: Meta<typeof ContentCard> = {
+  title: 'Components/Cards/ContentCard',
   component: ContentCard,
   args: CONTENT_CARD_BASE_MOCKS,
   parameters: {

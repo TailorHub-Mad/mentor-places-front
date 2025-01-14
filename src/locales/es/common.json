@@ -15,7 +15,9 @@
     "format": "Formato",
     "language": "Idioma",
     "campus": "Campus",
-    "startDate": "Fecha de inicio"
+    "startDate": "Fecha de inicio",
+    "rating": "Valoraciones",
+    "price": "Precio"
   },
   "rating": {
     "1": "Malo",
@@ -24,5 +26,10 @@
     "4": "Muy bueno",
     "5": "Excelente"
   },
-  "opinions": "Opiniones"
+  "opinions": "Opiniones",
+  "actions": {
+    "compare": "Comparar",
+    "remove": "Eliminar",
+    "add": "Añadir"
+  }
 }

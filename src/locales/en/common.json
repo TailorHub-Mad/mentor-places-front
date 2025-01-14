@@ -15,7 +15,9 @@
     "format": "Format",
     "language": "Language",
     "campus": "Campus",
-    "startDate": "Start date"
+    "startDate": "Start date",
+    "rating": "Rating",
+    "price": "Price"
   },
   "rating": {
     "1": "Terrible",
@@ -24,5 +26,10 @@
     "4": "Very good",
     "5": "Excellent"
   },
-  "opinions": "Opinions"
+  "opinions": "Opinions",
+  "actions": {
+    "compare": "Compare",
+    "remove": "Remove",
+    "add": "Add"
+  }
 }

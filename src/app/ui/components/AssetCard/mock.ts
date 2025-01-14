@@ -1,18 +1,38 @@
-import type { AssetCardProps } from '@components/AssetCard/AssetCard'
-import { AssetCardVariant } from '@components/AssetCard/AssetCard'
+import type { IAssetCardProps } from '@components/AssetCard/AssetCard'
+import { EAssetCardVariant } from '@components/AssetCard/AssetCard'
+import type { IAssetCardDetail } from '@interfaces/assetCard.interface'
 
-export const MOCK_ASSET_CARD: AssetCardProps = {
-  variant: AssetCardVariant.withIcons,
+export const ASSET_CARD_DETAILS_MOCK: IAssetCardDetail[] = [
+  {
+    type: 'format',
+    value: 'online'
+  },
+  {
+    type: 'language',
+    value: 'Español'
+  },
+  {
+    type: 'duration',
+    value: '9 meses'
+  },
+  {
+    type: 'rating',
+    value: 4.4
+  },
+  {
+    type: 'price',
+    value: 1000
+  }
+]
+
+export const MOCK_ASSET_CARD: IAssetCardProps = {
+  variant: EAssetCardVariant.withIcons,
   data: {
     title: 'Máster universitario en Marketing Digital',
     universityName: 'Universidad Alfonso X el Sabio (UAX)',
     universityLogo: '/images/UAX-university-mentor.png',
-    format: 'Online',
-    language: 'Español',
-    duration: '9 meses',
     ranking: 5,
-    reviewScore: 4.4,
-    price: '1000 €',
+    details: ASSET_CARD_DETAILS_MOCK,
     ctaText: 'Más información'
   }
 }
