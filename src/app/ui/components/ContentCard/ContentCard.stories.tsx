@@ -1,9 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import ContentCard, { ContentCardVariant } from '@components/ContentCard/ContentCard'
+import { CONTENT_CARD_BASE_MOCKS } from '@components/ContentCard/mocks'
 
 const meta: Meta<typeof ContentCard> = {
+  title: 'Components/Cards/ContentCard',
   component: ContentCard,
-  args: undefined,
+  args: CONTENT_CARD_BASE_MOCKS,
   parameters: {
     locale: 'es'
   },
