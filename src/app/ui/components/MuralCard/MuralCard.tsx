@@ -4,9 +4,14 @@ import ImageMuralCard from './components/ImageMuralCard'
 import type { ITextMuralCardProps } from './components/TextMuralCard'
 import TextMuralCard from './components/TextMuralCard'
 
-type TMuralCard = IImageMuralCardProps | ITextMuralCardProps
+export type TMuralCard = IImageMuralCardProps | ITextMuralCardProps
 
-const MuralCard: FC<TMuralCard> = (props) => {
+export interface IMuralCard {
+  width?: number
+  height?: number
+}
+
+const MuralCard: FC<TMuralCard & IMuralCard> = (props) => {
   if (props.type === 'image') {
     return <ImageMuralCard {...props} />
   } else if (props.type === 'text') {

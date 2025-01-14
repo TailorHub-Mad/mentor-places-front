@@ -6,6 +6,10 @@ const meta: Meta<typeof MuralCard> = {
   component: MuralCard,
   parameters: {
     locale: 'es'
+  },
+  args: {
+    width: 322,
+    height: 535
   }
 }
 

@@ -1,5 +1,7 @@
 import { cx } from '@utils/cx'
 import { type FC } from 'react'
+import type { IMuralCard } from '../MuralCard'
+import useBreakpoint from '@hooks/useBreakpoint'
 
 export interface ITextMuralCardProps {
   type: 'text'
@@ -9,21 +11,24 @@ export interface ITextMuralCardProps {
   text?: string
 }
 
-const TextMuralCard: FC<ITextMuralCardProps> = ({ title, color, backgroundColor, text }) => {
+const TextMuralCard: FC<ITextMuralCardProps & IMuralCard> = ({ title, color, backgroundColor, text, width, height }) => {
+  const { isMobile, isVerticalTablet } = useBreakpoint()
+  const showText = text && (isMobile || isVerticalTablet)
+
   return (
     <div
-      className={cx('rounded-lg h-[535px] w-[322px] p-6 flex', {
-        'flex-col justify-between': text,
-        'items-center justify-center': !text
+      className={cx('rounded-lg h-full w-full p-6 flex', {
+        'flex-col justify-between': showText,
+        'items-center justify-center': !showText
       })}
-      style={{ backgroundColor, color }}>
+      style={{ backgroundColor, color, width, height }}>
       <p
         className={cx('text-m-mobile font-m-mobile lg:text-m lg:font-m', {
-          'text-center': !text
+          'text-center': !showText
         })}>
         {title}
       </p>
-      {text && <p className="text-s-mobile font-s-mobile lg:text-s lg:font-s opacity-70">{text}</p>}
+      {showText && <p className="text-s-mobile font-s-mobile lg:text-s lg:font-s opacity-70">{text}</p>}
     </div>
   )
 }
