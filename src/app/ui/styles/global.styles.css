@@ -1,5 +1,7 @@
 @import './fonts.css';
 @import './typography.css';
+@import './rich-text.css';
+
 
 @tailwind base;
 @tailwind components;
