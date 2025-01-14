@@ -6,7 +6,8 @@ export const MOCK_MURAL: TMuralCard[] = [
     type: 'text',
     title: 'Asesoría educativa adaptada a tu vida',
     color: EColor.WHITE,
-    backgroundColor: EColor.BLUE
+    backgroundColor: EColor.BLUE,
+    text: 'Lorem ipsum dolor sit amet consectetur adipiscing elit sociosqu posuere fringilla'
   },
   {
     type: 'image',
