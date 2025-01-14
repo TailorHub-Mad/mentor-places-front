@@ -1,4 +1,6 @@
-import { type FC, useState } from 'react'
+import { type FC, useEffect, useRef, useState } from 'react'
+import ChevronArrowDown from '@components/icons/ChevronArrowDown'
+import { cx } from '@utils/cx'
 
 interface ISelectOption {
   value: string
@@ -8,14 +10,53 @@ interface ISelectOption {
 export interface ISelectInputProps {
   placeholder?: string
   options: ISelectOption[]
-  onChange: (value: string) => void
+  onChange: (value: string | undefined) => void
 }
 
 const SelectInput: FC<ISelectInputProps> = ({ options, placeholder, onChange }) => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false)
+  const [valueSelected, setValueSelected] = useState<ISelectOption | undefined>(undefined)
 
-  const handleSetInputValue = (value: string) => {
-    onChange(value)
+  // State to track if the span is overflowing
+  const [isOverflowing, setIsOverflowing] = useState(false)
+
+  // Refs for the span and parent element
+  const spanRef = useRef<HTMLSpanElement>(null)
+  const parentRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const checkOverflow = () => {
+      if (spanRef.current && parentRef.current) {
+        const spanWidth = spanRef.current.offsetWidth
+        const parentWidth = parentRef.current.offsetWidth
+        setIsOverflowing(spanWidth > parentWidth) // Check if span is wider than parent
+      }
+    }
+
+    checkOverflow() // Initial check
+
+    // Add a listener if dimensions might change on resize
+    const observer = new ResizeObserver(checkOverflow)
+    if (parentRef.current) {
+      observer.observe(parentRef.current)
+    }
+
+    // Cleanup observer on unmount
+    return () => observer.disconnect()
+  }, [valueSelected?.label, placeholder])
+
+  const handleSetInputValue = (option: ISelectOption) => {
+    if (option.value === valueSelected?.value) {
+      setValueSelected(undefined)
+      onChange(undefined)
+      setIsDropdownOpen(false)
+
+      return
+    }
+
+    setValueSelected(option)
+    onChange(option.value)
+    setIsDropdownOpen(false)
   }
 
   const handleIsDropdownOpen = () => {
@@ -24,18 +65,41 @@ const SelectInput: FC<ISelectInputProps> = ({ options, placeholder, onChange }) 
 
   return (
     <div className="select-input__wrapper">
-      <button className="px-4 py-1 bg-WHITE shadow" onClick={handleIsDropdownOpen}>
-        {placeholder}
+      <button
+        className="px-[14px] py-[8px] bg-GRAY rounded-[8px] w-auto max-w-full flex items-center justify-between"
+        onClick={handleIsDropdownOpen}>
+        <div
+          ref={parentRef} // Attach ref to the parent
+          className="select-input__label-wrapper overflow-hidden max-w-full relative">
+          <span ref={spanRef} className="mr-4 text-nowrap">
+            {valueSelected?.label ?? placeholder}
+          </span>
+          {isOverflowing && <div className="absolute right-0 top-0 h-full w-16 bg-gradient-to-r from-GRAY/0 to-GRAY"></div>}
+        </div>
+        <ChevronArrowDown
+          className={cx({
+            'rotate-180': isDropdownOpen
+          })}
+        />
       </button>
       {options?.length > 0 && isDropdownOpen && (
-        <div className="select-input__dropdown flex flex-col gap-4 px-3 py-5 bg-WHITE shadow">
+        <div className="select-input__dropdown flex flex-col w-full md:w-min max-w-full px-[9px] py-[5px] bg-WHITE shadow rounded-[8px] mt-[9px]">
           {options.map((option, index) => (
-            <div
+            <button
               key={`select-input__dropdown-${option.value}-${index}`}
-              className="select-input__option py-5 px-2 border-b border-BLACK/40"
-              onClick={() => handleSetInputValue(option.value)}>
-              {option.label}
-            </div>
+              className={cx('select-input__option text-justify py-[6px] px-[4px]', {
+                'border-b border-BLACK/20': index !== options.length - 1,
+                'bg-BLACK/30': option.value === valueSelected?.value,
+                'hover:bg-GRAY': option.value !== valueSelected?.value
+              })}
+              onClick={() => handleSetInputValue(option)}>
+              <span
+                className={cx('md:text-nowrap font-s text-s text-BLACK ', {
+                  'opacity-60': option.value !== valueSelected?.value
+                })}>
+                {option.label}
+              </span>
+            </button>
           ))}
         </div>
       )}

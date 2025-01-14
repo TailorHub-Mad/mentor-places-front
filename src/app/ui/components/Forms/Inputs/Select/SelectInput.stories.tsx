@@ -3,7 +3,11 @@ import type { Meta, StoryFn } from '@storybook/react'
 import { SELECT_INPUT_MOCK } from '@components/Forms/Inputs/Select/mock'
 
 export default {
-  component: SelectInput
+  component: SelectInput,
+  parameters: {
+    locale: 'es'
+  },
+  tags: ['autodocs']
 } as Meta
 
 const Template: StoryFn<ISelectInputProps> = (args) => {
