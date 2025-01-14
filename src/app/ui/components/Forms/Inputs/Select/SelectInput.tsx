@@ -24,7 +24,7 @@ const SelectInput: FC<ISelectInputProps> = ({ options, placeholder, onChange, di
   const spanRef = useRef<HTMLSpanElement>(null)
   const parentRef = useRef<HTMLDivElement>(null)
   const selectInputRef = useRef<HTMLDivElement>(null)
-  const targetRef = useRef(null)
+  const targetRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
     const checkOverflow = () => {
@@ -61,29 +61,31 @@ const SelectInput: FC<ISelectInputProps> = ({ options, placeholder, onChange, di
     setIsDropdownOpen(false)
   }
 
-  const handleIsDropdownOpen = () => {
-    console.log('handleIsDropdownOpen', { isDropdownOpen })
-    if (isDropdownOpen) return
-    console.log('handleIsDropdownOpen after if')
-    setIsDropdownOpen((prev) => !prev)
-  }
+  const handleIsDropdownOpen = (event: React.MouseEvent) => {
+    event.stopPropagation() // Prevent the event from bubbling to handleClickOutside
 
-  useEffect(() => {
-    console.log({ isDropdownOpen })
-  }, [isDropdownOpen])
+    setIsDropdownOpen((prev) => !prev) // Open dropdown
+  }
 
   // Close dropdown if clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (selectInputRef.current && !selectInputRef.current.contains(event.target as Node)) {
-        setIsDropdownOpen(false)
-      }
+      setTimeout(() => {
+        if (
+          selectInputRef.current &&
+          !selectInputRef.current.contains(event.target as Node) &&
+          targetRef.current &&
+          !targetRef.current.contains(event.target as Node)
+        ) {
+          setIsDropdownOpen(false)
+        }
+      })
     }
 
-    document.addEventListener('mousedown', handleClickOutside) // Add event listener
+    document.addEventListener('mousedown', handleClickOutside)
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside) // Cleanup on unmount
+      document.removeEventListener('mousedown', handleClickOutside)
     }
   }, [])
 
@@ -94,7 +96,7 @@ const SelectInput: FC<ISelectInputProps> = ({ options, placeholder, onChange, di
         className={cx('px-[14px] py-[8px] bg-GRAY rounded-[8px] w-auto max-w-full flex items-center justify-between', {
           'cursor-not-allowed': disabled
         })}
-        onClick={disabled || isDropdownOpen ? undefined : handleIsDropdownOpen}>
+        onClick={disabled ? undefined : handleIsDropdownOpen}>
         <div ref={parentRef} className="select-input__label-wrapper overflow-hidden max-w-full relative">
           <span
             ref={spanRef}
