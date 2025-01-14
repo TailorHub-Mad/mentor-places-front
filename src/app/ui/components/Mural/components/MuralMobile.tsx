@@ -4,17 +4,10 @@ import { SwiperNavigationPosition } from '@components/Swiper/components/SwiperNa
 import CustomSwiper from '@components/Swiper/CustomSwiper'
 import { type FC } from 'react'
 import type { IMuralProps } from '../Mural'
+import { chunkData } from '@utils/chunkData.utils'
 
 const MuralMobile: FC<IMuralProps> = ({ data }) => {
-  const chunkData = (arr: TMuralCard[], size: number) => {
-    const chunks: TMuralCard[][] = []
-    for (let i = 0; i < arr.length; i += size) {
-      chunks.push(arr.slice(i, i + size))
-    }
-    return chunks
-  }
-
-  const slides = chunkData(data, 2)
+  const slides = chunkData<TMuralCard>(data, 2)
 
   return (
     <CustomSwiper
