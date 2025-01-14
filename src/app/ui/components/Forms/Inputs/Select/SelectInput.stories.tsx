@@ -1,5 +1,5 @@
-import SelectInput, { type ISelectInputProps } from '@components/Forms/Inputs/Select/SelectInput'
-import type { Meta, StoryFn } from '@storybook/react'
+import SelectInput from '@components/Forms/Inputs/Select/SelectInput'
+import type { Meta, StoryObj } from '@storybook/react'
 import { SELECT_INPUT_MOCK } from '@components/Forms/Inputs/Select/mock'
 
 export default {
@@ -10,15 +10,10 @@ export default {
   tags: ['autodocs']
 } as Meta
 
-const Template: StoryFn<ISelectInputProps> = (args) => {
-  const handleChange = (value: string) => {
-    args.onChange(value)
+type Story = StoryObj<typeof SelectInput>
+
+export const Default: Story = {
+  args: {
+    ...SELECT_INPUT_MOCK
   }
-
-  return <SelectInput {...args} onChange={handleChange} />
-}
-
-export const Default = Template.bind({})
-Default.args = {
-  ...SELECT_INPUT_MOCK
 }

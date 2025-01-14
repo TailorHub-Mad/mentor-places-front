@@ -17,10 +17,8 @@ const SelectInput: FC<ISelectInputProps> = ({ options, placeholder, onChange }) 
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false)
   const [valueSelected, setValueSelected] = useState<ISelectOption | undefined>(undefined)
 
-  // State to track if the span is overflowing
   const [isOverflowing, setIsOverflowing] = useState(false)
 
-  // Refs for the span and parent element
   const spanRef = useRef<HTMLSpanElement>(null)
   const parentRef = useRef<HTMLDivElement>(null)
 
@@ -68,9 +66,7 @@ const SelectInput: FC<ISelectInputProps> = ({ options, placeholder, onChange }) 
       <button
         className="px-[14px] py-[8px] bg-GRAY rounded-[8px] w-auto max-w-full flex items-center justify-between"
         onClick={handleIsDropdownOpen}>
-        <div
-          ref={parentRef} // Attach ref to the parent
-          className="select-input__label-wrapper overflow-hidden max-w-full relative">
+        <div ref={parentRef} className="select-input__label-wrapper overflow-hidden max-w-full relative">
           <span ref={spanRef} className="mr-4 text-nowrap">
             {valueSelected?.label ?? placeholder}
           </span>
