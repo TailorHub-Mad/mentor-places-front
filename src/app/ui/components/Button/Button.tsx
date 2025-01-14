@@ -18,16 +18,16 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   href?: string
 }
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ variant = 'primary', href, children, ...rest }, ref) => {
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ variant = 'primary', href, children, className, ...rest }, ref) => {
   if (href)
     return (
-      <Link href={href} className={cx(buttonVariants.base, buttonVariants.variant[variant])}>
+      <Link href={href} className={cx(buttonVariants.base, buttonVariants.variant[variant], className)}>
         {children}
       </Link>
     )
 
   return (
-    <button ref={ref} className={cx(buttonVariants.base, buttonVariants.variant[variant])} {...rest}>
+    <button ref={ref} className={cx(buttonVariants.base, buttonVariants.variant[variant], className)} {...rest}>
       {children}
     </button>
   )
