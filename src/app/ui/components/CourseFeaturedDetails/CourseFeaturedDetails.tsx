@@ -1,28 +1,14 @@
 import { type FC } from 'react'
-import type { TCourseDetailType } from './components/CourseDetail'
 import CourseDetail from './components/CourseDetail'
+import type { TAssetDetailOptions } from '@interfaces/assetDetail.type'
 
-interface ICourseFeaturedDetailsProps {
-  duration: string
-  format: string
-  language: string
-  campus: string
-  startDate: string
-}
-
-const CourseFeaturedDetails: FC<ICourseFeaturedDetailsProps> = ({ duration, format, language, campus, startDate }) => {
-  const details: { type: TCourseDetailType; value: string }[] = [
-    { type: 'duration', value: duration },
-    { type: 'format', value: format },
-    { type: 'language', value: language },
-    { type: 'campus', value: campus },
-    { type: 'startDate', value: startDate }
-  ]
-
+const CourseFeaturedDetails: FC<TAssetDetailOptions> = (details) => {
+  // Limit the entries to match design
+  const limitedDetails = Object.entries(details).slice(0, 5)
   return (
     <div className="grid grid-cols-2 gap-6 lg:grid-cols-5 lg:gap-10 bg-YELLOW py-12 px-7 rounded-lg">
-      {details.map((detail) => (
-        <CourseDetail key={detail.type} {...detail} />
+      {limitedDetails.slice(0, 5).map(([key, value]) => (
+        <CourseDetail key={`course-detail-${key}-${value}`} type={key} value={value} />
       ))}
     </div>
   )

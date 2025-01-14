@@ -15,6 +15,13 @@
     "format": "Formato",
     "language": "Idioma",
     "campus": "Campus",
-    "startDate": "Fecha de inicio"
+    "startDate": "Fecha de inicio",
+    "rating": "Valoraciones",
+    "price": "Precio"
+  },
+  "actions": {
+    "compare": "Comparar",
+    "remove": "Eliminar",
+    "add": "Añadir"
   }
 }

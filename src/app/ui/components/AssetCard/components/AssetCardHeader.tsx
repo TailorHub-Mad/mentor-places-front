@@ -1,7 +1,7 @@
-import { LogoFavicon } from '@components/icons/LogoFavicon'
+import LogoFavicon from '@components/icons/LogoFavicon'
 import { cx } from '@utils/cx'
 import React, { type FC } from 'react'
-import { AssetCardVariant } from '@components/AssetCard/AssetCard'
+import { EAssetCardVariant } from '@components/AssetCard/AssetCard'
 import Image from 'next/image'
 
 interface AssetCardHeaderProps {
@@ -10,12 +10,12 @@ interface AssetCardHeaderProps {
   universityLogo?: string
   imageSrc?: string
   ranking?: number
-  variant: AssetCardVariant
+  variant: EAssetCardVariant
 }
 
-export const AssetCardHeader: FC<AssetCardHeaderProps> = ({ title, universityName, universityLogo, imageSrc, ranking, variant }) => {
+const AssetCardHeader: FC<AssetCardHeaderProps> = ({ title, universityName, universityLogo, imageSrc, ranking, variant }) => {
   switch (variant) {
-    case AssetCardVariant.withIcons:
+    case EAssetCardVariant.withIcons:
       return (
         <div className="asset-card__header px-[30px] pt-[34px]">
           {imageSrc && (
@@ -35,7 +35,7 @@ export const AssetCardHeader: FC<AssetCardHeaderProps> = ({ title, universityNam
           <h3 className="font-m text-m leading-m mb-[38px]">{title}</h3>
         </div>
       )
-    case AssetCardVariant.withoutIcons:
+    case EAssetCardVariant.withoutIcons:
       return (
         <div className="">
           <div className="asset-card__header h-[166px] relative mb-[34px]">
@@ -51,3 +51,5 @@ export const AssetCardHeader: FC<AssetCardHeaderProps> = ({ title, universityNam
       )
   }
 }
+
+export default AssetCardHeader
