@@ -1,6 +1,6 @@
 import MuralCard from '@components/MuralCard/MuralCard'
 import { type FC } from 'react'
-import { IMuralProps } from '../Mural'
+import type { IMuralProps } from '../Mural'
 
 const rowClasses = [
   'col-span-1 row-span-5 row-start-1',

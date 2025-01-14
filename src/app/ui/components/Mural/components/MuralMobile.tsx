@@ -3,7 +3,7 @@ import MuralCard from '@components/MuralCard/MuralCard'
 import { SwiperNavigationPosition } from '@components/Swiper/components/SwiperNatigation'
 import CustomSwiper from '@components/Swiper/CustomSwiper'
 import { type FC } from 'react'
-import { IMuralProps } from '../Mural'
+import type { IMuralProps } from '../Mural'
 
 const MuralMobile: FC<IMuralProps> = ({ data }) => {
   const chunkData = (arr: TMuralCard[], size: number) => {
