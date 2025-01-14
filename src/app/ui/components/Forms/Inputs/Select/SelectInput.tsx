@@ -1,7 +1,9 @@
-import { type FC, useEffect, useRef, useState } from 'react'
-import ChevronArrowDown from '@components/icons/ChevronArrowDown'
-import { cx } from '@utils/cx'
-import SelectSearchDropdown from '@components/Forms/Inputs/Select/SelectDropdownPortal/SelectDropdownPortal'
+import { type FC, useState } from 'react'
+import SelectSearchDropdown from '@components/Forms/Inputs/Select/components/SelectDropdownPortal/SelectDropdownPortal'
+import { useOverflowDetection } from '@hooks/useOverflowDetection'
+import { useDropdownState } from '@hooks/useDropdownState'
+import OptionList from '@components/Forms/Inputs/Select/components/OptionList/OptionList'
+import SelectButton from '@components/Forms/Inputs/Select/components/SelectButton/SelectButton'
 
 export interface ISelectOption {
   value: string
@@ -16,127 +18,43 @@ export interface ISelectInputProps {
 }
 
 const SelectInput: FC<ISelectInputProps> = ({ options, placeholder, onChange, disabled = false }) => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false)
   const [valueSelected, setValueSelected] = useState<ISelectOption | undefined>(undefined)
-
-  const [isOverflowing, setIsOverflowing] = useState(false)
-
-  const spanRef = useRef<HTMLSpanElement>(null)
-  const parentRef = useRef<HTMLDivElement>(null)
-  const selectInputRef = useRef<HTMLDivElement>(null)
-  const targetRef = useRef<HTMLButtonElement>(null)
-
-  useEffect(() => {
-    const checkOverflow = () => {
-      if (spanRef.current && parentRef.current) {
-        const spanWidth = spanRef.current.offsetWidth
-        const parentWidth = parentRef.current.offsetWidth
-        setIsOverflowing(spanWidth > parentWidth) // Check if span is wider than parent
-      }
-    }
-
-    checkOverflow() // Initial check
-
-    // Add a listener if dimensions might change on resize
-    const observer = new ResizeObserver(checkOverflow)
-    if (parentRef.current) {
-      observer.observe(parentRef.current)
-    }
-
-    // Cleanup observer on unmount
-    return () => observer.disconnect()
-  }, [valueSelected?.label, placeholder])
+  const { isOverflowing, parentRef, spanRef } = useOverflowDetection(valueSelected?.value, placeholder)
+  const { isOpen, toggle, targetRef, selectInputRef } = useDropdownState(disabled)
 
   const handleSetInputValue = (option: ISelectOption) => {
     if (option.value === valueSelected?.value) {
       setValueSelected(undefined)
       onChange(undefined)
-      setIsDropdownOpen(false)
+      toggle()
 
       return
     }
 
     setValueSelected(option)
     onChange(option.value)
-    setIsDropdownOpen(false)
+    toggle()
   }
-
-  const handleIsDropdownOpen = (event: React.MouseEvent) => {
-    event.stopPropagation() // Prevent the event from bubbling to handleClickOutside
-
-    setIsDropdownOpen((prev) => !prev) // Open dropdown
-  }
-
-  // Close dropdown if clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      setTimeout(() => {
-        if (
-          selectInputRef.current &&
-          !selectInputRef.current.contains(event.target as Node) &&
-          targetRef.current &&
-          !targetRef.current.contains(event.target as Node)
-        ) {
-          setIsDropdownOpen(false)
-        }
-      })
-    }
-
-    document.addEventListener('mousedown', handleClickOutside)
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [])
 
   return (
     <div className="select-input__wrapper">
-      <button
+      <SelectButton
         ref={targetRef}
-        className={cx('px-[14px] py-[8px] bg-GRAY rounded-[8px] w-auto max-w-full flex items-center justify-between', {
-          'cursor-not-allowed': disabled
-        })}
-        onClick={disabled ? undefined : handleIsDropdownOpen}>
-        <div ref={parentRef} className="select-input__label-wrapper overflow-hidden max-w-full relative">
-          <span
-            ref={spanRef}
-            className={cx('mr-4 text-nowrap', {
-              'opacity-40': disabled
-            })}>
-            {valueSelected?.label ?? placeholder}
-          </span>
-          {isOverflowing && <div className="absolute right-0 top-0 h-full w-16 bg-gradient-to-r from-GRAY/0 to-GRAY"></div>}
-        </div>
-        <ChevronArrowDown
-          className={cx({
-            'rotate-180': isDropdownOpen
-          })}
-        />
-      </button>
+        disabled={disabled}
+        isOpen={isOpen}
+        isOverflowing={isOverflowing}
+        placeholder={placeholder}
+        label={valueSelected?.label}
+        onClick={toggle}
+        parentRef={parentRef}
+        spanRef={spanRef}
+      />
       {options?.length > 0 && (
         <SelectSearchDropdown
           className="px-[9px] py-[5px] bg-WHITE shadow rounded-[8px] mt-[9px] z-50"
           targetRef={targetRef}
-          isVisible={isDropdownOpen}>
-          <div ref={selectInputRef} className="select-input__dropdown flex flex-col w-full max-w-full">
-            {options.map((option, index) => (
-              <button
-                key={`select-input__dropdown-${option.value}-${index}`}
-                className={cx('select-input__option text-justify py-[6px] ', {
-                  'border-b border-BLACK/20': index !== options.length - 1,
-                  'bg-BLACK/30': option.value === valueSelected?.value,
-                  'hover:bg-GRAY': option.value !== valueSelected?.value
-                })}
-                onClick={() => handleSetInputValue(option)}>
-                <span
-                  className={cx('md:text-nowrap font-s text-s text-BLACK pr-2', {
-                    'opacity-60': option.value !== valueSelected?.value
-                  })}>
-                  {option.label}
-                </span>
-              </button>
-            ))}
-          </div>
+          isVisible={isOpen}>
+          <OptionList options={options} onSelect={handleSetInputValue} selectedValue={valueSelected?.value} ref={selectInputRef} />
         </SelectSearchDropdown>
       )}
     </div>
