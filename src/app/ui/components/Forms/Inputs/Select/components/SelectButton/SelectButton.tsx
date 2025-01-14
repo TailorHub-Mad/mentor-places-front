@@ -13,12 +13,10 @@ interface SelectButtonProps {
   spanRef: RefObject<HTMLSpanElement>
 }
 
-// Use forwardRef to pass the ref directly to the root button element
 const SelectButton = forwardRef<HTMLButtonElement, SelectButtonProps>(
   ({ disabled, isOpen, isOverflowing, placeholder, label, onClick, parentRef, spanRef }, ref) => {
     return (
       <button
-        // Attach the forwarded ref to the button
         ref={ref}
         className={cx('px-[14px] py-[8px] bg-GRAY rounded-[8px] w-auto max-w-full flex items-center justify-between', {
           'cursor-not-allowed': disabled
@@ -44,7 +42,6 @@ const SelectButton = forwardRef<HTMLButtonElement, SelectButtonProps>(
   }
 )
 
-// Add displayName for easier debugging
 SelectButton.displayName = 'SelectButton'
 
 export default SelectButton

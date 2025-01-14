@@ -11,9 +11,7 @@ interface OptionListProps {
 
 const OptionList = forwardRef<HTMLDivElement, OptionListProps>(({ options, selectedValue, onSelect, renderOption }, ref) => {
   return (
-    <div
-      ref={ref} // Use the forwarded ref here
-      className="select-input__dropdown flex flex-col w-full max-w-full">
+    <div ref={ref} className="select-input__dropdown flex flex-col w-full max-w-full">
       {options.map((option, index) => {
         const isSelected = option.value === selectedValue
 
