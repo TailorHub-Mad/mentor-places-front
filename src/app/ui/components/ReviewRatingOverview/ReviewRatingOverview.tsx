@@ -1,23 +1,17 @@
 import type { FC } from 'react'
 import { useTranslations } from 'next-intl'
+import type { TRating, TReviewRatingNamesByRateDynamic } from '@components/ReviewRatingOverview/components/ReviewRatingOverviewItem'
 import ReviewRatingOverviewItem from '@components/ReviewRatingOverview/components/ReviewRatingOverviewItem'
 
 export interface ReviewRatingOverviewProps {
-  reviewsByRate: {
-    1: number
-    2: number
-    3: number
-    4: number
-    5: number
-  }
+  reviewsByRate: TReviewRatingNamesByRateDynamic
 }
 
 const ReviewRatingOverview: FC<ReviewRatingOverviewProps> = ({ reviewsByRate }) => {
   const t = useTranslations()
 
-  const allReviews = Object.values(reviewsByRate).flat()
-
-  const totalReviews = allReviews.reduce((total, num) => total + num, 0)
+  const allReviews = Object.values(reviewsByRate).map((value) => Number(value))
+  const totalReviews = allReviews.reduce((total, num) => total + (isNaN(num) ? 0 : num), 0)
 
   return (
     <div className="review-card flex flex-col w-full md:w-[556px] md:h-[400px] bg-YELLOW p-[20px] rounded-[8px]">
@@ -28,9 +22,9 @@ const ReviewRatingOverview: FC<ReviewRatingOverviewProps> = ({ reviewsByRate }) 
         {allReviews.map((count, index) => (
           <ReviewRatingOverviewItem
             key={`review-rating-overview-item-${count}-${index}`}
-            count={count}
-            rate={index + 1}
-            totalReviews={totalReviews}
+            count={Number(count)}
+            rate={(index + 1) as TRating}
+            totalReviews={Number(totalReviews)}
           />
         ))}
       </div>

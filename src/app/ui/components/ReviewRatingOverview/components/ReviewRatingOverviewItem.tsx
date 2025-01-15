@@ -1,12 +1,12 @@
 import type { FC } from 'react'
 import { useTranslations } from 'next-intl'
 
-type ReviewRatingNamesByRateDynamic = {
-  [key: number]: string
-}
+export type TRating = 1 | 2 | 3 | 4 | 5
+
+export type TReviewRatingNamesByRateDynamic = Record<TRating, number | string>
 
 interface ReviewRatingOverviewItemProps {
-  rate: number
+  rate: TRating
   count: number
   totalReviews: number
 }
@@ -14,7 +14,7 @@ interface ReviewRatingOverviewItemProps {
 const ReviewRatingOverviewItem: FC<ReviewRatingOverviewItemProps> = ({ rate, count, totalReviews }) => {
   const t = useTranslations()
 
-  const reviewRatingNamesByRate: ReviewRatingNamesByRateDynamic = {
+  const reviewRatingNamesByRate: TReviewRatingNamesByRateDynamic = {
     1: t('rating.1'),
     2: t('rating.2'),
     3: t('rating.3'),
