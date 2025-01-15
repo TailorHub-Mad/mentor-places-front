@@ -27,11 +27,13 @@
     "5": "Excellent"
   },
   "opinions": "Opinions",
+  "moreInfo": "More information",
   "actions": {
     "compare": "Compare",
     "remove": "Remove",
     "add": "Add",
     "showMore": "Show more",
-    "showLess": "Show less"
+    "showLess": "Show less",
+    "BackToTop": "Back to top"
   }
 }
