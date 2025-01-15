@@ -1,5 +1,5 @@
 import Button from '@components/Button/Button'
-import useAction, { TCTAAction } from '@hooks/useAction'
+import useAction, { type TCTAAction } from '@hooks/useAction'
 import { EColor } from '@theme/foundations/colors.foundations'
 import type { FC } from 'react'
 
