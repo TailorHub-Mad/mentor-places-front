@@ -1,6 +1,4 @@
 {
-  "showMore": "Ver más",
-  "showLess": "Ver menos",
   "menu": {
     "example": "Ejemplo"
   },
@@ -24,6 +22,8 @@
   "actions": {
     "compare": "Comparar",
     "remove": "Eliminar",
-    "add": "Añadir"
+    "add": "Añadir",
+    "showMore": "Ver más",
+    "showLess": "Ver menos"
   }
 }
