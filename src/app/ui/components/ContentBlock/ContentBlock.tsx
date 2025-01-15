@@ -1,8 +1,7 @@
 import Button from '@components/Button/Button'
+import useAction, { TCTAAction } from '@hooks/useAction'
 import { EColor } from '@theme/foundations/colors.foundations'
 import type { FC } from 'react'
-
-type TCTAAction = 'compare' | 'advice' // TODO - add needed actions
 
 interface IContentBlockProps {
   theme: 'light' | 'dark'
@@ -13,10 +12,7 @@ interface IContentBlockProps {
 }
 
 const ContentBlock: FC<IContentBlockProps> = ({ theme, title, text, cta, action }) => {
-  const handleOnClick = () => {
-    // TODO - handle actions
-    console.log(action)
-  }
+  const handleOnClick = useAction(action)
 
   return (
     <div className="lg:w-[30%]" style={{ color: theme === 'dark' ? EColor.BLACK : EColor.WHITE }}>
