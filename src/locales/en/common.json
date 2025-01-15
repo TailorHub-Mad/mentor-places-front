@@ -19,6 +19,14 @@
     "rating": "Rating",
     "price": "Price"
   },
+  "rating": {
+    "1": "Terrible",
+    "2": "Poor",
+    "3": "Average",
+    "4": "Very good",
+    "5": "Excellent"
+  },
+  "opinions": "Opinions",
   "actions": {
     "compare": "Compare",
     "remove": "Remove",
