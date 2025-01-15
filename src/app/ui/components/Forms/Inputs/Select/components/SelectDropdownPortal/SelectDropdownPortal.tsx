@@ -1,15 +1,14 @@
-import React from 'react'
+import type { CSSProperties, FC, PropsWithChildren, RefObject } from 'react'
 import ReactDOM from 'react-dom'
 import { cx } from '@utils/cx'
 
-interface Props {
+interface ISelectDropdownPortalProps {
   isVisible: boolean
-  children: React.ReactNode
-  targetRef: React.RefObject<HTMLElement>
+  targetRef: RefObject<HTMLElement>
   className?: string
 }
 
-const SelectDropdownPortal: React.FC<Props> = ({ isVisible, children, targetRef, className }) => {
+const SelectDropdownPortal: FC<PropsWithChildren<ISelectDropdownPortalProps>> = ({ isVisible, targetRef, children, className }) => {
   if (!isVisible) return null
 
   const targetBox = targetRef?.current ? targetRef.current.getBoundingClientRect() : null
@@ -32,7 +31,7 @@ const SelectDropdownPortal: React.FC<Props> = ({ isVisible, children, targetRef,
     }
   }
 
-  const dropdownStyles: React.CSSProperties = {
+  const dropdownStyles: CSSProperties = {
     position: 'absolute',
     height: 'min-content',
     ...getDropdownPosition()

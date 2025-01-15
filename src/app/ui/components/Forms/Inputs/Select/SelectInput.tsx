@@ -1,3 +1,5 @@
+'use client'
+
 import { type FC, useState } from 'react'
 import SelectSearchDropdown from '@components/Forms/Inputs/Select/components/SelectDropdownPortal/SelectDropdownPortal'
 import { useOverflowDetection } from '@hooks/useOverflowDetection'
