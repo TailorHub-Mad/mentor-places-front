@@ -3,10 +3,10 @@ import React, { forwardRef, type FC } from 'react'
 import Link from 'next/link'
 
 const buttonVariants = {
-  base: cx('px-[24px] py-[8px]', 'transition-colors duration-200 ease-in-out', 's', 'rounded-full'),
+  base: cx('py-[8px]', 'transition-colors duration-200 ease-in-out', 's', 'rounded-full'),
   variant: {
-    primary: cx('bg-BLACK hover:bg-WHITE text-WHITE hover:text-BLACK'),
-    secondary: cx('bg-WHITE hover:bg-BLACK text-BLACK hover:text-WHITE', 'shadow-button'),
+    primary: cx('bg-BLACK hover:bg-WHITE text-WHITE hover:text-BLACK px-[24px]'),
+    secondary: cx('bg-WHITE hover:bg-BLACK text-BLACK hover:text-WHITE', 'shadow-button px-[24px]'),
     text: cx('underline text-BLACK hover:text-BLACK/50 underline-offset-4')
   }
 }
