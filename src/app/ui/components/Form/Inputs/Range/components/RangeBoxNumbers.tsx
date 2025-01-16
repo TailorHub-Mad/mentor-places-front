@@ -1,4 +1,4 @@
-import { type ChangeEvent, useRef } from 'react'
+import { type ChangeEvent } from 'react'
 
 import { cx } from '@utils/cx'
 
@@ -15,9 +15,6 @@ export const RangeBoxNumbers = ({
   onChange: (value: { min: number; max: number }) => void
   rangeValue: { min: number; max: number } // Value stored by parent component, might not yet reflect currently applied filter
 }) => {
-  const minRef = useRef<HTMLInputElement>(null)
-  const maxRef = useRef<HTMLInputElement>(null)
-
   const handleTextInputChange = (event: ChangeEvent<HTMLInputElement>, range: 'min' | 'max') => {
     const value = event.target.value
     const newValue = Math.min(Math.max(+value, min), max)
@@ -26,21 +23,18 @@ export const RangeBoxNumbers = ({
   }
 
   return (
-    <div data-testid="range-box-number" className={className}>
-      <div className="flex gap-x-[6px]">
+    <div className={cx('w-full', className)}>
+      <div className="flex justify-between gap-x-[6px]">
         {[rangeValue.min, rangeValue.max].map((boxValue, index) => {
-          const ref = index === 0 ? minRef : maxRef
-
           return (
             <input
-              ref={ref}
               key={index}
               type="text"
               inputMode="decimal"
               value={boxValue}
               onChange={(input) => handleTextInputChange(input, index === 0 ? 'min' : 'max')}
               className={cx(
-                'no-controls border rounded-none min-w-[45px] flex flex-col justify-center h-[40px] px-[12px] transition-all duration-300 ease-in-out mendes text-center body-m focus:outline-none'
+                'bg-GRAY text-BLACK/60 no-controls w-[121px] rounded-[8px] h-[40px] transition-all duration-300 ease-in-out text-center focus:outline-none'
               )}
             />
           )

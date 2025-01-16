@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-import { cx } from '@utils/cx'
-import RangeSlider from '@components/Form/Inputs/Range/components/RangeSlider'
 import { RangeBoxNumbers } from '@components/Form/Inputs/Range/components/RangeBoxNumbers'
+import MultiRangeSlider from '@components/Form/Inputs/Range/components/MultiRangeSlider'
 
 export type TFilterTypeProps = string // TODO: Define filter types
 
@@ -9,7 +8,6 @@ export interface IInputRangeProps {
   label?: string
   min?: number
   max?: number
-  step: number
   isOnModal?: boolean
   onChange: (type: TFilterTypeProps, range: [number, number]) => void
   selectedFilterValues: {
@@ -20,7 +18,7 @@ export interface IInputRangeProps {
   filterType: TFilterTypeProps
 }
 
-const CustomInputRange = ({ step, isOnModal, selectedFilterValues, onChange, label, filterType, max, min }: IInputRangeProps) => {
+const CustomInputRange = ({ isOnModal, selectedFilterValues, onChange, label, filterType, max, min }: IInputRangeProps) => {
   const [range, setRange] = useState({
     min: min ?? 0,
     max: max ?? 0
@@ -49,26 +47,20 @@ const CustomInputRange = ({ step, isOnModal, selectedFilterValues, onChange, lab
       })
   }, [selectedMin, selectedMax, min, max])
 
+  const handleSetIsChanging = (isChanging: boolean) => {
+    setIsChanging(isChanging)
+  }
+
   return (
-    <div data-testid="mendes-input-range" className="relative z-50">
+    <div className="relative z-50 max-w-[269px]">
       {label && !isOnModal && (
         <div className="label-wrapper mb-2">
-          <span className="mendes text-content-primary-mid body-m">{label}</span>
+          <span className="font-s text-s text-BLACK/60">{label}</span>
         </div>
       )}
-      <div className="flex relative items-center">
-        <RangeSlider
-          className={cx('flex-1 mendes-range-slider ml-5', {
-            'w-[164px]': !isOnModal
-          })}
-          onChange={setRange}
-          setIsChanging={setIsChanging}
-          value={range}
-          max={max ?? 0}
-          min={min ?? 0}
-          step={step}
-        />
-        <RangeBoxNumbers max={max ?? 0} min={min ?? 0} rangeValue={range} className="ml-[8px]" onChange={setRange} />
+      <div className="flex flex-col relative items-center">
+        <RangeBoxNumbers className="mb-4" max={max ?? 0} min={min ?? 0} rangeValue={range} onChange={setRange} />
+        <MultiRangeSlider onChange={setRange} max={max ?? 0} min={min ?? 0} setIsChanging={handleSetIsChanging} />
       </div>
     </div>
   )
