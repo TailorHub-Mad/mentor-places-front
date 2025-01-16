@@ -85,7 +85,7 @@ export const Footer: FC<IFooterProps> = ({ menus, contact }) => {
                 <p className="text-s text-nowrap underline">{t('actions.BackToTop')}</p>
                 <ArrowUp />
               </div>
-              <p className="text-s text-nowrap mt-2 lg:mt-0" style={{ color: '#575b66' }}>
+              <p className="text-s mt-2 lg:mt-0" style={{ color: '#575b66' }}>
                 {currentYear} MentorPlaces. All rights reserved.
               </p>
             </div>
