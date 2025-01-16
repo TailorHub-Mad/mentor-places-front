@@ -25,16 +25,9 @@ const SelectInput: FC<ISelectInputProps> = ({ options, placeholder, onChange, di
   const { isOpen, toggle, targetRef, selectInputRef } = useDropdownState(disabled)
 
   const handleSetInputValue = (option: ISelectOption) => {
-    if (option.value === valueSelected?.value) {
-      setValueSelected(undefined)
-      onChange(undefined)
-      toggle()
-
-      return
-    }
-
-    setValueSelected(option)
-    onChange(option.value)
+    const newValueSelected = option.value === valueSelected?.value ? undefined : option
+    setValueSelected(newValueSelected)
+    onChange(newValueSelected?.value)
     toggle()
   }
 
