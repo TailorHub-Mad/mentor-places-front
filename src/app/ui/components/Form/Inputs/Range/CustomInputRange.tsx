@@ -1,8 +1,9 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 import { RangeBoxNumbers } from '@components/Form/Inputs/Range/components/RangeBoxNumbers'
 import MultiRangeSlider from '@components/Form/Inputs/Range/components/MultiRangeSlider'
+import { debounce } from 'cx/util'
 
-export type TFilterTypeProps = string // TODO: Define filter types
+export type TFilterTypeProps = 'price' | 'rating' | 'distance' // Example types
 
 export interface IInputRangeProps {
   label?: string
@@ -11,56 +12,53 @@ export interface IInputRangeProps {
   isOnModal?: boolean
   onChange: (type: TFilterTypeProps, range: [number, number]) => void
   selectedFilterValues: {
-    [key: TFilterTypeProps]: {
-      range: [number, number]
-    }
+    [key in TFilterTypeProps]?: { range: [number, number] }
   }
   filterType: TFilterTypeProps
 }
 
-const CustomInputRange = ({ isOnModal, selectedFilterValues, onChange, label, filterType, max, min }: IInputRangeProps) => {
-  const [range, setRange] = useState({
-    min: min ?? 0,
-    max: max ?? 0
-  })
-  const [isChanging, setIsChanging] = useState(false)
-  const hasChangedRef = useRef(false)
+const DEFAULT_MIN = 0
+const DEFAULT_MAX = 100
+
+const CustomInputRange = ({
+  isOnModal,
+  selectedFilterValues,
+  onChange,
+  label,
+  filterType,
+  max = DEFAULT_MAX,
+  min = DEFAULT_MIN
+}: IInputRangeProps) => {
+  const [range, setRange] = useState({ min, max })
+
+  const invokeOnChange = useRef(debounce((min: number, max: number) => onChange(filterType, [min, max]), 300)).current
 
   useEffect(() => {
-    const hasChanged = hasChangedRef.current
-
-    if (!isChanging && hasChanged) {
-      onChange(filterType, [range.min ?? 0, range.max ?? 0])
-    } else {
-      if (!hasChanged) hasChangedRef.current = true
-    }
-  }, [isChanging])
+    invokeOnChange(range.min, range.max)
+  }, [range])
 
   const [selectedMin, selectedMax] = selectedFilterValues[filterType]?.range ?? [min, max]
 
   useEffect(() => {
-    if (selectedMin && selectedMax) setRange({ min: selectedMin, max: selectedMax })
-    else
-      setRange({
-        min: min ?? 0,
-        max: max ?? 0
-      })
+    if (selectedMin !== range.min || selectedMax !== range.max) {
+      setRange({ min: selectedMin ?? min, max: selectedMax ?? max })
+    }
   }, [selectedMin, selectedMax, min, max])
 
-  const handleSetIsChanging = (isChanging: boolean) => {
-    setIsChanging(isChanging)
-  }
+  const handleSetRange = useCallback((value: { min: number; max: number }) => {
+    setRange(value)
+  }, [])
 
   return (
-    <div className="relative z-50 max-w-[269px]">
+    <div className={`relative z-50 ${isOnModal ? 'max-w-full' : 'max-w-[269px]'}`}>
       {label && !isOnModal && (
         <div className="label-wrapper mb-2">
           <span className="font-s text-s text-BLACK/60">{label}</span>
         </div>
       )}
       <div className="flex flex-col relative items-center">
-        <RangeBoxNumbers className="mb-4" max={max ?? 0} min={min ?? 0} rangeValue={range} onChange={setRange} />
-        <MultiRangeSlider onChange={setRange} max={max ?? 0} min={min ?? 0} setIsChanging={handleSetIsChanging} />
+        <RangeBoxNumbers className="mb-4" rangeValue={range} onChange={handleSetRange} min={min} max={max} />
+        <MultiRangeSlider onChange={handleSetRange} min={min} max={max} />
       </div>
     </div>
   )

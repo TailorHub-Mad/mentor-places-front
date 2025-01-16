@@ -6,10 +6,9 @@ interface IMultiRangeSliderProps {
   max: number
   onChange: (value: { min: number; max: number }) => void
   className?: string
-  setIsChanging: (isChanging: boolean) => void
 }
 
-const MultiRangeSlider: FC<IMultiRangeSliderProps> = ({ min, max, onChange, setIsChanging }) => {
+const MultiRangeSlider: FC<IMultiRangeSliderProps> = ({ min, max, onChange }) => {
   const [minVal, setMinVal] = useState(min)
   const [maxVal, setMaxVal] = useState(max)
   const minValRef = useRef<HTMLInputElement>(null)
@@ -22,9 +21,8 @@ const MultiRangeSlider: FC<IMultiRangeSliderProps> = ({ min, max, onChange, setI
   // Set width of the range to decrease from the left side
   useEffect(() => {
     if (maxValRef.current) {
-      setIsChanging(true)
       const minPercent = getPercent(minVal)
-      const maxPercent = getPercent(+maxValRef.current.value) // Preceding with '+' converts the value from type string to type number
+      const maxPercent = getPercent(+maxValRef.current.value)
 
       if (range.current) {
         range.current.style.left = `${minPercent}%`

@@ -13,7 +13,7 @@ export const RangeBoxNumbers = ({
   max: number
   className?: string
   onChange: (value: { min: number; max: number }) => void
-  rangeValue: { min: number; max: number } // Value stored by parent component, might not yet reflect currently applied filter
+  rangeValue: { min: number; max: number }
 }) => {
   const handleTextInputChange = (event: ChangeEvent<HTMLInputElement>, range: 'min' | 'max') => {
     const value = event.target.value
