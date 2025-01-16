@@ -25,10 +25,10 @@ interface IFooterProps {
 
 export const Footer: FC<IFooterProps> = ({ menus, contact }) => {
   const t = useTranslations()
-  const { isMobile, isVerticalTablet } = useBreakpoint()
+  const { isMobile, isVerticalTablet, isLandscapeTablet } = useBreakpoint()
   const { email, phone } = contact
 
-  const logoSize = isMobile || isVerticalTablet ? '110vw' : '580px'
+  const logoSize = isMobile || isVerticalTablet ? '110vw' : '30vw'
 
   const currentYear = new Date().getFullYear()
 
@@ -38,15 +38,15 @@ export const Footer: FC<IFooterProps> = ({ menus, contact }) => {
 
   return (
     <footer
-      className="lg:h-[450px] overflow-hidden lg:flex lg:justify-center"
+      className="lg:min-h-[450px] overflow-hidden lg:flex lg:justify-center"
       style={{ marginTop: 50, backgroundColor: EColor.BLUE_LIGHT }}>
-      <div className="flex flex-col gap-4 lg:flex-row-reverse lg:justify-between lg:h-[450px] max-w-[1440px]">
-        <div className="p-6 lg:p-12 lg:max-w-[680px]">
-          <div className="flex flex-col lg:flex-row gap-y-10 gap-6 lg:gap-20">
-            <div className="flex gap-6 lg:gap-20">
+      <div className="flex flex-col gap-4 lg:flex-row-reverse lg:justify-between lg:min-h-[450px] max-w-[1440px]">
+        <div className="p-6 lg:p-12 lg:max-w-[680px] flex flex-col justify-between">
+          <div className="flex flex-col gap-6 lg:gap-12 xl:gap-20">
+            <div className="flex flex-wrap gap-6 lg:gap-12 xl:gap-20">
               {menus.map((menu, menuIdx) => {
                 return (
-                  <div className="flex flex-col gap-2" key={`footer-menu-${menuIdx}`}>
+                  <div className="flex flex-col gap-2 w-32" key={`footer-menu-${menuIdx}`}>
                     {menu.map((link, linkIdx) => {
                       return (
                         <Link href={link.href} key={link.label}>
@@ -73,27 +73,33 @@ export const Footer: FC<IFooterProps> = ({ menus, contact }) => {
               ))}
             </div>
           </div>
-          <div className="mt-14 lg:mt-32">
-            <div className="lg:flex items-center justify-between">
+          <div className="mt-14 lg:mt-22 xl:mt-32">
+            <div className="lg:flex items-center justify-between lg:flex-col lg:items-start lg:gap-y-4 xl:flex-row xl:items-center">
               <LogoText width={isMobile || isVerticalTablet ? '214px' : '365px'} />
               {/* TODO - action */}
-              <Button className="mt-6 lg:mt-0">{t('moreInfo')}</Button>
+              <Button className="mt-6 lg:mt-0 text-nowrap">{t('moreInfo')}</Button>
             </div>
             <div className="lg:flex items-center gap-4 lg:mt-6">
               {/* TODO - action */}
               <div className="mt-5 lg:mt-0 flex gap-2 items-center cursor-pointer" onClick={handleBackToTop}>
-                <p className="text-s underline">{t('actions.BackToTop')}</p>
+                <p className="text-s text-nowrap underline">{t('actions.BackToTop')}</p>
                 <ArrowUp />
               </div>
-              <p className="text-s mt-2 lg:mt-0" style={{ color: '#575b66' }}>
+              <p className="text-s text-nowrap mt-2 lg:mt-0" style={{ color: '#575b66' }}>
                 {currentYear} MentorPlaces. All rights reserved.
               </p>
             </div>
           </div>
         </div>
-        <div className="lg:flex lg:justify-center lg:items-center">
+        {isMobile || isVerticalTablet || isLandscapeTablet ? (
           <Logo width={logoSize} height={logoSize} />
-        </div>
+        ) : (
+          <div className="lg:flex lg:justify-center lg:items-center w-[30vw] relative">
+            <div className="absolute bottom-[-38px]" style={{ backgroundColor: EColor.BLUE_LIGHT }}>
+              <Logo width={logoSize} height={logoSize} />
+            </div>
+          </div>
+        )}
       </div>
     </footer>
   )
