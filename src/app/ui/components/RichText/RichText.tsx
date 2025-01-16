@@ -33,7 +33,7 @@ const RichText: FC<IRichTextProps> = ({ content, maxLines, width }) => {
         setIsTruncated(true)
       }
     }
-  }, [content, maxLines])
+  }, [content, maxLines, lineHeight])
 
   return (
     <div style={{ width }}>
