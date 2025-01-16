@@ -28,6 +28,7 @@ export const RangeBoxNumbers = ({
         {[rangeValue.min, rangeValue.max].map((boxValue, index) => {
           return (
             <input
+              disabled // TODO: Implement editing feature
               key={index}
               type="text"
               inputMode="decimal"
