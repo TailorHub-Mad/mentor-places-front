@@ -9,6 +9,7 @@ import Button from '@components/Button/Button'
 import ArrowUp from '@components/icons/ArrowUp'
 import { useTranslations } from 'next-intl'
 import useBreakpoint from '@hooks/useBreakpoint'
+import useAction from '@hooks/useAction'
 
 interface IFooterLink {
   label: string
@@ -25,16 +26,15 @@ interface IFooterProps {
 
 export const Footer: FC<IFooterProps> = ({ menus, contact }) => {
   const t = useTranslations()
+  const handleBackToTop = useAction('scrollToTop')
+  const handleMoreInfoClick = useAction('contact')
+
   const { isMobile, isVerticalTablet, isLandscapeTablet } = useBreakpoint()
   const { email, phone } = contact
 
   const logoSize = isMobile || isVerticalTablet ? '110vw' : '30vw'
 
   const currentYear = new Date().getFullYear()
-
-  const handleBackToTop = () => {
-    // TODO - action from hook (on another PR)
-  }
 
   return (
     <footer
@@ -76,11 +76,11 @@ export const Footer: FC<IFooterProps> = ({ menus, contact }) => {
           <div className="mt-14 lg:mt-22 xl:mt-32">
             <div className="lg:flex items-center justify-between lg:flex-col lg:items-start lg:gap-y-4 xl:flex-row xl:items-center">
               <LogoText width={isMobile || isVerticalTablet ? '214px' : '365px'} />
-              {/* TODO - action */}
-              <Button className="mt-6 lg:mt-0 text-nowrap">{t('moreInfo')}</Button>
+              <Button className="mt-6 lg:mt-0 text-nowrap" onClick={handleMoreInfoClick}>
+                {t('moreInfo')}
+              </Button>
             </div>
             <div className="lg:flex items-center gap-4 lg:mt-6">
-              {/* TODO - action */}
               <div className="mt-5 lg:mt-0 flex gap-2 items-center cursor-pointer" onClick={handleBackToTop}>
                 <p className="text-s text-nowrap underline">{t('actions.BackToTop')}</p>
                 <ArrowUp />
@@ -95,7 +95,7 @@ export const Footer: FC<IFooterProps> = ({ menus, contact }) => {
           <Logo width={logoSize} height={logoSize} />
         ) : (
           <div className="lg:flex lg:justify-center lg:items-center w-[30vw] relative">
-            <div className="absolute bottom-[-38px]" style={{ backgroundColor: EColor.BLUE_LIGHT }}>
+            <div className="absolute bottom-[-3vw]" style={{ backgroundColor: EColor.BLUE_LIGHT }}>
               <Logo width={logoSize} height={logoSize} />
             </div>
           </div>
