@@ -10,6 +10,7 @@ import ArrowUp from '@components/icons/ArrowUp'
 import { useTranslations } from 'next-intl'
 import useBreakpoint from '@hooks/useBreakpoint'
 import useAction from '@hooks/useAction'
+import { BRAND } from '../../../lib/constants/global.constants'
 
 interface IFooterLink {
   label: string
@@ -86,7 +87,7 @@ export const Footer: FC<IFooterProps> = ({ menus, contact }) => {
                 <ArrowUp />
               </div>
               <p className="text-s mt-2 lg:mt-0" style={{ color: '#575b66' }}>
-                {currentYear} MentorPlaces. All rights reserved.
+                {`${currentYear} ${BRAND}. ${t('allRightsReserved')}`}
               </p>
             </div>
           </div>
