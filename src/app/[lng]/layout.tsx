@@ -23,7 +23,7 @@ const RootLayout: FC<IRootLayout> = ({ children, params: { locale } }) => {
       <Meta />
       <NextIntlClientProvider messages={messages}>
         <Providers>
-          <body>
+          <body id={'modal-root'}>
             <main>{children}</main>
             <Footer />
             <PageTransition />
