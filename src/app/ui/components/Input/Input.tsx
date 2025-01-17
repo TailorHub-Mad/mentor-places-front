@@ -4,7 +4,8 @@ import EyeOff from '@components/icons/EyeOff'
 import EyeOn from '@components/icons/EyeOn'
 import { EColor } from '@theme/foundations/colors.foundations'
 import { cx } from '@utils/cx'
-import { InputHTMLAttributes, useState, type FC } from 'react'
+import type { InputHTMLAttributes, FC } from 'react'
+import { useState } from 'react'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   hasError?: boolean
