@@ -36,7 +36,7 @@ const AccordionItems: FC<IAccordionItemsProps> = ({ accordionItems, firstItemOpe
         <div key={index} className="relative">
           <button
             onClick={() => handleAccordion(index)}
-            className="relative flex items-center w-full py-4 font-semibold text-left transition-all ease-in border-t border-solid cursor-pointer border-content-primary-lowest text-content-primary-high rounded-t-1 group text-dark-500 justify-space-between"
+            className="relative flex items-center w-full py-[8px] text-left transition-all ease-in border-t border-solid cursor-pointer border-BLACK/20 text-s font-s group justify-between"
             data-collapse-target={`collapse-${index}`}>
             <span className="">{title}</span>
             <ChevronArrowDown
@@ -51,7 +51,7 @@ const AccordionItems: FC<IAccordionItemsProps> = ({ accordionItems, firstItemOpe
               'h-auto overflow-hidden transition-all ease-in-out duration-500',
               openItems.has(index) ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-50'
             )}>
-            {children}
+            <div className="mb-4 mt-2">{children}</div>
           </div>
         </div>
       ))}

@@ -1,4 +1,4 @@
-import type { IAccordionItem, IAccordionItemsProps } from '@components/Accordion/AccordionItems'
+import type { IAccordionItemsProps } from '@components/Accordion/AccordionItems'
 
 const CHILDREN_MOCK = (
   <div>
@@ -10,12 +10,24 @@ const CHILDREN_MOCK = (
   </div>
 )
 
-const ACCORDION_ITEM_MOCK: IAccordionItem = {
-  title: 'Fecha de inicio',
-  children: CHILDREN_MOCK
-}
-
 export const ACCORDION_ITEMS_MOCK: IAccordionItemsProps = {
-  accordionItems: [ACCORDION_ITEM_MOCK, ACCORDION_ITEM_MOCK, ACCORDION_ITEM_MOCK, ACCORDION_ITEM_MOCK],
+  accordionItems: [
+    {
+      title: 'Disciplina',
+      children: CHILDREN_MOCK
+    },
+    {
+      title: 'Precio',
+      children: CHILDREN_MOCK
+    },
+    {
+      title: 'Duración',
+      children: CHILDREN_MOCK
+    },
+    {
+      title: 'Fecha de inicio',
+      children: CHILDREN_MOCK
+    }
+  ],
   firstItemOpen: true
 }
