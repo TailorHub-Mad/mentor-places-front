@@ -1,6 +1,7 @@
 @import './fonts.css';
 @import './typography.css';
 @import './rich-text.css';
+@import './input-range.css';
 
 
 @tailwind base;
