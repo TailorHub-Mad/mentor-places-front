@@ -14,18 +14,22 @@ export const ACCORDION_ITEMS_MOCK: IAccordionItemsProps = {
   accordionItems: [
     {
       title: 'Disciplina',
+      id: 'id_disciplina',
       children: CHILDREN_MOCK
     },
     {
       title: 'Precio',
+      id: 'id_precio',
       children: CHILDREN_MOCK
     },
     {
       title: 'Duración',
+      id: 'id_duración',
       children: CHILDREN_MOCK
     },
     {
       title: 'Fecha de inicio',
+      id: 'id_fecha',
       children: CHILDREN_MOCK
     }
   ],
