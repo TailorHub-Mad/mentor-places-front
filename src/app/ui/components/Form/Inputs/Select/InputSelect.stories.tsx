@@ -1,16 +1,16 @@
-import SelectInput from '@components/Forms/Inputs/Select/SelectInput'
+import InputSelect from '@components/Form/Inputs/Select/InputSelect'
 import type { Meta, StoryObj } from '@storybook/react'
-import { LONG_OPTIONS_LIST_MOCK, SELECT_INPUT_MOCK } from '@components/Forms/Inputs/Select/mock'
+import { LONG_OPTIONS_LIST_MOCK, SELECT_INPUT_MOCK } from '@components/Form/Inputs/Select/mock'
 
 export default {
-  component: SelectInput,
+  component: InputSelect,
   parameters: {
     locale: 'es'
   },
   tags: ['autodocs']
 } as Meta
 
-type Story = StoryObj<typeof SelectInput>
+type Story = StoryObj<typeof InputSelect>
 
 export const Default: Story = {
   args: {

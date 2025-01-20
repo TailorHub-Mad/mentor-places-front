@@ -1,11 +1,11 @@
 'use client'
 
 import { type FC, useState } from 'react'
-import SelectSearchDropdown from '@components/Forms/Inputs/Select/components/SelectDropdownPortal/SelectDropdownPortal'
+import SelectSearchDropdown from '@components/Form/Inputs/Select/components/SelectDropdownPortal/SelectDropdownPortal'
 import { useOverflowDetection } from '@hooks/useOverflowDetection'
 import { useDropdownState } from '@hooks/useDropdownState'
-import OptionList from '@components/Forms/Inputs/Select/components/OptionList/OptionList'
-import SelectButton from '@components/Forms/Inputs/Select/components/SelectButton/SelectButton'
+import OptionList from '@components/Form/Inputs/Select/components/OptionList/OptionList'
+import SelectButton from '@components/Form/Inputs/Select/components/SelectButton/SelectButton'
 
 export interface ISelectOption {
   value: string
@@ -19,7 +19,7 @@ export interface ISelectInputProps {
   disabled?: boolean
 }
 
-const SelectInput: FC<ISelectInputProps> = ({ options, placeholder, onChange, disabled = false }) => {
+const InputSelect: FC<ISelectInputProps> = ({ options, placeholder, onChange, disabled = false }) => {
   const [valueSelected, setValueSelected] = useState<ISelectOption | undefined>(undefined)
   const { isOverflowing, parentRef, spanRef } = useOverflowDetection(valueSelected?.value, placeholder)
   const { isOpen, toggle, targetRef, selectInputRef } = useDropdownState(disabled)
@@ -56,4 +56,4 @@ const SelectInput: FC<ISelectInputProps> = ({ options, placeholder, onChange, di
   )
 }
 
-export default SelectInput
+export default InputSelect

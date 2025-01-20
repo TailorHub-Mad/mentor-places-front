@@ -2,7 +2,7 @@ import type { ChangeEvent, FC, ReactNode } from 'react'
 import { cx } from '@utils/cx'
 import CheckIcon from '@components/icons/CheckIcon'
 
-export interface IFilterInputCheckboxProps {
+export interface IInputCheckboxProps {
   id: string
   label: string | ReactNode // Support string or custom JSX for the label
   checked: boolean
@@ -15,7 +15,7 @@ export interface IFilterInputCheckboxProps {
   countClassName?: string
 }
 
-const FilterInputCheckbox: FC<IFilterInputCheckboxProps> = ({
+const InputCheckbox: FC<IInputCheckboxProps> = ({
   id,
   label,
   checked,
@@ -66,4 +66,4 @@ const FilterInputCheckbox: FC<IFilterInputCheckboxProps> = ({
   )
 }
 
-export default FilterInputCheckbox
+export default InputCheckbox

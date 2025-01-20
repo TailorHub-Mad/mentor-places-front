@@ -1,13 +1,13 @@
 import type { Meta, StoryFn } from '@storybook/react'
 import { useEffect, useState } from 'react'
-import FilterInputCheckbox, { type IFilterInputCheckboxProps } from './FilterInputCheckbox'
-import { FILTER_INPUT_CHECKBOX_MOCKS } from '@components/Filters/FilterItems/FilterInputCheckbox/mocks'
+import InputCheckbox, { type IInputCheckboxProps } from './InputCheckbox'
+import { FILTER_INPUT_CHECKBOX_MOCKS } from '@components/Form/Inputs/Checkbox/mocks'
 
 export default {
-  component: FilterInputCheckbox
+  component: InputCheckbox
 } as Meta
 
-const Template: StoryFn<IFilterInputCheckboxProps> = (args) => {
+const Template: StoryFn<IInputCheckboxProps> = (args) => {
   const [isChecked, setIsChecked] = useState(args.checked)
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const Template: StoryFn<IFilterInputCheckboxProps> = (args) => {
     args.onChange(args.id, !isChecked)
   }
 
-  return <FilterInputCheckbox {...args} checked={isChecked} onChange={handleChange} />
+  return <InputCheckbox {...args} checked={isChecked} onChange={handleChange} />
 }
 
 export const Default = Template.bind({})

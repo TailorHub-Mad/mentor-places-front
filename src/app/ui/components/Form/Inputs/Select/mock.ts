@@ -1,4 +1,4 @@
-import type { ISelectInputProps, ISelectOption } from '@components/Forms/Inputs/Select/SelectInput'
+import type { ISelectInputProps, ISelectOption } from '@components/Form/Inputs/Select/InputSelect'
 import { v4 as uuidv4 } from 'uuid'
 
 export const createLongOptionMock = (): ISelectOption => ({
@@ -14,7 +14,7 @@ export const createOptionMock = (): ISelectOption => ({
 export const SELECT_INPUT_MOCK: ISelectInputProps = {
   placeholder: 'Select an option',
   options: [createOptionMock(), createOptionMock(), createLongOptionMock()],
-  onChange: (value: string | undefined): void => console.info('SelectInput selected with value: ', value)
+  onChange: (value: string | undefined): void => console.info('InputSelect selected with value: ', value)
 }
 
 export const LONG_OPTIONS_LIST_MOCK: ISelectInputProps = {

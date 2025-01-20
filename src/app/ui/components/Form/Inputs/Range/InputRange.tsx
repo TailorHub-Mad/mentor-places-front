@@ -20,7 +20,7 @@ export interface IInputRangeProps {
 const DEFAULT_MIN = 0
 const DEFAULT_MAX = 100
 
-const CustomInputRange = ({
+const InputRange = ({
   isOnModal,
   selectedFilterValues,
   onChange,
@@ -64,4 +64,4 @@ const CustomInputRange = ({
   )
 }
 
-export default CustomInputRange
+export default InputRange
