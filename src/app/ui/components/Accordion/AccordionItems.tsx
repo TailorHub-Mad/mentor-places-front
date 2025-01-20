@@ -10,18 +10,16 @@ export interface IAccordionItem {
 
 export interface IAccordionItemsProps {
   accordionItems?: IAccordionItem[]
-  firstItemOpen?: boolean
+  defaultOpen?: string
 }
 
-const AccordionItems: FC<PropsWithChildren<IAccordionItemsProps>> = ({ accordionItems, firstItemOpen }) => {
-  const { openItems, handleAccordion } = useAccordionItems({
-    firstItemOpen: firstItemOpen
-  })
+const AccordionItems: FC<PropsWithChildren<IAccordionItemsProps>> = ({ accordionItems, defaultOpen }) => {
+  const { openItems, handleAccordion } = useAccordionItems(defaultOpen)
 
   return (
     <div className="flex flex-col">
       {accordionItems?.map(({ title, children, id }, index) => (
-        <AccordionBlock key={id} title={title} index={index} openItems={openItems} onToggle={handleAccordion}>
+        <AccordionBlock key={id} title={title} index={`${index}`} openItems={openItems} onToggle={handleAccordion}>
           {children}
         </AccordionBlock>
       ))}

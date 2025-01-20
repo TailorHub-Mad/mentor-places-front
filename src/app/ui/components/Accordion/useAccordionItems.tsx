@@ -1,9 +1,9 @@
 import { useState } from 'react'
 
-const useAccordionItems = ({ firstItemOpen = false }) => {
-  const [openItems, setOpenItems] = useState<Set<number>>(new Set([firstItemOpen ? 0 : -1]))
+const useAccordionItems = (defaultOpen?: string | undefined) => {
+  const [openItems, setOpenItems] = useState<Set<string>>(new Set(defaultOpen))
 
-  const handleAccordion = (itemId: number) => {
+  const handleAccordion = (itemId: string) => {
     const newOpenItems = new Set(openItems)
 
     if (newOpenItems.has(itemId)) newOpenItems.delete(itemId)

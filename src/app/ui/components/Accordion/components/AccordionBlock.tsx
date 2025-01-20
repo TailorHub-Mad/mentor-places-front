@@ -1,12 +1,12 @@
-import type { FC, PropsWithChildren } from 'react'
+import type { FC, PropsWithChildren, ReactNode } from 'react'
 import ChevronArrowDown from '@components/icons/ChevronArrowDown'
 import { cx } from '@utils/cx'
 
 interface IAccordionBlockProps {
-  title: string
-  index: number
-  openItems: Set<number>
-  onToggle: (index: number) => void
+  title: string | ReactNode
+  index: string
+  openItems: Set<string>
+  onToggle: (index: string) => void
 }
 
 const AccordionBlock: FC<PropsWithChildren<IAccordionBlockProps>> = ({ title, children, index, onToggle, openItems }) => {
@@ -21,7 +21,7 @@ const AccordionBlock: FC<PropsWithChildren<IAccordionBlockProps>> = ({ title, ch
         data-collapse-target={`collapse-${index}`}
         aria-expanded={openItems.has(index)}
         aria-controls={`accordion-panel-${index}`}>
-        <span className="">{title}</span>
+        {typeof title === 'string' ? <span className="">{title}</span> : title}
         <ChevronArrowDown
           className={cx({
             'rotate-180': openItems.has(index)
