@@ -2,6 +2,7 @@ import { type FC } from 'react'
 import AccordionBlock from '@components/Accordion/components/AccordionBlock'
 import useAccordionItems from '@components/Accordion/useAccordionItems'
 import InputCheckbox from '@components/Form/Inputs/Checkbox/InputCheckbox'
+import FilterItem from '@components/Filters/SideBar/components/FilterItem'
 
 export enum EFilterType {
   CHECKBOX = 'checkbox',
@@ -40,10 +41,23 @@ const FilterSideBar: FC<IFilterSideBarProps> = ({ filterSelected, filters, onCha
           <AccordionBlock key={id} title={title} index={`${index}`} onToggle={handleAccordion} openItems={openItems}>
             {filters.map((filter, indexFilter) => {
               //TODO: Extract this logic
-              switch (filter.type) {
-                case EFilterType.CHECKBOX:
-                  if (typeof filter.value === 'string')
-                    return (
+              if (typeof filter.value === 'string')
+                return (
+                  <FilterItem
+                    key={filter.id}
+                    type={filter.type}
+                    id={filter.id}
+                    title={filter.title}
+                    selected={filterSelected?.includes(filter.id)}
+                    onChange={onChange}
+                    count={filter.count}
+                  />
+                )
+              else
+                return (
+                  <AccordionBlock
+                    key={id}
+                    title={
                       <InputCheckbox
                         id={filter.id}
                         label={filter.title}
@@ -51,43 +65,25 @@ const FilterSideBar: FC<IFilterSideBarProps> = ({ filterSelected, filters, onCha
                         onChange={onChange}
                         count={filter.count}
                       />
-                    )
-                  else
-                    return (
-                      <AccordionBlock
-                        title={
-                          <InputCheckbox
-                            id={filter.id}
-                            label={filter.title}
-                            checked={filterSelected?.includes(filter.id)}
-                            onChange={onChange}
-                            count={filter.count}
-                          />
-                        }
-                        index={`${index}-${indexFilter}`}
-                        openItems={openItems}
-                        onToggle={handleAccordion}>
-                        {filter.value.map((filterNested, indexINested) => {
-                          return (
-                            <InputCheckbox
-                              key={indexINested}
-                              id={filterNested.id}
-                              label={filterNested.title}
-                              checked={filterSelected?.includes(filterNested.id)}
-                              onChange={onChange}
-                              count={filterNested.count}
-                            />
-                          )
-                        })}
-                      </AccordionBlock>
-                    )
-                default:
-                  return (
-                    <div key={index} class="id">
-                      {filter.title}
-                    </div>
-                  )
-              }
+                    }
+                    index={`${index}-${indexFilter}`}
+                    openItems={openItems}
+                    onToggle={handleAccordion}>
+                    {filter.value.map((filterNested) => {
+                      return (
+                        <FilterItem
+                          key={filterNested.id}
+                          type={filterNested.type}
+                          id={filterNested.id}
+                          title={filterNested.title}
+                          selected={filterSelected?.includes(filterNested.id)}
+                          onChange={onChange}
+                          count={filterNested.count}
+                        />
+                      )
+                    })}
+                  </AccordionBlock>
+                )
             })}
           </AccordionBlock>
         )
