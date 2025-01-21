@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-import type { IFilterItem } from '@components/Filters/SideBar/FilterSideBar'
+import type { IFilterItem, IFilterSelection } from '@components/Filters/SideBar/FilterSideBar'
 import FilterItem from '@components/Filters/SideBar/components/FilterItem'
 import AccordionBlock from '@components/Accordion/components/AccordionBlock'
 import InputCheckbox from '@components/Form/Inputs/Checkbox/InputCheckbox'
@@ -10,8 +10,8 @@ interface IFilterBlockProps {
   onToggle: (index: string) => void
   openItems: Set<string>
   filters: IFilterItem[]
-  filterSelected: string[]
-  onChange: (value: string | string[]) => void
+  filterSelected: IFilterSelection[]
+  onChange: (value: IFilterSelection) => void
   id: string
 }
 
@@ -25,6 +25,7 @@ const FilterBlock: FC<IFilterBlockProps> = ({ title, filters, openItems, onToggl
     return filters.map((filter, childIndex) => {
       const currentIndex = `${parentIndex}-${childIndex}`
       const isNested = isIFilterItemArray(filter.value) // Use type guard here
+      const isFilterSelected = filterSelected.some((f) => f.id === filter.id)
 
       if (!isNested) {
         // Render a single filter item
@@ -34,7 +35,7 @@ const FilterBlock: FC<IFilterBlockProps> = ({ title, filters, openItems, onToggl
             type={filter.type}
             id={filter.id}
             title={filter.title}
-            selected={filterSelected.includes(filter.id)}
+            selected={isFilterSelected}
             filterSelected={filterSelected}
             onChange={onChange}
             count={filter.count}
@@ -46,15 +47,7 @@ const FilterBlock: FC<IFilterBlockProps> = ({ title, filters, openItems, onToggl
       return (
         <AccordionBlock
           key={filter.id}
-          title={
-            <InputCheckbox
-              id={filter.id}
-              label={filter.title}
-              checked={filterSelected.includes(filter.id)}
-              onChange={onChange}
-              count={filter.count}
-            />
-          }
+          title={<InputCheckbox id={filter.id} label={filter.title} checked={isFilterSelected} onChange={onChange} count={filter.count} />}
           index={currentIndex}
           openItems={openItems}
           onToggle={onToggle}>

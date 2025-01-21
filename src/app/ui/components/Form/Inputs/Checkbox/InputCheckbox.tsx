@@ -1,12 +1,13 @@
-import type { ChangeEvent, FC, ReactNode } from 'react'
+import type { FC, ReactNode } from 'react'
 import { cx } from '@utils/cx'
 import CheckIcon from '@components/icons/CheckIcon'
+import type { IFilterSelection } from '@components/Filters/SideBar/FilterSideBar'
 
 export interface IInputCheckboxProps {
   id: string
   label: string | ReactNode // Support string or custom JSX for the label
   checked: boolean
-  onChange: (id: string, checked: boolean) => void
+  onChange: (value: IFilterSelection) => void
   count?: number
   disabled?: boolean
   className?: string
@@ -27,8 +28,8 @@ const InputCheckbox: FC<IInputCheckboxProps> = ({
   labelClassName = '',
   countClassName = ''
 }) => {
-  const handleIsChecked = (event: ChangeEvent<HTMLInputElement>) => {
-    onChange(id, event.target.checked)
+  const handleIsChecked = () => {
+    onChange({ id, value: id })
   }
 
   return (

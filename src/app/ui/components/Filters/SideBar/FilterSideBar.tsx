@@ -7,11 +7,15 @@ export enum EFilterType {
   DATE = 'date',
   PRICE = 'price'
 }
-export interface IFilterItem {
+
+interface IFilterValue {
+  value: string | string[] | IFilterItem[]
+}
+
+export interface IFilterItem extends IFilterValue {
   title: string
   id: string
   type: EFilterType
-  value: string | [string, string] | IFilterItem[]
   count?: number
 }
 
@@ -21,9 +25,13 @@ interface IFilterCategory {
   filters: IFilterItem[]
 }
 
+export interface IFilterSelection extends IFilterValue {
+  id: string
+}
+
 export interface IFilterSideBarProps {
-  filterSelected: string[]
-  onChange: (value: string) => void
+  filterSelected: IFilterSelection[]
+  onChange: (value: IFilterSelection) => void
   filters: IFilterCategory[]
   defaultOpen?: string
 }

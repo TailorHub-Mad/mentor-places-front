@@ -1,5 +1,5 @@
 import type { FC, ReactNode } from 'react'
-import { EFilterType } from '@components/Filters/SideBar/FilterSideBar'
+import { EFilterType, type IFilterSelection } from '@components/Filters/SideBar/FilterSideBar'
 import InputCheckbox from '@components/Form/Inputs/Checkbox/InputCheckbox'
 import DateFilter from '@components/Filters/DateFilter/DateFilter'
 
@@ -8,9 +8,9 @@ interface IFilterItemProps {
   title: string
   count?: number
   selected: boolean
-  onChange: (value: string | string[]) => void
+  onChange: (value: IFilterSelection) => void
   type: EFilterType
-  filterSelected: string[]
+  filterSelected: IFilterSelection[]
 }
 
 const FilterItem: FC<IFilterItemProps> = ({ type, onChange, selected, id, title, count, filterSelected }) => {

@@ -1,20 +1,20 @@
-import { EFilterType, type IFilterSideBarProps } from '@components/Filters/SideBar/FilterSideBar'
+import { EFilterType, type IFilterSelection, type IFilterSideBarProps } from '@components/Filters/SideBar/FilterSideBar'
 
 export const FILTER_SIDEBAR_MOCK: IFilterSideBarProps = {
   filterSelected: [],
-  onChange: function (value: string): void {
+  onChange: function (value: IFilterSelection): void {
     console.log({ value })
   },
   filters: [
     {
       title: 'Fecha de inicio',
-      id: 'id_fecha',
+      id: 'date',
       filters: [
         {
-          title: 'Desde 2021',
-          id: 'id_desde_2021',
+          title: 'Mes',
+          id: 'month',
           type: EFilterType.DATE,
-          value: ['', '']
+          value: ['']
         }
       ]
     },
