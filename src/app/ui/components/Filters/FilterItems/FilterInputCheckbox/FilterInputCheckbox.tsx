@@ -1,17 +1,14 @@
-import type { ChangeEvent, FC, ReactNode } from 'react'
+import type { ChangeEvent, FC } from 'react'
 import { cx } from '@utils/cx'
-import CheckIcon from '@components/icons/CheckIcon'
+import type { ICheckboxInputProps } from '@components/Checkbox'
+import CheckboxInput from '@components/Checkbox'
 
-export interface IFilterInputCheckboxProps {
-  id: string
-  label: string | ReactNode // Support string or custom JSX for the label
+export interface IFilterInputCheckboxProps extends ICheckboxInputProps {
   checked: boolean
   onChange: (id: string, checked: boolean) => void
   count?: number
   disabled?: boolean
   className?: string
-  inputClassName?: string
-  labelClassName?: string
   countClassName?: string
 }
 
@@ -33,27 +30,15 @@ const FilterInputCheckbox: FC<IFilterInputCheckboxProps> = ({
 
   return (
     <div className={cx('filter-input-checkbox flex items-center justify-between', className)}>
-      <div className="filter-input-checkbox__wrapper">
-        <input className="hidden" id={id} type="checkbox" checked={checked} onChange={handleIsChecked} disabled={disabled} />
-        <label
-          htmlFor={id}
-          className={cx('filter-input-checkbox__label flex items-center gap-3', {
-            'opacity-40 pointer-events-none': disabled,
-            'cursor-pointer': !disabled
-          })}>
-          <div
-            className={cx(
-              'filter-input-checkbox__input w-[16px] h-[16px] rounded-none border border-gray-300 ring-offset-2 text-blue-500 flex items-center justify-center',
-              inputClassName,
-              {
-                'bg-BLACK': checked
-              }
-            )}>
-            <CheckIcon />
-          </div>
-          <span className={labelClassName}>{label}</span>
-        </label>
-      </div>
+      <CheckboxInput
+        id={id}
+        label={label}
+        checked={checked}
+        onChange={handleIsChecked}
+        disabled={disabled}
+        inputClassName={inputClassName}
+        labelClassName={labelClassName}
+      />
       {count && (
         <div
           className={cx('filter-input-checkbox__count font-s text-s', countClassName, {

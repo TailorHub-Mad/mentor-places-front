@@ -3,7 +3,7 @@ import React, { forwardRef, type FC } from 'react'
 import Link from 'next/link'
 
 const buttonVariants = {
-  base: cx('py-[8px]', 'transition-colors duration-200 ease-in-out', 's', 'rounded-full'),
+  base: cx('py-[8px]', 'transition-colors duration-200 ease-in-out', 's', 'rounded-full', 'disabled:bg-GRAY disabled:text-BLACK_40'),
   variant: {
     primary: cx('bg-BLACK hover:bg-WHITE text-WHITE hover:text-BLACK px-[24px]'),
     secondary: cx('bg-WHITE hover:bg-BLACK text-BLACK hover:text-WHITE', 'shadow-button px-[24px]'),

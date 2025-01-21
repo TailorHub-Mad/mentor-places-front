@@ -36,5 +36,20 @@
     "showMore": "Ver más",
     "showLess": "Ver menos",
     "BackToTop": "Volver arriba"
+  },
+  "forms": {
+    "signup": {
+      "title": "Crea tu cuenta",
+      "button": "Regístrate",
+      "checkbox": "He leído y acepto la Política de Privacidad",
+      "alreadyRegistered": " ¿Ya tienes cuenta?",
+      "login": "Inicia sesión"
+    },
+    "placeholders": {
+      "name": "Nombre",
+      "surname": "Apellido",
+      "email": "Email",
+      "password": "Contraseña"
+    }
   }
 }

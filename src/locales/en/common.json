@@ -36,5 +36,20 @@
     "showMore": "Show more",
     "showLess": "Show less",
     "BackToTop": "Back to top"
+  },
+  "forms": {
+    "signup": {
+      "title": "Create your account",
+      "button": "Register",
+      "checkbox": "I have read and accept the Privacy Policy",
+      "alreadyRegistered": "Already registered?",
+      "login": "Log in"
+    },
+    "placeholders": {
+      "name": "Name",
+      "surname": "Surname",
+      "email": "Email",
+      "password": "Password"
+    }
   }
 }

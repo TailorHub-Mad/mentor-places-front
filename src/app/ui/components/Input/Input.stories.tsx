@@ -24,6 +24,6 @@ export const Password: Story = {
 
 export const WithError: Story = {
   args: {
-    hasError: true
+    error: 'Required'
   }
 }
