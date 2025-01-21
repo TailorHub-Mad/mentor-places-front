@@ -3,16 +3,19 @@
 import Button from '@components/Button/Button'
 import Input from '@components/Input/Input'
 import { type FC } from 'react'
-import { useForm } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
 import { joiResolver } from '@hookform/resolvers/joi'
 import { contactValidation } from '../../../../lib/validations/contact.validations'
 import { useTranslations } from 'next-intl'
 import { checkIsFormCompleted } from '@utils/form.utils'
 import CheckboxInput from '@components/Checkbox'
+import SelectInput from '../Inputs/Select/SelectInput'
+import phoneCodes from '../../../../lib/constants/phoneCodes.json'
 
 export interface IContactRequest {
   name: string
   surname: string
+  prefix: string
   phone: string
   country: string
   acceptPrivacyPolicy: boolean
@@ -21,6 +24,7 @@ export interface IContactRequest {
 const defaultValues: IContactRequest = {
   name: '',
   surname: '',
+  prefix: '+34',
   phone: '',
   country: '',
   acceptPrivacyPolicy: false
@@ -34,6 +38,7 @@ const ContactForm: FC = () => {
     handleSubmit,
     getValues,
     watch,
+    control,
     formState: { isSubmitting, errors }
   } = useForm<IContactRequest>({
     defaultValues,
@@ -62,8 +67,29 @@ const ContactForm: FC = () => {
           className="mt-2"
           error={errors.surname?.message}
         />
-
-        <Input type="tel" {...register('phone')} placeholder={t('placeholders.phone')} className="mt-2" error={errors.phone?.message} />
+        <div className="flex items-center justify-between gap-2">
+          <Controller
+            name="prefix"
+            control={control}
+            render={({ field: { onChange } }) => (
+              <SelectInput
+                options={phoneCodes}
+                onChange={onChange}
+                defaultOption={{
+                  label: '+34',
+                  value: '+34'
+                }}
+              />
+            )}
+          />
+          <Input
+            type="tel"
+            {...register('phone')}
+            placeholder={t('placeholders.phone')}
+            className="mt-2 w-full"
+            error={errors.phone?.message}
+          />
+        </div>
 
         <Input
           type="text"
