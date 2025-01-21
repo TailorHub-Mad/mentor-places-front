@@ -45,11 +45,24 @@
       "alreadyRegistered": " ¿Ya tienes cuenta?",
       "login": "Inicia sesión"
     },
+    "login": {
+      "title": "Iniciar sesión",
+      "button": "Iniciar sesión",
+      "notRegisteredYet": "¿No tienes cuenta?",
+      "signUp": "Regístrate"
+    },
+    "contact": {
+      "title": "Completa el formulario",
+      "button": "Enviar",
+      "checkbox": "He leído y acepto la Política de Privacidad"
+    },
     "placeholders": {
       "name": "Nombre",
       "surname": "Apellido",
       "email": "Email",
-      "password": "Contraseña"
+      "password": "Contraseña",
+      "phone": "Teléfono",
+      "country": "País"
     }
   }
 }
