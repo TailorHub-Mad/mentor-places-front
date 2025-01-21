@@ -11,8 +11,8 @@ export interface IFilterItem {
   title: string
   id: string
   type: EFilterType
-  value: string | IFilterItem[]
-  count: number
+  value: string | [string, string] | IFilterItem[]
+  count?: number
 }
 
 interface IFilterCategory {

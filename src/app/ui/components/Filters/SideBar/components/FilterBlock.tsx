@@ -11,15 +11,20 @@ interface IFilterBlockProps {
   openItems: Set<string>
   filters: IFilterItem[]
   filterSelected: string[]
-  onChange: (value: string) => void
+  onChange: (value: string | string[]) => void
   id: string
+}
+
+// Type guard to check if a value is an array of IFilterItem
+const isIFilterItemArray = (value: unknown): value is IFilterItem[] => {
+  return Array.isArray(value) && value.every((item) => typeof item === 'object' && 'id' in item && 'type' in item)
 }
 
 const FilterBlock: FC<IFilterBlockProps> = ({ title, filters, openItems, onToggle, index, filterSelected, onChange, id }) => {
   const renderFilters = (filters: IFilterItem[], parentIndex: string) => {
     return filters.map((filter, childIndex) => {
       const currentIndex = `${parentIndex}-${childIndex}`
-      const isNested = Array.isArray(filter.value)
+      const isNested = isIFilterItemArray(filter.value) // Use type guard here
 
       if (!isNested) {
         // Render a single filter item
@@ -30,6 +35,7 @@ const FilterBlock: FC<IFilterBlockProps> = ({ title, filters, openItems, onToggl
             id={filter.id}
             title={filter.title}
             selected={filterSelected.includes(filter.id)}
+            filterSelected={filterSelected}
             onChange={onChange}
             count={filter.count}
           />

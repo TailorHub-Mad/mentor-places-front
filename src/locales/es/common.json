@@ -36,5 +36,9 @@
     "showMore": "Ver más",
     "showLess": "Ver menos",
     "BackToTop": "Volver arriba"
+  },
+  "filters": {
+    "year": "Año",
+    "month": "Mes"
   }
 }

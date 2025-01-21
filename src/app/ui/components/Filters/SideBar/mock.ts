@@ -1,11 +1,23 @@
 import { EFilterType, type IFilterSideBarProps } from '@components/Filters/SideBar/FilterSideBar'
 
 export const FILTER_SIDEBAR_MOCK: IFilterSideBarProps = {
-  filterSelected: ['id_digital_marketing', 'id_diseno_grafico'],
+  filterSelected: [],
   onChange: function (value: string): void {
     console.log({ value })
   },
   filters: [
+    {
+      title: 'Fecha de inicio',
+      id: 'id_fecha',
+      filters: [
+        {
+          title: 'Desde 2021',
+          id: 'id_desde_2021',
+          type: EFilterType.DATE,
+          value: ['', '']
+        }
+      ]
+    },
     {
       title: 'Disciplina',
       id: 'id_disciplina',

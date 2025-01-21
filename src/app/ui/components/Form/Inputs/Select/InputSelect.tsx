@@ -17,16 +17,21 @@ export interface ISelectInputProps {
   options: ISelectOption[]
   onChange: (value: string | undefined) => void
   disabled?: boolean
+  valueSelected?: ISelectOption | undefined
 }
 
-const InputSelect: FC<ISelectInputProps> = ({ options, placeholder, onChange, disabled = false }) => {
-  const [valueSelected, setValueSelected] = useState<ISelectOption | undefined>(undefined)
-  const { isOverflowing, parentRef, spanRef } = useOverflowDetection(valueSelected?.value, placeholder)
+const InputSelect: FC<ISelectInputProps> = ({ options, placeholder, onChange, disabled = false, valueSelected }) => {
+  const [selectedOption, setSelectedOption] = useState<ISelectOption | undefined>(valueSelected)
+
+  const { isOverflowing, parentRef, spanRef } = useOverflowDetection(selectedOption?.value, placeholder)
   const { isOpen, toggle, targetRef, selectInputRef } = useDropdownState(disabled)
 
+  const getNewValueSelected = (option: ISelectOption): ISelectOption | undefined =>
+    option.value === selectedOption?.value ? undefined : option
+
   const handleSetInputValue = (option: ISelectOption) => {
-    const newValueSelected = option.value === valueSelected?.value ? undefined : option
-    setValueSelected(newValueSelected)
+    const newValueSelected = getNewValueSelected(option)
+    setSelectedOption(newValueSelected)
     onChange(newValueSelected?.value)
     toggle()
   }
@@ -39,17 +44,17 @@ const InputSelect: FC<ISelectInputProps> = ({ options, placeholder, onChange, di
         isOpen={isOpen}
         isOverflowing={isOverflowing}
         placeholder={placeholder}
-        label={valueSelected?.label}
+        label={selectedOption?.label}
         onClick={toggle}
         parentRef={parentRef}
         spanRef={spanRef}
       />
       {options?.length > 0 && (
         <SelectSearchDropdown
-          className="px-[9px] py-[5px] bg-WHITE shadow rounded-[8px] mt-[9px] z-50"
+          className={'px-[9px] py-[5px] bg-WHITE shadow rounded-[8px] mt-[9px] z-50'}
           targetRef={targetRef}
           isVisible={isOpen}>
-          <OptionList options={options} onSelect={handleSetInputValue} selectedValue={valueSelected?.value} ref={selectInputRef} />
+          <OptionList options={options} selectedValue={selectedOption?.value} onSelect={handleSetInputValue} ref={selectInputRef} />
         </SelectSearchDropdown>
       )}
     </div>

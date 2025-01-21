@@ -1,20 +1,22 @@
 import type { FC, ReactNode } from 'react'
 import { EFilterType } from '@components/Filters/SideBar/FilterSideBar'
 import InputCheckbox from '@components/Form/Inputs/Checkbox/InputCheckbox'
+import DateFilter from '@components/Filters/DateFilter/DateFilter'
 
 interface IFilterItemProps {
   id: string
   title: string
-  count: number
+  count?: number
   selected: boolean
-  onChange: (value: string) => void
+  onChange: (value: string | string[]) => void
   type: EFilterType
+  filterSelected: string[]
 }
 
-const FilterItem: FC<IFilterItemProps> = ({ type, onChange, selected, id, title, count }) => {
+const FilterItem: FC<IFilterItemProps> = ({ type, onChange, selected, id, title, count, filterSelected }) => {
   const typeRenderers: Record<EFilterType, () => ReactNode> = {
     [EFilterType.CHECKBOX]: () => <InputCheckbox id={id} label={title} checked={selected} onChange={onChange} count={count} />,
-    [EFilterType.DATE]: () => <div className="i">To be implemented</div>,
+    [EFilterType.DATE]: () => <DateFilter filterSelected={filterSelected} onChange={onChange} />,
     [EFilterType.PRICE]: () => <div className="cl">To be implemented</div>
   }
 

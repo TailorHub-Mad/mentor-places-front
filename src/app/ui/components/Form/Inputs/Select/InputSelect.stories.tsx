@@ -31,3 +31,10 @@ export const LongOptionsList: Story = {
     ...LONG_OPTIONS_LIST_MOCK
   }
 }
+
+export const ValueSelected: Story = {
+  args: {
+    ...SELECT_INPUT_MOCK,
+    valueSelected: SELECT_INPUT_MOCK.options[0]
+  }
+}
