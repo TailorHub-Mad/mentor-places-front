@@ -3,29 +3,26 @@ import { type ChangeEvent } from 'react'
 import { cx } from '@utils/cx'
 
 export const RangeBoxNumbers = ({
-  min,
-  max,
   className,
   onChange,
   rangeValue
 }: {
-  min: number
-  max: number
   className?: string
-  onChange: (value: { min: number; max: number }) => void
-  rangeValue: { min: number; max: number }
+  onChange: (value: string[]) => void
+  rangeValue: number[]
 }) => {
   const handleTextInputChange = (event: ChangeEvent<HTMLInputElement>, range: 'min' | 'max') => {
     const value = event.target.value
-    const newValue = Math.min(Math.max(+value, min), max)
-    const newRangeValue = { ...rangeValue, [range]: newValue }
+    if (!value) return
+
+    const newRangeValue: string[] = range === 'min' ? [value, rangeValue[1].toString()] : [rangeValue[0].toString(), value]
     onChange(newRangeValue)
   }
 
   return (
     <div className={cx('w-full', className)}>
       <div className="flex justify-between gap-x-[6px]">
-        {[rangeValue.min, rangeValue.max].map((boxValue, index) => {
+        {rangeValue.map((boxValue, index) => {
           return (
             <input
               disabled // TODO: Implement editing feature

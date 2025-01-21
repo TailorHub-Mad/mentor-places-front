@@ -1,52 +1,41 @@
-import { useEffect, useRef, useState, useCallback } from 'react'
+import { useCallback, type FC } from 'react'
 import { RangeBoxNumbers } from '@components/Form/Inputs/Range/components/RangeBoxNumbers'
 import MultiRangeSlider from '@components/Form/Inputs/Range/components/MultiRangeSlider'
-import { debounce } from 'cx/util'
+import type { IFilterSelection } from '@components/Filters/SideBar/FilterSideBar'
 
 export type TFilterTypeProps = 'price' | 'rating' | 'distance' // Example types
 
 export interface IInputRangeProps {
+  id: string
   label?: string
   min?: number
   max?: number
   isOnModal?: boolean
-  onChange: (type: TFilterTypeProps, range: [number, number]) => void
-  selectedFilterValues: {
-    [key in TFilterTypeProps]?: { range: [number, number] }
-  }
+  onChange: (value: IFilterSelection) => void
+  selectedFilterValues: IFilterSelection[]
   filterType: TFilterTypeProps
 }
 
-const DEFAULT_MIN = 0
-const DEFAULT_MAX = 100
+const DEFAULT_MIN = 100
+const DEFAULT_MAX = 10000
 
-const InputRange = ({
+const InputRange: FC<IInputRangeProps> = ({
+  id,
   isOnModal,
   selectedFilterValues,
   onChange,
   label,
-  filterType,
   max = DEFAULT_MAX,
   min = DEFAULT_MIN
-}: IInputRangeProps) => {
-  const [range, setRange] = useState({ min, max })
+}) => {
+  const rangeSelect = (selectedFilterValues.find((f) => f.id === id)?.value as string[]) ?? [min, max]
+  const rangeSelectToNumber = rangeSelect.map((value) => Number(value)).filter((value) => !isNaN(value))
 
-  const invokeOnChange = useRef(debounce((min: number, max: number) => onChange(filterType, [min, max]), 300)).current
-
-  useEffect(() => {
-    invokeOnChange(range.min, range.max)
-  }, [range])
-
-  const [selectedMin, selectedMax] = selectedFilterValues[filterType]?.range ?? [min, max]
-
-  useEffect(() => {
-    if (selectedMin !== range.min || selectedMax !== range.max) {
-      setRange({ min: selectedMin ?? min, max: selectedMax ?? max })
-    }
-  }, [selectedMin, selectedMax, min, max])
-
-  const handleSetRange = useCallback((value: { min: number; max: number }) => {
-    setRange(value)
+  const handleSetRange = useCallback((value: string[]) => {
+    onChange({
+      value: value,
+      id: id
+    })
   }, [])
 
   return (
@@ -57,8 +46,8 @@ const InputRange = ({
         </div>
       )}
       <div className="flex flex-col relative items-center">
-        <RangeBoxNumbers className="mb-4" rangeValue={range} onChange={handleSetRange} min={min} max={max} />
-        <MultiRangeSlider onChange={handleSetRange} min={min} max={max} />
+        <RangeBoxNumbers className="mb-4" rangeValue={rangeSelectToNumber} onChange={handleSetRange} />
+        <MultiRangeSlider rangeValue={rangeSelectToNumber} onChange={handleSetRange} />
       </div>
     </div>
   )

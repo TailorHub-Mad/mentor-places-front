@@ -7,6 +7,19 @@ export const FILTER_SIDEBAR_MOCK: IFilterSideBarProps = {
   },
   filters: [
     {
+      title: 'Precio',
+      id: 'price',
+      filters: [
+        {
+          title: 'Menor a $100',
+          id: 'price_100',
+          type: EFilterType.PRICE,
+          value: 'price_100',
+          count: 15
+        }
+      ]
+    },
+    {
       title: 'Fecha de inicio',
       id: 'date',
       filters: [

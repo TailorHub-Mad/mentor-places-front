@@ -7,6 +7,7 @@ import { capitalizeFirstLetter } from '@utils/capitalizeFirstLetter'
 import type { IFilterSelection } from '@components/Filters/SideBar/FilterSideBar'
 
 interface IDateFilterProps {
+  id: string
   onChange: (value: IFilterSelection) => void
   filterSelected: IFilterSelection[]
 }

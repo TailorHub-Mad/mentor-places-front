@@ -2,6 +2,7 @@ import type { FC, ReactNode } from 'react'
 import { EFilterType, type IFilterSelection } from '@components/Filters/SideBar/FilterSideBar'
 import InputCheckbox from '@components/Form/Inputs/Checkbox/InputCheckbox'
 import DateFilter from '@components/Filters/DateFilter/DateFilter'
+import InputRange from '@components/Form/Inputs/Range/InputRange'
 
 interface IFilterItemProps {
   id: string
@@ -16,8 +17,8 @@ interface IFilterItemProps {
 const FilterItem: FC<IFilterItemProps> = ({ type, onChange, selected, id, title, count, filterSelected }) => {
   const typeRenderers: Record<EFilterType, () => ReactNode> = {
     [EFilterType.CHECKBOX]: () => <InputCheckbox id={id} label={title} checked={selected} onChange={onChange} count={count} />,
-    [EFilterType.DATE]: () => <DateFilter filterSelected={filterSelected} onChange={onChange} />,
-    [EFilterType.PRICE]: () => <div className="cl">To be implemented</div>
+    [EFilterType.DATE]: () => <DateFilter id={id} filterSelected={filterSelected} onChange={onChange} />,
+    [EFilterType.PRICE]: () => <InputRange id={id} selectedFilterValues={filterSelected} onChange={onChange} filterType={'price'} />
   }
 
   // Default to a fallback if the type doesn't match
