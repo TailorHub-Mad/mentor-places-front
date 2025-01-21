@@ -32,7 +32,7 @@ const InputCheckbox: FC<IInputCheckboxProps> = ({
   }
 
   return (
-    <div className={cx('filter-input-checkbox flex items-center justify-between', className)}>
+    <div className={cx('filter-input-checkbox flex flex-grow items-center justify-between', className)}>
       <div className="filter-input-checkbox__wrapper">
         <input className="hidden" id={id} type="checkbox" checked={checked} onChange={handleIsChecked} disabled={disabled} />
         <label

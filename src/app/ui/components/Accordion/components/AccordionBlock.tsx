@@ -14,16 +14,16 @@ const AccordionBlock: FC<PropsWithChildren<IAccordionBlockProps>> = ({ title, ch
     cx('h-auto overflow-hidden transition-all ease-in-out duration-500', isOpen ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-50')
 
   return (
-    <div key={`accordion-item-${index}-${title}`} className="relative">
+    <div className="accordion-block relative">
       <button
         onClick={() => onToggle(index)}
-        className="relative flex items-center w-full py-[8px] text-left transition-all ease-in border-t border-solid cursor-pointer border-BLACK/20 text-s font-s group justify-between"
+        className="relative flex items-center w-full py-[8px] text-left transition-all ease-in border-b border-solid cursor-pointer border-BLACK/20 text-s font-s group justify-between"
         data-collapse-target={`collapse-${index}`}
         aria-expanded={openItems.has(index)}
         aria-controls={`accordion-panel-${index}`}>
         {typeof title === 'string' ? <span className="">{title}</span> : title}
         <ChevronArrowDown
-          className={cx({
+          className={cx('ml-[11px]', {
             'rotate-180': openItems.has(index)
           })}
         />
@@ -34,7 +34,7 @@ const AccordionBlock: FC<PropsWithChildren<IAccordionBlockProps>> = ({ title, ch
         data-collapse={`collapse-${index}`}
         aria-hidden={!openItems.has(index)}
         className={getCollapseClass(openItems.has(index))}>
-        <div className="mb-4 mt-2">{children}</div>
+        <div className="ml-2">{children}</div>
       </div>
     </div>
   )

@@ -22,7 +22,7 @@ const FilterBlock: FC<IFilterBlockProps> = ({ title, filters, openItems, onToggl
       const isNested = Array.isArray(filter.value)
 
       if (!isNested) {
-        // Render a single filter item (e.g., checkbox)
+        // Render a single filter item
         return (
           <FilterItem
             key={filter.id}
