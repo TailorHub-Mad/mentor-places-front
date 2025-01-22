@@ -1,5 +1,4 @@
-import { useCallback, type FC } from 'react'
-import { RangeBoxNumbers } from '@components/Form/Inputs/Range/components/RangeBoxNumbers'
+import { type FC } from 'react'
 import MultiRangeSlider from '@components/Form/Inputs/Range/components/MultiRangeSlider'
 import type { IFilterSelection } from '@components/Filters/SideBar/FilterSideBar'
 
@@ -31,12 +30,12 @@ const InputRange: FC<IInputRangeProps> = ({
   const rangeSelect = (selectedFilterValues.find((f) => f.id === id)?.value as string[]) ?? [min, max]
   const rangeSelectToNumber = rangeSelect.map((value) => Number(value)).filter((value) => !isNaN(value))
 
-  const handleSetRange = useCallback((value: string[]) => {
+  const handleSetRange = (value: string[]) => {
     onChange({
       value: value,
       id: id
     })
-  }, [])
+  }
 
   return (
     <div className={`relative z-50 ${isOnModal ? 'max-w-full' : 'max-w-[269px]'}`}>
@@ -46,7 +45,7 @@ const InputRange: FC<IInputRangeProps> = ({
         </div>
       )}
       <div className="flex flex-col relative items-center">
-        <RangeBoxNumbers className="mb-4" rangeValue={rangeSelectToNumber} onChange={handleSetRange} />
+        {/*<RangeBoxNumbers className="mb-4" rangeValue={rangeSelectToNumber} onChange={handleSetRange} />*/}
         <MultiRangeSlider rangeValue={rangeSelectToNumber} onChange={handleSetRange} />
       </div>
     </div>

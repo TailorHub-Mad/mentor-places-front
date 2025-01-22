@@ -6,6 +6,9 @@ import { useEffect, useState } from 'react'
 const meta: Meta = {
   component: FilterSideBar,
   args: FILTER_SIDEBAR_MOCK,
+  parameters: {
+    locale: 'es'
+  },
   tags: ['autodocs']
 }
 
@@ -13,12 +16,6 @@ export default meta
 
 const Template: StoryFn<IFilterSideBarProps> = (args) => {
   const [selectedFilters, setSelectedFilters] = useState(args.filterSelected)
-
-  //TODO: Delete before finishing up
-  useEffect(() => {
-    console.log({ selectedFilters })
-  }, [selectedFilters])
-  //--------------------------------
 
   useEffect(() => {
     setSelectedFilters(args.filterSelected)
@@ -38,7 +35,11 @@ Default.args = {
 }
 
 const updateFilter = (value: IFilterSelection, selectedFilters: IFilterSelection[]): IFilterSelection[] => {
-  if (selectedFilters.some((f) => f.id === value.id)) {
+  if (value.id.includes('price')) {
+    return [...selectedFilters.filter((filter) => !filter.id.includes('price')), value]
+  }
+
+  if (selectedFilters.some((f) => f.id === value.id) && !value.id.includes('price')) {
     return selectedFilters.filter((filter) => filter.id !== value.id)
   }
 

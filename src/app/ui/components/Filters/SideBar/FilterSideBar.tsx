@@ -40,7 +40,7 @@ const FilterSideBar: FC<IFilterSideBarProps> = ({ filterSelected, filters, onCha
   const { openItems, handleAccordion } = useAccordionItems(defaultOpen)
 
   return (
-    <div class="filter-sidebar p-8 shadow rounded-[8px]">
+    <div className="filter-sidebar p-8 shadow rounded-[8px]">
       {filters.map((filter, index) => {
         const { filters, title, id } = filter
         return (
