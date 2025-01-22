@@ -15,7 +15,7 @@ const FilterSelectedControl: FC<IFilterSelectedControlProps> = ({ filterSelected
   }
 
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex flex-wrap items-center gap-3">
       {filterSelected.map((filter, index) => {
         if (!filter.value) return
         const transformValue = filterValueToString(filter.value)

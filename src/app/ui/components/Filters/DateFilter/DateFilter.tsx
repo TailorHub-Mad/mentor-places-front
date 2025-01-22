@@ -1,5 +1,5 @@
 import InputSelect from '@components/Form/Inputs/Select/InputSelect'
-import { type FC, useState } from 'react'
+import { type FC, useEffect, useState } from 'react'
 import { useLocale, useTranslations } from 'next-intl'
 import { getLocalizedYears } from '@utils/getLocalizedYears'
 import { getLocalizedMonths } from '@utils/getLocalizedMonths'
@@ -24,6 +24,16 @@ const DateFilter: FC<IDateFilterProps> = ({ onChange, filterSelected, id }) => {
     month: (filterSelected.find((filter) => filter.id === id)?.value[0] as string) || null,
     year: (filterSelected.find((filter) => filter.id === id)?.value[1] as string) || null
   })
+
+  // Sync selectedDate with filterSelected changes
+  useEffect(() => {
+    const matchingFilter = filterSelected.find((filter) => filter.id === id)
+    const updatedDate = {
+      month: (matchingFilter?.value[0] as string) || null,
+      year: (matchingFilter?.value[1] as string) || null
+    }
+    setSelectedDate(updatedDate)
+  }, [filterSelected, id])
 
   const handleDateChange = (type: 'month' | 'year', value: IFilterSelection) => {
     const currentValue = selectedDate[type]

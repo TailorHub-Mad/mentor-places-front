@@ -46,7 +46,7 @@ const InputRange: FC<IInputRangeProps> = ({
         </div>
       )}
       <div className="flex flex-col relative items-center">
-        <MultiRangeSlider rangeValue={rangeSelectToNumber} onChange={handleSetRange} />
+        <MultiRangeSlider range={rangeSelectToNumber} onChange={handleSetRange} />
       </div>
     </div>
   )

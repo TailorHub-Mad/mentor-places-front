@@ -3,36 +3,40 @@ import { cx } from '@utils/cx'
 import { RangeBoxNumbers } from '@components/Form/Inputs/Range/components/RangeBoxNumbers'
 
 interface IMultiRangeSliderProps {
-  rangeValue: number[]
+  range: number[]
   onChange: (value: string[]) => void
   className?: string
   min?: number
   max?: number
 }
 
-const MultiRangeSlider: FC<IMultiRangeSliderProps> = ({ rangeValue: rangeProp, onChange, min = 100, max = 10000 }) => {
-  const [rangeValue, setRangeValue] = useState<number[]>(rangeProp) // Local state
+const MultiRangeSlider: FC<IMultiRangeSliderProps> = ({ range, onChange, min = 100, max = 10000 }) => {
+  const [rangeValue, setRangeValue] = useState<number[]>(range) // Local state
   const minValRef = useRef<HTMLInputElement>(null)
   const maxValRef = useRef<HTMLInputElement>(null)
-  const range = useRef<HTMLDivElement>(null)
+  const rangeRef = useRef<HTMLDivElement>(null)
   const debounceRef = useRef<NodeJS.Timeout | null>(null) // Ref for debounce
 
-  // Convert to percentage
+  // Sync `rangeValue` state with `range` prop when `range` prop changes
+  useEffect(() => {
+    setRangeValue(range)
+  }, [range])
+
   const getPercent = useCallback(
     (value: number) => Math.round(((value - min) / (max - min)) * 100), // Base percentage on min/max props
     [min, max]
   )
 
   const updateSliderStyles = useCallback(() => {
-    if (minValRef.current && maxValRef.current && range.current) {
+    if (minValRef.current && maxValRef.current && rangeRef.current) {
       const minPercent = getPercent(rangeValue[0])
       const maxPercent = getPercent(rangeValue[1])
-      range.current.style.left = `${minPercent}%`
-      range.current.style.width = `${maxPercent - minPercent}%`
+      rangeRef.current.style.left = `${minPercent}%`
+      rangeRef.current.style.width = `${maxPercent - minPercent}%`
     }
   }, [rangeValue, getPercent])
 
-  // Update slider styles on rangeValue change
+  // Update slider styles on range change
   useEffect(() => {
     updateSliderStyles()
   }, [rangeValue, updateSliderStyles])
@@ -44,7 +48,7 @@ const MultiRangeSlider: FC<IMultiRangeSliderProps> = ({ rangeValue: rangeProp, o
         clearTimeout(debounceRef.current)
       }
       debounceRef.current = setTimeout(() => {
-        onChange(value.map(String)) // Propagate updated rangeValue to parent after debounce
+        onChange(value.map(String)) // Propagate updated range to parent after debounce
       }, 300)
     },
     [onChange]
@@ -90,7 +94,7 @@ const MultiRangeSlider: FC<IMultiRangeSliderProps> = ({ rangeValue: rangeProp, o
 
         <div className="slider">
           <div className="slider__track" />
-          <div ref={range} className="slider__range bg-BLUE " />
+          <div ref={rangeRef} className="slider__range bg-BLUE " />
         </div>
       </div>
     </div>
