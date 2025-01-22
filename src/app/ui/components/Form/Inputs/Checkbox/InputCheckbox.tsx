@@ -1,7 +1,8 @@
 import type { FC, ReactNode } from 'react'
 import { cx } from '@utils/cx'
 import CheckIcon from '@components/icons/CheckIcon'
-import type { IFilterSelection } from '@components/Filters/SideBar/FilterSideBar'
+
+import { type IFilterSelection } from '@interfaces/filterSidebar.interfaces'
 
 export interface IInputCheckboxProps {
   id: string

@@ -1,4 +1,4 @@
-import { EFilterType, type IFilterSelection, type IFilterSideBarProps } from '@components/Filters/SideBar/FilterSideBar'
+import { EFilterType, IFilterSelection, IFilterSideBarProps } from '@interfaces/filterSidebar.interfaces'
 
 export const FILTER_SIDEBAR_MOCK: IFilterSideBarProps = {
   filterSelected: [],
@@ -11,7 +11,7 @@ export const FILTER_SIDEBAR_MOCK: IFilterSideBarProps = {
       id: 'price',
       filters: [
         {
-          title: 'Menor a $100',
+          title: 'Precio anual en Euros',
           id: 'price_100',
           type: EFilterType.PRICE,
           value: 'price_100',
@@ -107,5 +107,8 @@ export const FILTER_SIDEBAR_MOCK: IFilterSideBarProps = {
         }
       ]
     }
-  ]
+  ],
+  onClear: function (): void {
+    console.log('onClear')
+  }
 }

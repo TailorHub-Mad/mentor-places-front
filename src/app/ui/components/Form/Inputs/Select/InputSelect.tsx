@@ -6,7 +6,8 @@ import { useOverflowDetection } from '@hooks/useOverflowDetection'
 import { useDropdownState } from '@hooks/useDropdownState'
 import OptionList from '@components/Form/Inputs/Select/components/OptionList/OptionList'
 import SelectButton from '@components/Form/Inputs/Select/components/SelectButton/SelectButton'
-import type { IFilterSelection } from '@components/Filters/SideBar/FilterSideBar'
+
+import { IFilterSelection } from '@interfaces/filterSidebar.interfaces'
 
 export interface ISelectOption {
   value: string

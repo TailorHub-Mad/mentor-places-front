@@ -2,42 +2,7 @@ import { type FC } from 'react'
 import useAccordionItems from '@components/Accordion/useAccordionItems'
 import FilterBlock from '@components/Filters/SideBar/components/FilterBlock'
 import FilterSelectedControl from '@components/Filters/SideBar/components/FilterSelectedControl'
-
-export enum EFilterType {
-  CHECKBOX = 'checkbox',
-  DATE = 'date',
-  PRICE = 'price'
-}
-
-interface IFilterValue {
-  value: string | string[] | IFilterItem[]
-}
-
-export interface IFilterItem extends IFilterValue {
-  title: string
-  id: string
-  type: EFilterType
-  count?: number
-}
-
-interface IFilterCategory {
-  title: string
-  id: string
-  filters: IFilterItem[]
-}
-
-export interface IFilterSelection extends IFilterValue {
-  id: string
-  label?: string
-}
-
-export interface IFilterSideBarProps {
-  filterSelected: IFilterSelection[]
-  onChange: (value: IFilterSelection) => void
-  onClear: () => void
-  filters: IFilterCategory[]
-  defaultOpen?: string
-}
+import type { IFilterSideBarProps } from '@interfaces/filterSidebar.interfaces'
 
 const FilterSideBar: FC<IFilterSideBarProps> = ({ filterSelected, filters, onChange, defaultOpen, onClear }) => {
   const { openItems, handleAccordion } = useAccordionItems(defaultOpen)

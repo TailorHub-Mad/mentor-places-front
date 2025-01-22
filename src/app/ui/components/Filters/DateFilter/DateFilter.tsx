@@ -4,7 +4,7 @@ import { useLocale, useTranslations } from 'next-intl'
 import { getLocalizedYears } from '@utils/getLocalizedYears'
 import { getLocalizedMonths } from '@utils/getLocalizedMonths'
 import { capitalizeFirstLetter } from '@utils/capitalizeFirstLetter'
-import type { IFilterSelection } from '@components/Filters/SideBar/FilterSideBar'
+import { type IFilterSelection } from '@interfaces/filterSidebar.interfaces'
 
 interface IDateFilterProps {
   id: string
@@ -58,7 +58,7 @@ const DateFilter: FC<IDateFilterProps> = ({ onChange, filterSelected, id }) => {
   }
 
   return (
-    <div className="data-filter flex items-center gap-4">
+    <div className="data-filter flex items-center gap-4 my-4">
       <InputSelect
         placeholder={t('filters.month')}
         options={months}

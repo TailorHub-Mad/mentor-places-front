@@ -76,7 +76,7 @@ const MultiRangeSlider: FC<IMultiRangeSliderProps> = ({ range, onChange, min = 1
   )
 
   return (
-    <div className="">
+    <div className="my-4">
       <RangeBoxNumbers className="mb-4" rangeValue={rangeValue} onChangeMin={handleMinChange} onChangeMax={handleMaxChange} />
       <div className="multi-range-slider w-full">
         <input

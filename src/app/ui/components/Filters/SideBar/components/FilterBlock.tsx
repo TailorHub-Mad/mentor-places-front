@@ -1,19 +1,8 @@
 import type { FC } from 'react'
-import type { IFilterItem, IFilterSelection } from '@components/Filters/SideBar/FilterSideBar'
 import FilterItem from '@components/Filters/SideBar/components/FilterItem'
 import AccordionBlock from '@components/Accordion/components/AccordionBlock'
 import InputCheckbox from '@components/Form/Inputs/Checkbox/InputCheckbox'
-
-interface IFilterBlockProps {
-  title: string
-  index: number | string
-  onToggle: (index: string) => void
-  openItems: Set<string>
-  filters: IFilterItem[]
-  filterSelected: IFilterSelection[]
-  onChange: (value: IFilterSelection) => void
-  id: string
-}
+import type { IFilterItem, IFilterSelection } from '@interfaces/filterSidebar.interfaces'
 
 // Type guard to check if a value is an array of IFilterItem
 const isIFilterItemArray = (value: unknown): value is IFilterItem[] => {
@@ -65,3 +54,14 @@ const FilterBlock: FC<IFilterBlockProps> = ({ title, filters, openItems, onToggl
 }
 
 export default FilterBlock
+
+interface IFilterBlockProps {
+  title: string
+  index: number | string
+  onToggle: (index: string) => void
+  openItems: Set<string>
+  filters: IFilterItem[]
+  filterSelected: IFilterSelection[]
+  onChange: (value: IFilterSelection) => void
+  id: string
+}

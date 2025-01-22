@@ -17,7 +17,9 @@ const AccordionBlock: FC<PropsWithChildren<IAccordionBlockProps>> = ({ title, ch
     <div className="accordion-block relative">
       <button
         onClick={() => onToggle(index)}
-        className="relative flex items-center w-full py-[8px] text-left transition-all ease-in border-b border-solid cursor-pointer border-BLACK/20 text-s font-s group justify-between"
+        className={cx('relative flex items-center w-full py-[8px] text-left cursor-pointer text-s font-s group justify-between', {
+          'transition-none border-b border-solid border-BLACK/20': !openItems.has(index)
+        })}
         data-collapse-target={`collapse-${index}`}
         aria-expanded={openItems.has(index)}
         aria-controls={`accordion-panel-${index}`}>

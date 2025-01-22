@@ -1,6 +1,7 @@
 import { type FC } from 'react'
 import MultiRangeSlider from '@components/Form/Inputs/Range/components/MultiRangeSlider'
-import type { IFilterSelection } from '@components/Filters/SideBar/FilterSideBar'
+
+import { type IFilterSelection } from '@interfaces/filterSidebar.interfaces'
 
 export type TFilterTypeProps = 'price' | 'rating' | 'distance' // Example types
 
