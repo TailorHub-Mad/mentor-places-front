@@ -33,8 +33,6 @@ const InputSelect: FC<ISelectInputProps> = ({ options, placeholder, onChange, di
     toggle()
   }
 
-  console.log({ valueSelected })
-
   return (
     <div className="select-input__wrapper">
       <SelectButton

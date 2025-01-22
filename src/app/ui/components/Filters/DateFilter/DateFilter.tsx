@@ -25,7 +25,6 @@ const DateFilter: FC<IDateFilterProps> = ({ onChange, filterSelected, id }) => {
     year: (filterSelected.find((filter) => filter.id === id)?.value[1] as string) || null
   })
 
-  // Dynamically handle date changes for both month and year
   const handleDateChange = (type: 'month' | 'year', value: IFilterSelection) => {
     const currentValue = selectedDate[type]
     const updatedValue = currentValue === value.id ? null : value.id // Unselect if the same value is selected

@@ -1,6 +1,7 @@
 import { type FC } from 'react'
 import useAccordionItems from '@components/Accordion/useAccordionItems'
 import FilterBlock from '@components/Filters/SideBar/components/FilterBlock'
+import FilterSelectedControl from '@components/Filters/SideBar/components/FilterSelectedControl'
 
 export enum EFilterType {
   CHECKBOX = 'checkbox',
@@ -41,6 +42,9 @@ const FilterSideBar: FC<IFilterSideBarProps> = ({ filterSelected, filters, onCha
 
   return (
     <div className="filter-sidebar p-8 shadow rounded-[8px]">
+      <div className="filter-sidebar__header">
+        <FilterSelectedControl filterSelected={filterSelected} onChange={onChange} />
+      </div>
       {filters.map((filter, index) => {
         const { filters, title, id } = filter
         return (

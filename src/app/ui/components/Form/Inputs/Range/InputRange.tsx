@@ -28,7 +28,8 @@ const InputRange: FC<IInputRangeProps> = ({
   min = DEFAULT_MIN
 }) => {
   const rangeSelect = (selectedFilterValues.find((f) => f.id === id)?.value as string[]) ?? [min, max]
-  const rangeSelectToNumber = rangeSelect.map((value) => Number(value)).filter((value) => !isNaN(value))
+  const rangeSelectToNumber =
+    rangeSelect.length > 1 ? rangeSelect?.map((value) => Number(value)).filter((value) => !isNaN(value)) : [min, max]
 
   const handleSetRange = (value: string[]) => {
     onChange({
@@ -45,7 +46,6 @@ const InputRange: FC<IInputRangeProps> = ({
         </div>
       )}
       <div className="flex flex-col relative items-center">
-        {/*<RangeBoxNumbers className="mb-4" rangeValue={rangeSelectToNumber} onChange={handleSetRange} />*/}
         <MultiRangeSlider rangeValue={rangeSelectToNumber} onChange={handleSetRange} />
       </div>
     </div>
