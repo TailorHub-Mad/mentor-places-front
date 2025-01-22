@@ -7,7 +7,7 @@ import { useDropdownState } from '@hooks/useDropdownState'
 import OptionList from '@components/Form/Inputs/Select/components/OptionList/OptionList'
 import SelectButton from '@components/Form/Inputs/Select/components/SelectButton/SelectButton'
 
-import { IFilterSelection } from '@interfaces/filterSidebar.interfaces'
+import type { IFilterSelection } from '@interfaces/filterSidebar.interfaces'
 
 export interface ISelectOption {
   value: string

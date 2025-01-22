@@ -1,4 +1,5 @@
-import { EFilterType, IFilterSelection, IFilterSideBarProps } from '@interfaces/filterSidebar.interfaces'
+import type { IFilterSelection, IFilterSideBarProps } from '@interfaces/filterSidebar.interfaces'
+import { EFilterType } from '@interfaces/filterSidebar.interfaces'
 
 export const FILTER_SIDEBAR_MOCK: IFilterSideBarProps = {
   filterSelected: [],

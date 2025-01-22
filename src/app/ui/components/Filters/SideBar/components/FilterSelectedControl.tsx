@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 import { useTranslations } from 'next-intl'
-import { IFilterItem, IFilterSelection } from '@interfaces/filterSidebar.interfaces'
+import type { IFilterItem, IFilterSelection } from '@interfaces/filterSidebar.interfaces'
 
 interface IFilterSelectedControlProps {
   filterSelected: IFilterSelection[]

@@ -2,7 +2,7 @@ import type { Meta, StoryFn } from '@storybook/react'
 import FilterSideBar from '@components/Filters/SideBar/FilterSideBar'
 import { FILTER_SIDEBAR_MOCK } from '@components/Filters/SideBar/mock'
 import { useEffect, useState } from 'react'
-import { IFilterSelection, IFilterSideBarProps } from '@interfaces/filterSidebar.interfaces'
+import type { IFilterSelection, IFilterSideBarProps } from '@interfaces/filterSidebar.interfaces'
 
 const meta: Meta = {
   component: FilterSideBar,

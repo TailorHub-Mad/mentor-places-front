@@ -8,7 +8,7 @@ const FilterSideBar: FC<IFilterSideBarProps> = ({ filterSelected, filters, onCha
   const { openItems, handleAccordion } = useAccordionItems(defaultOpen)
 
   return (
-    <div className="filter-sidebar p-8 shadow rounded-[8px]">
+    <div className="filter-sidebar px-4 py-8 md:px-8 shadow rounded-[8px]">
       <div className="filter-sidebar__header">
         {filterSelected.length > 0 && <FilterSelectedControl filterSelected={filterSelected} onChange={onChange} onClear={onClear} />}
       </div>
