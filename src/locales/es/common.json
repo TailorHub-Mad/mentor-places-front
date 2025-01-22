@@ -39,6 +39,8 @@
   },
   "filters": {
     "year": "Año",
-    "month": "Mes"
+    "month": "Mes",
+    "delete": "Borrar",
+    "selectedFilters": "Filtros seleccionados"
   }
 }

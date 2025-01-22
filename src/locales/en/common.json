@@ -39,6 +39,8 @@
   },
   "filters": {
     "year": "Year",
-    "month": "Month"
+    "month": "Month",
+    "delete": "Delete",
+    "selectedFilters": "Selected filters"
   }
 }

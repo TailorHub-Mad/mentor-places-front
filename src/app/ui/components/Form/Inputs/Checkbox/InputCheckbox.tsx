@@ -29,7 +29,7 @@ const InputCheckbox: FC<IInputCheckboxProps> = ({
   countClassName = ''
 }) => {
   const handleIsChecked = () => {
-    onChange({ id, value: id })
+    onChange({ id, value: id, label: typeof label === 'string' ? label : id })
   }
 
   return (

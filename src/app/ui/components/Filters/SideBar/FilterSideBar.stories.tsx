@@ -21,6 +21,11 @@ const Template: StoryFn<IFilterSideBarProps> = (args) => {
     setSelectedFilters(args.filterSelected)
   }, [args.filterSelected])
 
+  const handleOnClear = () => {
+    console.log('handleOnClear')
+    setSelectedFilters([])
+  }
+
   const handleChange = (value: IFilterSelection) => {
     const selectedFiltersUpdate = updateFilter(value, selectedFilters)
     setSelectedFilters(selectedFiltersUpdate)
@@ -28,7 +33,7 @@ const Template: StoryFn<IFilterSideBarProps> = (args) => {
     console.log({ selectedFiltersUpdate })
   }
 
-  return <FilterSideBar {...args} onChange={handleChange} filterSelected={selectedFilters} />
+  return <FilterSideBar {...args} onChange={handleChange} filterSelected={selectedFilters} onClear={handleOnClear} />
 }
 
 export const Default = Template.bind({})
