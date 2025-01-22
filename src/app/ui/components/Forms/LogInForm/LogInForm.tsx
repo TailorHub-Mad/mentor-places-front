@@ -5,7 +5,7 @@ import Input from '@components/Input/Input'
 import { type FC } from 'react'
 import { useForm } from 'react-hook-form'
 import { joiResolver } from '@hookform/resolvers/joi'
-import { loginValidation } from '../../../../lib/validations/auth.validations'
+import { useLogInValidation } from '../../../../lib/validations/auth.validations'
 import { useTranslations } from 'next-intl'
 import { checkIsFormCompleted } from '@utils/form.utils'
 import { Link } from '../../../../../navigation'
@@ -22,6 +22,7 @@ const defaultValues: ILogInRequest = {
 
 const LogInForm: FC = () => {
   const t = useTranslations('forms')
+  const loginValidation = useLogInValidation()
 
   const {
     register,

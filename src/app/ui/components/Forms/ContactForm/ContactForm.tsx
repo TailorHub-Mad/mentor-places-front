@@ -5,7 +5,7 @@ import Input from '@components/Input/Input'
 import { type FC } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { joiResolver } from '@hookform/resolvers/joi'
-import { contactValidation } from '../../../../lib/validations/contact.validations'
+import { useContactValidation } from '../../../../lib/validations/contact.validations'
 import { useTranslations } from 'next-intl'
 import { checkIsFormCompleted } from '@utils/form.utils'
 import CheckboxInput from '@components/Checkbox'
@@ -32,6 +32,7 @@ const defaultValues: IContactRequest = {
 
 const ContactForm: FC = () => {
   const t = useTranslations('forms')
+  const contactValidation = useContactValidation()
 
   const {
     register,

@@ -17,7 +17,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({ error, type, className
   const isPassword = type === 'password'
 
   return (
-    <>
+    <div>
       <div className={cx('relative', className)}>
         <input
           type={isPassword ? typeState : type}
@@ -39,7 +39,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({ error, type, className
         )}
       </div>
       {error && <p className="text-RED s">{error}</p>}
-    </>
+    </div>
   )
 })
 

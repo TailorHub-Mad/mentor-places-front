@@ -64,5 +64,11 @@
       "phone": "Teléfono",
       "country": "País"
     }
+  },
+  "validations": {
+    "required": "Este campo es obligatorio",
+    "min": "Este campo debe tener al menos {min} caracteres",
+    "phonePattern": "El número de teléfono debe contener solo dígitos",
+    "email": "Ingrese un correo electrónico válido"
   }
 }

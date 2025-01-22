@@ -5,7 +5,7 @@ import Input from '@components/Input/Input'
 import { type FC } from 'react'
 import { useForm } from 'react-hook-form'
 import { joiResolver } from '@hookform/resolvers/joi'
-import { signUpValidation } from '../../../../lib/validations/auth.validations'
+import { useSignUpValidation } from '../../../../lib/validations/auth.validations'
 import { useTranslations } from 'next-intl'
 import { checkIsFormCompleted } from '@utils/form.utils'
 import CheckboxInput from '@components/Checkbox'
@@ -29,6 +29,7 @@ const defaultValues: ISignUpRequest = {
 
 const SignUpForm: FC = () => {
   const t = useTranslations('forms')
+  const signUpValidation = useSignUpValidation()
 
   const {
     register,

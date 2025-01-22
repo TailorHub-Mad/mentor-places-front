@@ -1,18 +1,23 @@
 import Joi from 'joi'
+import useValidations from '@hooks/useValidations'
 
-const emailValidation = Joi.string().email({ tlds: false }).required()
+export const useLogInValidation = () => {
+  const { emailValidation, passwordValidation } = useValidations()
 
-const passwordValidation = Joi.string().required().min(6)
+  return Joi.object({
+    email: emailValidation,
+    password: passwordValidation
+  })
+}
 
-export const signUpValidation = Joi.object({
-  name: Joi.string().required().min(2),
-  surname: Joi.string().required().min(2),
-  email: emailValidation,
-  password: passwordValidation,
-  acceptPrivacyPolicy: Joi.boolean().required().truthy()
-})
+export const useSignUpValidation = () => {
+  const { acceptPrivacyPolicyValidation, emailValidation, requiredStringMinLenght2, passwordValidation } = useValidations()
 
-export const loginValidation = Joi.object({
-  email: emailValidation,
-  password: passwordValidation
-})
+  return Joi.object({
+    name: requiredStringMinLenght2,
+    surname: requiredStringMinLenght2,
+    email: emailValidation,
+    password: passwordValidation,
+    acceptPrivacyPolicy: acceptPrivacyPolicyValidation
+  })
+}

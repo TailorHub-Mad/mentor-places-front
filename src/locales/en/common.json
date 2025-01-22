@@ -64,5 +64,11 @@
       "phone": "Phone",
       "country": "Country"
     }
+  },
+  "validations": {
+    "required": "This field is required",
+    "min": "This field length must be at least {min} characters long",
+    "phonePattern": "Phone number must contain only digits",
+    "email": "Please enter a valid email"
   }
 }
