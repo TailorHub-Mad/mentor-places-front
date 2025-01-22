@@ -24,6 +24,8 @@ const Template: StoryFn<IFilterSideBarProps> = (args) => {
   const handleChange = (value: IFilterSelection) => {
     const selectedFiltersUpdate = updateFilter(value, selectedFilters)
     setSelectedFilters(selectedFiltersUpdate)
+
+    console.log({ selectedFiltersUpdate })
   }
 
   return <FilterSideBar {...args} onChange={handleChange} filterSelected={selectedFilters} />
@@ -37,6 +39,10 @@ Default.args = {
 const updateFilter = (value: IFilterSelection, selectedFilters: IFilterSelection[]): IFilterSelection[] => {
   if (value.id.includes('price')) {
     return [...selectedFilters.filter((filter) => !filter.id.includes('price')), value]
+  }
+
+  if (value.id.includes('date')) {
+    return [...selectedFilters.filter((filter) => !filter.id.includes('date')), value]
   }
 
   if (selectedFilters.some((f) => f.id === value.id) && !value.id.includes('price')) {

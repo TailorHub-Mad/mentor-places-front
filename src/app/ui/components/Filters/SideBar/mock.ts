@@ -25,7 +25,7 @@ export const FILTER_SIDEBAR_MOCK: IFilterSideBarProps = {
       filters: [
         {
           title: 'Mes',
-          id: 'month',
+          id: 'date',
           type: EFilterType.DATE,
           value: ['']
         }

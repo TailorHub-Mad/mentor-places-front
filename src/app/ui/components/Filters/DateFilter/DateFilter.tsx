@@ -1,5 +1,5 @@
 import InputSelect from '@components/Form/Inputs/Select/InputSelect'
-import { type FC } from 'react'
+import { type FC, useState } from 'react'
 import { useLocale, useTranslations } from 'next-intl'
 import { getLocalizedYears } from '@utils/getLocalizedYears'
 import { getLocalizedMonths } from '@utils/getLocalizedMonths'
@@ -12,7 +12,7 @@ interface IDateFilterProps {
   filterSelected: IFilterSelection[]
 }
 
-const DateFilter: FC<IDateFilterProps> = ({ onChange, filterSelected }) => {
+const DateFilter: FC<IDateFilterProps> = ({ onChange, filterSelected, id }) => {
   const locale = useLocale()
   const t = useTranslations()
 
@@ -20,26 +20,47 @@ const DateFilter: FC<IDateFilterProps> = ({ onChange, filterSelected }) => {
   const currentYear = new Date().getFullYear()
   const years = createSelectOption(getLocalizedYears(locale, currentYear, 5))
 
-  const handleInputChange = (value: IFilterSelection) => {
-    onChange(value)
-  }
+  const [selectedDate, setSelectedDate] = useState<{ month: string | null; year: string | null }>({
+    month: (filterSelected.find((filter) => filter.id === id)?.value[0] as string) || null,
+    year: (filterSelected.find((filter) => filter.id === id)?.value[1] as string) || null
+  })
 
-  const selectedMonth = filterSelected.find((month) => months.find((m) => m.value === month.id))
-  const selectedYear = filterSelected.find((year) => years.find((m) => m.value === year.id))
+  // Dynamically handle date changes for both month and year
+  const handleDateChange = (type: 'month' | 'year', value: IFilterSelection) => {
+    const currentValue = selectedDate[type]
+    const updatedValue = currentValue === value.id ? null : value.id // Unselect if the same value is selected
+
+    const updatedDate = { ...selectedDate, [type]: updatedValue }
+    setSelectedDate(updatedDate)
+
+    // Trigger onChange only when both month and year are selected
+    if (updatedDate.month && updatedDate.year) {
+      onChange({
+        id,
+        value: [updatedDate.month, updatedDate.year]
+      })
+    } else if (!updatedDate.month && !updatedDate.year) {
+      // Allow clearing by passing an empty array
+      onChange({
+        id,
+        value: []
+      })
+    }
+  }
 
   return (
     <div className="data-filter flex items-center gap-4">
       <InputSelect
         placeholder={t('filters.month')}
         options={months}
-        onChange={(value) => handleInputChange(value)}
-        valueSelected={selectedMonth}
+        onChange={(value) => handleDateChange('month', value)}
+        valueSelected={selectedDate.month as string}
       />
       <InputSelect
         placeholder={t('filters.year')}
         options={years}
-        onChange={(value) => handleInputChange(value)}
-        valueSelected={selectedYear}
+        onChange={(value) => handleDateChange('year', value)}
+        valueSelected={selectedDate.year as string}
       />
     </div>
   )
