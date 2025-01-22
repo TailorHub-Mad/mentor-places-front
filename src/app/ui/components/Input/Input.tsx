@@ -6,6 +6,7 @@ import { EColor } from '@theme/foundations/colors.foundations'
 import { cx } from '@utils/cx'
 import type { InputHTMLAttributes } from 'react'
 import { useState, forwardRef } from 'react'
+import { handleInput } from './input.validations'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   error?: string
@@ -17,9 +18,10 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({ error, type, className
   const isPassword = type === 'password'
 
   return (
-    <div>
-      <div className={cx('relative', className)}>
+    <div className={className}>
+      <div className={'relative'}>
         <input
+          onKeyDown={(e) => handleInput(e, type)}
           type={isPassword ? typeState : type}
           className={cx('w-full border-b pb-2 border-BLACK_10 outline-none placeholder-BLACK_60 s', { 'border-RED': error })}
           ref={ref}
