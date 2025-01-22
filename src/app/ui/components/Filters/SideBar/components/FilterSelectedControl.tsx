@@ -24,11 +24,13 @@ const FilterSelectedControl: FC<IFilterSelectedControlProps> = ({ filterSelected
 
   return (
     <div className="filter-selected-control">
-      <div className="filter-selected-control__header flex items-center justify-between">
-        <h3 className="mb-[20px] font-s text-s">{t('filters.selectedFilters')}</h3>
-        <button onClick={() => handleOnClear()} className="font-s text-s text-BLACK/40 underline underline-offset-4">
-          {t('filters.delete')}
-        </button>
+      <div className="filter-selected-control__header mb-[20px] flex items-center justify-between">
+        <h3 className="font-s text-s">{t('filters.selectedFilters')}</h3>
+        {filterSelected.length > 1 && (
+          <button onClick={() => handleOnClear()} className="font-s text-s text-BLACK/40 underline underline-offset-4">
+            {t('filters.delete')}
+          </button>
+        )}
       </div>
       {filterSelected.length > 0 && (
         <div className="filter-selected-control__filters flex flex-wrap items-center gap-3 mb-[15px]">

@@ -44,7 +44,7 @@ const InputCheckbox: FC<IInputCheckboxProps> = ({
           })}>
           <div
             className={cx(
-              'filter-input-checkbox__input w-[16px] h-[16px] rounded-none border border-gray-300 ring-offset-2 text-blue-500 flex items-center justify-center',
+              'filter-input-checkbox__input w-[16px] h-[16px] rounded-none border border-BLACK/40 ring-offset-2 text-blue-500 flex items-center justify-center',
               inputClassName,
               {
                 'bg-BLACK': checked
