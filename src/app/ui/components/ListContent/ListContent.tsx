@@ -19,7 +19,7 @@ const ListContent: FC<IListContentProps> = ({ list }) => {
         const isFirst = idx === 0
 
         return (
-          <div key={elm.title}>
+          <div key={`${elm.title}-${idx}`}>
             <p className="m" style={{ marginTop: isFirst ? 0 : 24 }}>
               {elm.title}
             </p>
