@@ -1,5 +1,6 @@
 import type { ISelectInputProps, ISelectOption } from '@components/Form/Inputs/Select/InputSelect'
 import { v4 as uuidv4 } from 'uuid'
+import type { IFilterSelection } from '@interfaces/filterSidebar.interfaces'
 
 export const createLongOptionMock = (): ISelectOption => ({
   value: uuidv4(),
@@ -14,7 +15,7 @@ export const createOptionMock = (): ISelectOption => ({
 export const SELECT_INPUT_MOCK: ISelectInputProps = {
   placeholder: 'Select an option',
   options: [createOptionMock(), createOptionMock(), createLongOptionMock()],
-  onChange: (value: string | undefined): void => console.info('InputSelect selected with value: ', value)
+  onChange: (value: IFilterSelection): void => console.info('InputSelect selected with value: ', value)
 }
 
 export const LONG_OPTIONS_LIST_MOCK: ISelectInputProps = {

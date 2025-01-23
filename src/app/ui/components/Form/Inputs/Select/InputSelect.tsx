@@ -19,7 +19,7 @@ export interface ISelectInputProps {
   options: ISelectOption[]
   onChange: (value: IFilterSelection) => void
   disabled?: boolean
-  valueSelected?: string | undefined
+  valueSelected?: string
 }
 
 const InputSelect: FC<ISelectInputProps> = ({ options, placeholder, onChange, disabled = false, valueSelected }) => {
@@ -34,6 +34,8 @@ const InputSelect: FC<ISelectInputProps> = ({ options, placeholder, onChange, di
     toggle()
   }
 
+  const labelValueSelected = options.find((option) => option.value === valueSelected)?.label || valueSelected
+
   return (
     <div className="select-input__wrapper">
       <SelectButton
@@ -42,7 +44,7 @@ const InputSelect: FC<ISelectInputProps> = ({ options, placeholder, onChange, di
         isOpen={isOpen}
         isOverflowing={isOverflowing}
         placeholder={placeholder}
-        label={valueSelected}
+        label={labelValueSelected}
         onClick={toggle}
         parentRef={parentRef}
         spanRef={spanRef}

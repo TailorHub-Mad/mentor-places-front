@@ -1,6 +1,8 @@
-import InputSelect from '@components/Form/Inputs/Select/InputSelect'
-import type { Meta, StoryObj } from '@storybook/react'
+import InputSelect, { type ISelectInputProps } from '@components/Form/Inputs/Select/InputSelect'
+import type { Meta, StoryFn } from '@storybook/react'
 import { LONG_OPTIONS_LIST_MOCK, SELECT_INPUT_MOCK } from '@components/Form/Inputs/Select/mock'
+import { useState } from 'react'
+import type { IFilterSelection } from '@interfaces/filterSidebar.interfaces'
 
 export default {
   component: InputSelect,
@@ -10,31 +12,36 @@ export default {
   tags: ['autodocs']
 } as Meta
 
-type Story = StoryObj<typeof InputSelect>
+const Template: StoryFn<ISelectInputProps> = (args) => {
+  const [valueSelected, setValueSelected] = useState(args.valueSelected || '')
 
-export const Default: Story = {
-  args: {
-    ...SELECT_INPUT_MOCK
+  const handleOnChange = (value: IFilterSelection) => {
+    if (value.id === valueSelected) return setValueSelected('')
+
+    setValueSelected(value.id)
   }
+
+  return <InputSelect {...args} valueSelected={valueSelected} onChange={handleOnChange} />
 }
 
-export const Disabled: Story = {
-  args: {
-    ...SELECT_INPUT_MOCK,
-    disabled: true
-  }
+export const Default = Template.bind({})
+Default.args = {
+  ...SELECT_INPUT_MOCK
 }
 
-export const LongOptionsList: Story = {
-  args: {
-    ...SELECT_INPUT_MOCK,
-    ...LONG_OPTIONS_LIST_MOCK
-  }
+export const Disabled = Template.bind({})
+Disabled.args = {
+  ...SELECT_INPUT_MOCK,
+  disabled: true
 }
 
-export const ValueSelected: Story = {
-  args: {
-    ...SELECT_INPUT_MOCK,
-    valueSelected: SELECT_INPUT_MOCK.options[0]
-  }
+export const LongOptionsList = Template.bind({})
+LongOptionsList.args = {
+  ...SELECT_INPUT_MOCK,
+  ...LONG_OPTIONS_LIST_MOCK
+}
+export const ValueSelected = Template.bind({})
+ValueSelected.args = {
+  ...SELECT_INPUT_MOCK,
+  valueSelected: SELECT_INPUT_MOCK.options[0].value
 }

@@ -47,12 +47,14 @@ const updateFilter = (newFilter: IFilterSelection, currentFilters: IFilterSelect
 
   const isFilterPresent = currentFilters.some((filter) => filter.id === newFilter.id)
 
+  const isNewFilterValue = newFilter.value?.length > 1 && newFilter.value[0] !== newFilter.value[1]
+
   if (newFilter.id.includes('price') && newFilter.value?.length > 1) {
     return [...filterByIdIncludes(currentFilters, 'price'), newFilter]
   }
 
   if (newFilter.id.includes('price') || newFilter.id.includes('date')) {
-    if (isFilterPresent && !newFilter.value) {
+    if (isFilterPresent && !isNewFilterValue) {
       return currentFilters.filter((filter) => filter.id !== newFilter.id)
     }
   }
