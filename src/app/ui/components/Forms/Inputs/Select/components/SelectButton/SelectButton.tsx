@@ -18,6 +18,7 @@ const SelectButton = forwardRef<HTMLButtonElement, SelectButtonProps>(
     return (
       <button
         ref={ref}
+        type="button"
         className={cx('px-[14px] py-[8px] bg-GRAY rounded-[8px] w-auto max-w-full flex items-center justify-between', {
           'cursor-not-allowed': disabled
         })}

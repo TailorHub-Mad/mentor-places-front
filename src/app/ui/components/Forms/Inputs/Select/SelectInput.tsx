@@ -17,10 +17,11 @@ export interface ISelectInputProps {
   options: ISelectOption[]
   onChange: (value: string | undefined) => void
   disabled?: boolean
+  defaultOption?: ISelectOption
 }
 
-const SelectInput: FC<ISelectInputProps> = ({ options, placeholder, onChange, disabled = false }) => {
-  const [valueSelected, setValueSelected] = useState<ISelectOption | undefined>(undefined)
+const SelectInput: FC<ISelectInputProps> = ({ options, placeholder, onChange, disabled = false, defaultOption }) => {
+  const [valueSelected, setValueSelected] = useState<ISelectOption | undefined>(defaultOption)
   const { isOverflowing, parentRef, spanRef } = useOverflowDetection(valueSelected?.value, placeholder)
   const { isOpen, toggle, targetRef, selectInputRef } = useDropdownState(disabled)
 

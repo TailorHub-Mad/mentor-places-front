@@ -36,5 +36,39 @@
     "showMore": "Show more",
     "showLess": "Show less",
     "BackToTop": "Back to top"
+  },
+  "forms": {
+    "signup": {
+      "title": "Create your account",
+      "button": "Register",
+      "checkbox": "I have read and accept the Privacy Policy",
+      "alreadyRegistered": "Already registered?",
+      "login": "Log in"
+    },
+    "login": {
+      "title": "Log in",
+      "button": "Log in",
+      "notRegisteredYet": "You don't have an account yet?",
+      "signUp": "Register"
+    },
+    "contact": {
+      "title": "Complete the form",
+      "button": "Send",
+      "checkbox": "I have read and accept the Privacy Policy"
+    },
+    "placeholders": {
+      "name": "Name",
+      "surname": "Surname",
+      "email": "Email",
+      "password": "Password",
+      "phone": "Phone",
+      "country": "Country"
+    }
+  },
+  "validations": {
+    "required": "This field is required",
+    "min": "This field length must be at least {min} characters long",
+    "phonePattern": "Phone number must contain only digits",
+    "email": "Please enter a valid email"
   }
 }
