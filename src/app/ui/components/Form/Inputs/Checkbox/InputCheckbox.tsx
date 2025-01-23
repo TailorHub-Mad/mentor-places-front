@@ -1,10 +1,11 @@
 import type { FC, ReactNode } from 'react'
 import { cx } from '@utils/cx'
-import CheckIcon from '@components/icons/CheckIcon'
+import type { ICheckboxInputProps } from '@components/Checkbox'
+import CheckboxInput from '@components/Checkbox'
 
 import { type IFilterSelection } from '@interfaces/filterSidebar.interfaces'
 
-export interface IInputCheckboxProps {
+export interface IInputCheckboxProps extends ICheckboxInputProps {
   id: string
   label: string | ReactNode // Support string or custom JSX for the label
   checked: boolean
@@ -34,28 +35,16 @@ const InputCheckbox: FC<IInputCheckboxProps> = ({
   }
 
   return (
-    <div className={cx('filter-input-checkbox flex flex-grow items-center justify-between', className)}>
-      <div className="filter-input-checkbox__wrapper">
-        <input className="hidden" id={id} type="checkbox" checked={checked} onChange={handleIsChecked} disabled={disabled} />
-        <label
-          htmlFor={id}
-          className={cx('filter-input-checkbox__label flex items-center gap-3', {
-            'opacity-40 pointer-events-none': disabled,
-            'cursor-pointer': !disabled
-          })}>
-          <div
-            className={cx(
-              'filter-input-checkbox__input w-[16px] h-[16px] rounded-none border border-BLACK/40 ring-offset-2 text-blue-500 flex items-center justify-center',
-              inputClassName,
-              {
-                'bg-BLACK': checked
-              }
-            )}>
-            <CheckIcon />
-          </div>
-          <span className={labelClassName}>{label}</span>
-        </label>
-      </div>
+    <div className={cx('filter-input-checkbox flex items-center justify-between', className)}>
+      <CheckboxInput
+        id={id}
+        label={label}
+        checked={checked}
+        onChange={handleIsChecked}
+        disabled={disabled}
+        inputClassName={inputClassName}
+        labelClassName={labelClassName}
+      />
       {count && (
         <div
           className={cx('filter-input-checkbox__count font-s text-s', countClassName, {

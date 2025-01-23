@@ -26,6 +26,8 @@ const InputSelect: FC<ISelectInputProps> = ({ options, placeholder, onChange, di
   const { isOverflowing, parentRef, spanRef } = useOverflowDetection(valueSelected as string, placeholder)
   const { isOpen, toggle, targetRef, selectInputRef } = useDropdownState(disabled)
 
+  console.log({ valueSelected })
+
   const handleSetInputValue = (option: ISelectOption) => {
     onChange({
       value: option.value,
