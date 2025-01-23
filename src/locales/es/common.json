@@ -76,5 +76,11 @@
     "min": "Este campo debe tener al menos {min} caracteres",
     "phonePattern": "El número de teléfono debe contener solo dígitos",
     "email": "Ingrese un correo electrónico válido"
+  },
+  "personalData": {
+    "name": "Nombre",
+    "surname": "Apellido",
+    "email": "Email",
+    "phone": "Teléfono"
   }
 }

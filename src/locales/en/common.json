@@ -76,5 +76,11 @@
     "min": "This field length must be at least {min} characters long",
     "phonePattern": "Phone number must contain only digits",
     "email": "Please enter a valid email"
+  },
+  "personalData": {
+    "name": "Name",
+    "surname": "Surname",
+    "email": "Email",
+    "phone": "Phone"
   }
 }
