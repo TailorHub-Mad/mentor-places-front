@@ -37,6 +37,12 @@
     "showLess": "Ver menos",
     "BackToTop": "Volver arriba"
   },
+  "filters": {
+    "year": "Año",
+    "month": "Mes",
+    "delete": "Borrar",
+    "selectedFilters": "Filtros seleccionados"
+  },
   "forms": {
     "signup": {
       "title": "Crea tu cuenta",

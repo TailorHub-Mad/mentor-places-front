@@ -1,18 +1,24 @@
-import type { ChangeEvent, FC } from 'react'
+import type { FC, ReactNode } from 'react'
 import { cx } from '@utils/cx'
 import type { ICheckboxInputProps } from '@components/Checkbox'
 import CheckboxInput from '@components/Checkbox'
 
-export interface IFilterInputCheckboxProps extends ICheckboxInputProps {
+import { type IFilterSelection } from '@interfaces/filterSidebar.interfaces'
+
+export interface IInputCheckboxProps extends ICheckboxInputProps {
+  id: string
+  label: string | ReactNode // Support string or custom JSX for the label
   checked: boolean
-  onChange: (id: string, checked: boolean) => void
+  onChange: (value: IFilterSelection) => void
   count?: number
   disabled?: boolean
   className?: string
+  inputClassName?: string
+  labelClassName?: string
   countClassName?: string
 }
 
-const FilterInputCheckbox: FC<IFilterInputCheckboxProps> = ({
+const InputCheckbox: FC<IInputCheckboxProps> = ({
   id,
   label,
   checked,
@@ -24,8 +30,8 @@ const FilterInputCheckbox: FC<IFilterInputCheckboxProps> = ({
   labelClassName = '',
   countClassName = ''
 }) => {
-  const handleIsChecked = (event: ChangeEvent<HTMLInputElement>) => {
-    onChange(id, event.target.checked)
+  const handleIsChecked = () => {
+    onChange({ id, value: id, label: typeof label === 'string' ? label : id })
   }
 
   return (
@@ -51,4 +57,4 @@ const FilterInputCheckbox: FC<IFilterInputCheckboxProps> = ({
   )
 }
 
-export default FilterInputCheckbox
+export default InputCheckbox

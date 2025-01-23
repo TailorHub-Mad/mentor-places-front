@@ -26,7 +26,7 @@ const SelectButton = forwardRef<HTMLButtonElement, SelectButtonProps>(
         <div ref={parentRef} className="select-input__label-wrapper overflow-hidden max-w-full relative">
           <span
             ref={spanRef}
-            className={cx('mr-4 text-nowrap', {
+            className={cx('mr-4 text-nowrap capitalize', {
               'opacity-40': disabled
             })}>
             {label || placeholder}

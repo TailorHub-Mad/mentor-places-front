@@ -9,8 +9,8 @@ import { useContactValidation } from '../../../../lib/validations/contact.valida
 import { useTranslations } from 'next-intl'
 import { checkIsFormCompleted } from '@utils/form.utils'
 import CheckboxInput from '@components/Checkbox'
-import SelectInput from '../Inputs/Select/SelectInput'
 import phoneCodes from '../../../../lib/constants/phoneCodes.json'
+import InputSelect, { type ISelectOption } from '@components/Form/Inputs/Select/InputSelect'
 
 export interface IContactRequest {
   name: string
@@ -68,15 +68,8 @@ const ContactForm: FC<IContactFormProps> = ({ onSubmit }) => {
           <Controller
             name="prefix"
             control={control}
-            render={({ field: { onChange } }) => (
-              <SelectInput
-                options={phoneCodes}
-                onChange={onChange}
-                defaultOption={{
-                  label: '+34',
-                  value: '+34'
-                }}
-              />
+            render={({ field: { onChange, value } }) => (
+              <InputSelect options={phoneCodes} onChange={onChange} valueSelected={(value as unknown as ISelectOption)?.value || '+34'} />
             )}
           />
           <Input
