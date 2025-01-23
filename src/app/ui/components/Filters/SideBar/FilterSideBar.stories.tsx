@@ -42,18 +42,28 @@ Default.args = {
   ...FILTER_SIDEBAR_MOCK
 }
 
-const updateFilter = (value: IFilterSelection, selectedFilters: IFilterSelection[]): IFilterSelection[] => {
-  if (value.id.includes('price')) {
-    return [...selectedFilters.filter((filter) => !filter.id.includes('price')), value]
+const updateFilter = (newFilter: IFilterSelection, currentFilters: IFilterSelection[]): IFilterSelection[] => {
+  const filterByIdIncludes = (filters: IFilterSelection[], idPart: string) => filters.filter((filter) => !filter.id.includes(idPart))
+
+  const isFilterPresent = currentFilters.some((filter) => filter.id === newFilter.id)
+
+  if (newFilter.id.includes('price') && newFilter.value?.length > 1) {
+    return [...filterByIdIncludes(currentFilters, 'price'), newFilter]
   }
 
-  if (value.id.includes('date')) {
-    return [...selectedFilters.filter((filter) => !filter.id.includes('date')), value]
+  if (newFilter.id.includes('price') || newFilter.id.includes('date')) {
+    if (isFilterPresent && !newFilter.value) {
+      return currentFilters.filter((filter) => filter.id !== newFilter.id)
+    }
   }
 
-  if (selectedFilters.some((f) => f.id === value.id) && !value.id.includes('price')) {
-    return selectedFilters.filter((filter) => filter.id !== value.id)
+  if (newFilter.id.includes('date')) {
+    return [...filterByIdIncludes(currentFilters, 'date'), newFilter]
   }
 
-  return [...selectedFilters, value]
+  if (isFilterPresent) {
+    return currentFilters.filter((filter) => filter.id !== newFilter.id)
+  }
+
+  return [...currentFilters, newFilter]
 }
