@@ -1,4 +1,4 @@
-import type { IInputRangeProps } from '@components/Form/Inputs/Range/CustomInputRange'
+import type { IInputRangeProps } from '@components/Form/Inputs/Range/InputRange'
 
 export const RANGE_INPUT_MOCK: IInputRangeProps = {
   max: 10000,

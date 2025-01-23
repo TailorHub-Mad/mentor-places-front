@@ -18,6 +18,7 @@ const SelectButton = forwardRef<HTMLButtonElement, SelectButtonProps>(
     return (
       <button
         ref={ref}
+        type="button"
         className={cx('px-[14px] py-[8px] bg-GRAY rounded-[8px] w-auto max-w-full flex items-center justify-between', {
           'cursor-not-allowed': disabled
         })}
@@ -25,7 +26,7 @@ const SelectButton = forwardRef<HTMLButtonElement, SelectButtonProps>(
         <div ref={parentRef} className="select-input__label-wrapper overflow-hidden max-w-full relative">
           <span
             ref={spanRef}
-            className={cx('mr-4 text-nowrap', {
+            className={cx('mr-4 text-nowrap capitalize', {
               'opacity-40': disabled
             })}>
             {label || placeholder}

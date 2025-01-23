@@ -1,87 +1,101 @@
 import { type FC, useCallback, useEffect, useRef, useState } from 'react'
 import { cx } from '@utils/cx'
+import { RangeBoxNumbers } from '@components/Form/Inputs/Range/components/RangeBoxNumbers'
 
 interface IMultiRangeSliderProps {
-  min: number
-  max: number
-  onChange: (value: { min: number; max: number }) => void
+  range: number[]
+  onChange: (value: string[]) => void
   className?: string
+  min?: number
+  max?: number
 }
 
-const MultiRangeSlider: FC<IMultiRangeSliderProps> = ({ min, max, onChange }) => {
-  const [minVal, setMinVal] = useState(min)
-  const [maxVal, setMaxVal] = useState(max)
+const MultiRangeSlider: FC<IMultiRangeSliderProps> = ({ range, onChange, min = 100, max = 10000 }) => {
+  const [rangeValue, setRangeValue] = useState<number[]>(range) // Local state
   const minValRef = useRef<HTMLInputElement>(null)
   const maxValRef = useRef<HTMLInputElement>(null)
-  const range = useRef<HTMLDivElement>(null)
+  const rangeRef = useRef<HTMLDivElement>(null)
+  const debounceRef = useRef<NodeJS.Timeout | null>(null) // Ref for debounce
 
-  // Convert to percentage
-  const getPercent = useCallback((value: number) => Math.round(((value - min) / (max - min)) * 100), [min, max])
-
-  // Set width of the range to decrease from the left side
+  // Sync `rangeValue` state with `range` prop when `range` prop changes
   useEffect(() => {
-    if (maxValRef.current) {
-      const minPercent = getPercent(minVal)
-      const maxPercent = getPercent(+maxValRef.current.value)
+    setRangeValue(range)
+  }, [range])
 
-      if (range.current) {
-        range.current.style.left = `${minPercent}%`
-        range.current.style.width = `${maxPercent - minPercent}%`
-      }
+  const getPercent = useCallback(
+    (value: number) => Math.round(((value - min) / (max - min)) * 100), // Base percentage on min/max props
+    [min, max]
+  )
+
+  const updateSliderStyles = useCallback(() => {
+    if (minValRef.current && maxValRef.current && rangeRef.current) {
+      const minPercent = getPercent(rangeValue[0])
+      const maxPercent = getPercent(rangeValue[1])
+      rangeRef.current.style.left = `${minPercent}%`
+      rangeRef.current.style.width = `${maxPercent - minPercent}%`
     }
-  }, [minVal, maxVal, getPercent])
+  }, [rangeValue, getPercent])
 
-  // Set width of the range to decrease from the right side
+  // Update slider styles on range change
   useEffect(() => {
-    if (minValRef.current) {
-      const minPercent = getPercent(+minValRef.current)
-      const maxPercent = getPercent(maxVal)
+    updateSliderStyles()
+  }, [rangeValue, updateSliderStyles])
 
-      if (range.current) {
-        range.current.style.width = `${maxPercent - minPercent}%`
+  // Debounce the onChange callback
+  const debouncedOnChange = useCallback(
+    (value: number[]) => {
+      if (debounceRef.current) {
+        clearTimeout(debounceRef.current)
       }
-    }
-  }, [maxVal, getPercent])
+      debounceRef.current = setTimeout(() => {
+        onChange(value.map(String)) // Propagate updated range to parent after debounce
+      }, 300)
+    },
+    [onChange]
+  )
 
-  // Get min and max values when their state changes
-  useEffect(() => {
-    onChange({ min: minVal, max: maxVal })
-  }, [minVal, maxVal, onChange])
+  // Handle slider changes
+  const handleMinChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const newValue = Math.min(+event.target.value, rangeValue[1] - 1) // Ensure min <= max
+      const updatedValue = [newValue, rangeValue[1]]
+      setRangeValue(updatedValue)
+      debouncedOnChange(updatedValue) // Call debounced onChange
+    },
+    [rangeValue, debouncedOnChange]
+  )
+
+  const handleMaxChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const newValue = Math.max(+event.target.value, rangeValue[0] + 1) // Ensure max >= min
+      const updatedValue = [rangeValue[0], newValue]
+      setRangeValue(updatedValue)
+      debouncedOnChange(updatedValue) // Call debounced onChange
+    },
+    [rangeValue, debouncedOnChange]
+  )
 
   return (
-    <div className="multi-range-slider w-full">
-      <input
-        type="range"
-        min={min}
-        max={max}
-        value={minVal}
-        ref={minValRef}
-        onChange={(event) => {
-          const value = Math.min(+event.target.value, maxVal - 1)
-          setMinVal(value)
-          event.target.value = value.toString()
-        }}
-        className={cx('thumb z-[3]', {
-          'z-[5]': minVal > max - 100
-        })}
-      />
-      <input
-        type="range"
-        min={min}
-        max={max}
-        value={maxVal}
-        ref={maxValRef}
-        onChange={(event) => {
-          const value = Math.max(+event.target.value, minVal + 1)
-          setMaxVal(value)
-          event.target.value = value.toString()
-        }}
-        className="thumb z-[4]"
-      />
+    <div className="my-4">
+      <RangeBoxNumbers className="mb-4" rangeValue={rangeValue} onChangeMin={handleMinChange} onChangeMax={handleMaxChange} />
+      <div className="multi-range-slider w-full">
+        <input
+          type="range"
+          min={min}
+          max={max}
+          value={rangeValue[0]}
+          ref={minValRef}
+          onChange={handleMinChange}
+          className={cx('thumb z-[3]', {
+            'z-[5]': rangeValue[0] > max - 100
+          })}
+        />
+        <input type="range" min={min} max={max} value={rangeValue[1]} ref={maxValRef} onChange={handleMaxChange} className="thumb z-[4]" />
 
-      <div className="slider">
-        <div className="slider__track" />
-        <div ref={range} className="slider__range bg-BLUE " />
+        <div className="slider">
+          <div className="slider__track" />
+          <div ref={rangeRef} className="slider__range bg-BLUE " />
+        </div>
       </div>
     </div>
   )

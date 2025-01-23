@@ -1,6 +1,9 @@
 export enum EColor {
   WHITE = '#FFFFFF',
   BLACK = '#000000',
+  BLACK_60 = '#00000099',
+  BLACK_40 = '#00000066',
+  BLACK_10 = '#0000001A',
   GRAY = '#F4F4F4',
   YELLOW = '#FFEEBC',
   YELLOW_80 = '#FFEEBCCC',
@@ -13,5 +16,6 @@ export enum EColor {
   BLUE_LIGHT_60 = '#C1D4FF99',
   BLUE = '#3470F2',
   LILAC = '#CEBCFA',
-  EGGPLANT = '#64003B'
+  EGGPLANT = '#64003B',
+  RED = '#FF0000'
 }

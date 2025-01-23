@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 import { cx } from '@utils/cx'
-import type { ISelectOption } from '@components/Forms/Inputs/Select/SelectInput'
+import type { ISelectOption } from '@components/Form/Inputs/Select/InputSelect'
 
 interface OptionListProps {
   options: ISelectOption[]

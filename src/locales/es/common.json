@@ -36,5 +36,45 @@
     "showMore": "Ver más",
     "showLess": "Ver menos",
     "BackToTop": "Volver arriba"
+  },
+  "filters": {
+    "year": "Año",
+    "month": "Mes",
+    "delete": "Borrar",
+    "selectedFilters": "Filtros seleccionados"
+  },
+  "forms": {
+    "signup": {
+      "title": "Crea tu cuenta",
+      "button": "Regístrate",
+      "checkbox": "He leído y acepto la Política de Privacidad",
+      "alreadyRegistered": " ¿Ya tienes cuenta?",
+      "login": "Inicia sesión"
+    },
+    "login": {
+      "title": "Iniciar sesión",
+      "button": "Iniciar sesión",
+      "notRegisteredYet": "¿No tienes cuenta?",
+      "signUp": "Regístrate"
+    },
+    "contact": {
+      "title": "Completa el formulario",
+      "button": "Enviar",
+      "checkbox": "He leído y acepto la Política de Privacidad"
+    },
+    "placeholders": {
+      "name": "Nombre",
+      "surname": "Apellido",
+      "email": "Email",
+      "password": "Contraseña",
+      "phone": "Teléfono",
+      "country": "País"
+    }
+  },
+  "validations": {
+    "required": "Este campo es obligatorio",
+    "min": "Este campo debe tener al menos {min} caracteres",
+    "phonePattern": "El número de teléfono debe contener solo dígitos",
+    "email": "Ingrese un correo electrónico válido"
   }
 }
