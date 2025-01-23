@@ -1,4 +1,4 @@
-import type { FC, PropsWithChildren, ReactNode } from 'react'
+import type { FC, ReactNode } from 'react'
 import useAccordionItems from '@components/Accordion/useAccordionItems'
 import AccordionBlock from '@components/Accordion/components/AccordionBlock'
 
@@ -13,7 +13,7 @@ export interface IAccordionItemsProps {
   defaultOpen?: string
 }
 
-const AccordionItems: FC<PropsWithChildren<IAccordionItemsProps>> = ({ accordionItems, defaultOpen }) => {
+const AccordionItems: FC<IAccordionItemsProps> = ({ accordionItems, defaultOpen }) => {
   const { openItems, handleAccordion } = useAccordionItems(defaultOpen)
 
   return (
