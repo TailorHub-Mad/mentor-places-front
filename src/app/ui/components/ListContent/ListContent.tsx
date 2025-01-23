@@ -1,7 +1,6 @@
 'use client'
 
-import Button from '@components/Button/Button'
-import { useTranslations } from 'next-intl'
+import ShowMoreButton from '@components/ShowMoreButton'
 import { useState, type FC } from 'react'
 
 interface IListContentProps {
@@ -11,8 +10,6 @@ interface IListContentProps {
 const INITIALLY_SHOWN = 3
 
 const ListContent: FC<IListContentProps> = ({ list }) => {
-  const t = useTranslations()
-
   const [isExpanded, setIsExpanded] = useState(false)
 
   return (
@@ -31,11 +28,7 @@ const ListContent: FC<IListContentProps> = ({ list }) => {
           </div>
         )
       })}
-      {list.length > INITIALLY_SHOWN && (
-        <Button variant="text" onClick={() => setIsExpanded(!isExpanded)} className="mt-4 text-[#666666] underline">
-          {isExpanded ? t('actions.showLess') : t('actions.showMore')}
-        </Button>
-      )}
+      {list.length > INITIALLY_SHOWN && <ShowMoreButton isExpanded={isExpanded} setIsExpanded={setIsExpanded} />}
     </>
   )
 }
