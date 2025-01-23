@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import ContactForm from './ContactForm'
+import ContactForm, { IContactRequest } from './ContactForm'
 
 const meta: Meta<typeof ContactForm> = {
   component: ContactForm,
@@ -13,5 +13,9 @@ export default meta
 type Story = StoryObj<typeof ContactForm>
 
 export const Default: Story = {
-  args: {}
+  args: {
+    onSubmit: (data: IContactRequest) => {
+      console.log('onSubmit ContactForm =>', { data })
+    }
+  }
 }

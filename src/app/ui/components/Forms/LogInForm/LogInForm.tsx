@@ -20,7 +20,11 @@ const defaultValues: ILogInRequest = {
   password: ''
 }
 
-const LogInForm: FC = () => {
+interface ILoginFormProps {
+  onSubmit: (data: ILogInRequest) => void
+}
+
+const LogInForm: FC<ILoginFormProps> = ({ onSubmit }) => {
   const t = useTranslations('forms')
   const loginValidation = useLogInValidation()
 
@@ -33,14 +37,6 @@ const LogInForm: FC = () => {
     defaultValues,
     resolver: joiResolver(loginValidation)
   })
-
-  const onSubmit = async (data: ILogInRequest): Promise<void> => {
-    try {
-      console.log('LogInForm =>', data)
-    } catch (err) {
-      console.error('LogInForm - onSubmit', err)
-    }
-  }
 
   return (
     <div>

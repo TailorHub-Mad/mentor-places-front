@@ -27,7 +27,11 @@ const defaultValues: ISignUpRequest = {
   acceptPrivacyPolicy: true
 }
 
-const SignUpForm: FC = () => {
+interface ISignUpFormProps {
+  onSubmit: (data: ISignUpRequest) => void
+}
+
+const SignUpForm: FC<ISignUpFormProps> = ({ onSubmit }) => {
   const t = useTranslations('forms')
   const signUpValidation = useSignUpValidation()
 
@@ -41,14 +45,6 @@ const SignUpForm: FC = () => {
     defaultValues,
     resolver: joiResolver(signUpValidation)
   })
-
-  const onSubmit = async (data: ISignUpRequest): Promise<void> => {
-    try {
-      console.log('SignUpForm =>', data)
-    } catch (err) {
-      console.error('SignUpForm - onSubmit', err)
-    }
-  }
 
   const { acceptPrivacyPolicy } = getValues()
 

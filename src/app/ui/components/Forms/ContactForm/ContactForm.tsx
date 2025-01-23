@@ -31,10 +31,10 @@ const defaultValues: IContactRequest = {
 }
 
 interface IContactFormProps {
-  onFormSubmit?: (data: IContactRequest) => void
+  onSubmit: (data: IContactRequest) => void
 }
 
-const ContactForm: FC<IContactFormProps> = ({ onFormSubmit }) => {
+const ContactForm: FC<IContactFormProps> = ({ onSubmit }) => {
   const t = useTranslations('forms')
   const contactValidation = useContactValidation()
 
@@ -49,15 +49,6 @@ const ContactForm: FC<IContactFormProps> = ({ onFormSubmit }) => {
     defaultValues,
     resolver: joiResolver(contactValidation)
   })
-
-  const onSubmit = async (data: IContactRequest): Promise<void> => {
-    try {
-      console.log('ContactForm =>', data)
-      if (onFormSubmit) onFormSubmit(data)
-    } catch (err) {
-      console.error('ContactForm - onSubmit', err)
-    }
-  }
 
   const { acceptPrivacyPolicy } = getValues()
 
