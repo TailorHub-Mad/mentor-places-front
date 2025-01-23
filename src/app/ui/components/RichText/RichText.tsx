@@ -1,7 +1,6 @@
 'use client'
 
-import Button from '@components/Button/Button'
-import { useTranslations } from 'next-intl'
+import ShowMoreButton from '@components/ShowMoreButton'
 import { useEffect, useRef, useState, type FC } from 'react'
 
 const RICH_TEXT_MB = 16
@@ -15,8 +14,6 @@ interface IRichTextProps {
 
 // More styles can be added on 'rich-text.css'
 const RichText: FC<IRichTextProps> = ({ content, maxLines, width, disableTruncate }) => {
-  const t = useTranslations()
-
   const [isExpanded, setIsExpanded] = useState(false)
   const [isTruncated, setIsTruncated] = useState(false)
   const [lineHeight, setLineHeight] = useState(0)
@@ -50,11 +47,7 @@ const RichText: FC<IRichTextProps> = ({ content, maxLines, width, disableTruncat
           maxHeight: isExpanded ? 'none' : `${maxLines * (lineHeight + RICH_TEXT_MB)}px`
         }}
       />
-      {isTruncated && !disableTruncate && (
-        <Button variant="text" onClick={() => setIsExpanded(!isExpanded)} className="mt-4 text-[#666666] underline">
-          {isExpanded ? t('showLess') : t('showMore')}
-        </Button>
-      )}
+      {isTruncated && !disableTruncate && <ShowMoreButton isExpanded={isExpanded} setIsExpanded={setIsExpanded} />}
     </div>
   )
 }
