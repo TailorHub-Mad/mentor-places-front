@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import ContactForm, { IContactRequest } from './ContactForm'
+import type { IContactRequest } from './ContactForm'
+import ContactForm from './ContactForm'
 
 const meta: Meta<typeof ContactForm> = {
   component: ContactForm,
