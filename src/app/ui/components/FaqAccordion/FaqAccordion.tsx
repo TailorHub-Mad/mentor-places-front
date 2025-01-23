@@ -1,6 +1,7 @@
 import type { FC } from 'react'
 import AccordionBlock from '@components/Accordion/components/AccordionBlock'
 import useAccordionItems from '@components/Accordion/useAccordionItems'
+import RichText from '@components/RichText/RichText'
 
 export interface IFaqAccordionProps {
   items: {
@@ -18,11 +19,7 @@ const FaqAccordion: FC<IFaqAccordionProps> = ({ items, defaultOpen }) => {
       {items.map(({ title, content }, index) => {
         return (
           <AccordionBlock key={`${title}-${index}`} title={title} index={`${index}`} onToggle={handleAccordion} openItems={openItems}>
-            <div
-              className="faq-accordion__content"
-              dangerouslySetInnerHTML={{
-                __html: content
-              }}></div>
+            <RichText content={content} maxLines={30} width={'100%'} disableTruncate />
           </AccordionBlock>
         )
       })}

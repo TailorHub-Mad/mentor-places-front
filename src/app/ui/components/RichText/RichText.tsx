@@ -10,10 +10,11 @@ interface IRichTextProps {
   content: string
   maxLines: number
   width?: string
+  disableTruncate?: boolean
 }
 
 // More styles can be added on 'rich-text.css'
-const RichText: FC<IRichTextProps> = ({ content, maxLines, width }) => {
+const RichText: FC<IRichTextProps> = ({ content, maxLines, width, disableTruncate }) => {
   const t = useTranslations()
 
   const [isExpanded, setIsExpanded] = useState(false)
@@ -49,7 +50,7 @@ const RichText: FC<IRichTextProps> = ({ content, maxLines, width }) => {
           maxHeight: isExpanded ? 'none' : `${maxLines * (lineHeight + RICH_TEXT_MB)}px`
         }}
       />
-      {isTruncated && (
+      {isTruncated && !disableTruncate && (
         <Button variant="text" onClick={() => setIsExpanded(!isExpanded)} className="mt-4 text-[#666666] underline">
           {isExpanded ? t('showLess') : t('showMore')}
         </Button>
