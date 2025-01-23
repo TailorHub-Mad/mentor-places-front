@@ -51,7 +51,7 @@ const RichText: FC<IRichTextProps> = ({ content, maxLines, width }) => {
       />
       {isTruncated && (
         <Button variant="text" onClick={() => setIsExpanded(!isExpanded)} className="mt-4 text-[#666666] underline">
-          {isExpanded ? t('showLess') : t('showMore')}
+          {isExpanded ? t('actions.showLess') : t('actions.showMore')}
         </Button>
       )}
     </div>
