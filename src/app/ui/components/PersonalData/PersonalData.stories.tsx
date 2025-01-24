@@ -12,7 +12,7 @@ export default meta
 
 type Story = StoryObj<typeof PersonalData>
 
-export const Dafault: Story = {
+export const Default: Story = {
   args: {
     data: { name: 'Javier', surname: 'Cano', email: 'jcano@gmail.com', prefix: '+34', phone: '67390276' },
     onSubmit: async (data) => {

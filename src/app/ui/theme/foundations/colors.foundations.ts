@@ -17,5 +17,6 @@ export enum EColor {
   BLUE = '#3470F2',
   LILAC = '#CEBCFA',
   EGGPLANT = '#64003B',
-  RED = '#FF0000'
+  RED = '#FF0000',
+  GRAY_BG = '#CDCDCDA1'
 }
