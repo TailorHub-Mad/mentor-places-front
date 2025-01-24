@@ -10,7 +10,8 @@ import { useTranslations } from 'next-intl'
 import { checkIsFormCompleted } from '@utils/form.utils'
 import CheckboxInput from '@components/Checkbox'
 import phoneCodes from '../../../../lib/constants/phoneCodes.json'
-import InputSelect, { type ISelectOption } from '@components/Form/Inputs/Select/InputSelect'
+import InputSelect from '@components/Form/Inputs/Select/InputSelect'
+import type { IFilterSelection } from '@interfaces/filterSidebar.interfaces'
 
 export interface IContactRequest {
   name: string
@@ -44,13 +45,14 @@ const ContactForm: FC<IContactFormProps> = ({ onSubmit }) => {
     getValues,
     watch,
     control,
+    setValue,
     formState: { isSubmitting, errors }
   } = useForm<IContactRequest>({
     defaultValues,
     resolver: joiResolver(contactValidation)
   })
 
-  const { acceptPrivacyPolicy } = getValues()
+  const { acceptPrivacyPolicy, prefix } = getValues()
 
   return (
     <div>
@@ -64,21 +66,23 @@ const ContactForm: FC<IContactFormProps> = ({ onSubmit }) => {
           className="mt-2"
           error={errors.surname?.message}
         />
-        <div className="flex items-center justify-between gap-2">
-          <Controller
-            name="prefix"
-            control={control}
-            render={({ field: { onChange, value } }) => (
-              <InputSelect options={phoneCodes} onChange={onChange} valueSelected={(value as unknown as ISelectOption)?.value || '+34'} />
-            )}
-          />
-          <Input
-            type="tel"
-            {...register('phone')}
-            placeholder={t('placeholders.phone')}
-            className="mt-2 w-full"
-            error={errors.phone?.message}
-          />
+        <div>
+          <div className="flex items-center justify-between gap-2">
+            <Controller
+              name="prefix"
+              control={control}
+              render={() => (
+                <InputSelect
+                  options={phoneCodes}
+                  onChange={(value: IFilterSelection) => setValue('prefix', value.id)}
+                  valueSelected={prefix}
+                />
+              )}
+            />
+            <Input type="tel" {...register('phone')} placeholder={t('placeholders.phone')} className="mt-2 w-full" />
+          </div>
+          {errors.prefix && <p className="text-RED s">{errors.prefix.message}</p>}
+          {errors.phone && <p className="text-RED s">{errors.phone.message}</p>}
         </div>
 
         <Input

@@ -33,6 +33,9 @@
     "compare": "Compare",
     "remove": "Remove",
     "add": "Add",
+    "edit": "Edit",
+    "cancel": "Cancel",
+    "save": "Save",
     "showMore": "Show more",
     "showLess": "Show less",
     "BackToTop": "Back to top"
@@ -78,6 +81,7 @@
     "email": "Please enter a valid email"
   },
   "personalData": {
+    "title": "Personal data",
     "name": "Name",
     "surname": "Surname",
     "email": "Email",

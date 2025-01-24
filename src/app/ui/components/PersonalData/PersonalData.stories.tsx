@@ -13,5 +13,10 @@ export default meta
 type Story = StoryObj<typeof PersonalData>
 
 export const Dafault: Story = {
-  args: {}
+  args: {
+    data: { name: 'Javier', surname: 'Cano', email: 'jcano@gmail.com', prefix: '+34', phone: '67390276' },
+    onSubmit: (data) => {
+      console.log('PersonalData saved =>', data)
+    }
+  }
 }
