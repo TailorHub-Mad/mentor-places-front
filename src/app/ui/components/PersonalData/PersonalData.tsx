@@ -5,11 +5,9 @@ import Input from '@components/Input/Input'
 import { joiResolver } from '@hookform/resolvers/joi'
 import { useTranslations } from 'next-intl'
 import { useState, type FC } from 'react'
-import { Controller, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { usePersonalDataValidation } from '../../../lib/validations/personal-data.validations'
-import InputSelect from '@components/Form/Inputs/Select/InputSelect'
-import phoneCodes from '../../../lib/constants/phoneCodes.json'
-import type { IFilterSelection } from '@interfaces/filterSidebar.interfaces'
+import PrefixAndPhoneInputs from '@components/PrefixAndPhoneInputs'
 
 interface IPersonalData {
   name: string
@@ -91,24 +89,13 @@ const PersonalData: FC<IPersonalDataProps> = ({ data, onSubmit }) => {
 
           <div className="w-full">
             {isEditing ? (
-              <div>
-                <div className="flex items-center justify-between gap-2">
-                  <Controller
-                    name="prefix"
-                    control={control}
-                    render={() => (
-                      <InputSelect
-                        options={phoneCodes}
-                        onChange={(value: IFilterSelection) => setValue('prefix', value.id)}
-                        valueSelected={prefix}
-                      />
-                    )}
-                  />
-                  <Input type="tel" {...register('phone')} placeholder={t('personalData.phone')} className="mt-2 w-full" />
-                </div>
-                {errors.prefix && <p className="text-RED s">{errors.prefix.message}</p>}
-                {errors.phone && <p className="text-RED s">{errors.phone.message}</p>}
-              </div>
+              <PrefixAndPhoneInputs<IPersonalData>
+                control={control}
+                setValue={setValue}
+                register={register}
+                errors={{ prefix: errors.prefix?.message, phone: errors.phone?.message }}
+                prefix={prefix}
+              />
             ) : (
               renderReadOnlyField(`${data.prefix} ${data.phone}`)
             )}
