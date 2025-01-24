@@ -17,7 +17,14 @@
     "campus": "Campus",
     "startDate": "Fecha de inicio",
     "rating": "Valoraciones",
-    "price": "Precio"
+    "price": "Precio",
+    "type": "Tipo",
+    "ects": "ECTS",
+    "period": {
+      "year": "año",
+      "semester": "semestre",
+      "term": "curso"
+    }
   },
   "rating": {
     "1": "Malo",
