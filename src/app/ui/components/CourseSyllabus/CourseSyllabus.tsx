@@ -15,8 +15,8 @@ const CourseSyllabus: FC<ICourseSyllabusProps> = ({ terms, period }) => {
 
   return (
     <div className="course-syllabus">
-      <div className="course-syllabus__tabs flex items-center gap-3 border-b border-BLACK/30 mb-4">
-        <div className="tabs-buttons">
+      <div className="course-syllabus__tabs grid grid-cols-1 md:grid-cols-10 gap-4 border-b border-BLACK/10 ">
+        <div className="tabs-buttons col-span-8">
           {Array.from({ length: termsLength }, (_, index) => {
             return (
               <button
@@ -31,18 +31,24 @@ const CourseSyllabus: FC<ICourseSyllabusProps> = ({ terms, period }) => {
             )
           })}
         </div>
-        <div className="type-ects-columns ml-auto">
-          <span className="">{t('courseDetails.type')}</span>
-          <span className="">{t('courseDetails.ects')}</span>
-        </div>
+        <span className="text-center text-BLACK/60 font-s text-s hidden md:block">{t('courseDetails.type')}</span>
+        <span className="text-center text-BLACK/60 font-s text-s hidden md:block">{t('courseDetails.ects')}</span>
       </div>
       <div className="course-syllabus__subjects-list">
         {terms[openTab].subjects.map((subject, index) => {
           return (
-            <div key={`${subject.title}-${index}`} className="course-syllabus__subject-list__item flex items-center justify-between">
-              <span className="title">{subject.title}</span>
-              <span className="type">{subject.type}</span>
-              <span className="ects">{subject.ects}</span>
+            <div
+              key={`${subject.title}-${index}`}
+              className="course-syllabus__subject-list__item grid grid-cols-2 md:grid-cols-10 gap-2 justify-between border-b border-BLACK/10 py-4">
+              <span className="title col-span-2 md:col-span-8 text-s font-s">{subject.title}</span>
+              <div className="type text-start md:text-center md:col-span-1 text-s font-s">
+                <span className="md:hidden text-s font-s">{t('courseDetails.type')}: </span>
+                {subject.type}
+              </div>
+              <div className="ects text-start md:text-center md:col-span-1 text-s font-s">
+                <span className="md:hidden text-s font-s">{t('courseDetails.ects')}: </span>
+                {subject.ects}
+              </div>
             </div>
           )
         })}
