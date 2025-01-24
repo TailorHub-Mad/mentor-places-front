@@ -64,13 +64,7 @@ const ContactForm: FC<IContactFormProps> = ({ onSubmit }) => {
           className="mt-2"
           error={errors.surname?.message}
         />
-        <PrefixAndPhoneInputs<IContactRequest>
-          control={control}
-          setValue={setValue}
-          register={register}
-          errors={{ prefix: errors.prefix?.message, phone: errors.phone?.message }}
-          prefix={prefix}
-        />
+        <PrefixAndPhoneInputs<IContactRequest> control={control} setValue={setValue} register={register} errors={errors} prefix={prefix} />
 
         <Input
           type="text"

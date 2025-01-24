@@ -1,6 +1,7 @@
-import { Control, Controller, Path, PathValue, UseFormRegister, UseFormSetValue } from 'react-hook-form'
+import type { Control, FieldErrors, Path, PathValue, UseFormRegister, UseFormSetValue } from 'react-hook-form'
+import { Controller } from 'react-hook-form'
 import InputSelect from './Form/Inputs/Select/InputSelect'
-import { IFilterSelection } from '@interfaces/filterSidebar.interfaces'
+import type { IFilterSelection } from '@interfaces/filterSidebar.interfaces'
 import phoneCodes from '../../lib/constants/phoneCodes.json'
 import Input from './Input/Input'
 import { useTranslations } from 'next-intl'
@@ -14,10 +15,7 @@ interface IPrefixAndPhoneInputsProps<T extends IPrefixAndPhone> {
   control: Control<T>
   setValue: UseFormSetValue<T>
   register: UseFormRegister<T>
-  errors: {
-    prefix?: string
-    phone?: string
-  }
+  errors: FieldErrors<T>
   prefix: string
 }
 
@@ -28,7 +26,7 @@ const PrefixAndPhoneInputs = <T extends IPrefixAndPhone>({
   errors,
   prefix
 }: IPrefixAndPhoneInputsProps<T>) => {
-  const t = useTranslations('personalData')
+  const t = useTranslations()
 
   return (
     <div>
@@ -44,10 +42,10 @@ const PrefixAndPhoneInputs = <T extends IPrefixAndPhone>({
             />
           )}
         />
-        <Input type="tel" {...register('phone' as Path<T>)} placeholder={t('placeholders.phone')} className="mt-2 w-full" />
+        <Input type="tel" {...register('phone' as Path<T>)} placeholder={t('forms.placeholders.phone')} className="mt-2 w-full" />
       </div>
-      {errors.prefix && <p className="text-RED s">{errors.prefix}</p>}
-      {errors.phone && <p className="text-RED s">{errors.phone}</p>}
+      {errors.prefix?.message && <p className="text-RED s">{errors.prefix.message.toString()}</p>}
+      {errors.phone?.message && <p className="text-RED s">{errors.phone.message?.toString()}</p>}
     </div>
   )
 }

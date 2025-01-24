@@ -8,6 +8,7 @@ import { useState, type FC } from 'react'
 import { useForm } from 'react-hook-form'
 import { usePersonalDataValidation } from '../../../lib/validations/personal-data.validations'
 import PrefixAndPhoneInputs from '@components/PrefixAndPhoneInputs'
+import { checkIsFormCompleted } from '@utils/form.utils'
 
 interface IPersonalData {
   name: string
@@ -19,7 +20,7 @@ interface IPersonalData {
 
 interface IPersonalDataProps {
   data: IPersonalData
-  onSubmit: (data: IPersonalData) => void
+  onSubmit: (data: IPersonalData) => Promise<void>
 }
 
 const PersonalData: FC<IPersonalDataProps> = ({ data, onSubmit }) => {
@@ -32,8 +33,9 @@ const PersonalData: FC<IPersonalDataProps> = ({ data, onSubmit }) => {
     handleSubmit,
     control,
     getValues,
+    watch,
     setValue,
-    formState: { errors }
+    formState: { isSubmitting, errors }
   } = useForm<IPersonalData>({
     defaultValues: data,
     resolver: joiResolver(personalDataValidation)
@@ -58,24 +60,29 @@ const PersonalData: FC<IPersonalDataProps> = ({ data, onSubmit }) => {
     </>
   )
 
+  const handleSaveClick = async () => {
+    await onSubmit(data)
+    toggleEditing()
+  }
+
   const textData: (keyof IPersonalData)[] = ['name', 'surname', 'email']
 
   const { prefix } = getValues()
 
   return (
     <div className="bg-WHITE rounded-lg">
-      <form
-        onSubmit={handleSubmit((data) => {
-          onSubmit(data)
-          toggleEditing()
-        })}>
+      <form onSubmit={handleSubmit(handleSaveClick)}>
         <div className="flex flex-col-reverse items-start lg:flex-row lg:justify-between lg:items-center">
           <p className="text-xl-mobile font-xl-mobile md:text-xl md:font-xl">{t('personalData.title')}</p>
           <div className="flex gap-6">
-            <Button variant="primary" onClick={toggleEditing} type="button">
+            <Button variant="primary" onClick={toggleEditing} type="button" disabled={isSubmitting}>
               {isEditing ? t('actions.cancel') : t('actions.edit')}
             </Button>
-            {isEditing && <Button variant="primary">{t('actions.save')}</Button>}
+            {isEditing && (
+              <Button variant="primary" disabled={checkIsFormCompleted(watch) || isSubmitting}>
+                {t('actions.save')}
+              </Button>
+            )}
           </div>
         </div>
 
@@ -93,7 +100,7 @@ const PersonalData: FC<IPersonalDataProps> = ({ data, onSubmit }) => {
                 control={control}
                 setValue={setValue}
                 register={register}
-                errors={{ prefix: errors.prefix?.message, phone: errors.phone?.message }}
+                errors={errors}
                 prefix={prefix}
               />
             ) : (

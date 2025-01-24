@@ -15,8 +15,12 @@ type Story = StoryObj<typeof PersonalData>
 export const Dafault: Story = {
   args: {
     data: { name: 'Javier', surname: 'Cano', email: 'jcano@gmail.com', prefix: '+34', phone: '67390276' },
-    onSubmit: (data) => {
-      console.log('PersonalData saved =>', data)
+    onSubmit: async (data) => {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(console.log('PersonalData saved =>', data))
+        }, 3000)
+      })
     }
   }
 }
