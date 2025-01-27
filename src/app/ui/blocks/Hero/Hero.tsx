@@ -8,8 +8,8 @@ interface IHeroProps extends IContentBlockProps {
 
 const Hero: FC<IHeroProps> = ({ image, ...contentBlock }) => {
   return (
-    <div style={{ backgroundImage: `url(${image})`, height: '100vh' }}>
-      <div className="w-full h-full flex items-end md:items-center bg-BLACK/30">
+    <div style={{ backgroundImage: `url(${image})`, height: '70vh' }} className="page rounded-lg mt-4">
+      <div className="w-full h-full flex items-end md:items-center bg-BLACK/30 rounded-lg">
         <ContentBlock {...contentBlock} className="page w-full mb-6 md:mb-0" />
       </div>
     </div>
