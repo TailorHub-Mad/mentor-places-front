@@ -4,14 +4,14 @@ import Button from '@components/Button/Button'
 import type { EColor } from '@theme/foundations/colors.foundations'
 import type { FC } from 'react'
 
-interface IContactCardProps {
+interface IContactBannerProps {
   topText: string
   title: string
   button: string
   backgroundColor: EColor
 }
 
-const ContactCard: FC<IContactCardProps> = ({ topText, title, button, backgroundColor }) => {
+const ContactBanner: FC<IContactBannerProps> = ({ topText, title, button, backgroundColor }) => {
   const handleOnClick = () => {
     // TODO
   }
@@ -31,4 +31,4 @@ const ContactCard: FC<IContactCardProps> = ({ topText, title, button, background
   )
 }
 
-export default ContactCard
+export default ContactBanner

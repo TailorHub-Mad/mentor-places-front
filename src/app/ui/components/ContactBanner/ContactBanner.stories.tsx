@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { EColor } from '@theme/foundations/colors.foundations'
-import ContactCard from './ContactCard'
+import ContactBanner from './ContactBanner'
 
-const meta: Meta<typeof ContactCard> = {
-  component: ContactCard,
+const meta: Meta<typeof ContactBanner> = {
+  component: ContactBanner,
   parameters: {
     locale: 'es'
   }
@@ -11,7 +11,7 @@ const meta: Meta<typeof ContactCard> = {
 
 export default meta
 
-type Story = StoryObj<typeof ContactCard>
+type Story = StoryObj<typeof ContactBanner>
 
 export const Default: Story = {
   args: {
