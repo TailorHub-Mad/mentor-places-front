@@ -7,7 +7,8 @@ const buttonVariants = {
   variant: {
     primary: cx('bg-BLACK hover:bg-WHITE text-WHITE hover:text-BLACK px-[24px]'),
     secondary: cx('bg-WHITE hover:bg-BLACK text-BLACK hover:text-WHITE', 'shadow-button px-[24px]'),
-    text: cx('underline text-BLACK hover:text-BLACK/50 underline-offset-4')
+    text: cx('underline text-BLACK hover:text-BLACK/50 underline-offset-4'),
+    icon: cx('bg-GRAY_BG hover:bg-GRAY_BG/40 text-BLACK w-10 h-10 rounded-full flex items-center justify-center')
   }
 }
 

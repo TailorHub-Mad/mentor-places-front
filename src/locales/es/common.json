@@ -33,6 +33,8 @@
     "compare": "Comparar",
     "remove": "Eliminar",
     "add": "Añadir",
+    "cancel": "Cancelar",
+    "save": "Guardar",
     "showMore": "Ver más",
     "showLess": "Ver menos",
     "BackToTop": "Volver arriba"
@@ -76,5 +78,12 @@
     "min": "Este campo debe tener al menos {min} caracteres",
     "phonePattern": "El número de teléfono debe contener solo dígitos",
     "email": "Ingrese un correo electrónico válido"
+  },
+  "personalData": {
+    "title": "Datos personales",
+    "name": "Nombre",
+    "surname": "Apellido",
+    "email": "Email",
+    "phone": "Teléfono"
   }
 }

@@ -3,14 +3,13 @@
 import Button from '@components/Button/Button'
 import Input from '@components/Input/Input'
 import { type FC } from 'react'
-import { Controller, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { joiResolver } from '@hookform/resolvers/joi'
 import { useContactValidation } from '../../../../lib/validations/contact.validations'
 import { useTranslations } from 'next-intl'
 import { checkIsFormCompleted } from '@utils/form.utils'
 import CheckboxInput from '@components/Checkbox'
-import phoneCodes from '../../../../lib/constants/phoneCodes.json'
-import InputSelect, { type ISelectOption } from '@components/Form/Inputs/Select/InputSelect'
+import PrefixAndPhoneInputs from '@components/PrefixAndPhoneInputs'
 
 export interface IContactRequest {
   name: string
@@ -44,13 +43,14 @@ const ContactForm: FC<IContactFormProps> = ({ onSubmit }) => {
     getValues,
     watch,
     control,
+    setValue,
     formState: { isSubmitting, errors }
   } = useForm<IContactRequest>({
     defaultValues,
     resolver: joiResolver(contactValidation)
   })
 
-  const { acceptPrivacyPolicy } = getValues()
+  const { acceptPrivacyPolicy, prefix } = getValues()
 
   return (
     <div>
@@ -64,22 +64,7 @@ const ContactForm: FC<IContactFormProps> = ({ onSubmit }) => {
           className="mt-2"
           error={errors.surname?.message}
         />
-        <div className="flex items-center justify-between gap-2">
-          <Controller
-            name="prefix"
-            control={control}
-            render={({ field: { onChange, value } }) => (
-              <InputSelect options={phoneCodes} onChange={onChange} valueSelected={(value as unknown as ISelectOption)?.value || '+34'} />
-            )}
-          />
-          <Input
-            type="tel"
-            {...register('phone')}
-            placeholder={t('placeholders.phone')}
-            className="mt-2 w-full"
-            error={errors.phone?.message}
-          />
-        </div>
+        <PrefixAndPhoneInputs<IContactRequest> control={control} setValue={setValue} register={register} errors={errors} prefix={prefix} />
 
         <Input
           type="text"
