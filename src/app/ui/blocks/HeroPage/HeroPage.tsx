@@ -3,11 +3,11 @@ import ContentBlock from '@components/ContentBlock/ContentBlock'
 import { cx } from '@utils/cx'
 import type { FC } from 'react'
 
-interface IHeroProps extends IContentBlockProps {
+interface IHeroPageProps extends IContentBlockProps {
   image: string
 }
 
-const Hero: FC<IHeroProps> = ({ image, ...contentBlock }) => {
+const HeroPage: FC<IHeroPageProps> = ({ image, ...contentBlock }) => {
   const bgColor = contentBlock.theme === 'light' ? 'bg-BLACK/30' : 'bg-WHITE/30'
 
   return (
@@ -19,4 +19,4 @@ const Hero: FC<IHeroProps> = ({ image, ...contentBlock }) => {
   )
 }
 
-export default Hero
+export default HeroPage

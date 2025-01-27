@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import Hero from './Hero'
+import HeroPage from './HeroPage'
 
-const meta: Meta<typeof Hero> = {
-  component: Hero,
+const meta: Meta<typeof HeroPage> = {
+  component: HeroPage,
   parameters: {
     locale: 'es'
   },
@@ -17,7 +17,7 @@ const meta: Meta<typeof Hero> = {
 
 export default meta
 
-type Story = StoryObj<typeof Hero>
+type Story = StoryObj<typeof HeroPage>
 
 export const Light: Story = {
   args: {
