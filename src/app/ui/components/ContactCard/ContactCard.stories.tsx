@@ -1,9 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { EColor } from '@theme/foundations/colors.foundations'
-import ContactCard from './ContactCard'
+import ContactCard from '@components/ContactCard/ContactCard'
+import { CONTACT_CARD_MOCK } from '@components/ContactCard/mock'
 
-const meta: Meta<typeof ContactCard> = {
+const meta: Meta = {
   component: ContactCard,
+  args: CONTACT_CARD_MOCK,
   parameters: {
     locale: 'es'
   }
@@ -13,11 +14,4 @@ export default meta
 
 type Story = StoryObj<typeof ContactCard>
 
-export const Default: Story = {
-  args: {
-    topText: 'Contáctanos',
-    title: 'Te ayudamos a seleccionar tu máster',
-    button: 'Más información',
-    backgroundColor: EColor.YELLOW
-  }
-}
+export const Default: Story = {}

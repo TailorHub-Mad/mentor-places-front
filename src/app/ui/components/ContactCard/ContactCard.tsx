@@ -1,32 +1,37 @@
-'use client'
-
-import Button from '@components/Button/Button'
-import type { EColor } from '@theme/foundations/colors.foundations'
 import type { FC } from 'react'
+import PhoneIcon from '@components/icons/PhoneIcon'
+import LocationIcon from '@components/icons/LocationIcon'
+import Button from '@components/Button/Button'
+import { useTranslations } from 'next-intl'
 
-interface IContactCardProps {
-  topText: string
-  title: string
-  button: string
-  backgroundColor: EColor
+export interface IContactCardProps {
+  phone: string
+  name: string
+  address: string
+  href: string
 }
 
-const ContactCard: FC<IContactCardProps> = ({ topText, title, button, backgroundColor }) => {
-  const handleOnClick = () => {
-    // TODO
-  }
+const ContactCard: FC<IContactCardProps> = ({ phone, href, address, name }) => {
+  const t = useTranslations()
 
   return (
-    <div
-      className="px-6 py-12 rounded-lg min-h-[595px] lg:flex flex-col justify-between items-start lg:px-7 py-13 lg:min-h-[472px]"
-      style={{ backgroundColor }}>
-      <div>
-        <p className="text-s">{topText}</p>
-        <p className="text-xl-mobile font-xl-mobile mt-7">{title}</p>
+    <div className="contact-card bg-YELLOW p-[19px] md:p-[26px] flex flex-col justify-between min-h-[288px] md:min-h-[322px] rounded-[8px]">
+      <div className="contact-card__phone flex items-center gap-2">
+        <PhoneIcon />
+        <span>{phone}</span>
       </div>
-      <Button className="mt-6" onClick={handleOnClick}>
-        {button}
-      </Button>
+      <div className="contact-card__address">
+        <h3 className="text-m font-xl mb-[10px]">{name}</h3>
+        <div className="location flex items-center gap-2">
+          <LocationIcon />
+          <span className="text-BLACK/60 font-s">{address}</span>
+        </div>
+      </div>
+      <div className="contact-card__cta">
+        <Button variant={'primary'} href={href}>
+          {t('moreInfo')}
+        </Button>
+      </div>
     </div>
   )
 }
