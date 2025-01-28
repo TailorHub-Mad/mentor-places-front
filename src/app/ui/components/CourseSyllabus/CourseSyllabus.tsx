@@ -1,3 +1,5 @@
+'use client'
+
 import { type FC, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { cx } from '@utils/cx'
