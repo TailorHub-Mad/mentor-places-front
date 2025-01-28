@@ -20,6 +20,11 @@
     "price": "Price",
     "type": "Type",
     "ects": "ECTS",
+    "seats": "Seats",
+    "official": "Official",
+    "methodology": "Methodology",
+    "internship": "Internship",
+    "internshipAbroad": "Internship Abroad",
     "period": {
       "year": "year",
       "semester": "semester",
@@ -44,7 +49,9 @@
     "save": "Save",
     "showMore": "Show more",
     "showLess": "Show less",
-    "BackToTop": "Back to top"
+    "BackToTop": "Back to top",
+    "yes": "Yes",
+    "no": "No"
   },
   "filters": {
     "year": "Year",

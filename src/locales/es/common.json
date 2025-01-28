@@ -20,6 +20,11 @@
     "price": "Precio",
     "type": "Tipo",
     "ects": "ECTS",
+    "seats": "Plazas",
+    "official": "Oficial",
+    "methodology": "Metodología",
+    "internship": "Prácticas",
+    "internshipAbroad": "Prácticas en el extranjero",
     "period": {
       "year": "año",
       "semester": "semestre",
@@ -44,7 +49,9 @@
     "save": "Guardar",
     "showMore": "Ver más",
     "showLess": "Ver menos",
-    "BackToTop": "Volver arriba"
+    "BackToTop": "Volver arriba",
+    "yes": "Si",
+    "no": "No"
   },
   "filters": {
     "year": "Año",

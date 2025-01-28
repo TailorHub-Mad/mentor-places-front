@@ -6,13 +6,14 @@ interface ContentTagProps {
   title: string
   href?: string
   disabled?: boolean
+  className?: string
 }
 
 const ContentTag: FC<ContentTagProps> = (props) => {
-  const { href, title, disabled } = props
+  const { href, title, disabled, className } = props
 
   return (
-    <ConditionalLink className="content-tag" href={href} disabled={disabled}>
+    <ConditionalLink className={cx('content-tag', className)} href={href} disabled={disabled}>
       <span
         className={cx(
           'px-[24px] py-[8px] text-WHITE font-s rounded-[8px] text-nowrap hover:bg-BLUE/60',
