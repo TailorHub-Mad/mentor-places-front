@@ -28,7 +28,7 @@ const CourseSyllabus: FC<ICourseSyllabusProps> = ({ terms, period }) => {
               onClick={() => handleOpenTab(index)}
               key={`course-syllabus__tabs-${index}`}>
               <span className="period-string mr-1 capitalize">{termsPeriodString}</span>
-              <span className="period-number">{index}</span>
+              <span className="period-number">{index + 1}</span>
             </button>
           ))}
         </div>
