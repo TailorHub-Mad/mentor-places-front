@@ -1,7 +1,8 @@
 'use client'
 
 import Button from '@components/Button/Button'
-import useAction, { TCTAAction } from '@hooks/useAction'
+import type { TCTAAction } from '@hooks/useAction'
+import useAction from '@hooks/useAction'
 import type { FC } from 'react'
 
 interface IBannerProps {
