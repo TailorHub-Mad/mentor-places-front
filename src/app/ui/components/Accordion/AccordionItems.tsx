@@ -19,7 +19,7 @@ const AccordionItems: FC<IAccordionItemsProps> = ({ accordionItems, defaultOpen 
   return (
     <div className="flex flex-col">
       {accordionItems?.map(({ title, children, id }, index) => (
-        <AccordionBlock key={id} title={title} index={`${index}`} openItems={openItems} onToggle={handleAccordion}>
+        <AccordionBlock key={id} title={title} index={`${title}-${index}`} openItems={openItems} onToggle={handleAccordion}>
           {children}
         </AccordionBlock>
       ))}

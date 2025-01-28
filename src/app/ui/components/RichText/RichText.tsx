@@ -9,10 +9,11 @@ interface IRichTextProps {
   content: string
   maxLines: number
   width?: string
+  disableTruncate?: boolean
 }
 
 // More styles can be added on 'rich-text.css'
-const RichText: FC<IRichTextProps> = ({ content, maxLines, width }) => {
+const RichText: FC<IRichTextProps> = ({ content, maxLines, width, disableTruncate }) => {
   const [isExpanded, setIsExpanded] = useState(false)
   const [isTruncated, setIsTruncated] = useState(false)
   const [lineHeight, setLineHeight] = useState(0)
@@ -46,7 +47,7 @@ const RichText: FC<IRichTextProps> = ({ content, maxLines, width }) => {
           maxHeight: isExpanded ? 'none' : `${maxLines * (lineHeight + RICH_TEXT_MB)}px`
         }}
       />
-      {isTruncated && <ShowMoreButton isExpanded={isExpanded} setIsExpanded={setIsExpanded} />}
+      {isTruncated && !disableTruncate && <ShowMoreButton isExpanded={isExpanded} setIsExpanded={setIsExpanded} />}
     </div>
   )
 }
