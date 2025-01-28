@@ -3,6 +3,7 @@
 import { breakpoints } from './src/app/ui/theme/foundations/breakpoints.theme'
 import { EColor } from './src/app/ui/theme/foundations/colors.foundations'
 import { fontFamily, fontSize, lineHeight } from './src/app/ui/theme/foundations/text.foundations'
+const plugin = require('tailwindcss/plugin')
 
 export default {
   darkMode: 'selector',
@@ -19,5 +20,16 @@ export default {
     fontSize,
     lineHeight
   },
-  plugins: []
+  plugins: [
+    plugin(function ({ addComponents }) {
+      addComponents({
+        '.page': {
+          'margin-inline': '1.5rem',
+          '@screen lg': {
+            'margin-inline': '2.5rem'
+          }
+        }
+      })
+    })
+  ]
 }
