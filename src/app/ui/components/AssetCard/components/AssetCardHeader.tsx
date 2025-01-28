@@ -17,6 +17,7 @@ interface AssetCardHeaderProps {
 const AssetCardHeader: FC<AssetCardHeaderProps> = ({ title, universityName, universityLogo, imageSrc, ranking, variant }) => {
   switch (variant) {
     case EAssetCardVariant.withIcons:
+    case EAssetCardVariant.hero:
       return (
         <div className="asset-card__header px-[30px] pt-[34px]">
           {imageSrc && (

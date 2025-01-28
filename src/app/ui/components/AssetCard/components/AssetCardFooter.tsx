@@ -8,9 +8,10 @@ interface AssetCardFooterProps {
   variant: EAssetCardVariant
   universityLogo?: string
   universityName?: string
+  description?: string
 }
 
-const AssetCardFooter: FC<AssetCardFooterProps> = ({ ctaText, variant, universityLogo, universityName }) => {
+const AssetCardFooter: FC<AssetCardFooterProps> = ({ ctaText, variant, universityLogo, universityName, description }) => {
   switch (variant) {
     case EAssetCardVariant.withoutIcons:
       return (
@@ -23,6 +24,13 @@ const AssetCardFooter: FC<AssetCardFooterProps> = ({ ctaText, variant, universit
       return (
         <div className="asset-card__footer px-[30px] pb-[34px]">
           <Button variant="primary">{ctaText}</Button>
+        </div>
+      )
+
+    case EAssetCardVariant.hero:
+      return (
+        <div className="asset-card__footer px-[30px] pb-[34px]">
+          {description && <p className="s text-BLACK_60 line-clamp-1">{description}</p>}
         </div>
       )
   }
