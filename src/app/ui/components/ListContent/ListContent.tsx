@@ -3,18 +3,22 @@
 import ShowMoreButton from '@components/ShowMoreButton'
 import { useState, type FC } from 'react'
 
-interface IListContentProps {
-  list: { title: string; description: string }[]
+export interface IListContentItem {
+  title: string
+  description: string
 }
 
-const INITIALLY_SHOWN = 3
+export interface IListContentProps {
+  list: IListContentItem[]
+  initiallyShown?: number
+}
 
-const ListContent: FC<IListContentProps> = ({ list }) => {
+const ListContent: FC<IListContentProps> = ({ list, initiallyShown = 3 }) => {
   const [isExpanded, setIsExpanded] = useState(false)
 
   return (
     <>
-      {list.slice(0, isExpanded ? list.length : INITIALLY_SHOWN).map((elm, idx) => {
+      {list.slice(0, isExpanded ? list.length : initiallyShown).map((elm, idx) => {
         const isLast = list.length - 1 === idx
         const isFirst = idx === 0
 
@@ -28,7 +32,7 @@ const ListContent: FC<IListContentProps> = ({ list }) => {
           </div>
         )
       })}
-      {list.length > INITIALLY_SHOWN && <ShowMoreButton isExpanded={isExpanded} setIsExpanded={setIsExpanded} />}
+      {list.length > initiallyShown && <ShowMoreButton isExpanded={isExpanded} setIsExpanded={setIsExpanded} />}
     </>
   )
 }

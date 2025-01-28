@@ -1,6 +1,6 @@
 export type TCTAAction = 'compare' | 'advice' | 'contact' | 'scrollToTop' // TODO - add needed actions
 
-const useAction = (action: TCTAAction) => {
+const useAction = (action?: TCTAAction) => {
   const ACTION_HANDLERS: Record<TCTAAction, () => void> = {
     compare: () => {
       // TODO
@@ -22,7 +22,7 @@ const useAction = (action: TCTAAction) => {
     }
   }
 
-  return ACTION_HANDLERS[action]
+  return action ? ACTION_HANDLERS[action] : undefined
 }
 
 export default useAction
