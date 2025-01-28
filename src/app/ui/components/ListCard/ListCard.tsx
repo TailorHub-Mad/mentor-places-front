@@ -1,6 +1,6 @@
 import { type FC } from 'react'
 
-interface IListCardProps {
+export interface IListCardProps {
   number: number
   text: string
 }

@@ -17,7 +17,7 @@ export const Default: Story = {
   args: {
     title: 'Modalidad',
     description: 'En la Universidad Francisco Vitoria ofrece una amplia oferta de títulos en formato presencial, híbrido y online',
-    array: [
+    tags: [
       { label: 'Presencial', number: 35 },
       { label: 'Híbrido', number: 10 },
       { label: 'Online', number: 1 }
