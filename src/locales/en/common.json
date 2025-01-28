@@ -17,7 +17,14 @@
     "campus": "Campus",
     "startDate": "Start date",
     "rating": "Rating",
-    "price": "Price"
+    "price": "Price",
+    "type": "Type",
+    "ects": "ECTS",
+    "period": {
+      "year": "year",
+      "semester": "semester",
+      "term": "term"
+    }
   },
   "rating": {
     "1": "Terrible",
