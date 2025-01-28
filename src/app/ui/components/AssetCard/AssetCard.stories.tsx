@@ -23,6 +23,16 @@ export const WithIcons: Story = {
   }
 }
 
+export const WithIconsAndRanking: Story = {
+  args: {
+    variant: EAssetCardVariant.withIcons,
+    data: {
+      ...MOCK_ASSET_CARD.data,
+      ranking: 5
+    }
+  }
+}
+
 export const WithIconsAndImage: Story = {
   args: {
     variant: EAssetCardVariant.withIcons,
