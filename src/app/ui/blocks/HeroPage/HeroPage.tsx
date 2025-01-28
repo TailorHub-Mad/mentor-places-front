@@ -11,9 +11,9 @@ const HeroPage: FC<IHeroPageProps> = ({ image, ...contentBlock }) => {
   const bgColor = contentBlock.theme === 'light' ? 'bg-BLACK/30' : 'bg-WHITE/30'
 
   return (
-    <div style={{ backgroundImage: `url(${image})`, height: '70vh' }} className="rounded-lg mt-4">
-      <div className={cx('w-full h-full flex items-end md:items-center rounded-lg', bgColor)}>
-        <ContentBlock {...contentBlock} className="page w-full mb-6 md:mb-0" />
+    <div style={{ backgroundImage: `url(${image})`, minHeight: '70vh' }} className="rounded-lg mt-4 flex flex-shrink">
+      <div className={cx('w-full flex items-end md:items-center rounded-lg', bgColor)}>
+        <ContentBlock {...contentBlock} className="page w-full mb-6 md:mb-0 lg:w-[30%]" />
       </div>
     </div>
   )

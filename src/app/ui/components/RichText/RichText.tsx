@@ -7,13 +7,15 @@ const RICH_TEXT_MB = 16
 
 interface IRichTextProps {
   content: string
-  maxLines: number
+  maxLines?: number
   width?: string
   disableTruncate?: boolean
 }
 
+const MAX_LINES_DEFAULT = 30
+
 // More styles can be added on 'rich-text.css'
-const RichText: FC<IRichTextProps> = ({ content, maxLines, width, disableTruncate }) => {
+const RichText: FC<IRichTextProps> = ({ content, maxLines = MAX_LINES_DEFAULT, width, disableTruncate }) => {
   const [isExpanded, setIsExpanded] = useState(false)
   const [isTruncated, setIsTruncated] = useState(false)
   const [lineHeight, setLineHeight] = useState(0)
