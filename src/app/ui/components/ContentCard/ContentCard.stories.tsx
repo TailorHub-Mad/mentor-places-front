@@ -38,16 +38,6 @@ export const BlogPostText: Story = {
   }
 }
 
-export const InfoCardPrice: Story = {
-  args: {
-    data: {
-      title: 'Precio oficial',
-      infoHeaderTitle: '12.000 €/año'
-    },
-    variant: ContentCardVariant.INFO_CARD_PRICE
-  }
-}
-
 export const InfoCardNumber: Story = {
   args: {
     data: {

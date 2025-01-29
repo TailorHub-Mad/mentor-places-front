@@ -1,12 +1,10 @@
 import { type FC } from 'react'
 import { BlogPostCard } from '@components/ContentCard/components/BlogPostCard'
-import InfoCardPrice from '@components/ContentCard/components/InfoCardPrice'
 import InfoCardNumber from './components/InfoCardNumber'
 
 export enum ContentCardVariant {
   BLOG_POST_PHOTO = 'BLOG_POST_PHOTO',
   BLOG_POST_TEXT = 'BLOG_POST_TEXT',
-  INFO_CARD_PRICE = 'INFO_CARD_PRICE',
   INFO_CARD_NUMBER = 'INFO_CARD_NUMBER'
 }
 
@@ -31,8 +29,6 @@ const ContentCard: FC<ContentCardProps> = ({ variant, data }) => {
     case ContentCardVariant.BLOG_POST_PHOTO:
     case ContentCardVariant.BLOG_POST_TEXT:
       return <BlogPostCard imageSrc={imageSrc} title={title} description={description} date={date} variant={variant} url={url} />
-    case ContentCardVariant.INFO_CARD_PRICE:
-      return <InfoCardPrice infoHeaderTitle={infoHeaderTitle} title={title} description={description} />
     case ContentCardVariant.INFO_CARD_NUMBER:
       return <InfoCardNumber infoHeaderTitle={infoHeaderTitle} title={title} description={description} />
 
