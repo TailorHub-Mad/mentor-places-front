@@ -15,10 +15,9 @@ const ContentTag: FC<ContentTagProps> = (props) => {
   return (
     <ConditionalLink className={cx('content-tag', className)} href={href} disabled={disabled}>
       <span
-        className={cx(
-          'px-[24px] py-[8px] text-WHITE font-s rounded-[8px] text-nowrap hover:bg-BLUE/60',
-          disabled ? 'bg-BLUE/60' : 'bg-BLUE'
-        )}>
+        className={cx('px-[24px] py-[8px] text-WHITE font-s rounded-[8px] text-nowrap ', disabled ? 'bg-BLUE/60' : 'bg-BLUE', {
+          'hover:bg-BLUE/60': href
+        })}>
         {title}
       </span>
     </ConditionalLink>
