@@ -15,7 +15,7 @@ const meta: Meta = {
 export default meta
 
 const Template: StoryFn<IModalCustomProps> = (props) => {
-  const [isModalOpen, setIsModalOpen] = useState(true)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const handleClose = () => {
     setIsModalOpen(false)
