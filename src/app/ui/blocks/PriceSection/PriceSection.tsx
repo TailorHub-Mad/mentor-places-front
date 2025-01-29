@@ -18,13 +18,17 @@ const PriceSection: FC<IPriceSectionProps> = ({ title, description, cta, prices 
   const handleOnClick = useAction(cta.action)
 
   return (
-    <div className="bg-GRAY px-6 py-12 rounded-lg">
-      <h3 className="m ">{title}</h3>
-      <p className="s text-BLACK/80 mt-4">{description}</p>
-      <Button onClick={handleOnClick} className="mt-12">
-        {cta.text}
-      </Button>
-      <div className="mt-16 flex flex-col gap-5">
+    <div className="bg-GRAY px-6 py-12 rounded-lg md:flex gap-20">
+      <div className="md:flex md:flex-col md:justify-between md:items-start">
+        <div>
+          <h3 className="m ">{title}</h3>
+          <p className="s text-BLACK/80 mt-4">{description}</p>
+        </div>
+        <Button onClick={handleOnClick} className="mt-12">
+          {cta.text}
+        </Button>
+      </div>
+      <div className="mt-16 md:mt-0 flex flex-col gap-5 md:flex-row">
         {prices.map((price, idx) => {
           return <InfoCardPrice {...price} key={`${price.infoHeaderTitle}-${idx}`} />
         })}
