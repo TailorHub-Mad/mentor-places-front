@@ -12,7 +12,7 @@ interface InfoCardProps {
 export const InfoCard: FC<InfoCardProps> = ({ variant, infoHeaderTitle, title, description }) => {
   return (
     <div
-      className={cx('p-[32px] max-w-full', {
+      className={cx('p-[32px] max-w-full rounded-lg', {
         'bg-GRAY w-[245px]': variant === ContentCardVariant.INFO_CARD_PRICE,
         'bg-YELLOW w-[437px]': variant === ContentCardVariant.INFO_CARD_NUMBER
       })}>

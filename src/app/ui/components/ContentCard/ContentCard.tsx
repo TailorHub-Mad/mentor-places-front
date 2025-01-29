@@ -9,17 +9,18 @@ export enum ContentCardVariant {
   INFO_CARD_NUMBER = 'INFO_CARD_NUMBER'
 }
 
+export interface IContentCardData {
+  imageSrc?: string
+  title: string
+  description?: string
+  price?: number
+  date?: string
+  url?: string
+  infoHeaderTitle?: string
+}
 export interface ContentCardProps {
   variant: ContentCardVariant
-  data: {
-    imageSrc?: string
-    title: string
-    description?: string
-    price?: number
-    date?: string
-    url?: string
-    infoHeaderTitle?: string
-  }
+  data: IContentCardData
 }
 
 const ContentCard: FC<ContentCardProps> = ({ variant, data }) => {
