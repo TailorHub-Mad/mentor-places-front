@@ -7,7 +7,7 @@ import { EAssetCardVariant } from '@components/AssetCard/AssetCard'
 import { useTranslations } from 'next-intl'
 import Button from '@components/Button/Button'
 
-export interface AssetCardIndexProps extends IAssetCardData {
+export interface IAssetCardIndexProps extends IAssetCardData {
   title: string
   universityLogo?: string
   universityName?: string
@@ -17,7 +17,7 @@ export interface AssetCardIndexProps extends IAssetCardData {
   handleRemove?: MouseEventHandler<HTMLButtonElement>
 }
 
-const AssetCardIndex: FC<AssetCardIndexProps> = (props) => {
+const AssetCardIndex: FC<IAssetCardIndexProps> = (props) => {
   const {
     universityLogo,
     universityName,
