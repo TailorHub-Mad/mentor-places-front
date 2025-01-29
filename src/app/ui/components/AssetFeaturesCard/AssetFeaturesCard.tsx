@@ -37,7 +37,7 @@ const AssetFeaturesCard: FC<IAssetFeaturesCardProps> = ({ title, description, ta
             <div key={label} className="bg-BLUE px-6 py-2 rounded-lg" style={{ marginRight: isLast ? 24 : 0 }}>
               <p className="s text-WHITE text-nowrap">
                 {`${label}`}
-                {number && <span>{`(${number})`}</span>}
+                {number && <span>{` (${number})`}</span>}
               </p>
             </div>
           )
