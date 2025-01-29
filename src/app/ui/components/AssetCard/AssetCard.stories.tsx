@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import AssetCard, { EAssetCardVariant } from '@components/AssetCard/AssetCard'
-import { MOCK_ASSET_CARD, MOCK_ASSET_IMAGE_SRC } from '@components/AssetCard/mock'
+import { MOCK_ASSET_CARD, MOCK_ASSET_HERO_CARD, MOCK_ASSET_IMAGE_SRC } from '@components/AssetCard/mock'
 
 const meta: Meta<typeof AssetCard> = {
   title: 'Components/Cards/AssetCard',
@@ -47,5 +47,15 @@ export const WithoutIcons: Story = {
   args: {
     variant: EAssetCardVariant.withoutIcons,
     data: MOCK_ASSET_CARD.data
+  }
+}
+
+export const Hero: Story = {
+  args: {
+    variant: EAssetCardVariant.hero,
+    data: {
+      ...MOCK_ASSET_HERO_CARD.data,
+      ranking: 5
+    }
   }
 }

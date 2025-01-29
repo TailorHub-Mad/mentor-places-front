@@ -36,4 +36,14 @@ export const MOCK_ASSET_CARD: IAssetCardProps = {
   }
 }
 
+export const MOCK_ASSET_HERO_CARD: IAssetCardProps = {
+  variant: EAssetCardVariant.withIcons,
+  data: {
+    title: 'Máster universitario en Marketing Digital',
+    universityName: 'Universidad Alfonso X el Sabio (UAX)',
+    universityLogo: '/images/UAX-university-mentor.png',
+    description: 'Marketing Digital / Máster Universitario en Marketing Digital'
+  }
+}
+
 export const MOCK_ASSET_IMAGE_SRC = '/images/university-example-mentor.jpeg'
