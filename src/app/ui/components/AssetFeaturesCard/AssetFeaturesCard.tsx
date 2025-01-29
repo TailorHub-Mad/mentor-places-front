@@ -13,22 +13,22 @@ export interface IAssetFeaturesCardProps {
 
 const AssetFeaturesCard: FC<IAssetFeaturesCardProps> = ({ title, description, tags, icon }) => {
   const Icon = AssetIconsArray[icon as TAssetDetailType] || null
-  const isHtml = /<[^>]+>/g.test(description)
+  const containsHtml = /<[^>]+>/g.test(description)
+
+  const renderDescription = (desc: string, hasHtml: boolean) => {
+    return hasHtml ? (
+      <div className="s mt-16 max-w-[495px]" dangerouslySetInnerHTML={{ __html: desc }}></div>
+    ) : (
+      <p className="s opacity-60 mt-16 max-w-[495px]">{desc}</p>
+    )
+  }
 
   return (
     <div className="bg-BLUE_LIGHT rounded-lg py-8">
       <div className="px-6">
         {Icon && <Icon width={40} height={46} />}
         <p className="m">{title}</p>
-        {isHtml ? (
-          <div
-            className="s mt-16 max-w-[495px]"
-            dangerouslySetInnerHTML={{
-              __html: description
-            }}></div>
-        ) : (
-          <p className="s opacity-60 mt-16 max-w-[495px]">{description}</p>
-        )}
+        {renderDescription(description, containsHtml)}
         <hr className="h-[1px] border-BLACK/10 mt-6 mb-8" />
       </div>
       <div className="flex gap-2 overflow-x-auto py-2 md:flex-wrap pl-6 md:px-6 hide-scrollbar">
