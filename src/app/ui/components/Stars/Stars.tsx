@@ -11,10 +11,6 @@ export interface IStarsOpinionsProps {
 const StarsOpinions: FC<IStarsOpinionsProps> = ({ average, total }) => {
   const t = useTranslations()
 
-  if (average < 0 || average > 5) {
-    throw new Error('Input average must be between 0 and 5.')
-  }
-
   const whole = Math.floor(average)
   const decimal = average - whole
 

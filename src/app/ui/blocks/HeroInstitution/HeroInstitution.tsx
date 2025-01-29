@@ -27,7 +27,7 @@ const HeroInstitution: FC<IHeroInstitutionProps> = ({ title, logo, image, opinio
         <div className="flex flex-col justify-between items-end">
           {!isMobile && (
             <div className="university-logo flex items-center gap-2 my-[8px]">
-              <Image src={logo} alt={''} width={44} height={44} />
+              <Image src={logo} alt={title} width={44} height={44} />
               <span className="s text-BLACK_60">{title}</span>
             </div>
           )}
