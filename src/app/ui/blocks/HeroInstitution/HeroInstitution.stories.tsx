@@ -20,6 +20,12 @@ export const Default: Story = {
     opinions: {
       average: 4.5,
       total: 44
-    }
+    },
+    blocks: [
+      { id: '1', text: 'Acerca de' },
+      { id: '2', text: 'Oferta educativa' },
+      { id: '3', text: 'Becas y financiación' },
+      { id: '4', text: 'Opiniones' }
+    ]
   }
 }
