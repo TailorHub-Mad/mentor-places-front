@@ -3,11 +3,13 @@ import AccordionBlock from '@components/Accordion/components/AccordionBlock'
 import useAccordionItems from '@components/Accordion/useAccordionItems'
 import RichText from '@components/RichText/RichText'
 
+export interface IFaqItem {
+  title: string
+  content: string
+}
+
 export interface IFaqAccordionProps {
-  items: {
-    title: string
-    content: string
-  }[]
+  items: IFaqItem[]
   defaultOpen?: string
 }
 
