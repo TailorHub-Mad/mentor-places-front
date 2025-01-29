@@ -3,7 +3,8 @@ import WishListButton from '@components/WishListButton/WishListButton'
 import useBreakpoint from '@hooks/useBreakpoint'
 import Image from 'next/image'
 import type { FC } from 'react'
-import TagList, { IBlock } from './components/TagList'
+import type { IBlock } from './components/TagList'
+import TagList from './components/TagList'
 
 interface IHeroInstitutionProps {
   title: string

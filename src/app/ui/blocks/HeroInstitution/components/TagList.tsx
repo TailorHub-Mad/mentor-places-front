@@ -1,6 +1,7 @@
 import ContentTag from '@components/ContentTag/ContentTag'
 import { EColor } from '@theme/foundations/colors.foundations'
-import React, { FC } from 'react'
+import type { FC } from 'react'
+import React from 'react'
 
 export interface IBlock {
   id: string
