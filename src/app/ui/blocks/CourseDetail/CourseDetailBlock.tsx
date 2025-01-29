@@ -1,19 +1,18 @@
 import type { FC } from 'react'
-import { cx } from '@utils/cx'
 import { useTranslations } from 'next-intl'
 import ContentTag from '@components/ContentTag/ContentTag'
 import CourseDetailItem from './components/CourseDetailItem'
 
 export interface ICourseDetailBlockProps {
   title: string
-  tags: string[]
-  type: string
-  isOfficial: boolean
-  ects: number
-  seats: number
-  methodology: string
-  internship: string
-  internshipAbroad: string
+  tags?: string[]
+  type?: string
+  isOfficial?: boolean
+  ects?: number
+  seats?: number
+  methodology?: string
+  internship?: string
+  internshipAbroad?: string
 }
 
 const CourseDetailBlock: FC<ICourseDetailBlockProps> = ({
@@ -33,21 +32,25 @@ const CourseDetailBlock: FC<ICourseDetailBlockProps> = ({
     const items = [
       { title: t('courseDetails.type'), description: type },
       { title: t('courseDetails.official'), description: isOfficial ? t('actions.yes') : t('actions.no') },
-      { title: t('courseDetails.ects'), description: `${ects}` },
-      { title: t('courseDetails.seats'), description: `${seats}` },
-      { title: t('courseDetails.methodology'), description: methodology, className: cx('col-span-2') },
-      { title: t('courseDetails.internship'), description: internship, className: cx('col-span-2') },
-      { title: t('courseDetails.internshipAbroad'), description: internshipAbroad, className: cx('col-span-2') }
+      { title: t('courseDetails.ects'), description: ects ? `${ects}` : undefined },
+      { title: t('courseDetails.seats'), description: seats ? `${seats}` : undefined },
+      { title: t('courseDetails.methodology'), description: methodology, className: 'col-span-2' },
+      { title: t('courseDetails.internship'), description: internship, className: 'col-span-2' },
+      { title: t('courseDetails.internshipAbroad'), description: internshipAbroad, className: 'col-span-2' }
     ]
 
-    return items.map((item, index) => (
-      <CourseDetailItem
-        key={`course-detail-item-${item.title}-${index}`}
-        title={item.title}
-        description={item.description}
-        className={item?.className}
-      />
-    ))
+    return items.map((item, index) => {
+      if (!item.description) return
+
+      return (
+        <CourseDetailItem
+          key={`course-detail-item-${item.title}-${index}`}
+          title={item.title}
+          description={item.description}
+          className={item?.className}
+        />
+      )
+    })
   }
 
   return (

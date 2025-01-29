@@ -16,3 +16,12 @@ export default meta
 type Story = StoryObj<typeof CourseDetailBlock>
 
 export const Default: Story = {}
+
+export const WithEmptyFields: Story = {
+  args: {
+    ...COURSE_DETAIL_BLOCK_MOCK,
+    methodology: undefined,
+    internship: undefined,
+    seats: undefined
+  }
+}

@@ -3,7 +3,7 @@ import { cx } from '@utils/cx'
 
 interface ICourseDetailItemProps {
   title: string
-  description: string
+  description?: string
   className?: string
 }
 
