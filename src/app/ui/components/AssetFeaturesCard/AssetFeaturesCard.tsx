@@ -1,6 +1,8 @@
 import type { FC } from 'react'
 import type { TAssetDetailType } from '@interfaces/assetDetail.type'
 import { AssetIconsArray } from '@utils/AssetIconsArray'
+import ContentTag from '@components/ContentTag/ContentTag'
+import { cx } from '@utils/cx'
 
 export interface IAssetFeaturesCardProps {
   title?: string
@@ -29,17 +31,19 @@ const AssetFeaturesCard: FC<IAssetFeaturesCardProps> = ({ title, description, ta
         )}
         <hr className="h-[1px] border-BLACK/10 mt-6 mb-8" />
       </div>
-      <div className="flex gap-2 overflow-x-auto md:flex-wrap pl-6 md:px-6 hide-scrollbar">
+      <div className="flex gap-2 overflow-x-auto py-2 md:flex-wrap pl-6 md:px-6 hide-scrollbar">
         {tags.map((elm, idx) => {
           const { label, number } = elm
           const isLast = tags.length - 1 === idx
+          const tagText = `${label}${number ? ` (${number})` : ''}`
           return (
-            <div key={label} className="bg-BLUE px-6 py-2 rounded-lg" style={{ marginRight: isLast ? 24 : 0 }}>
-              <p className="s text-WHITE text-nowrap">
-                {`${label}`}
-                {number && <span>{` (${number})`}</span>}
-              </p>
-            </div>
+            <ContentTag
+              key={label}
+              title={tagText}
+              className={cx({
+                'mr-[24px]': isLast
+              })}
+            />
           )
         })}
       </div>
