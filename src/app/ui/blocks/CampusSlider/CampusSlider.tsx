@@ -3,15 +3,15 @@ import ContactCard from '@components/ContactCard/ContactCard'
 import CustomSwiper from '@components/Swiper/CustomSwiper'
 import type { FC } from 'react'
 
-interface ICampusItem extends IContactCardProps {
+interface ICampusSliderItem extends IContactCardProps {
   image: string
 }
 
-interface ICampusProps extends IContactCardProps {
-  data: ICampusItem[]
+interface ICampusSliderProps extends IContactCardProps {
+  data: ICampusSliderItem[]
 }
 
-const Campus: FC<ICampusProps> = ({ data }) => {
+const CampusSlider: FC<ICampusSliderProps> = ({ data }) => {
   return (
     <CustomSwiper
       items={data.map((campus) => {
@@ -30,4 +30,4 @@ const Campus: FC<ICampusProps> = ({ data }) => {
   )
 }
 
-export default Campus
+export default CampusSlider

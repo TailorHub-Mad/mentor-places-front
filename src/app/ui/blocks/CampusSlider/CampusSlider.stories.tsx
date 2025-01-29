@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import Campus from './Campus'
+import CampusSlider from './CampusSlider'
 import { CONTACT_CARD_MOCK } from '@components/ContactCard/mock'
 
-const meta: Meta<typeof Campus> = {
-  component: Campus,
+const meta: Meta<typeof CampusSlider> = {
+  component: CampusSlider,
   parameters: {
     locale: 'es'
   }
@@ -11,7 +11,7 @@ const meta: Meta<typeof Campus> = {
 
 export default meta
 
-type Story = StoryObj<typeof Campus>
+type Story = StoryObj<typeof CampusSlider>
 
 export const Default: Story = {
   args: {
