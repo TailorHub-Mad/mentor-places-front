@@ -12,27 +12,32 @@ interface IReasonsWhyProps {
 
 const ReasonsWhy: FC<IReasonsWhyProps> = ({ title, cards }) => {
   const { isMobile } = useBreakpoint()
-  return isMobile ? (
-    <div className="flex flex-col gap-5">
-      <h3 className="s">{title}</h3>
-      {cards.map((card) => {
-        return <ContentCard variant={ContentCardVariant.INFO_CARD_NUMBER} data={card} key={card.infoHeaderTitle} />
-      })}
-    </div>
-  ) : (
-    <CustomSwiper
-      text={title}
-      swiperOptions={{
-        navigation: false,
-        slidesPerView: 2,
-        spaceBetween: 24
-      }}
-      position={SwiperNavigationPosition.TOP_RIGHT}
-      items={cards.map((card) => {
-        return <ContentCard variant={ContentCardVariant.INFO_CARD_NUMBER} data={card} key={card.infoHeaderTitle} />
-      })}
-    />
+
+  const renderCard = (card: IContentCardData) => (
+    <ContentCard variant={ContentCardVariant.INFO_CARD_NUMBER} data={card} key={card.infoHeaderTitle} />
   )
+
+  if (isMobile) {
+    return (
+      <div className="flex flex-col gap-5">
+        <h3 className="s">{title}</h3>
+        {cards.map(renderCard)}
+      </div>
+    )
+  } else {
+    return (
+      <CustomSwiper
+        text={title}
+        swiperOptions={{
+          navigation: false,
+          slidesPerView: 2,
+          spaceBetween: 24
+        }}
+        position={SwiperNavigationPosition.TOP_RIGHT}
+        items={cards.map(renderCard)}
+      />
+    )
+  }
 }
 
 export default ReasonsWhy
