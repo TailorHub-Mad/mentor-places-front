@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl'
-import React, { FC } from 'react'
+import type { FC } from 'react'
+import React from 'react'
 import { getStars } from './utils'
 
 export interface IStarsOpinionsProps {
@@ -19,8 +20,9 @@ const StarsOpinions: FC<IStarsOpinionsProps> = ({ average, total }) => {
 
   return (
     <div className="flex gap-4 items-center">
+      <span className="s text-BLACK">{average}</span>
       <div className="flex gap-1 items-center">{getStars(whole, decimal)}</div>
-      <p className="s text-BLACK_60">{`${total} ${t('opinions').toLowerCase()}`}</p>
+      <span className="s text-BLACK/60">{`${total} ${t('opinions').toLowerCase()}`}</span>
     </div>
   )
 }
