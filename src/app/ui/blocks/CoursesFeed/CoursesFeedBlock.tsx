@@ -1,26 +1,55 @@
 import type { FC } from 'react'
-import AssetCardIndex, { type IAssetCardIndexProps } from '@components/AssetCardIndex/AssetCardIndex'
-import Banner, { type IBannerProps } from '../Banner/Banner'
+import { type IAssetCardIndexProps } from '@components/AssetCardIndex/AssetCardIndex'
+import { type IBannerProps } from '../Banner/Banner'
+import CoursesFeed from './components/CoursesFeed'
+import Pagination from '@components/Pagination/Pagination'
+import { useTranslations } from 'next-intl'
+import type { ESortDirection } from '../../../lib/enums/globals.enums'
+import SortSelectTrigger from './components/SortSelectTrigger'
+import type { ISelectOption } from '@components/Form/Inputs/Select/InputSelect'
 
 export interface ICoursesFeedBlockProps {
   courses: IAssetCardIndexProps[]
   banner: IBannerProps
+  page: number
+  totalPages: number
+  totalCourses: number
+  handlePageChange: (page: number) => void
+  sortOptions: ISelectOption[]
+  sortOption: string
+  sortOrder: ESortDirection
+  handleSortChange: (props: { sort: string; order: ESortDirection }) => void
 }
 
-const CoursesFeedBlock: FC<ICoursesFeedBlockProps> = ({ courses, banner }) => {
-  const renderBanner = (index: number) => <Banner key={`banner-course-feed-${banner.text}-${index}`} {...banner} />
+const CoursesFeedBlock: FC<ICoursesFeedBlockProps> = ({
+  courses,
+  banner,
+  handlePageChange,
+  totalPages,
+  page,
+  totalCourses,
+  handleSortChange,
+  sortOption,
+  sortOrder,
+  sortOptions
+}) => {
+  const t = useTranslations()
 
   return (
     <div className="courses-feed-block flex flex-col gap-[24px]">
-      {courses.map((course, index) => {
-        return (
-          <>
-            <AssetCardIndex key={`courses-feed-block__asset-card-${index}-${course.title}`} {...course} />
-            {/* Add the Banner after second course and only once per page */}
-            {index === 1 && renderBanner(index)}
-          </>
-        )
-      })}
+      {/* Course feed header */}
+      <div className="course-feed-block__header flex items-center justify-between">
+        <h2 className="font-s text-m-mobile">
+          <span className="">{totalCourses}&nbsp;</span>
+          <span className="">{t('courseDetails.totalFound')}</span>
+        </h2>
+        <div className="sort-input-action">
+          <SortSelectTrigger onSelect={handleSortChange} order={sortOrder} sortOptions={sortOptions} selectedSort={sortOption} />
+        </div>
+      </div>
+      <CoursesFeed courses={courses} banner={banner} />
+      {/* Pagination */}
+      <Pagination page={page} totalPages={totalPages} onChange={handlePageChange} />
     </div>
   )
 }

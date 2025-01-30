@@ -9041,8 +9041,8 @@ export const GetCoursesLanguagesDocument = gql`
 /**
  * __useGetCoursesLanguagesQuery__
  *
- * To run a query within a React component, call `useGetCoursesLanguagesQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetCoursesLanguagesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React components, call `useGetCoursesLanguagesQuery` and pass it any options that fit your needs.
+ * When your components renders, `useGetCoursesLanguagesQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -9118,8 +9118,8 @@ export const GetCoursesDocument = gql`
 /**
  * __useGetCoursesQuery__
  *
- * To run a query within a React component, call `useGetCoursesQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetCoursesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React components, call `useGetCoursesQuery` and pass it any options that fit your needs.
+ * When your components renders, `useGetCoursesQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;

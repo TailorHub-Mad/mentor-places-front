@@ -1,10 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import CoursesFeedBlock from './CoursesFeedBlock'
-import { ASSET_CARD_INDEX_MOCK } from '@components/AssetCardIndex/mock'
+import type { Meta, StoryFn } from '@storybook/react'
+import CoursesFeedBlock, { type ICoursesFeedBlockProps } from './CoursesFeedBlock'
+import { COURSES_FEED_BLOCK_MOCK } from './mock'
+import { useState } from 'react'
+import type { ESortDirection } from '../../../lib/enums/globals.enums'
 
 const meta: Meta = {
   component: CoursesFeedBlock,
-  args: undefined,
+  args: COURSES_FEED_BLOCK_MOCK,
   tags: ['autodocs'],
   parameters: {
     locale: 'es'
@@ -13,17 +15,35 @@ const meta: Meta = {
 
 export default meta
 
-type Story = StoryObj<typeof CoursesFeedBlock>
+const Template: StoryFn<ICoursesFeedBlockProps> = (args) => {
+  const [page, setPage] = useState(args.page)
+  const [sortSetting, setSortSetting] = useState({
+    option: args.sortOption,
+    order: args.sortOrder
+  })
 
-const assetCardArray = Array.from({ length: 10 }).map(() => ASSET_CARD_INDEX_MOCK)
-
-export const Default: Story = {
-  args: {
-    courses: assetCardArray,
-    banner: {
-      action: 'contact',
-      text: 'Find out which Master’s programmes match your personality!',
-      cta: 'Saber más'
-    }
+  const handlePageChange = (page: number) => {
+    setPage(page)
   }
+
+  const handleSortChange = ({ sort, order }: { sort: string; order: ESortDirection }) => {
+    setSortSetting({
+      option: sort,
+      order
+    })
+  }
+
+  return (
+    <CoursesFeedBlock
+      {...args}
+      handlePageChange={handlePageChange}
+      page={page}
+      sortOption={sortSetting.option}
+      sortOrder={sortSetting.order}
+      handleSortChange={handleSortChange}
+    />
+  )
 }
+
+export const Default = Template.bind({})
+Default.args = {}

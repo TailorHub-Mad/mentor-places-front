@@ -21,9 +21,16 @@ const SelectDropdownPortal: FC<PropsWithChildren<ISelectDropdownPortalProps>> = 
         width: 'auto'
       }
     }
+    // Calculate the base position for left
+    const calculatedLeft = targetBox.left + window.scrollX
+
+    // Ensure the dropdown doesn't overflow the right side of the viewport
+    const dropdownWidth = targetBox.width // Assuming dropdown width is similar to target's width
+    const maxAllowedLeft = window.innerWidth - dropdownWidth
+
     return {
       top: targetBox.top + window.scrollY + targetBox.height,
-      left: targetBox.left + window.scrollX,
+      left: Math.min(calculatedLeft, maxAllowedLeft), // Limit the left value
       minWidth: targetBox.width,
       width: 'auto',
       bottom: 0,

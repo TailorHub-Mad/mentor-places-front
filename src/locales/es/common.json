@@ -20,6 +20,7 @@
     "price": "Precio",
     "type": "Tipo",
     "ects": "ECTS",
+    "totalFound": "másters encontrados",
     "period": {
       "year": "año",
       "semester": "semestre",
