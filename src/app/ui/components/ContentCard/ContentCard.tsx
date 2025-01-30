@@ -1,6 +1,7 @@
 import { type FC } from 'react'
 import { BlogPostCard } from '@components/ContentCard/components/BlogPostCard'
-import { InfoCard } from '@components/ContentCard/components/InfoCard'
+import InfoCardPrice from '@components/ContentCard/components/InfoCardPrice'
+import InfoCardNumber from './components/InfoCardNumber'
 
 export enum ContentCardVariant {
   BLOG_POST_PHOTO = 'BLOG_POST_PHOTO',
@@ -9,17 +10,18 @@ export enum ContentCardVariant {
   INFO_CARD_NUMBER = 'INFO_CARD_NUMBER'
 }
 
+export interface IContentCardData {
+  imageSrc?: string
+  title: string
+  description?: string
+  price?: number
+  date?: string
+  url?: string
+  infoHeaderTitle?: string
+}
 export interface ContentCardProps {
   variant: ContentCardVariant
-  data: {
-    imageSrc?: string
-    title: string
-    description?: string
-    price?: number
-    date?: string
-    url?: string
-    infoHeaderTitle?: string
-  }
+  data: IContentCardData
 }
 
 const ContentCard: FC<ContentCardProps> = ({ variant, data }) => {
@@ -29,9 +31,11 @@ const ContentCard: FC<ContentCardProps> = ({ variant, data }) => {
     case ContentCardVariant.BLOG_POST_PHOTO:
     case ContentCardVariant.BLOG_POST_TEXT:
       return <BlogPostCard imageSrc={imageSrc} title={title} description={description} date={date} variant={variant} url={url} />
-    case ContentCardVariant.INFO_CARD_NUMBER:
     case ContentCardVariant.INFO_CARD_PRICE:
-      return <InfoCard variant={variant} infoHeaderTitle={infoHeaderTitle} title={title} description={description} />
+      return <InfoCardPrice infoHeaderTitle={infoHeaderTitle} title={title} description={description} />
+    case ContentCardVariant.INFO_CARD_NUMBER:
+      return <InfoCardNumber infoHeaderTitle={infoHeaderTitle} title={title} description={description} />
+
     default:
       return <span>Variant no implemented</span>
   }
