@@ -2,11 +2,13 @@ import type { FC } from 'react'
 import { useParams } from 'next/navigation'
 import { getLocalizeNumber } from '@utils/getLocalizeNumber'
 
+export interface IStat {
+  value: string | number
+  title: string
+}
+
 export interface IStatsInfoProps {
-  stats: {
-    value: string | number
-    title: string
-  }[]
+  stats: IStat[]
 }
 
 const StatsInfo: FC<IStatsInfoProps> = ({ stats }) => {
