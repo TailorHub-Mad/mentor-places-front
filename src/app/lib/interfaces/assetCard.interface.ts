@@ -9,6 +9,7 @@ export interface IAssetCardData {
   ctaHref?: string
   ranking?: number
   details?: IAssetCardDetail[]
+  description?: string
 }
 
 export interface IAssetCardDetail {

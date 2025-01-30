@@ -3,6 +3,7 @@ import { cx } from '@utils/cx'
 import React, { type FC } from 'react'
 import { EAssetCardVariant } from '@components/AssetCard/AssetCard'
 import Image from 'next/image'
+import RankingTag from './RankingTag'
 
 interface AssetCardHeaderProps {
   title: string
@@ -16,16 +17,16 @@ interface AssetCardHeaderProps {
 const AssetCardHeader: FC<AssetCardHeaderProps> = ({ title, universityName, universityLogo, imageSrc, ranking, variant }) => {
   switch (variant) {
     case EAssetCardVariant.withIcons:
+    case EAssetCardVariant.hero:
       return (
         <div className="asset-card__header px-[30px] pt-[34px]">
           {imageSrc && (
             <div className="image-wrapper relative">
-              {ranking && (
-                <span className="absolute -top-4 right-8 px-2.5 py-1 bg-BLUE text-WHITE font-m font-thin rounded-md">Top {ranking}</span>
-              )}
+              {ranking && <RankingTag ranking={ranking} />}
               <Image className="rounded-[8px]" src={imageSrc} alt={title} width={500} height={500} />
             </div>
           )}
+          {!imageSrc && ranking && <RankingTag ranking={ranking} />}
           {(universityLogo || universityName) && (
             <div className="university-logo flex items-center gap-2 my-[8px]">
               {universityLogo && <Image src={universityLogo} alt={universityName || ''} width={50} height={50} />}
