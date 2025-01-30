@@ -37,7 +37,6 @@ const CoursesFeedBlock: FC<ICoursesFeedBlockProps> = ({
 
   return (
     <div className="courses-feed-block flex flex-col gap-[24px]">
-      {/* Course feed header */}
       <div className="course-feed-block__header flex items-center justify-between">
         <h2 className="font-s text-m-mobile">
           <span className="">{totalCourses}&nbsp;</span>
@@ -48,7 +47,6 @@ const CoursesFeedBlock: FC<ICoursesFeedBlockProps> = ({
         </div>
       </div>
       <CoursesFeed courses={courses} banner={banner} />
-      {/* Pagination */}
       <Pagination page={page} totalPages={totalPages} onChange={handlePageChange} />
     </div>
   )
