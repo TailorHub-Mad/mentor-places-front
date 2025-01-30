@@ -1,4 +1,5 @@
-import ListContent, { IListContentItem } from '@components/ListContent/ListContent'
+import type { IListContentItem } from '@components/ListContent/ListContent'
+import ListContent from '@components/ListContent/ListContent'
 import type { FC } from 'react'
 
 interface IScholarshipsAndGrantsProps {
