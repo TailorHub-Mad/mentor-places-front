@@ -11,37 +11,11 @@ interface ISelectDropdownPortalProps {
 const SelectDropdownPortal: FC<PropsWithChildren<ISelectDropdownPortalProps>> = ({ isVisible, targetRef, children, className }) => {
   if (!isVisible) return null
 
-  const targetBox = targetRef?.current ? targetRef.current.getBoundingClientRect() : null
-  const getDropdownPosition = () => {
-    if (!targetBox) {
-      return {
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: 'auto'
-      }
-    }
-    // Calculate the base position for left
-    const calculatedLeft = targetBox.left + window.scrollX
-
-    // Ensure the dropdown doesn't overflow the right side of the viewport
-    const dropdownWidth = targetBox.width // Assuming dropdown width is similar to target's width
-    const maxAllowedLeft = window.innerWidth - dropdownWidth
-
-    return {
-      top: targetBox.top + window.scrollY + targetBox.height,
-      left: Math.min(calculatedLeft, maxAllowedLeft), // Limit the left value
-      minWidth: targetBox.width,
-      width: 'auto',
-      bottom: 0,
-      transform: 'none'
-    }
-  }
-
+  const targetBoundingBox = targetRef?.current?.getBoundingClientRect() || null
   const dropdownStyles: CSSProperties = {
     position: 'absolute',
     height: 'min-content',
-    ...getDropdownPosition()
+    ...calculateDropdownPosition(targetBoundingBox)
   }
 
   const dropdownElement = (
@@ -62,3 +36,35 @@ const SelectDropdownPortal: FC<PropsWithChildren<ISelectDropdownPortalProps>> = 
 }
 
 export default SelectDropdownPortal
+
+const calculateDropdownPosition = (boundingBox: DOMRect | null): CSSProperties => {
+  if (!boundingBox) {
+    return {
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      width: 'auto'
+    }
+  }
+
+  const { top, left, width, height } = boundingBox
+  const viewportWidth = window.innerWidth
+  const scrollX = window.scrollX,
+    scrollY = window.scrollY
+
+  // Determine if the dropdown is in the right or left section of the screen
+  const isRightSide = left + width / 2 > viewportWidth / 2
+
+  // Calculate the relevant horizontal property (left or right)
+  const horizontalPosition: CSSProperties = isRightSide
+    ? { right: viewportWidth - (left + width) - scrollX } // Use 'right' if on right side
+    : { left: left + scrollX } // Use 'left' otherwise
+
+  return {
+    top: top + scrollY + height,
+    minWidth: width,
+    width: 'auto',
+    transform: 'none',
+    ...horizontalPosition // Dynamically add the proper horizontal positioning
+  }
+}
