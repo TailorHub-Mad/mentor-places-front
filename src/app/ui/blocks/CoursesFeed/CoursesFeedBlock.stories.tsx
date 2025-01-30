@@ -15,10 +15,15 @@ export default meta
 
 type Story = StoryObj<typeof CoursesFeedBlock>
 
-const assetCardArray = Array.from({ length: 5 }).map(() => ASSET_CARD_INDEX_MOCK)
+const assetCardArray = Array.from({ length: 10 }).map(() => ASSET_CARD_INDEX_MOCK)
 
 export const Default: Story = {
   args: {
-    courses: assetCardArray
+    courses: assetCardArray,
+    banner: {
+      action: 'contact',
+      text: 'Find out which Master’s programmes match your personality!',
+      cta: 'Saber más'
+    }
   }
 }

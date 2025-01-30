@@ -5,7 +5,7 @@ import type { TCTAAction } from '@hooks/useAction'
 import useAction from '@hooks/useAction'
 import type { FC } from 'react'
 
-interface IBannerProps {
+export interface IBannerProps {
   text: string
   cta: string
   action: TCTAAction
