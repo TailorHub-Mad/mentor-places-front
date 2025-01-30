@@ -1,5 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import AssetFeaturesCard from '@components/AssetFeaturesCard/AssetFeaturesCard'
+import {
+  ASSET_FEATURES_CARD_HTML_DESCRIPTION_MOCK,
+  ASSET_FEATURES_CARD_ICON_MOCK,
+  ASSET_FEATURES_CARD_TITLE_MOCK
+} from '@components/AssetFeaturesCard/mock'
 
 const meta: Meta<typeof AssetFeaturesCard> = {
   title: 'Components/Cards/AssetFeaturesCard',
@@ -13,14 +18,14 @@ export default meta
 
 type Story = StoryObj<typeof AssetFeaturesCard>
 
-export const Default: Story = {
-  args: {
-    title: 'Modalidad',
-    description: 'En la Universidad Francisco Vitoria ofrece una amplia oferta de títulos en formato presencial, híbrido y online',
-    tags: [
-      { label: 'Presencial', number: 35 },
-      { label: 'Híbrido', number: 10 },
-      { label: 'Online', number: 1 }
-    ]
-  }
+export const CardWithTitle: Story = {
+  args: ASSET_FEATURES_CARD_TITLE_MOCK
+}
+
+export const CardWithIcon: Story = {
+  args: ASSET_FEATURES_CARD_ICON_MOCK
+}
+
+export const CardWithScapendHtmlDescription: Story = {
+  args: ASSET_FEATURES_CARD_HTML_DESCRIPTION_MOCK
 }

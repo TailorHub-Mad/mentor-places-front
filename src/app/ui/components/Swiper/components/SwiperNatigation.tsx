@@ -58,7 +58,7 @@ const SwiperNavigation: FC<SwiperNavigationProps> = ({ position, text }) => {
   return (
     <div>
       {text && !isMobile && position === SwiperNavigationPosition.TOP_RIGHT && (
-        <p className="text-l font-l absolute -top-2 left-2">{text}</p>
+        <p className="text-l font-l absolute -top-2 left-2 line-clamp-1">{text}</p>
       )}
       <div className={cx('swiper-navigation__wrapper flex justify-center mt-4 gap-2', positionNavigationClasses(position))}>
         <div
