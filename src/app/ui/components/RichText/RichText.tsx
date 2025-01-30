@@ -1,7 +1,7 @@
 'use client'
 
 import ShowMoreButton from '@components/ShowMoreButton'
-import { EColor } from '@theme/foundations/colors.foundations'
+import type { EColor } from '@theme/foundations/colors.foundations'
 import { useEffect, useRef, useState, type FC } from 'react'
 
 const RICH_TEXT_MB = 16

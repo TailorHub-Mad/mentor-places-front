@@ -1,5 +1,6 @@
 import RichText from '@components/RichText/RichText'
-import StatsInfo, { IStat } from '@components/StatsInfo/StatsInfo'
+import type { IStat } from '@components/StatsInfo/StatsInfo'
+import StatsInfo from '@components/StatsInfo/StatsInfo'
 import useBreakpoint from '@hooks/useBreakpoint'
 import { EColor } from '@theme/foundations/colors.foundations'
 import type { FC } from 'react'
