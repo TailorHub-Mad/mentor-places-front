@@ -13,6 +13,7 @@ interface IAboutProps {
 
 const About: FC<IAboutProps> = ({ title, text, stats }) => {
   const { isMobile } = useBreakpoint()
+
   return (
     <div className="flex flex-col gap-8 md:flex-row md:gap-[245px]">
       <h2 className="s text-BLACK/60 text-nowrap">{title}</h2>
