@@ -20,7 +20,7 @@ const ReasonsWhy: FC<IReasonsWhyProps> = ({ title, cards }) => {
   if (isMobile) {
     return (
       <div className="flex flex-col gap-5">
-        <h3 className="s">{title}</h3>
+        <h3 className="text-l-mobile font-l-mobile">{title}</h3>
         {cards.map(renderCard)}
       </div>
     )
