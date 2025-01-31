@@ -77,7 +77,8 @@
     "contact": {
       "title": "Complete the form",
       "button": "Send",
-      "checkbox": "I have read and accept the Privacy Policy"
+      "checkbox": "I have read and accept the Privacy Policy",
+      "successMessage": "We will contact you as soon as possible"
     },
     "placeholders": {
       "name": "Name",
@@ -86,6 +87,9 @@
       "password": "Password",
       "phone": "Phone",
       "country": "Country"
+    },
+    "errors": {
+      "errorMessage": "Something wrong happened. Please, try again."
     }
   },
   "validations": {
@@ -100,5 +104,8 @@
     "surname": "Surname",
     "email": "Email",
     "phone": "Phone"
+  },
+  "common": {
+    "thanks": "Thanks!"
   }
 }
