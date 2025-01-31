@@ -32,7 +32,7 @@ const Pagination: FC<IPaginationProps> = ({ totalPages, page, onChange, classNam
         className="pagination-block__prev flex items-center justify-center p-[20px] rounded-full bg-GRAY/60 disabled:opacity-40 disabled:cursor-not-allowed">
         <ChevronArrowLeft className="absolute" />
       </button>
-      <div class="pagination-block__number-loop flex items-center gap-4">
+      <div className="pagination-block__number-loop flex items-center gap-4">
         {groupedPages.map((pageNumber, index) =>
           pageNumber === '...' ? (
             <span key={`ellipsis-${index}`} className="pagination-ellipsis text-BLACK/40">

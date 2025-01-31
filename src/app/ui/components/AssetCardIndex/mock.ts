@@ -1,7 +1,7 @@
-import { type AssetCardIndexProps } from '@components/AssetCardIndex/AssetCardIndex'
+import { type IAssetCardIndexProps } from '@components/AssetCardIndex/AssetCardIndex'
 import { ASSET_CARD_DETAILS_MOCK, MOCK_ASSET_IMAGE_SRC } from '@components/AssetCard/mock'
 
-export const ASSET_CARD_INDEX_MOCK: AssetCardIndexProps = {
+export const ASSET_CARD_INDEX_MOCK: IAssetCardIndexProps = {
   universityLogo: '/images/UAX-university-mentor.png',
   universityName: 'Universidad Alfonso X el Sabio (UAX)',
   assetThumbnailUrl: MOCK_ASSET_IMAGE_SRC,
