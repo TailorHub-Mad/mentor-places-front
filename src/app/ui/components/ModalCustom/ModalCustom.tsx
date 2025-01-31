@@ -25,10 +25,10 @@ const ModalCustom: FC<PropsWithChildren<IModalCustomProps>> = ({ children, handl
     <div className="modal-custom absolute inset-0 flex items-center justify-center z-[1000]">
       <div
         className={cx(
-          'modal-custom__container flex flex-col bg-WHITE min-h-full md:min-h-[500px] min-w-full md:min-w-[80vw] max-w-full max-h-svh overflow-y-auto relative z-20 rounded-[8px]',
+          'modal-custom__container flex flex-col bg-WHITE min-h-full md:min-h-[500px] w-full md:w-[700px] lg:w-[900px] max-h-svh overflow-y-auto relative z-20 rounded-[8px]',
           className
         )}>
-        <button className="absolute right-[32px] top-[32px]" onClick={handleClose}>
+        <button className="absolute right-[32px] top-[32px] z-50" onClick={handleClose}>
           <CrossIcon />
         </button>
         {children}
