@@ -7,7 +7,6 @@ import { SubmitContactFormService } from '@services/contact-form.service'
 
 const ContactModal: FC = () => {
   const { handleIsContactModalOpen, isContactModalOpen } = useContext(UiContext)
-  const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState<string | null>(null)
 
   const handleCloseModal = () => {
@@ -16,7 +15,6 @@ const ContactModal: FC = () => {
   }
 
   const handleSubmit = async (formData: IContactRequest) => {
-    setLoading(true)
     setMessage(null)
     try {
       const response = await SubmitContactFormService(formData)
@@ -24,8 +22,6 @@ const ContactModal: FC = () => {
     } catch (error: unknown) {
       // Display error message
       console.log({ error })
-    } finally {
-      setLoading(false)
     }
   }
 
@@ -35,7 +31,6 @@ const ContactModal: FC = () => {
         <div className="contact-modal-block__form flex flex-col justify-center p-0 md:pr-10">
           {message && <p>{message}</p>}
           <ContactForm onSubmit={handleSubmit} />
-          {loading && <p>Submitting form...</p>}
         </div>
         <div className="contact-modal-block__image overflow-x-hidden overflow-y-visible hidden md:block">
           <div className="image-wrapper overflow-hidden rounded-[18px] absolute top-[30%] lg:top-[25%] rotate-[20deg] scale-[1.7] lg:scale-150 translate-x-[150px] z-10">
