@@ -11,8 +11,6 @@ const ContactModal: FC = () => {
   const [isSuccess, setIsSuccess] = useState(false)
   const [message, setMessage] = useState<string | null>(null)
 
-  const t = useTranslations('forms')
-
   const handleCloseModal = () => {
     handleIsContactModalOpen(false)
     setMessage(null) // Clear any feedback when the modal is closed
@@ -26,7 +24,7 @@ const ContactModal: FC = () => {
       setIsSuccess(true)
     } catch (error: unknown) {
       setIsSuccess(false)
-      setMessage(t('forms.errorMessage') + error)
+      setMessage((error as { message: string }).message)
     }
   }
 
@@ -34,7 +32,7 @@ const ContactModal: FC = () => {
     <ModalCustom isOpen={isContactModalOpen} handleClose={handleCloseModal}>
       <div className="contact-modal-block grid grid-cols-1 md:grid-cols-2 h-full flex-grow px-[32px] py-[61px] overflow-hidden relative">
         <div className="contact-modal-block__form flex flex-col justify-center p-0 md:pr-10">
-          {isSuccess && message ? <SuccessMessage /> : <ContactForm onSubmit={handleSubmit} />}
+          {isSuccess && message ? <SuccessMessage message={message} /> : <ContactForm onSubmit={handleSubmit} />}
           {!isSuccess && message && <span className="font-s text-s mt-4">{message}</span>}
         </div>
         <div className="contact-modal-block__image overflow-x-hidden overflow-y-visible hidden md:block">
@@ -55,13 +53,13 @@ const ContactModal: FC = () => {
 
 export default ContactModal
 
-const SuccessMessage: FC = () => {
+const SuccessMessage: FC<{ message: string }> = ({ message }) => {
   const t = useTranslations()
 
   return (
     <div className="flex flex-col items-center justify-center absolute inset-0 z-20 bg-WHITE">
       <h2 className="font-xl text-xl mb-3">{t('common.thanks')}</h2>
-      <p className="font-s text-[18px] text-center text-BLACK/60">{t('forms.contact.successMessage')}</p>
+      <p className="font-s text-[18px] text-center text-BLACK/60">{message}</p>
     </div>
   )
 }

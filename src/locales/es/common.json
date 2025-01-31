@@ -87,9 +87,6 @@
       "password": "Contraseña",
       "phone": "Teléfono",
       "country": "País"
-    },
-    "errors": {
-      "errorMessage": "Algo ha salido mal. Por favor, inténtalo de nuevo."
     }
   },
   "validations": {

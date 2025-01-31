@@ -9,12 +9,12 @@ export const SubmitContactFormService = async (formData: IContactRequest): Promi
       if (formData.name && formData.surname && formData.country && formData.phone && formData.acceptPrivacyPolicy) {
         resolve({
           success: true,
-          message: 'Contact form submitted successfully!'
+          message: 'Nos pondremos en contacto a la brevedad'
         })
       } else {
         reject({
           success: false,
-          message: 'Failed to submit the form. Please make sure all fields are filled out correctly.'
+          message: 'Algo ha salido mal. Por favor, inténtalo de nuevo.'
         })
       }
     }, 1500) // Simulate network delay of 1.5 seconds

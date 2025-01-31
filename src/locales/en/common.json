@@ -87,9 +87,6 @@
       "password": "Password",
       "phone": "Phone",
       "country": "Country"
-    },
-    "errors": {
-      "errorMessage": "Something wrong happened. Please, try again."
     }
   },
   "validations": {
