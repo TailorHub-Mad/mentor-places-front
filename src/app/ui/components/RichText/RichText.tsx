@@ -1,6 +1,7 @@
 'use client'
 
 import ShowMoreButton from '@components/ShowMoreButton'
+import type { EColor } from '@theme/foundations/colors.foundations'
 import { useEffect, useRef, useState, type FC } from 'react'
 
 const RICH_TEXT_MB = 16
@@ -10,12 +11,13 @@ interface IRichTextProps {
   maxLines?: number
   width?: string
   disableTruncate?: boolean
+  color?: EColor
 }
 
 const MAX_LINES_DEFAULT = 30
 
 // More styles can be added on 'rich-text.css'
-const RichText: FC<IRichTextProps> = ({ content, maxLines = MAX_LINES_DEFAULT, width, disableTruncate }) => {
+const RichText: FC<IRichTextProps> = ({ content, maxLines = MAX_LINES_DEFAULT, width, disableTruncate, color }) => {
   const [isExpanded, setIsExpanded] = useState(false)
   const [isTruncated, setIsTruncated] = useState(false)
   const [lineHeight, setLineHeight] = useState(0)
@@ -42,6 +44,7 @@ const RichText: FC<IRichTextProps> = ({ content, maxLines = MAX_LINES_DEFAULT, w
         className="rich-text"
         dangerouslySetInnerHTML={{ __html: content }}
         style={{
+          color,
           display: '-webkit-box',
           WebkitBoxOrient: 'vertical',
           overflow: 'hidden',

@@ -1,4 +1,5 @@
-import FaqAccordion, { IFaqItem } from '@components/FaqAccordion/FaqAccordion'
+import type { IFaqItem } from '@components/FaqAccordion/FaqAccordion'
+import FaqAccordion from '@components/FaqAccordion/FaqAccordion'
 import { useTranslations } from 'next-intl'
 import type { FC } from 'react'
 
