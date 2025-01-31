@@ -48,6 +48,8 @@ const SortSelectTrigger: FC<ISortSelectTriggerProps> = ({ sortOptions, selectedS
     )
   }
 
+  const labelValueSelected = sortOptions.find((option) => option.value === selectedSort)?.label || selectedSort
+
   return (
     <>
       <div className="flex items-center justify-between">
@@ -57,7 +59,7 @@ const SortSelectTrigger: FC<ISortSelectTriggerProps> = ({ sortOptions, selectedS
           isOpen={isOpen}
           isOverflowing={isOverflowing}
           placeholder={''}
-          label={selectedSort}
+          label={labelValueSelected}
           onClick={toggle}
           parentRef={parentRef}
           spanRef={spanRef}
