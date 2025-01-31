@@ -32,7 +32,6 @@ const defaultValues: IContactRequest = {
 
 interface IContactFormProps {
   onSubmit: (data: IContactRequest) => void
-  isSubmitting?: boolean
 }
 
 const ContactForm: FC<IContactFormProps> = ({ onSubmit }) => {
