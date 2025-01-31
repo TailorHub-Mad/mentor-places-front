@@ -3,7 +3,7 @@ import type { HTMLInputTypeAttribute, KeyboardEvent } from 'react'
 const VALIDATION_RULES: Record<string, (key: HTMLInputTypeAttribute, currentValue: string) => boolean> = {
   tel: (key: string, currentValue: string) =>
     (currentValue.length < 14 && /^[0-9]$/.test(key)) || ['Backspace', 'ArrowLeft', 'ArrowRight', 'Delete', 'Tab'].includes(key),
-  text: (key: string) => /^[a-zA-Z ]$/.test(key) || ['Backspace', 'ArrowLeft', 'ArrowRight', 'Delete', 'Tab'].includes(key)
+  text: (key: string) => /^[a-zA-Z\u00C0-\u017F  ]$/.test(key) || ['Backspace', 'ArrowLeft', 'ArrowRight', 'Delete', 'Tab'].includes(key)
 }
 
 const validateKey = (key: string, type: HTMLInputTypeAttribute | undefined, currentValue: string): boolean => {
