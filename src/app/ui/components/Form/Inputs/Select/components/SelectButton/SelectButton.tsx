@@ -14,11 +14,11 @@ interface SelectButtonProps {
   isSelectInput?: boolean
 }
 
-const SelectButton = forwardRef<HTMLButtonElement, SelectButtonProps>(
+const SelectButton = forwardRef<HTMLButtonElement | HTMLInputElement, SelectButtonProps>(
   ({ disabled, isOpen, isOverflowing, placeholder, label, onClick, parentRef, spanRef, isSelectInput = true }, ref) => {
     return (
       <button
-        ref={ref}
+        ref={ref as RefObject<HTMLButtonElement>}
         type="button"
         className={cx('w-auto max-w-full flex items-center justify-between', {
           'cursor-not-allowed': disabled,

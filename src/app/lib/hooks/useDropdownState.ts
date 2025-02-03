@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 
 export const useDropdownState = (isDisabled: boolean = false) => {
   const [isOpen, setIsOpen] = useState(false)
-  const targetRef = useRef<HTMLButtonElement>(null)
+  const targetRef = useRef<HTMLButtonElement | HTMLInputElement>(null)
   const selectInputRef = useRef<HTMLDivElement>(null)
 
   const toggle = () => {
@@ -22,10 +22,16 @@ export const useDropdownState = (isDisabled: boolean = false) => {
     }
   }
 
+  const handleShowDropdown = (value: boolean) => {
+    if (!isDisabled) {
+      setIsOpen(value)
+    }
+  }
+
   useEffect(() => {
     document.addEventListener('mousedown', closeOnOutsideClick)
     return () => document.removeEventListener('mousedown', closeOnOutsideClick)
   }, [])
 
-  return { isOpen, toggle, targetRef, selectInputRef }
+  return { isOpen, toggle, targetRef, selectInputRef, handleShowDropdown }
 }
