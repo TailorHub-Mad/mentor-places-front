@@ -1,4 +1,5 @@
-import { FC, useState } from 'react'
+import { type FC, useEffect } from 'react'
+import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import InputSearch from '@components/SearchBar/components/InputSearch'
 import type { ISelectOption } from '@components/Form/Inputs/Select/InputSelect'
@@ -9,11 +10,11 @@ export enum ESearchType {
   DISCIPLINE = 'discipline'
 }
 
-export type IValuesSelected = Record<ESearchType, string>
+export type IValuesSelected = Record<ESearchType, string | undefined>
 export type ISearchOptions = Record<ESearchType, ISelectOption[]>
-type ISearchQuery = Record<ESearchType, string>
+export type ISearchQuery = IValuesSelected
 
-interface ISearchBarProps {
+export interface ISearchBarProps {
   onChange: (query: ISearchQuery) => void
   valuesSelected: IValuesSelected
   options: ISearchOptions
@@ -32,14 +33,27 @@ const SearchBar: FC<ISearchBarProps> = ({ onChange, valuesSelected, options }) =
   }
 
   const handleSearchQuery = (value: string, type: ESearchType) => {
+    console.log('handleSearchQuery: ', { value, type })
     setSearchQuery((prev) => ({ ...prev, [type]: value }))
+    onChange({
+      ...searchQuery,
+      [type]: value
+    })
   }
+
+  useEffect(() => {
+    console.log({ valuesSelected })
+    onChange({
+      [ESearchType.LOCATION]: searchQuery.location,
+      [ESearchType.DISCIPLINE]: searchQuery.discipline
+    })
+  }, [searchQuery])
 
   return (
     <div className="search-bar flex items-center gap-3 justify-start py-6">
       <div className="search-bar__discipline">
         <InputSearch
-          valueSelected={valuesSelected.discipline}
+          valueSelected={valuesSelected.discipline || searchQuery.discipline}
           onChange={(value) => handleSearchQuery(value.id, ESearchType.DISCIPLINE)}
           placeholder={t('search.disciplinePlaceholder')}
           options={options.discipline}
@@ -47,14 +61,14 @@ const SearchBar: FC<ISearchBarProps> = ({ onChange, valuesSelected, options }) =
       </div>
       <div className="search-bar__location">
         <InputSearch
-          valueSelected={valuesSelected.location}
+          valueSelected={valuesSelected.location || searchQuery.location}
           onChange={(value) => handleSearchQuery(value.id, ESearchType.LOCATION)}
           placeholder={t('search.locationPlaceholder')}
           options={options.location}
         />
       </div>
       <div className="search-bar__button">
-        <Button onClick={() => handleOnChange}>{t('actions.search')}</Button>
+        <Button onClick={handleOnChange}>{t('actions.search')}</Button>
       </div>
     </div>
   )
