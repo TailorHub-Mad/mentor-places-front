@@ -216,7 +216,7 @@ const InstitutionPageBuilder: FC<IInstitutionPageBuilderProps> = ({ data }) => {
     console.error(`Missing data on ${institution_campuses.length - campusData.length} some campus`)
 
   return (
-    <div className="flex flex-col gap-24 page">
+    <div className="flex flex-col gap-24 page bg-GRAY py-16">
       {
         <HeroInstitution
           title={commercial_name}
