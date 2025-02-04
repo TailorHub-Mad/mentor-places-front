@@ -1,14 +1,6 @@
-query GetScholarships($filter: scholarships_filter) {
-  scholarships(filter: $filter) {
+query GetScholarships($languageName: String!) {
+  scholarships(filter: { languages_id: { name: { _eq: $languageName } } }) {
     id
-    name
-    description
-    is_active
-    enum
-    academic_course
-    languages_id {
-      id
-      name
-    }
+    ...ScholarshipsInfo
   }
 }

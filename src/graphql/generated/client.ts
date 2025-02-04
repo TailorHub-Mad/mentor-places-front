@@ -5371,6 +5371,7 @@ export type Create_Scholarships_Input = {
   is_active?: InputMaybe<Scalars['Boolean']['input']>
   languages_id?: InputMaybe<Create_Languages_Input>
   name?: InputMaybe<Scalars['String']['input']>
+  type?: InputMaybe<Scalars['String']['input']>
 }
 
 export type Create_Seo_Template_Block_Input = {
@@ -8331,6 +8332,7 @@ export type Scholarships = {
   is_active?: Maybe<Scalars['Boolean']['output']>
   languages_id?: Maybe<Languages>
   name?: Maybe<Scalars['String']['output']>
+  type?: Maybe<Scalars['String']['output']>
 }
 
 export type ScholarshipsInstitutions_Scholarships_CoursesArgs = {
@@ -8375,6 +8377,7 @@ export type Scholarships_Aggregated_Count = {
   is_active?: Maybe<Scalars['Int']['output']>
   languages_id?: Maybe<Scalars['Int']['output']>
   name?: Maybe<Scalars['Int']['output']>
+  type?: Maybe<Scalars['Int']['output']>
 }
 
 export type Scholarships_Aggregated_Fields = {
@@ -8396,6 +8399,7 @@ export type Scholarships_Filter = {
   is_active?: InputMaybe<Boolean_Filter_Operators>
   languages_id?: InputMaybe<Languages_Filter>
   name?: InputMaybe<String_Filter_Operators>
+  type?: InputMaybe<String_Filter_Operators>
 }
 
 export type Scholarships_Mutated = {
@@ -9183,6 +9187,7 @@ export type Update_Scholarships_Input = {
   is_active?: InputMaybe<Scalars['Boolean']['input']>
   languages_id?: InputMaybe<Update_Languages_Input>
   name?: InputMaybe<Scalars['String']['input']>
+  type?: InputMaybe<Scalars['String']['input']>
 }
 
 export type Update_Seo_Template_Block_Input = {
@@ -9749,6 +9754,7 @@ export type Version_Scholarships = {
   is_active?: Maybe<Scalars['Boolean']['output']>
   languages_id?: Maybe<Scalars['JSON']['output']>
   name?: Maybe<Scalars['String']['output']>
+  type?: Maybe<Scalars['String']['output']>
 }
 
 export type Version_Seo_Template = {
@@ -9819,6 +9825,23 @@ export type Version_Users = {
   role?: Maybe<Scalars['String']['output']>
 }
 
+export type CampusesInfoFragment = {
+  __typename?: 'campuses'
+  street_address?: string | null
+  city?: string | null
+  country?: string | null
+  postal_code?: string | null
+  images?: string | null
+  phone?: string | null
+  type?: string | null
+  campuses_trans?: Array<{
+    __typename?: 'campuses_trans'
+    intro?: string | null
+    description?: string | null
+    name?: string | null
+  } | null> | null
+}
+
 export type InstitutionsLocationsFragment = {
   __typename?: 'institutions'
   institution_campuses?: Array<{
@@ -9872,6 +9895,8 @@ export type InstitutionsScholarshipsFragment = {
       __typename?: 'scholarships'
       description?: any | null
       academic_course?: string | null
+      is_active?: boolean | null
+      type?: string | null
       languages_id?: { __typename?: 'languages'; name?: string | null } | null
     } | null
   } | null> | null
@@ -9898,50 +9923,12 @@ export type InstitutionsTransRankAndRecFragment = { __typename?: 'institutions_t
 
 export type InstitutionsTransStandsForFragment = { __typename?: 'institutions_trans'; standsfor?: any | null }
 
-export type GetCampusesWithInstitutionsQueryVariables = Exact<{
-  filter?: InputMaybe<Campuses_Filter>
-}>
-
-export type GetCampusesWithInstitutionsQuery = {
-  __typename?: 'Query'
-  campuses: Array<{
-    __typename?: 'campuses'
-    id: string
-    name?: string | null
-    type?: string | null
-    intro?: string | null
-    description?: string | null
-    street_address?: string | null
-    city?: string | null
-    postal_code?: string | null
-    country?: string | null
-    phone?: string | null
-    images?: string | null
-    institutions_id?: { __typename?: 'institutions'; id: string; name: string; commercial_name?: string | null } | null
-  }>
-}
-
-export type GetCampusesQueryVariables = Exact<{
-  filter?: InputMaybe<Campuses_Filter>
-}>
-
-export type GetCampusesQuery = {
-  __typename?: 'Query'
-  campuses: Array<{
-    __typename?: 'campuses'
-    id: string
-    name?: string | null
-    type?: string | null
-    intro?: string | null
-    description?: string | null
-    street_address?: string | null
-    city?: string | null
-    postal_code?: string | null
-    country?: string | null
-    phone?: string | null
-    images?: string | null
-    institutions_id?: { __typename?: 'institutions'; id: string; name: string } | null
-  }>
+export type ScholarshipsInfoFragment = {
+  __typename?: 'scholarships'
+  description?: any | null
+  academic_course?: string | null
+  is_active?: boolean | null
+  type?: string | null
 }
 
 export type GetCoursesLanguagesQueryVariables = Exact<{
@@ -9989,41 +9976,6 @@ export type GetCoursesQuery = {
     career_opportunities?: string | null
     careers?: string | null
     official_data_source?: string | null
-    learning_format_id?: { __typename?: 'learning_format'; format_name?: string | null } | null
-    learning_pace_id?: { __typename?: 'learning_pace'; pace_name?: string | null } | null
-    languages_id?: { __typename?: 'languages'; id: string; name?: string | null } | null
-    bilinguals_id?: { __typename?: 'bilinguals'; id: string; name: string } | null
-  }>
-}
-
-export type GetCoursesWithCategoriesAndCampusesQueryVariables = Exact<{
-  filter?: InputMaybe<Courses_Filter>
-}>
-
-export type GetCoursesWithCategoriesAndCampusesQuery = {
-  __typename?: 'Query'
-  courses: Array<{
-    __typename?: 'courses'
-    id: string
-    learning_format_id?: { __typename?: 'learning_format'; format_name?: string | null } | null
-    learning_pace_id?: { __typename?: 'learning_pace'; pace_name?: string | null } | null
-    campuses_courses?: Array<{
-      __typename?: 'campuses_courses'
-      id: string
-      campuses_id?: {
-        __typename?: 'campuses'
-        id: string
-        name?: string | null
-        type?: string | null
-        city?: string | null
-        institutions_id?: { __typename?: 'institutions'; id: string; name: string } | null
-      } | null
-    } | null> | null
-    category_courses?: Array<{
-      __typename?: 'courses_category_courses'
-      id: string
-      category_courses_id?: { __typename?: 'category_courses'; name: string; description?: string | null } | null
-    } | null> | null
   }>
 }
 
@@ -10057,6 +10009,8 @@ export type GetInstitutionsQuery = {
             __typename?: 'scholarships'
             description?: any | null
             academic_course?: string | null
+            is_active?: boolean | null
+            type?: string | null
             languages_id?: { __typename?: 'languages'; name?: string | null } | null
           } | null
         } | null> | null
@@ -10127,6 +10081,8 @@ export type GetUniversityQuery = {
             __typename?: 'scholarships'
             description?: any | null
             academic_course?: string | null
+            is_active?: boolean | null
+            type?: string | null
             languages_id?: { __typename?: 'languages'; name?: string | null } | null
           } | null
         } | null> | null
@@ -10169,28 +10125,8 @@ export type GetUniversityQuery = {
   } | null
 }
 
-export type GetReportsWithRelationsQueryVariables = Exact<{
-  filter?: InputMaybe<Reports_Filter>
-}>
-
-export type GetReportsWithRelationsQuery = {
-  __typename?: 'Query'
-  reports: Array<{
-    __typename?: 'reports'
-    id: string
-    internal_code?: string | null
-    data?: any | null
-    date?: any | null
-    is_validated?: boolean | null
-    institutions_id?: { __typename?: 'institutions'; id: string; name: string } | null
-    users_id?: { __typename?: 'users'; id: string; first_name?: string | null; email?: string | null } | null
-    courses_id?: { __typename?: 'courses'; id: string; type: string } | null
-    o_languages_id?: { __typename?: 'languages'; id: string; name?: string | null } | null
-  }>
-}
-
 export type GetScholarshipsQueryVariables = Exact<{
-  filter?: InputMaybe<Scholarships_Filter>
+  languageName: Scalars['String']['input']
 }>
 
 export type GetScholarshipsQuery = {
@@ -10198,35 +10134,10 @@ export type GetScholarshipsQuery = {
   scholarships: Array<{
     __typename?: 'scholarships'
     id: string
-    name?: string | null
     description?: any | null
-    is_active?: boolean | null
-    enum?: string | null
     academic_course?: string | null
-    languages_id?: { __typename?: 'languages'; id: string; name?: string | null } | null
-  }>
-}
-
-export type GetScholarshipsWithRelationsQueryVariables = Exact<{
-  filter?: InputMaybe<Scholarships_Filter>
-}>
-
-export type GetScholarshipsWithRelationsQuery = {
-  __typename?: 'Query'
-  scholarships: Array<{
-    __typename?: 'scholarships'
-    id: string
-    name?: string | null
-    description?: any | null
     is_active?: boolean | null
-    enum?: string | null
-    academic_course?: string | null
-    languages_id?: { __typename?: 'languages'; id: string; name?: string | null } | null
-    institutions_scholarships_courses?: Array<{
-      __typename?: 'institutions_scholarships_courses'
-      institutions_id?: { __typename?: 'institutions'; name: string; type?: string | null } | null
-      courses_id?: { __typename?: 'courses'; type: string; commercial_name: string; id: string } | null
-    } | null> | null
+    type?: string | null
   }>
 }
 
@@ -10252,23 +10163,29 @@ export type GetUsersWithSettingsQuery = {
   }>
 }
 
+export const CampusesInfoFragmentDoc = gql`
+  fragment CampusesInfo on campuses {
+    street_address
+    city
+    country
+    postal_code
+    images
+    phone
+    type
+    campuses_trans {
+      intro
+      description
+      name
+    }
+  }
+`
 export const InstitutionsLocationsFragmentDoc = gql`
   fragment InstitutionsLocations on institutions {
     institution_campuses(filter: { campuses_trans: { language_id: { name: { _eq: $languageName } } } }) {
-      street_address
-      city
-      country
-      postal_code
-      images
-      phone
-      type
-      campuses_trans {
-        intro
-        description
-        name
-      }
+      ...CampusesInfo
     }
   }
+  ${CampusesInfoFragmentDoc}
 `
 export const InstitutionsCoursesFragmentDoc = gql`
   fragment InstitutionsCourses on institutions {
@@ -10295,18 +10212,26 @@ export const InstitutionsHeadFragmentDoc = gql`
     main_image
   }
 `
+export const ScholarshipsInfoFragmentDoc = gql`
+  fragment ScholarshipsInfo on scholarships {
+    description
+    academic_course
+    is_active
+    type
+  }
+`
 export const InstitutionsScholarshipsFragmentDoc = gql`
   fragment InstitutionsScholarships on institutions {
     institutions_scholarships_courses(filter: { scholarships_id: { languages_id: { name: { _eq: $languageName } } } }) {
       scholarships_id {
-        description
-        academic_course
+        ...ScholarshipsInfo
         languages_id {
           name
         }
       }
     }
   }
+  ${ScholarshipsInfoFragmentDoc}
 `
 export const InstitutionsTagsFragmentDoc = gql`
   fragment InstitutionsTags on institutions {
@@ -10339,137 +10264,6 @@ export const InstitutionsTransStandsForFragmentDoc = gql`
     standsfor
   }
 `
-export const GetCampusesWithInstitutionsDocument = gql`
-  query GetCampusesWithInstitutions($filter: campuses_filter) {
-    campuses(filter: $filter) {
-      id
-      name
-      type
-      intro
-      description
-      street_address
-      city
-      postal_code
-      country
-      phone
-      images
-      institutions_id {
-        id
-        name
-        commercial_name
-      }
-    }
-  }
-`
-
-/**
- * __useGetCampusesWithInstitutionsQuery__
- *
- * To run a query within a React component, call `useGetCampusesWithInstitutionsQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetCampusesWithInstitutionsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetCampusesWithInstitutionsQuery({
- *   variables: {
- *      filter: // value for 'filter'
- *   },
- * });
- */
-export function useGetCampusesWithInstitutionsQuery(
-  baseOptions?: Apollo.QueryHookOptions<GetCampusesWithInstitutionsQuery, GetCampusesWithInstitutionsQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<GetCampusesWithInstitutionsQuery, GetCampusesWithInstitutionsQueryVariables>(
-    GetCampusesWithInstitutionsDocument,
-    options
-  )
-}
-export function useGetCampusesWithInstitutionsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetCampusesWithInstitutionsQuery, GetCampusesWithInstitutionsQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GetCampusesWithInstitutionsQuery, GetCampusesWithInstitutionsQueryVariables>(
-    GetCampusesWithInstitutionsDocument,
-    options
-  )
-}
-export function useGetCampusesWithInstitutionsSuspenseQuery(
-  baseOptions?:
-    | Apollo.SkipToken
-    | Apollo.SuspenseQueryHookOptions<GetCampusesWithInstitutionsQuery, GetCampusesWithInstitutionsQueryVariables>
-) {
-  const options = baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions }
-  return Apollo.useSuspenseQuery<GetCampusesWithInstitutionsQuery, GetCampusesWithInstitutionsQueryVariables>(
-    GetCampusesWithInstitutionsDocument,
-    options
-  )
-}
-export type GetCampusesWithInstitutionsQueryHookResult = ReturnType<typeof useGetCampusesWithInstitutionsQuery>
-export type GetCampusesWithInstitutionsLazyQueryHookResult = ReturnType<typeof useGetCampusesWithInstitutionsLazyQuery>
-export type GetCampusesWithInstitutionsSuspenseQueryHookResult = ReturnType<typeof useGetCampusesWithInstitutionsSuspenseQuery>
-export type GetCampusesWithInstitutionsQueryResult = Apollo.QueryResult<
-  GetCampusesWithInstitutionsQuery,
-  GetCampusesWithInstitutionsQueryVariables
->
-export const GetCampusesDocument = gql`
-  query GetCampuses($filter: campuses_filter) {
-    campuses(filter: $filter) {
-      id
-      name
-      type
-      intro
-      description
-      street_address
-      city
-      postal_code
-      country
-      phone
-      images
-      institutions_id {
-        id
-        name
-      }
-    }
-  }
-`
-
-/**
- * __useGetCampusesQuery__
- *
- * To run a query within a React component, call `useGetCampusesQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetCampusesQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetCampusesQuery({
- *   variables: {
- *      filter: // value for 'filter'
- *   },
- * });
- */
-export function useGetCampusesQuery(baseOptions?: Apollo.QueryHookOptions<GetCampusesQuery, GetCampusesQueryVariables>) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<GetCampusesQuery, GetCampusesQueryVariables>(GetCampusesDocument, options)
-}
-export function useGetCampusesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCampusesQuery, GetCampusesQueryVariables>) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GetCampusesQuery, GetCampusesQueryVariables>(GetCampusesDocument, options)
-}
-export function useGetCampusesSuspenseQuery(
-  baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetCampusesQuery, GetCampusesQueryVariables>
-) {
-  const options = baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions }
-  return Apollo.useSuspenseQuery<GetCampusesQuery, GetCampusesQueryVariables>(GetCampusesDocument, options)
-}
-export type GetCampusesQueryHookResult = ReturnType<typeof useGetCampusesQuery>
-export type GetCampusesLazyQueryHookResult = ReturnType<typeof useGetCampusesLazyQuery>
-export type GetCampusesSuspenseQueryHookResult = ReturnType<typeof useGetCampusesSuspenseQuery>
-export type GetCampusesQueryResult = Apollo.QueryResult<GetCampusesQuery, GetCampusesQueryVariables>
 export const GetCoursesLanguagesDocument = gql`
   query GetCoursesLanguages($filter: course_languages_filter) {
     course_languages(filter: $filter) {
@@ -10549,20 +10343,6 @@ export const GetCoursesDocument = gql`
       career_opportunities
       careers
       official_data_source
-      learning_format_id {
-        format_name
-      }
-      learning_pace_id {
-        pace_name
-      }
-      languages_id {
-        id
-        name
-      }
-      bilinguals_id {
-        id
-        name
-      }
     }
   }
 `
@@ -10601,94 +10381,6 @@ export type GetCoursesQueryHookResult = ReturnType<typeof useGetCoursesQuery>
 export type GetCoursesLazyQueryHookResult = ReturnType<typeof useGetCoursesLazyQuery>
 export type GetCoursesSuspenseQueryHookResult = ReturnType<typeof useGetCoursesSuspenseQuery>
 export type GetCoursesQueryResult = Apollo.QueryResult<GetCoursesQuery, GetCoursesQueryVariables>
-export const GetCoursesWithCategoriesAndCampusesDocument = gql`
-  query GetCoursesWithCategoriesAndCampuses($filter: courses_filter) {
-    courses(filter: $filter) {
-      id
-      learning_format_id {
-        format_name
-      }
-      learning_pace_id {
-        pace_name
-      }
-      campuses_courses {
-        id
-        campuses_id {
-          id
-          name
-          type
-          city
-          institutions_id {
-            id
-            name
-          }
-        }
-      }
-      category_courses {
-        id
-        category_courses_id {
-          name
-          description
-        }
-      }
-    }
-  }
-`
-
-/**
- * __useGetCoursesWithCategoriesAndCampusesQuery__
- *
- * To run a query within a React component, call `useGetCoursesWithCategoriesAndCampusesQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetCoursesWithCategoriesAndCampusesQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetCoursesWithCategoriesAndCampusesQuery({
- *   variables: {
- *      filter: // value for 'filter'
- *   },
- * });
- */
-export function useGetCoursesWithCategoriesAndCampusesQuery(
-  baseOptions?: Apollo.QueryHookOptions<GetCoursesWithCategoriesAndCampusesQuery, GetCoursesWithCategoriesAndCampusesQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<GetCoursesWithCategoriesAndCampusesQuery, GetCoursesWithCategoriesAndCampusesQueryVariables>(
-    GetCoursesWithCategoriesAndCampusesDocument,
-    options
-  )
-}
-export function useGetCoursesWithCategoriesAndCampusesLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetCoursesWithCategoriesAndCampusesQuery, GetCoursesWithCategoriesAndCampusesQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GetCoursesWithCategoriesAndCampusesQuery, GetCoursesWithCategoriesAndCampusesQueryVariables>(
-    GetCoursesWithCategoriesAndCampusesDocument,
-    options
-  )
-}
-export function useGetCoursesWithCategoriesAndCampusesSuspenseQuery(
-  baseOptions?:
-    | Apollo.SkipToken
-    | Apollo.SuspenseQueryHookOptions<GetCoursesWithCategoriesAndCampusesQuery, GetCoursesWithCategoriesAndCampusesQueryVariables>
-) {
-  const options = baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions }
-  return Apollo.useSuspenseQuery<GetCoursesWithCategoriesAndCampusesQuery, GetCoursesWithCategoriesAndCampusesQueryVariables>(
-    GetCoursesWithCategoriesAndCampusesDocument,
-    options
-  )
-}
-export type GetCoursesWithCategoriesAndCampusesQueryHookResult = ReturnType<typeof useGetCoursesWithCategoriesAndCampusesQuery>
-export type GetCoursesWithCategoriesAndCampusesLazyQueryHookResult = ReturnType<typeof useGetCoursesWithCategoriesAndCampusesLazyQuery>
-export type GetCoursesWithCategoriesAndCampusesSuspenseQueryHookResult = ReturnType<
-  typeof useGetCoursesWithCategoriesAndCampusesSuspenseQuery
->
-export type GetCoursesWithCategoriesAndCampusesQueryResult = Apollo.QueryResult<
-  GetCoursesWithCategoriesAndCampusesQuery,
-  GetCoursesWithCategoriesAndCampusesQueryVariables
->
 export const GetInstitutionsDocument = gql`
   query GetInstitutions($languageName: String!, $filter: institutions_filter, $page: Int, $limit: Int) {
     institutions(filter: $filter, page: $page, limit: $limit) {
@@ -10827,91 +10519,14 @@ export type GetUniversityQueryHookResult = ReturnType<typeof useGetUniversityQue
 export type GetUniversityLazyQueryHookResult = ReturnType<typeof useGetUniversityLazyQuery>
 export type GetUniversitySuspenseQueryHookResult = ReturnType<typeof useGetUniversitySuspenseQuery>
 export type GetUniversityQueryResult = Apollo.QueryResult<GetUniversityQuery, GetUniversityQueryVariables>
-export const GetReportsWithRelationsDocument = gql`
-  query GetReportsWithRelations($filter: reports_filter) {
-    reports(filter: $filter) {
-      id
-      internal_code
-      data
-      date
-      is_validated
-      institutions_id {
-        id
-        name
-      }
-      users_id {
-        id
-        first_name
-        email
-      }
-      courses_id {
-        id
-        type
-      }
-      o_languages_id {
-        id
-        name
-      }
-    }
-  }
-`
-
-/**
- * __useGetReportsWithRelationsQuery__
- *
- * To run a query within a React component, call `useGetReportsWithRelationsQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetReportsWithRelationsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetReportsWithRelationsQuery({
- *   variables: {
- *      filter: // value for 'filter'
- *   },
- * });
- */
-export function useGetReportsWithRelationsQuery(
-  baseOptions?: Apollo.QueryHookOptions<GetReportsWithRelationsQuery, GetReportsWithRelationsQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<GetReportsWithRelationsQuery, GetReportsWithRelationsQueryVariables>(GetReportsWithRelationsDocument, options)
-}
-export function useGetReportsWithRelationsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetReportsWithRelationsQuery, GetReportsWithRelationsQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GetReportsWithRelationsQuery, GetReportsWithRelationsQueryVariables>(GetReportsWithRelationsDocument, options)
-}
-export function useGetReportsWithRelationsSuspenseQuery(
-  baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetReportsWithRelationsQuery, GetReportsWithRelationsQueryVariables>
-) {
-  const options = baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions }
-  return Apollo.useSuspenseQuery<GetReportsWithRelationsQuery, GetReportsWithRelationsQueryVariables>(
-    GetReportsWithRelationsDocument,
-    options
-  )
-}
-export type GetReportsWithRelationsQueryHookResult = ReturnType<typeof useGetReportsWithRelationsQuery>
-export type GetReportsWithRelationsLazyQueryHookResult = ReturnType<typeof useGetReportsWithRelationsLazyQuery>
-export type GetReportsWithRelationsSuspenseQueryHookResult = ReturnType<typeof useGetReportsWithRelationsSuspenseQuery>
-export type GetReportsWithRelationsQueryResult = Apollo.QueryResult<GetReportsWithRelationsQuery, GetReportsWithRelationsQueryVariables>
 export const GetScholarshipsDocument = gql`
-  query GetScholarships($filter: scholarships_filter) {
-    scholarships(filter: $filter) {
+  query GetScholarships($languageName: String!) {
+    scholarships(filter: { languages_id: { name: { _eq: $languageName } } }) {
       id
-      name
-      description
-      is_active
-      enum
-      academic_course
-      languages_id {
-        id
-        name
-      }
+      ...ScholarshipsInfo
     }
   }
+  ${ScholarshipsInfoFragmentDoc}
 `
 
 /**
@@ -10926,11 +10541,14 @@ export const GetScholarshipsDocument = gql`
  * @example
  * const { data, loading, error } = useGetScholarshipsQuery({
  *   variables: {
- *      filter: // value for 'filter'
+ *      languageName: // value for 'languageName'
  *   },
  * });
  */
-export function useGetScholarshipsQuery(baseOptions?: Apollo.QueryHookOptions<GetScholarshipsQuery, GetScholarshipsQueryVariables>) {
+export function useGetScholarshipsQuery(
+  baseOptions: Apollo.QueryHookOptions<GetScholarshipsQuery, GetScholarshipsQueryVariables> &
+    ({ variables: GetScholarshipsQueryVariables; skip?: boolean } | { skip: boolean })
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useQuery<GetScholarshipsQuery, GetScholarshipsQueryVariables>(GetScholarshipsDocument, options)
 }
@@ -10950,86 +10568,6 @@ export type GetScholarshipsQueryHookResult = ReturnType<typeof useGetScholarship
 export type GetScholarshipsLazyQueryHookResult = ReturnType<typeof useGetScholarshipsLazyQuery>
 export type GetScholarshipsSuspenseQueryHookResult = ReturnType<typeof useGetScholarshipsSuspenseQuery>
 export type GetScholarshipsQueryResult = Apollo.QueryResult<GetScholarshipsQuery, GetScholarshipsQueryVariables>
-export const GetScholarshipsWithRelationsDocument = gql`
-  query GetScholarshipsWithRelations($filter: scholarships_filter) {
-    scholarships(filter: $filter) {
-      id
-      name
-      description
-      is_active
-      enum
-      academic_course
-      languages_id {
-        id
-        name
-      }
-      institutions_scholarships_courses {
-        institutions_id {
-          name
-          type
-        }
-        courses_id {
-          type
-          commercial_name
-          id
-        }
-      }
-    }
-  }
-`
-
-/**
- * __useGetScholarshipsWithRelationsQuery__
- *
- * To run a query within a React component, call `useGetScholarshipsWithRelationsQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetScholarshipsWithRelationsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetScholarshipsWithRelationsQuery({
- *   variables: {
- *      filter: // value for 'filter'
- *   },
- * });
- */
-export function useGetScholarshipsWithRelationsQuery(
-  baseOptions?: Apollo.QueryHookOptions<GetScholarshipsWithRelationsQuery, GetScholarshipsWithRelationsQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<GetScholarshipsWithRelationsQuery, GetScholarshipsWithRelationsQueryVariables>(
-    GetScholarshipsWithRelationsDocument,
-    options
-  )
-}
-export function useGetScholarshipsWithRelationsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetScholarshipsWithRelationsQuery, GetScholarshipsWithRelationsQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GetScholarshipsWithRelationsQuery, GetScholarshipsWithRelationsQueryVariables>(
-    GetScholarshipsWithRelationsDocument,
-    options
-  )
-}
-export function useGetScholarshipsWithRelationsSuspenseQuery(
-  baseOptions?:
-    | Apollo.SkipToken
-    | Apollo.SuspenseQueryHookOptions<GetScholarshipsWithRelationsQuery, GetScholarshipsWithRelationsQueryVariables>
-) {
-  const options = baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions }
-  return Apollo.useSuspenseQuery<GetScholarshipsWithRelationsQuery, GetScholarshipsWithRelationsQueryVariables>(
-    GetScholarshipsWithRelationsDocument,
-    options
-  )
-}
-export type GetScholarshipsWithRelationsQueryHookResult = ReturnType<typeof useGetScholarshipsWithRelationsQuery>
-export type GetScholarshipsWithRelationsLazyQueryHookResult = ReturnType<typeof useGetScholarshipsWithRelationsLazyQuery>
-export type GetScholarshipsWithRelationsSuspenseQueryHookResult = ReturnType<typeof useGetScholarshipsWithRelationsSuspenseQuery>
-export type GetScholarshipsWithRelationsQueryResult = Apollo.QueryResult<
-  GetScholarshipsWithRelationsQuery,
-  GetScholarshipsWithRelationsQueryVariables
->
 export const GetUsersWithSettingsDocument = gql`
   query GetUsersWithSettings($filter: users_filter) {
     users(filter: $filter) {

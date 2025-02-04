@@ -1,16 +1,5 @@
 fragment InstitutionsLocations on institutions {
   institution_campuses(filter: { campuses_trans: { language_id: { name: { _eq: $languageName } } } }) {
-    street_address
-    city
-    country
-    postal_code
-    images
-    phone
-    type
-    campuses_trans {
-      intro
-      description
-      name
-    }
+    ...CampusesInfo
   }
 }
