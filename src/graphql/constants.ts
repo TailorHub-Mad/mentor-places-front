@@ -1,4 +1,6 @@
+import { ELocale } from '../app/lib/enums/globals.enums'
+
 export const LOCALES_GRAPHQL = {
-  es: 'Spanish',
-  en: 'English'
+  [ELocale.ES]: 'Spanish',
+  [ELocale.EN]: 'English'
 }
