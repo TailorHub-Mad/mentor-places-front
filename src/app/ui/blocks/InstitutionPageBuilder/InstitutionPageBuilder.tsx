@@ -2,11 +2,13 @@ import type { FC } from 'react'
 import About from '../About/About'
 import CertificatesAndAwards from '../CertificatesAndAwards/CertificatesAndAwards'
 import KeyPoints from '../KeyPoints/KeyPoints'
-import CampusSlider, { ICampusSliderItem } from '../CampusSlider/CampusSlider'
+import type { ICampusSliderItem } from '../CampusSlider/CampusSlider'
+import CampusSlider from '../CampusSlider/CampusSlider'
 import ColumnFormatSchedulesBlock from '../ColumnFormatSchedules/ColumnFormatSchedulesBlock'
 import ScholarshipsAndGrants from '../ScholarshipsAndGrants/ScholarshipsAndGrants'
 import HeroInstitution from '../HeroInstitution/HeroInstitution'
 import { titleToBlockId } from '@utils/titleToBlockId'
+import InstitutionMasters from '../InstitutionMasters/InstitutionMasters'
 
 interface IInstitutionPageBuilderProps {
   data: {
@@ -97,6 +99,43 @@ interface IInstitutionPageBuilderProps {
 
             logo: string
             main_image: string
+
+            courses: [
+              {
+                course_id: {
+                  course_trans: [
+                    {
+                      commercial_name: string
+                    }
+                  ]
+                  is_official: boolean
+                  id: string
+                  type: string
+                  duration: string
+                  duration_class: string
+                  learning_format_id: {
+                    format_name: string
+                  }
+                  learning_pace_id: {
+                    pace_name: string
+                  }
+                  meta_tags: string[]
+                  images: string
+                  tuition_price: [
+                    {
+                      date: string
+                      course: string
+                      tuition_fee_o: string
+                      tuition_fee_d: string
+                      currency: string
+                      code: string
+                      discounts: boolean
+                    }
+                  ]
+                  careers_list: string[]
+                }
+              }
+            ]
           }
           header_title: string
           header_rank_and_rec: string
@@ -125,6 +164,14 @@ interface IRequiredCampusData {
   }[]
 }
 
+/**
+ * TODO
+ * - Add fav button
+ * - Check locally if tags go to each section
+ * - 'More info' button on campus card
+ * - Oferta educativa
+ */
+
 const InstitutionPageBuilder: FC<IInstitutionPageBuilderProps> = ({ data }) => {
   const institution = data.institutions_by_id.institutions_trans[0]
   const {
@@ -143,11 +190,14 @@ const InstitutionPageBuilder: FC<IInstitutionPageBuilderProps> = ({ data }) => {
     header_courses
   } = institution
 
-  const { institution_campuses } = institution_id
+  const { institution_campuses, courses, logo, main_image, institutions_scholarships_courses } = institution_id
 
   const aboutBlockData = header_title && intro
   const certificatesAndAwardsData = header_rank_and_rec && rank_and_rec
   const keyPointsData = header_standsfor && standsfor
+  const coursesData = header_courses && courses && commercial_name && logo
+  const scholarshipsData = header_scholarships && institutions_scholarships_courses
+  const educationalOptionsData = header_type_and_taxonomy // TODO - missing data
 
   const campusData: ICampusSliderItem[] = (
     institution_campuses.filter(
@@ -170,8 +220,8 @@ const InstitutionPageBuilder: FC<IInstitutionPageBuilderProps> = ({ data }) => {
       {
         <HeroInstitution
           title={commercial_name}
-          logo={institution_id.logo}
-          image={institution_id.main_image}
+          logo={logo}
+          image={main_image}
           opinions={undefined}
           blocks={[
             { id: header_title, text: header_title },
@@ -201,18 +251,27 @@ const InstitutionPageBuilder: FC<IInstitutionPageBuilderProps> = ({ data }) => {
           <KeyPoints title={header_standsfor} list={standsfor.items.map((elm) => elm.body)} />{' '}
         </div>
       )}
-      {institution_campuses && <CampusSlider data={campusData} />}
-      {
+
+      {campusData.length > 0 && <CampusSlider data={campusData} />}
+
+      {educationalOptionsData && (
         <div id={titleToBlockId(header_type_and_taxonomy)}>
           {/* TODO */}
           <ColumnFormatSchedulesBlock title={header_type_and_taxonomy} cards={[]} />
         </div>
-      }
-      {institution_id.institutions_scholarships_courses && (
+      )}
+
+      {coursesData && (
+        <div id={titleToBlockId(header_courses)}>
+          <InstitutionMasters courses={courses} universityName={commercial_name} universityLogo={logo} />
+        </div>
+      )}
+
+      {scholarshipsData && (
         <div id={titleToBlockId(header_scholarships)}>
           <ScholarshipsAndGrants
             title={header_scholarships}
-            list={institution_id.institutions_scholarships_courses.map((elm) => {
+            list={institutions_scholarships_courses.map((elm) => {
               return { title: elm.scholarships_id.description.name, description: elm.scholarships_id.description.description }
             })}
           />

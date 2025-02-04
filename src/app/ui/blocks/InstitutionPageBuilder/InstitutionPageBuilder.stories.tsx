@@ -137,7 +137,49 @@ export const Default: Story = {
               ],
               logo: 'https://www.universidadyemprendimiento.es/images/universidad-emprendimiento/logo-universidad-y-emprendimiento-universidades-ok.svg',
               main_image:
-                'https://www.allianz-partners.com/es_ES/sala-de-prensa/notas-de-prensa/noticias-2023/universidad-alfonso-x-el-sabio/_jcr_content/root/stage/stageimage.img.82.3360.png/1695802285840/4ad9e9a4e18a-sin-titulo-640-640-px-2-.png'
+                'https://www.allianz-partners.com/es_ES/sala-de-prensa/notas-de-prensa/noticias-2023/universidad-alfonso-x-el-sabio/_jcr_content/root/stage/stageimage.img.82.3360.png/1695802285840/4ad9e9a4e18a-sin-titulo-640-640-px-2-.png',
+              courses: [
+                {
+                  course_id: {
+                    course_trans: [
+                      {
+                        commercial_name: 'Máster en Business Analytics, Inteligencia Artificial & Machine Learning'
+                      }
+                    ],
+                    is_official: false,
+                    id: '1',
+                    type: 'master',
+                    duration: '10',
+                    duration_class: 'months',
+                    learning_format_id: {
+                      format_name: 'online'
+                    },
+                    learning_pace_id: {
+                      pace_name: 'full_time'
+                    },
+                    meta_tags: ['Top 5', 'Promo'],
+                    images:
+                      'https://www.shutterstock.com/shutterstock/photos/284687528/display_1500/stock-photo-master-word-cloud-education-concept-284687528.jpg',
+                    tuition_price: [
+                      {
+                        date: '2024/01/06',
+                        course: '25/26',
+                        tuition_fee_o: '12100',
+                        tuition_fee_d: 'NA',
+                        currency: 'EUR',
+                        code: 'PY',
+                        discounts: false
+                      }
+                    ],
+                    careers_list: [
+                      'Data Scientist',
+                      'Data Analyst',
+                      'Business Intelligence Analyst',
+                      'Analista de Inteligencia de Mercado y Visualización de Datos'
+                    ]
+                  }
+                }
+              ]
             },
             header_title: 'Acerca de',
             header_rank_and_rec: 'Certificados y reconocimientos',
