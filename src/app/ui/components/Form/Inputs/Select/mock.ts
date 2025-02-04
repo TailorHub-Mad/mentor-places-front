@@ -15,7 +15,7 @@ export const createOptionMock = (): ISelectOption => ({
 export const SELECT_INPUT_MOCK: ISelectInputProps = {
   placeholder: 'Select an option',
   options: [createOptionMock(), createOptionMock(), createLongOptionMock()],
-  onChange: (value: IFilterSelection): void => console.info('InputSearch selected with value: ', value)
+  onChange: (value: IFilterSelection): void => console.info('InputSelect selected with value: ', value)
 }
 
 export const LONG_OPTIONS_LIST_MOCK: ISelectInputProps = {
