@@ -20,7 +20,6 @@ const Template: StoryFn<ISearchBarProps> = (props) => {
   const [filteredOptions, setFilteredOptions] = useState(props.options)
 
   const handleValueChange = (query: ISearchQuery) => {
-    console.log('handleValueChange: ', { query })
     setSelectedValues(query)
   }
 

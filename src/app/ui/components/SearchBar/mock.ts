@@ -1,7 +1,7 @@
-import type { ISearchBarProps, ISearchQuery } from '@components/SearchBar/SearchBar'
+import type { ESearchType, ISearchBarProps, ISearchQuery } from '@components/SearchBar/SearchBar'
 import type { ISelectOption } from '@components/Form/Inputs/Select/InputSelect'
 
-const europeanCityData: ISelectOption[] = [
+export const EUROPEAN_CITY_MOCK_DATA: ISelectOption[] = [
   { value: 'london', label: 'London' },
   { value: 'paris', label: 'Paris' },
   { value: 'berlin', label: 'Berlin' },
@@ -53,7 +53,7 @@ const europeanCityData: ISelectOption[] = [
   { value: 'monaco', label: 'Monaco' },
   { value: 'san-marino', label: 'San Marino' }
 ]
-const educationalDisciplines: ISelectOption[] = [
+export const DISCIPLINES_MOCK_DATA: ISelectOption[] = [
   { value: 'computer-science', label: 'Computer Science' },
   { value: 'mathematics', label: 'Mathematics' },
   { value: 'physics', label: 'Physics' },
@@ -97,14 +97,17 @@ const educationalDisciplines: ISelectOption[] = [
 
 export const SEARCH_BAR_MOCK: ISearchBarProps = {
   onChange: function (query: ISearchQuery): void {
-    console.log({ query })
+    console.log('onChange', { query })
   },
   valuesSelected: {
-    location: 'madrid',
-    discipline: 'law'
+    location: '',
+    discipline: ''
   },
   options: {
-    location: europeanCityData,
-    discipline: educationalDisciplines
+    location: EUROPEAN_CITY_MOCK_DATA,
+    discipline: DISCIPLINES_MOCK_DATA
+  },
+  onSearch: function (value: string, type: ESearchType): void {
+    console.log('onSearch: ', { value, type })
   }
 }

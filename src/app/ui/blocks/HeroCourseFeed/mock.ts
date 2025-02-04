@@ -1,7 +1,7 @@
 import type { ESearchType } from '@components/SearchBar/SearchBar'
 import type { IFilterSelection } from '@interfaces/filterSidebar.interfaces'
 import type { IHeroCourseFeedProps } from './HeroCourseFeed'
-import { LONG_OPTIONS_LIST_MOCK } from '@components/Form/Inputs/Select/mock'
+import { DISCIPLINES_MOCK_DATA, EUROPEAN_CITY_MOCK_DATA } from '@components/SearchBar/mock'
 
 export const HERO_COURSE_FEED_MOCK: IHeroCourseFeedProps = {
   title: 'Ecuentra tu mejor opción',
@@ -15,7 +15,7 @@ export const HERO_COURSE_FEED_MOCK: IHeroCourseFeedProps = {
     location: ''
   },
   options: {
-    discipline: LONG_OPTIONS_LIST_MOCK.options,
-    location: LONG_OPTIONS_LIST_MOCK.options
+    discipline: DISCIPLINES_MOCK_DATA,
+    location: EUROPEAN_CITY_MOCK_DATA
   }
 }

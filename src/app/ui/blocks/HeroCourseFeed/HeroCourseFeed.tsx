@@ -2,26 +2,24 @@ import type { FC } from 'react'
 import Image from 'next/image'
 import { useScreenWidth } from '@hooks/useScreenWidth'
 import useBreakpoint from '@hooks/useBreakpoint'
-import SearchBar from '@components/SearchBar/SearchBar'
-import type { ESearchType, ISearchOptions, IValuesSelected } from '@components/SearchBar/SearchBar'
-import type { IFilterSelection } from '@interfaces/filterSidebar.interfaces'
+import SearchBar, { type ESearchType, type ISearchQuery } from '@components/SearchBar/SearchBar'
+import type { ISearchOptions, IValuesSelected } from '@components/SearchBar/SearchBar'
 
 export interface IHeroCourseFeedProps {
   title: string
   description?: string
   imageSrc: string
-  onChange: (value: IFilterSelection, type: ESearchType) => void
+  onChange: (query: ISearchQuery) => void
+  onSearch: (value: string, type: ESearchType) => void
   valuesSelected: IValuesSelected
   options: ISearchOptions
 }
 
-const HeroCourseFeed: FC<IHeroCourseFeedProps> = ({ title, description, imageSrc, onChange, valuesSelected, options }) => {
+const HeroCourseFeed: FC<IHeroCourseFeedProps> = ({ title, description, imageSrc, onChange, valuesSelected, options, onSearch }) => {
   const screenWidth = useScreenWidth()
   const { isMobile } = useBreakpoint()
 
-  const imageHeight = isMobile
-    ? (screenWidth / 3) * 2 // 3:2 aspect ratio for mobile
-    : (screenWidth / 2) * 3 // 2:3 aspect ratio for desktop
+  const imageHeight = isMobile ? (screenWidth / 3) * 2 : (screenWidth / 2) * 3
 
   return (
     <div className="hero-course-feed">
@@ -33,7 +31,7 @@ const HeroCourseFeed: FC<IHeroCourseFeedProps> = ({ title, description, imageSrc
         <Image src={imageSrc} alt={description || title} className="sm:absolute" width={screenWidth} height={imageHeight} />
       </div>
       <div className="hero-course-feed__search">
-        <SearchBar options={options} onChange={onChange} valuesSelected={valuesSelected} />
+        <SearchBar options={options} onChange={onChange} onSearch={onSearch} valuesSelected={valuesSelected} />
       </div>
     </div>
   )
