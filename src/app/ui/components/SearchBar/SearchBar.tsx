@@ -43,7 +43,7 @@ const SearchBar: FC<ISearchBarProps> = ({ onChange, valuesSelected, options, onS
   }
 
   return (
-    <div className="search-bar flex items-center gap-3 justify-start py-6">
+    <div className="search-bar flex flex-wrap items-center gap-3 justify-start py-6">
       <div className="search-bar__discipline">
         <InputSearch
           type={ESearchType.DISCIPLINE}
