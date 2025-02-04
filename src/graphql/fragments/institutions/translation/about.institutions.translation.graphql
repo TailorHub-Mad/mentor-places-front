@@ -1,0 +1,5 @@
+fragment InstitutionsTransAbout on institutions_trans {
+  intro
+  description
+  header_details
+}

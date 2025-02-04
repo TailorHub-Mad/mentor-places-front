@@ -1,0 +1,17 @@
+query GetInstitutions($languageName: String!, $filter: institutions_filter, $page: Int, $limit: Int) {
+  institutions(filter: $filter, page: $page, limit: $limit) {
+    institution: institutions_trans(filter: { language_id: { name: { _eq: $languageName } } }) {
+      ...InstitutionsTransHead
+      ...InstitutionsTransAbout
+      ...InstitutionsTransRankAndRec
+      ...InstitutionsTransStandsFor
+      institution_id {
+        ...InstitutionsHead
+        ...InstitutionsScholarships
+        ...InstitutionsLocations
+        ...InstitutionsTags
+        ...InstitutionsCourses
+      }
+    }
+  }
+}

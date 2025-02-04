@@ -1,0 +1,7 @@
+fragment InstitutionsTags on institutions {
+  meta_type_tags {
+    tag_institutions_id {
+      name
+    }
+  }
+}

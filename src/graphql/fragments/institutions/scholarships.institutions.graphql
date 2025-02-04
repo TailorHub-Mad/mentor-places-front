@@ -1,0 +1,11 @@
+fragment InstitutionsScholarships on institutions {
+  institutions_scholarships_courses(filter: { scholarships_id: { languages_id: { name: { _eq: $languageName } } } }) {
+    scholarships_id {
+      description
+      academic_course
+      languages_id {
+        name
+      }
+    }
+  }
+}
