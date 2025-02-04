@@ -10,6 +10,7 @@ import { useTranslations } from 'next-intl'
 import { checkIsFormCompleted } from '@utils/form.utils'
 import CheckboxInput from '@components/Checkbox'
 import PrefixAndPhoneInputs from '@components/PrefixAndPhoneInputs'
+import PulseDotSpinner from '@components/Spinners/PulseDotSpinner'
 
 export interface IContactRequest {
   name: string
@@ -82,8 +83,8 @@ const ContactForm: FC<IContactFormProps> = ({ onSubmit }) => {
           className="mt-7"
         />
 
-        <Button className="w-full mt-7" type={'submit'} disabled={checkIsFormCompleted(watch) || isSubmitting}>
-          {t('contact.button')}
+        <Button aria-disabled={isSubmitting} className="w-full mt-7" type={'submit'} disabled={checkIsFormCompleted(watch) || isSubmitting}>
+          {isSubmitting ? <PulseDotSpinner /> : <span>{t('contact.button')}</span>}
         </Button>
       </form>
     </div>

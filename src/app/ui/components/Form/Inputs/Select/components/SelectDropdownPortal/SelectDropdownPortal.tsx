@@ -20,7 +20,7 @@ const SelectDropdownPortal: FC<PropsWithChildren<ISelectDropdownPortalProps>> = 
 
   const dropdownElement = (
     <div
-      className={cx('select-search-dropdown-wrapper absolute z-20 overflow-scroll no-scrollbar md:w-min', className)}
+      className={cx('select-search-dropdown-wrapper absolute z-[1000] overflow-scroll no-scrollbar md:w-min', className)}
       style={dropdownStyles}>
       {children}
     </div>
@@ -43,7 +43,8 @@ const calculateDropdownPosition = (boundingBox: DOMRect | null): CSSProperties =
       top: '50%',
       left: '50%',
       transform: 'translate(-50%, -50%)',
-      width: 'auto'
+      width: 'auto',
+      maxHeight: '300px'
     }
   }
 
@@ -65,6 +66,7 @@ const calculateDropdownPosition = (boundingBox: DOMRect | null): CSSProperties =
     minWidth: width,
     width: 'auto',
     transform: 'none',
+    maxHeight: `${window.innerHeight - (boundingBox.top + boundingBox.height + 20)}px`,
     ...horizontalPosition // Dynamically add the proper horizontal positioning
   }
 }

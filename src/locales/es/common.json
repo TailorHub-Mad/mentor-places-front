@@ -78,7 +78,8 @@
     "contact": {
       "title": "Completa el formulario",
       "button": "Enviar",
-      "checkbox": "He leído y acepto la Política de Privacidad"
+      "checkbox": "He leído y acepto la Política de Privacidad",
+      "successMessage": "Nos pondremos en contacto a la mayor brevedad"
     },
     "placeholders": {
       "name": "Nombre",
@@ -101,5 +102,8 @@
     "surname": "Apellido",
     "email": "Email",
     "phone": "Teléfono"
+  },
+  "common": {
+    "thanks": "¡Gracias!"
   }
 }

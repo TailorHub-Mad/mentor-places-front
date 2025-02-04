@@ -6,6 +6,7 @@ import { type AbstractIntlMessages, NextIntlClientProvider } from 'next-intl'
 import enMessages from '../src/locales/en/common.json'
 import esMessages from '../src/locales/es/common.json'
 import { useEffect } from 'react'
+import { Providers } from '../src/app/lib/providers'
 
 const MESSAGES: {
   [key: string]: AbstractIntlMessages
@@ -42,7 +43,9 @@ const preview: Preview = {
 
       return (
         <NextIntlClientProvider messages={messages} locale={locale}>
-          <Story />
+          <Providers>
+            <Story />
+          </Providers>
         </NextIntlClientProvider>
       )
     }

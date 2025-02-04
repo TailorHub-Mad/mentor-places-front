@@ -51,7 +51,7 @@ const InputSelect: FC<ISelectInputProps> = ({ options, placeholder, onChange, di
       />
       {options?.length > 0 && (
         <SelectSearchDropdown
-          className={'px-[9px] py-[5px] bg-WHITE shadow rounded-[8px] mt-[9px] z-50'}
+          className={'px-[9px] py-[5px] bg-WHITE shadow rounded-[8px] mt-[9px]'}
           targetRef={targetRef}
           isVisible={isOpen}>
           <OptionList options={options} selectedValue={valueSelected} onSelect={handleSetInputValue} ref={selectInputRef} />
