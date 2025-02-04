@@ -1,0 +1,3 @@
+fragment InstitutionsTransHead on institutions_trans {
+  commercial_name
+}

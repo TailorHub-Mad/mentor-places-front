@@ -1,0 +1,16 @@
+fragment InstitutionsCourses on institutions {
+  courses {
+    course_id {
+      course_trans(filter: { language_id: { name: { _eq: $languageName } } }) {
+        commercial_name
+      }
+      tuition_price
+      is_official
+      id
+      type
+      duration
+      duration_class
+      meta_tags
+    }
+  }
+}

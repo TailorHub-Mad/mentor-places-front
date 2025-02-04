@@ -1,0 +1,5 @@
+fragment InstitutionsLocations on institutions {
+  institution_campuses(filter: { campuses_trans: { language_id: { name: { _eq: $languageName } } } }) {
+    ...CampusesInfo
+  }
+}
