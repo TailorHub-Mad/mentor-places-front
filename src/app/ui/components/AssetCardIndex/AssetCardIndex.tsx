@@ -7,7 +7,7 @@ import { EAssetCardVariant } from '@components/AssetCard/AssetCard'
 import { useTranslations } from 'next-intl'
 import Button from '@components/Button/Button'
 
-export interface AssetCardIndexProps extends IAssetCardData {
+export interface IAssetCardIndexProps extends IAssetCardData {
   title: string
   universityLogo?: string
   universityName?: string
@@ -17,7 +17,7 @@ export interface AssetCardIndexProps extends IAssetCardData {
   handleRemove?: MouseEventHandler<HTMLButtonElement>
 }
 
-const AssetCardIndex: FC<AssetCardIndexProps> = (props) => {
+const AssetCardIndex: FC<IAssetCardIndexProps> = (props) => {
   const {
     universityLogo,
     universityName,
@@ -79,7 +79,7 @@ const AssetCardIndex: FC<AssetCardIndexProps> = (props) => {
               {t('actions.remove')}
             </Button>
           ) : (
-            //TODO: Add CheckboxInput component when completed
+            //TODO: Add CheckboxInput components when completed
             <div className="checkbox flex items-center">
               <input className="mr-2" type="checkbox" name="asset-card-index" id="asset-card-index" />
               <label htmlFor="asset-card-index" className="checkbox__label">

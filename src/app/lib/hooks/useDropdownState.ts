@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 
-export const useDropdownState = (isDisabled: boolean) => {
+export const useDropdownState = (isDisabled: boolean = false) => {
   const [isOpen, setIsOpen] = useState(false)
   const targetRef = useRef<HTMLButtonElement>(null)
   const selectInputRef = useRef<HTMLDivElement>(null)
