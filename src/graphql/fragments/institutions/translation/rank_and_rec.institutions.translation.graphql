@@ -1,0 +1,3 @@
+fragment InstitutionsTransRankAndRec on institutions_trans {
+  rank_and_rec
+}

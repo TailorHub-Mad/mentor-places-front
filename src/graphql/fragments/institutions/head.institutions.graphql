@@ -1,0 +1,5 @@
+fragment InstitutionsHead on institutions {
+  url
+  logo
+  main_image
+}

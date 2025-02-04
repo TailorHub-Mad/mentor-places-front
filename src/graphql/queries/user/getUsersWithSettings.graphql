@@ -11,19 +11,5 @@ query GetUsersWithSettings($filter: users_filter) {
     address
     email
     role
-    user_setting {
-      id
-      unconstrained_value
-      settings {
-        id
-        description
-        constrained
-        allowed_setting_value {
-          id
-          item_value
-          caption
-        }
-      }
-    }
   }
 }

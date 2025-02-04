@@ -1,0 +1,14 @@
+fragment CampusesInfo on campuses {
+  street_address
+  city
+  country
+  postal_code
+  images
+  phone
+  type
+  campuses_trans {
+    intro
+    description
+    name
+  }
+}

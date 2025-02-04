@@ -27,7 +27,8 @@ export default [
       '**/.eslintrc.json',
       'src/styles/**/*',
       '**/tsconfig.json',
-      '**/next.config.js'
+      '**/next.config.js',
+      'src/graphql/generated/client.ts'
     ]
   },
   {

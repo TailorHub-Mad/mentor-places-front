@@ -1,0 +1,6 @@
+fragment ScholarshipsInfo on scholarships {
+  description
+  academic_course
+  is_active
+  type
+}

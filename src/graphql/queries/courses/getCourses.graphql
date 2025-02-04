@@ -28,9 +28,5 @@ query GetCourses($filter: courses_filter) {
     career_opportunities
     careers
     official_data_source
-    o_language {
-      id
-      name
-    }
   }
 }
