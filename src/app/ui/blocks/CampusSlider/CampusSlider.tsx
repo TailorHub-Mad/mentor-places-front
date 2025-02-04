@@ -3,11 +3,11 @@ import ContactCard from '@components/ContactCard/ContactCard'
 import CustomSwiper from '@components/Swiper/CustomSwiper'
 import type { FC } from 'react'
 
-interface ICampusSliderItem extends IContactCardProps {
+export interface ICampusSliderItem extends IContactCardProps {
   image: string
 }
 
-interface ICampusSliderProps extends IContactCardProps {
+interface ICampusSliderProps {
   data: ICampusSliderItem[]
 }
 

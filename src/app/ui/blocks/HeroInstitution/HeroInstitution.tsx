@@ -10,7 +10,7 @@ interface IHeroInstitutionProps {
   title: string
   logo: string
   image: string
-  opinions: IStarsOpinionsProps
+  opinions?: IStarsOpinionsProps
   blocks: IBlock[]
 }
 
@@ -22,7 +22,7 @@ const HeroInstitution: FC<IHeroInstitutionProps> = ({ title, logo, image, opinio
       <div className="flex flex-col md:flex-row justify-between items-start md:items-stretch">
         <div className="flex flex-col justify-between md:min-h-[172px]">
           <h1 className="l md:xl md:max-w-[460px] lg:max-w-[577px]  mb-8 md:mb-0">{title}</h1>
-          <Stars {...opinions} />
+          {opinions && <Stars {...opinions} />}
         </div>
         <div className="flex flex-col justify-between items-end">
           {!isMobile && (
