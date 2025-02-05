@@ -5,6 +5,7 @@ query getUniversity($id: ID!, $languageName: String!) {
       ...InstitutionsTransAbout
       ...InstitutionsTransRankAndRec
       ...InstitutionsTransStandsFor
+      ...InstitutionsTransTitles
       institution_id {
         ...InstitutionsHead
         ...InstitutionsScholarships

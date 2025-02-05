@@ -11,6 +11,10 @@ fragment InstitutionsCourses on institutions {
       duration
       duration_class
       meta_tags
+      learning_format_id {
+        format_name
+      }
+      images
     }
   }
 }

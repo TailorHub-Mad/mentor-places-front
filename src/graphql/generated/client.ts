@@ -48,6 +48,8 @@ export type Mutation = {
   create_course_languages_items: Array<Course_Languages>
   create_courses_category_courses_item?: Maybe<Courses_Category_Courses>
   create_courses_category_courses_items: Array<Courses_Category_Courses>
+  create_courses_disciplines_item?: Maybe<Courses_Disciplines>
+  create_courses_disciplines_items: Array<Courses_Disciplines>
   create_courses_item?: Maybe<Courses>
   create_courses_items: Array<Courses>
   create_courses_trans_item?: Maybe<Courses_Trans>
@@ -130,6 +132,8 @@ export type Mutation = {
   delete_course_languages_items?: Maybe<Delete_Many>
   delete_courses_category_courses_item?: Maybe<Delete_One>
   delete_courses_category_courses_items?: Maybe<Delete_Many>
+  delete_courses_disciplines_item?: Maybe<Delete_One>
+  delete_courses_disciplines_items?: Maybe<Delete_Many>
   delete_courses_item?: Maybe<Delete_One>
   delete_courses_items?: Maybe<Delete_Many>
   delete_courses_trans_item?: Maybe<Delete_One>
@@ -222,6 +226,9 @@ export type Mutation = {
   update_courses_category_courses_batch: Array<Courses_Category_Courses>
   update_courses_category_courses_item?: Maybe<Courses_Category_Courses>
   update_courses_category_courses_items: Array<Courses_Category_Courses>
+  update_courses_disciplines_batch: Array<Courses_Disciplines>
+  update_courses_disciplines_item?: Maybe<Courses_Disciplines>
+  update_courses_disciplines_items: Array<Courses_Disciplines>
   update_courses_item?: Maybe<Courses>
   update_courses_items: Array<Courses>
   update_courses_trans_batch: Array<Courses_Trans>
@@ -438,6 +445,20 @@ export type MutationCreate_Courses_Category_Courses_ItemArgs = {
 export type MutationCreate_Courses_Category_Courses_ItemsArgs = {
   data?: InputMaybe<Array<Create_Courses_Category_Courses_Input>>
   filter?: InputMaybe<Courses_Category_Courses_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationCreate_Courses_Disciplines_ItemArgs = {
+  data: Create_Courses_Disciplines_Input
+}
+
+export type MutationCreate_Courses_Disciplines_ItemsArgs = {
+  data?: InputMaybe<Array<Create_Courses_Disciplines_Input>>
+  filter?: InputMaybe<Courses_Disciplines_Filter>
   limit?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
   page?: InputMaybe<Scalars['Int']['input']>
@@ -965,6 +986,14 @@ export type MutationDelete_Courses_Category_Courses_ItemsArgs = {
   ids: Array<InputMaybe<Scalars['ID']['input']>>
 }
 
+export type MutationDelete_Courses_Disciplines_ItemArgs = {
+  id: Scalars['ID']['input']
+}
+
+export type MutationDelete_Courses_Disciplines_ItemsArgs = {
+  ids: Array<InputMaybe<Scalars['ID']['input']>>
+}
+
 export type MutationDelete_Courses_ItemArgs = {
   id: Scalars['ID']['input']
 }
@@ -1457,6 +1486,32 @@ export type MutationUpdate_Courses_Category_Courses_ItemArgs = {
 export type MutationUpdate_Courses_Category_Courses_ItemsArgs = {
   data: Update_Courses_Category_Courses_Input
   filter?: InputMaybe<Courses_Category_Courses_Filter>
+  ids: Array<InputMaybe<Scalars['ID']['input']>>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationUpdate_Courses_Disciplines_BatchArgs = {
+  data?: InputMaybe<Array<Update_Courses_Disciplines_Input>>
+  filter?: InputMaybe<Courses_Disciplines_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationUpdate_Courses_Disciplines_ItemArgs = {
+  data: Update_Courses_Disciplines_Input
+  id: Scalars['ID']['input']
+}
+
+export type MutationUpdate_Courses_Disciplines_ItemsArgs = {
+  data: Update_Courses_Disciplines_Input
+  filter?: InputMaybe<Courses_Disciplines_Filter>
   ids: Array<InputMaybe<Scalars['ID']['input']>>
   limit?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
@@ -2329,6 +2384,10 @@ export type Query = {
   courses_category_courses_aggregated: Array<Courses_Category_Courses_Aggregated>
   courses_category_courses_by_id?: Maybe<Courses_Category_Courses>
   courses_category_courses_by_version?: Maybe<Version_Courses_Category_Courses>
+  courses_disciplines: Array<Courses_Disciplines>
+  courses_disciplines_aggregated: Array<Courses_Disciplines_Aggregated>
+  courses_disciplines_by_id?: Maybe<Courses_Disciplines>
+  courses_disciplines_by_version?: Maybe<Version_Courses_Disciplines>
   courses_trans: Array<Courses_Trans>
   courses_trans_aggregated: Array<Courses_Trans_Aggregated>
   courses_trans_by_id?: Maybe<Courses_Trans>
@@ -2741,6 +2800,35 @@ export type QueryCourses_Category_Courses_By_IdArgs = {
 }
 
 export type QueryCourses_Category_Courses_By_VersionArgs = {
+  id: Scalars['ID']['input']
+  version: Scalars['String']['input']
+}
+
+export type QueryCourses_DisciplinesArgs = {
+  filter?: InputMaybe<Courses_Disciplines_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type QueryCourses_Disciplines_AggregatedArgs = {
+  filter?: InputMaybe<Courses_Disciplines_Filter>
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type QueryCourses_Disciplines_By_IdArgs = {
+  id: Scalars['ID']['input']
+  version?: InputMaybe<Scalars['String']['input']>
+}
+
+export type QueryCourses_Disciplines_By_VersionArgs = {
   id: Scalars['ID']['input']
   version: Scalars['String']['input']
 }
@@ -3655,6 +3743,7 @@ export type Subscription = {
   category_posts_mutated?: Maybe<Category_Posts_Mutated>
   course_languages_mutated?: Maybe<Course_Languages_Mutated>
   courses_category_courses_mutated?: Maybe<Courses_Category_Courses_Mutated>
+  courses_disciplines_mutated?: Maybe<Courses_Disciplines_Mutated>
   courses_mutated?: Maybe<Courses_Mutated>
   courses_trans_mutated?: Maybe<Courses_Trans_Mutated>
   directus_access_mutated?: Maybe<Directus_Access_Mutated>
@@ -3743,6 +3832,10 @@ export type SubscriptionCourse_Languages_MutatedArgs = {
 }
 
 export type SubscriptionCourses_Category_Courses_MutatedArgs = {
+  event?: InputMaybe<EventEnum>
+}
+
+export type SubscriptionCourses_Disciplines_MutatedArgs = {
   event?: InputMaybe<EventEnum>
 }
 
@@ -4527,6 +4620,8 @@ export type Courses = {
   degree_id?: Maybe<Scalars['Int']['output']>
   degree_type?: Maybe<Scalars['String']['output']>
   description?: Maybe<Scalars['String']['output']>
+  disciplines?: Maybe<Array<Maybe<Courses_Disciplines>>>
+  disciplines_func?: Maybe<Count_Functions>
   duration?: Maybe<Scalars['String']['output']>
   duration_class?: Maybe<Scalars['String']['output']>
   ects?: Maybe<Scalars['Int']['output']>
@@ -4596,6 +4691,15 @@ export type CoursesCourse_TransArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
+export type CoursesDisciplinesArgs = {
+  filter?: InputMaybe<Courses_Disciplines_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
 export type CoursesLanguages_IdArgs = {
   filter?: InputMaybe<Languages_Filter>
   limit?: InputMaybe<Scalars['Int']['input']>
@@ -4652,6 +4756,7 @@ export type Courses_Aggregated_Count = {
   degree_id?: Maybe<Scalars['Int']['output']>
   degree_type?: Maybe<Scalars['Int']['output']>
   description?: Maybe<Scalars['Int']['output']>
+  disciplines?: Maybe<Scalars['Int']['output']>
   duration?: Maybe<Scalars['Int']['output']>
   duration_class?: Maybe<Scalars['Int']['output']>
   ects?: Maybe<Scalars['Int']['output']>
@@ -4757,6 +4862,74 @@ export type Courses_Category_Courses_Mutated = {
   key: Scalars['ID']['output']
 }
 
+export type Courses_Disciplines = {
+  __typename?: 'courses_disciplines'
+  courses_id?: Maybe<Courses>
+  disciplines_id?: Maybe<Disciplines>
+  id: Scalars['ID']['output']
+}
+
+export type Courses_DisciplinesCourses_IdArgs = {
+  filter?: InputMaybe<Courses_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type Courses_DisciplinesDisciplines_IdArgs = {
+  filter?: InputMaybe<Disciplines_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type Courses_Disciplines_Aggregated = {
+  __typename?: 'courses_disciplines_aggregated'
+  avg?: Maybe<Courses_Disciplines_Aggregated_Fields>
+  avgDistinct?: Maybe<Courses_Disciplines_Aggregated_Fields>
+  count?: Maybe<Courses_Disciplines_Aggregated_Count>
+  countAll?: Maybe<Scalars['Int']['output']>
+  countDistinct?: Maybe<Courses_Disciplines_Aggregated_Count>
+  group?: Maybe<Scalars['JSON']['output']>
+  max?: Maybe<Courses_Disciplines_Aggregated_Fields>
+  min?: Maybe<Courses_Disciplines_Aggregated_Fields>
+  sum?: Maybe<Courses_Disciplines_Aggregated_Fields>
+  sumDistinct?: Maybe<Courses_Disciplines_Aggregated_Fields>
+}
+
+export type Courses_Disciplines_Aggregated_Count = {
+  __typename?: 'courses_disciplines_aggregated_count'
+  courses_id?: Maybe<Scalars['Int']['output']>
+  disciplines_id?: Maybe<Scalars['Int']['output']>
+  id?: Maybe<Scalars['Int']['output']>
+}
+
+export type Courses_Disciplines_Aggregated_Fields = {
+  __typename?: 'courses_disciplines_aggregated_fields'
+  courses_id?: Maybe<Scalars['Float']['output']>
+  disciplines_id?: Maybe<Scalars['Float']['output']>
+  id?: Maybe<Scalars['Float']['output']>
+}
+
+export type Courses_Disciplines_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Courses_Disciplines_Filter>>>
+  _or?: InputMaybe<Array<InputMaybe<Courses_Disciplines_Filter>>>
+  courses_id?: InputMaybe<Courses_Filter>
+  disciplines_id?: InputMaybe<Disciplines_Filter>
+  id?: InputMaybe<Number_Filter_Operators>
+}
+
+export type Courses_Disciplines_Mutated = {
+  __typename?: 'courses_disciplines_mutated'
+  data?: Maybe<Courses_Disciplines>
+  event?: Maybe<EventEnum>
+  key: Scalars['ID']['output']
+}
+
 export type Courses_Filter = {
   _and?: InputMaybe<Array<InputMaybe<Courses_Filter>>>
   _or?: InputMaybe<Array<InputMaybe<Courses_Filter>>>
@@ -4778,6 +4951,8 @@ export type Courses_Filter = {
   degree_id?: InputMaybe<Number_Filter_Operators>
   degree_type?: InputMaybe<String_Filter_Operators>
   description?: InputMaybe<String_Filter_Operators>
+  disciplines?: InputMaybe<Courses_Disciplines_Filter>
+  disciplines_func?: InputMaybe<Count_Function_Filter_Operators>
   duration?: InputMaybe<String_Filter_Operators>
   duration_class?: InputMaybe<String_Filter_Operators>
   ects?: InputMaybe<Number_Filter_Operators>
@@ -5008,6 +5183,12 @@ export type Create_Courses_Category_Courses_Input = {
   id?: InputMaybe<Scalars['ID']['input']>
 }
 
+export type Create_Courses_Disciplines_Input = {
+  courses_id?: InputMaybe<Create_Courses_Input>
+  disciplines_id?: InputMaybe<Create_Disciplines_Input>
+  id?: InputMaybe<Scalars['ID']['input']>
+}
+
 export type Create_Courses_Input = {
   application_date?: InputMaybe<Scalars['Date']['input']>
   bilinguals_id?: InputMaybe<Create_Bilinguals_Input>
@@ -5022,6 +5203,7 @@ export type Create_Courses_Input = {
   degree_id?: InputMaybe<Scalars['Int']['input']>
   degree_type?: InputMaybe<Scalars['String']['input']>
   description?: InputMaybe<Scalars['String']['input']>
+  disciplines?: InputMaybe<Array<InputMaybe<Create_Courses_Disciplines_Input>>>
   duration?: InputMaybe<Scalars['String']['input']>
   duration_class?: InputMaybe<Scalars['String']['input']>
   ects?: InputMaybe<Scalars['Int']['input']>
@@ -5180,6 +5362,7 @@ export type Create_Directus_Users_Input = {
 }
 
 export type Create_Disciplines_Input = {
+  discipline_trans?: InputMaybe<Array<InputMaybe<Create_Disciplines_Trans_Input>>>
   discipline_visualization?: InputMaybe<Scalars['Boolean']['input']>
   id: Scalars['ID']['input']
   menu: Scalars['String']['input']
@@ -6781,12 +6964,23 @@ export type Directus_Webhooks_Mutated = {
 
 export type Disciplines = {
   __typename?: 'disciplines'
+  discipline_trans?: Maybe<Array<Maybe<Disciplines_Trans>>>
+  discipline_trans_func?: Maybe<Count_Functions>
   discipline_visualization?: Maybe<Scalars['Boolean']['output']>
   id: Scalars['ID']['output']
   menu: Scalars['String']['output']
   specialization_level1_visualization?: Maybe<Scalars['Boolean']['output']>
   specialization_level2_visualization?: Maybe<Scalars['Boolean']['output']>
   visualization?: Maybe<Scalars['Int']['output']>
+}
+
+export type DisciplinesDiscipline_TransArgs = {
+  filter?: InputMaybe<Disciplines_Trans_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
 export type Disciplines_Aggregated = {
@@ -6805,6 +6999,7 @@ export type Disciplines_Aggregated = {
 
 export type Disciplines_Aggregated_Count = {
   __typename?: 'disciplines_aggregated_count'
+  discipline_trans?: Maybe<Scalars['Int']['output']>
   discipline_visualization?: Maybe<Scalars['Int']['output']>
   id?: Maybe<Scalars['Int']['output']>
   menu?: Maybe<Scalars['Int']['output']>
@@ -6822,6 +7017,8 @@ export type Disciplines_Aggregated_Fields = {
 export type Disciplines_Filter = {
   _and?: InputMaybe<Array<InputMaybe<Disciplines_Filter>>>
   _or?: InputMaybe<Array<InputMaybe<Disciplines_Filter>>>
+  discipline_trans?: InputMaybe<Disciplines_Trans_Filter>
+  discipline_trans_func?: InputMaybe<Count_Function_Filter_Operators>
   discipline_visualization?: InputMaybe<Boolean_Filter_Operators>
   id?: InputMaybe<Number_Filter_Operators>
   menu?: InputMaybe<String_Filter_Operators>
@@ -8824,6 +9021,12 @@ export type Update_Courses_Category_Courses_Input = {
   id?: InputMaybe<Scalars['ID']['input']>
 }
 
+export type Update_Courses_Disciplines_Input = {
+  courses_id?: InputMaybe<Update_Courses_Input>
+  disciplines_id?: InputMaybe<Update_Disciplines_Input>
+  id?: InputMaybe<Scalars['ID']['input']>
+}
+
 export type Update_Courses_Input = {
   application_date?: InputMaybe<Scalars['Date']['input']>
   bilinguals_id?: InputMaybe<Update_Bilinguals_Input>
@@ -8838,6 +9041,7 @@ export type Update_Courses_Input = {
   degree_id?: InputMaybe<Scalars['Int']['input']>
   degree_type?: InputMaybe<Scalars['String']['input']>
   description?: InputMaybe<Scalars['String']['input']>
+  disciplines?: InputMaybe<Array<InputMaybe<Update_Courses_Disciplines_Input>>>
   duration?: InputMaybe<Scalars['String']['input']>
   duration_class?: InputMaybe<Scalars['String']['input']>
   ects?: InputMaybe<Scalars['Int']['input']>
@@ -8996,6 +9200,7 @@ export type Update_Directus_Users_Input = {
 }
 
 export type Update_Disciplines_Input = {
+  discipline_trans?: InputMaybe<Array<InputMaybe<Update_Disciplines_Trans_Input>>>
   discipline_visualization?: InputMaybe<Scalars['Boolean']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
   menu?: InputMaybe<Scalars['String']['input']>
@@ -9485,6 +9690,7 @@ export type Version_Courses = {
   degree_id?: Maybe<Scalars['Int']['output']>
   degree_type?: Maybe<Scalars['String']['output']>
   description?: Maybe<Scalars['String']['output']>
+  disciplines?: Maybe<Scalars['JSON']['output']>
   duration?: Maybe<Scalars['String']['output']>
   duration_class?: Maybe<Scalars['String']['output']>
   ects?: Maybe<Scalars['Int']['output']>
@@ -9519,6 +9725,13 @@ export type Version_Courses_Category_Courses = {
   id?: Maybe<Scalars['ID']['output']>
 }
 
+export type Version_Courses_Disciplines = {
+  __typename?: 'version_courses_disciplines'
+  courses_id?: Maybe<Scalars['JSON']['output']>
+  disciplines_id?: Maybe<Scalars['JSON']['output']>
+  id?: Maybe<Scalars['ID']['output']>
+}
+
 export type Version_Courses_Trans = {
   __typename?: 'version_courses_trans'
   application_date?: Maybe<Scalars['Date']['output']>
@@ -9542,6 +9755,7 @@ export type Version_Courses_Trans = {
 
 export type Version_Disciplines = {
   __typename?: 'version_disciplines'
+  discipline_trans?: Maybe<Scalars['JSON']['output']>
   discipline_visualization?: Maybe<Scalars['Boolean']['output']>
   id?: Maybe<Scalars['ID']['output']>
   menu?: Maybe<Scalars['String']['output']>
@@ -9875,7 +10089,9 @@ export type InstitutionsCoursesFragment = {
       duration?: string | null
       duration_class?: string | null
       meta_tags?: any | null
+      images?: string | null
       course_trans?: Array<{ __typename?: 'courses_trans'; commercial_name?: string | null } | null> | null
+      learning_format_id?: { __typename?: 'learning_format'; format_name?: string | null } | null
     } | null
   } | null> | null
 }
@@ -9922,6 +10138,17 @@ export type InstitutionsTransHeadFragment = { __typename?: 'institutions_trans';
 export type InstitutionsTransRankAndRecFragment = { __typename?: 'institutions_trans'; rank_and_rec?: any | null }
 
 export type InstitutionsTransStandsForFragment = { __typename?: 'institutions_trans'; standsfor?: any | null }
+
+export type InstitutionsTransTitlesFragment = {
+  __typename?: 'institutions_trans'
+  header_title?: string | null
+  header_rank_and_rec?: string | null
+  header_standsfor?: string | null
+  header_type_and_taxonomy?: string | null
+  header_courses?: string | null
+  header_scholarships?: string | null
+  header_details?: any | null
+}
 
 export type ScholarshipsInfoFragment = {
   __typename?: 'scholarships'
@@ -10045,7 +10272,9 @@ export type GetInstitutionsQuery = {
             duration?: string | null
             duration_class?: string | null
             meta_tags?: any | null
+            images?: string | null
             course_trans?: Array<{ __typename?: 'courses_trans'; commercial_name?: string | null } | null> | null
+            learning_format_id?: { __typename?: 'learning_format'; format_name?: string | null } | null
           } | null
         } | null> | null
       } | null
@@ -10070,6 +10299,12 @@ export type GetUniversityQuery = {
       header_details?: any | null
       rank_and_rec?: any | null
       standsfor?: any | null
+      header_title?: string | null
+      header_rank_and_rec?: string | null
+      header_standsfor?: string | null
+      header_type_and_taxonomy?: string | null
+      header_courses?: string | null
+      header_scholarships?: string | null
       institution_id?: {
         __typename?: 'institutions'
         url?: string | null
@@ -10117,7 +10352,9 @@ export type GetUniversityQuery = {
             duration?: string | null
             duration_class?: string | null
             meta_tags?: any | null
+            images?: string | null
             course_trans?: Array<{ __typename?: 'courses_trans'; commercial_name?: string | null } | null> | null
+            learning_format_id?: { __typename?: 'learning_format'; format_name?: string | null } | null
           } | null
         } | null> | null
       } | null
@@ -10201,6 +10438,10 @@ export const InstitutionsCoursesFragmentDoc = gql`
         duration
         duration_class
         meta_tags
+        learning_format_id {
+          format_name
+        }
+        images
       }
     }
   }
@@ -10264,6 +10505,17 @@ export const InstitutionsTransStandsForFragmentDoc = gql`
     standsfor
   }
 `
+export const InstitutionsTransTitlesFragmentDoc = gql`
+  fragment InstitutionsTransTitles on institutions_trans {
+    header_title
+    header_rank_and_rec
+    header_standsfor
+    header_type_and_taxonomy
+    header_courses
+    header_scholarships
+    header_details
+  }
+`
 export const GetCoursesLanguagesDocument = gql`
   query GetCoursesLanguages($filter: course_languages_filter) {
     course_languages(filter: $filter) {
@@ -10277,8 +10529,8 @@ export const GetCoursesLanguagesDocument = gql`
 /**
  * __useGetCoursesLanguagesQuery__
  *
- * To run a query within a React components, call `useGetCoursesLanguagesQuery` and pass it any options that fit your needs.
- * When your components renders, `useGetCoursesLanguagesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetCoursesLanguagesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCoursesLanguagesQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -10350,8 +10602,8 @@ export const GetCoursesDocument = gql`
 /**
  * __useGetCoursesQuery__
  *
- * To run a query within a React components, call `useGetCoursesQuery` and pass it any options that fit your needs.
- * When your components renders, `useGetCoursesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetCoursesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCoursesQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -10460,6 +10712,7 @@ export const GetUniversityDocument = gql`
         ...InstitutionsTransAbout
         ...InstitutionsTransRankAndRec
         ...InstitutionsTransStandsFor
+        ...InstitutionsTransTitles
         institution_id {
           ...InstitutionsHead
           ...InstitutionsScholarships
@@ -10474,6 +10727,7 @@ export const GetUniversityDocument = gql`
   ${InstitutionsTransAboutFragmentDoc}
   ${InstitutionsTransRankAndRecFragmentDoc}
   ${InstitutionsTransStandsForFragmentDoc}
+  ${InstitutionsTransTitlesFragmentDoc}
   ${InstitutionsHeadFragmentDoc}
   ${InstitutionsScholarshipsFragmentDoc}
   ${InstitutionsLocationsFragmentDoc}
