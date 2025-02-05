@@ -5228,6 +5228,7 @@ export type Courses_Mutated = {
 
 export type Courses_Trans = {
   __typename?: 'courses_trans'
+  admissions?: Maybe<Scalars['String']['output']>
   application_date?: Maybe<Scalars['Date']['output']>
   application_date_func?: Maybe<Date_Functions>
   career_opportunities?: Maybe<Scalars['String']['output']>
@@ -5235,19 +5236,27 @@ export type Courses_Trans = {
   course_id?: Maybe<Courses>
   course_structure?: Maybe<Scalars['JSON']['output']>
   course_structure_func?: Maybe<Count_Functions>
+  course_syllabus?: Maybe<Scalars['String']['output']>
   description?: Maybe<Scalars['String']['output']>
+  format_schedules?: Maybe<Scalars['String']['output']>
+  header_scholarships?: Maybe<Scalars['String']['output']>
+  header_title?: Maybe<Scalars['String']['output']>
   id: Scalars['ID']['output']
   info_blocks?: Maybe<Scalars['JSON']['output']>
   info_blocks_func?: Maybe<Count_Functions>
+  info_header?: Maybe<Scalars['String']['output']>
   intro?: Maybe<Scalars['String']['output']>
   language_id?: Maybe<Languages>
   methodology?: Maybe<Scalars['String']['output']>
+  pricing?: Maybe<Scalars['String']['output']>
+  reason_header?: Maybe<Scalars['String']['output']>
   requirements?: Maybe<Scalars['String']['output']>
   schedules?: Maybe<Scalars['String']['output']>
   standsfor?: Maybe<Scalars['JSON']['output']>
   standsfor_func?: Maybe<Count_Functions>
   start_date?: Maybe<Scalars['Date']['output']>
   start_date_func?: Maybe<Date_Functions>
+  title_career_opportunities?: Maybe<Scalars['String']['output']>
   tuition_price_comments?: Maybe<Scalars['String']['output']>
 }
 
@@ -5285,21 +5294,30 @@ export type Courses_Trans_Aggregated = {
 
 export type Courses_Trans_Aggregated_Count = {
   __typename?: 'courses_trans_aggregated_count'
+  admissions?: Maybe<Scalars['Int']['output']>
   application_date?: Maybe<Scalars['Int']['output']>
   career_opportunities?: Maybe<Scalars['Int']['output']>
   commercial_name?: Maybe<Scalars['Int']['output']>
   course_id?: Maybe<Scalars['Int']['output']>
   course_structure?: Maybe<Scalars['Int']['output']>
+  course_syllabus?: Maybe<Scalars['Int']['output']>
   description?: Maybe<Scalars['Int']['output']>
+  format_schedules?: Maybe<Scalars['Int']['output']>
+  header_scholarships?: Maybe<Scalars['Int']['output']>
+  header_title?: Maybe<Scalars['Int']['output']>
   id?: Maybe<Scalars['Int']['output']>
   info_blocks?: Maybe<Scalars['Int']['output']>
+  info_header?: Maybe<Scalars['Int']['output']>
   intro?: Maybe<Scalars['Int']['output']>
   language_id?: Maybe<Scalars['Int']['output']>
   methodology?: Maybe<Scalars['Int']['output']>
+  pricing?: Maybe<Scalars['Int']['output']>
+  reason_header?: Maybe<Scalars['Int']['output']>
   requirements?: Maybe<Scalars['Int']['output']>
   schedules?: Maybe<Scalars['Int']['output']>
   standsfor?: Maybe<Scalars['Int']['output']>
   start_date?: Maybe<Scalars['Int']['output']>
+  title_career_opportunities?: Maybe<Scalars['Int']['output']>
   tuition_price_comments?: Maybe<Scalars['Int']['output']>
 }
 
@@ -5313,6 +5331,7 @@ export type Courses_Trans_Aggregated_Fields = {
 export type Courses_Trans_Filter = {
   _and?: InputMaybe<Array<InputMaybe<Courses_Trans_Filter>>>
   _or?: InputMaybe<Array<InputMaybe<Courses_Trans_Filter>>>
+  admissions?: InputMaybe<String_Filter_Operators>
   application_date?: InputMaybe<Date_Filter_Operators>
   application_date_func?: InputMaybe<Date_Function_Filter_Operators>
   career_opportunities?: InputMaybe<String_Filter_Operators>
@@ -5320,19 +5339,27 @@ export type Courses_Trans_Filter = {
   course_id?: InputMaybe<Courses_Filter>
   course_structure?: InputMaybe<String_Filter_Operators>
   course_structure_func?: InputMaybe<Count_Function_Filter_Operators>
+  course_syllabus?: InputMaybe<String_Filter_Operators>
   description?: InputMaybe<String_Filter_Operators>
+  format_schedules?: InputMaybe<String_Filter_Operators>
+  header_scholarships?: InputMaybe<String_Filter_Operators>
+  header_title?: InputMaybe<String_Filter_Operators>
   id?: InputMaybe<Number_Filter_Operators>
   info_blocks?: InputMaybe<String_Filter_Operators>
   info_blocks_func?: InputMaybe<Count_Function_Filter_Operators>
+  info_header?: InputMaybe<String_Filter_Operators>
   intro?: InputMaybe<String_Filter_Operators>
   language_id?: InputMaybe<Languages_Filter>
   methodology?: InputMaybe<String_Filter_Operators>
+  pricing?: InputMaybe<String_Filter_Operators>
+  reason_header?: InputMaybe<String_Filter_Operators>
   requirements?: InputMaybe<String_Filter_Operators>
   schedules?: InputMaybe<String_Filter_Operators>
   standsfor?: InputMaybe<String_Filter_Operators>
   standsfor_func?: InputMaybe<Count_Function_Filter_Operators>
   start_date?: InputMaybe<Date_Filter_Operators>
   start_date_func?: InputMaybe<Date_Function_Filter_Operators>
+  title_career_opportunities?: InputMaybe<String_Filter_Operators>
   tuition_price_comments?: InputMaybe<String_Filter_Operators>
 }
 
@@ -5458,21 +5485,30 @@ export type Create_Courses_Languages_Format_Input = {
 }
 
 export type Create_Courses_Trans_Input = {
+  admissions?: InputMaybe<Scalars['String']['input']>
   application_date?: InputMaybe<Scalars['Date']['input']>
   career_opportunities?: InputMaybe<Scalars['String']['input']>
   commercial_name?: InputMaybe<Scalars['String']['input']>
   course_id?: InputMaybe<Create_Courses_Input>
   course_structure?: InputMaybe<Scalars['JSON']['input']>
+  course_syllabus?: InputMaybe<Scalars['String']['input']>
   description?: InputMaybe<Scalars['String']['input']>
+  format_schedules?: InputMaybe<Scalars['String']['input']>
+  header_scholarships?: InputMaybe<Scalars['String']['input']>
+  header_title?: InputMaybe<Scalars['String']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
   info_blocks?: InputMaybe<Scalars['JSON']['input']>
+  info_header?: InputMaybe<Scalars['String']['input']>
   intro?: InputMaybe<Scalars['String']['input']>
   language_id?: InputMaybe<Create_Languages_Input>
   methodology?: InputMaybe<Scalars['String']['input']>
+  pricing?: InputMaybe<Scalars['String']['input']>
+  reason_header?: InputMaybe<Scalars['String']['input']>
   requirements?: InputMaybe<Scalars['String']['input']>
   schedules?: InputMaybe<Scalars['String']['input']>
   standsfor?: InputMaybe<Scalars['JSON']['input']>
   start_date?: InputMaybe<Scalars['Date']['input']>
+  title_career_opportunities?: InputMaybe<Scalars['String']['input']>
   tuition_price_comments?: InputMaybe<Scalars['String']['input']>
 }
 
@@ -9369,21 +9405,30 @@ export type Update_Courses_Languages_Format_Input = {
 }
 
 export type Update_Courses_Trans_Input = {
+  admissions?: InputMaybe<Scalars['String']['input']>
   application_date?: InputMaybe<Scalars['Date']['input']>
   career_opportunities?: InputMaybe<Scalars['String']['input']>
   commercial_name?: InputMaybe<Scalars['String']['input']>
   course_id?: InputMaybe<Update_Courses_Input>
   course_structure?: InputMaybe<Scalars['JSON']['input']>
+  course_syllabus?: InputMaybe<Scalars['String']['input']>
   description?: InputMaybe<Scalars['String']['input']>
+  format_schedules?: InputMaybe<Scalars['String']['input']>
+  header_scholarships?: InputMaybe<Scalars['String']['input']>
+  header_title?: InputMaybe<Scalars['String']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
   info_blocks?: InputMaybe<Scalars['JSON']['input']>
+  info_header?: InputMaybe<Scalars['String']['input']>
   intro?: InputMaybe<Scalars['String']['input']>
   language_id?: InputMaybe<Update_Languages_Input>
   methodology?: InputMaybe<Scalars['String']['input']>
+  pricing?: InputMaybe<Scalars['String']['input']>
+  reason_header?: InputMaybe<Scalars['String']['input']>
   requirements?: InputMaybe<Scalars['String']['input']>
   schedules?: InputMaybe<Scalars['String']['input']>
   standsfor?: InputMaybe<Scalars['JSON']['input']>
   start_date?: InputMaybe<Scalars['Date']['input']>
+  title_career_opportunities?: InputMaybe<Scalars['String']['input']>
   tuition_price_comments?: InputMaybe<Scalars['String']['input']>
 }
 
@@ -10036,21 +10081,30 @@ export type Version_Courses_Languages_Format = {
 
 export type Version_Courses_Trans = {
   __typename?: 'version_courses_trans'
+  admissions?: Maybe<Scalars['String']['output']>
   application_date?: Maybe<Scalars['Date']['output']>
   career_opportunities?: Maybe<Scalars['String']['output']>
   commercial_name?: Maybe<Scalars['String']['output']>
   course_id?: Maybe<Scalars['JSON']['output']>
   course_structure?: Maybe<Scalars['JSON']['output']>
+  course_syllabus?: Maybe<Scalars['String']['output']>
   description?: Maybe<Scalars['String']['output']>
+  format_schedules?: Maybe<Scalars['String']['output']>
+  header_scholarships?: Maybe<Scalars['String']['output']>
+  header_title?: Maybe<Scalars['String']['output']>
   id?: Maybe<Scalars['ID']['output']>
   info_blocks?: Maybe<Scalars['JSON']['output']>
+  info_header?: Maybe<Scalars['String']['output']>
   intro?: Maybe<Scalars['String']['output']>
   language_id?: Maybe<Scalars['JSON']['output']>
   methodology?: Maybe<Scalars['String']['output']>
+  pricing?: Maybe<Scalars['String']['output']>
+  reason_header?: Maybe<Scalars['String']['output']>
   requirements?: Maybe<Scalars['String']['output']>
   schedules?: Maybe<Scalars['String']['output']>
   standsfor?: Maybe<Scalars['JSON']['output']>
   start_date?: Maybe<Scalars['Date']['output']>
+  title_career_opportunities?: Maybe<Scalars['String']['output']>
   tuition_price_comments?: Maybe<Scalars['String']['output']>
 }
 
@@ -10603,6 +10657,7 @@ export type FilterCoursesQueryVariables = Exact<{
   filter?: InputMaybe<Courses_Filter>
   page?: InputMaybe<Scalars['Int']['input']>
   limit?: InputMaybe<Scalars['Int']['input']>
+  sort?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>
 }>
 
 export type FilterCoursesQuery = {
@@ -11225,8 +11280,8 @@ export type GetCoursesLanguagesLazyQueryHookResult = ReturnType<typeof useGetCou
 export type GetCoursesLanguagesSuspenseQueryHookResult = ReturnType<typeof useGetCoursesLanguagesSuspenseQuery>
 export type GetCoursesLanguagesQueryResult = Apollo.QueryResult<GetCoursesLanguagesQuery, GetCoursesLanguagesQueryVariables>
 export const FilterCoursesDocument = gql`
-  query FilterCourses($languageName: String!, $filter: courses_filter, $page: Int, $limit: Int) {
-    courses(filter: $filter, page: $page, limit: $limit) {
+  query FilterCourses($languageName: String!, $filter: courses_filter, $page: Int, $limit: Int, $sort: [String!]) {
+    courses(filter: $filter, page: $page, limit: $limit, sort: $sort) {
       course_trans(filter: { language_id: { name: { _eq: $languageName } } }) {
         commercial_name
         course_id {
@@ -11270,6 +11325,7 @@ export const FilterCoursesDocument = gql`
  *      filter: // value for 'filter'
  *      page: // value for 'page'
  *      limit: // value for 'limit'
+ *      sort: // value for 'sort'
  *   },
  * });
  */
