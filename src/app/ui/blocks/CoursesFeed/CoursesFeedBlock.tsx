@@ -4,9 +4,7 @@ import { type IBannerProps } from '../Banner/Banner'
 import CoursesFeed from './components/CoursesFeed'
 import Pagination from '@components/Pagination/Pagination'
 import { useTranslations } from 'next-intl'
-import type { ESortDirection } from '../../../lib/enums/globals.enums'
 import SortSelectTrigger from './components/SortSelectTrigger'
-import type { ISelectOption } from '@components/Form/Inputs/Select/InputSelect'
 
 export interface ICoursesFeedBlockProps {
   courses: IAssetCardIndexProps[]
@@ -14,21 +12,9 @@ export interface ICoursesFeedBlockProps {
   page: number
   totalPages: number
   totalCourses: number
-  sortOptions: ISelectOption[]
-  sortOption: string
-  sortOrder: ESortDirection
 }
 
-const CoursesFeedBlock: FC<ICoursesFeedBlockProps> = ({
-  courses,
-  banner,
-  totalPages,
-  page,
-  totalCourses,
-  sortOption,
-  sortOrder,
-  sortOptions
-}) => {
+const CoursesFeedBlock: FC<ICoursesFeedBlockProps> = ({ courses, banner, totalPages, page, totalCourses }) => {
   const t = useTranslations()
 
   return (
@@ -39,7 +25,7 @@ const CoursesFeedBlock: FC<ICoursesFeedBlockProps> = ({
           <span className="">{t('courseDetails.totalFound')}</span>
         </h2>
         <div className="sort-input-action">
-          <SortSelectTrigger order={sortOrder} sortOptions={sortOptions} selectedSort={sortOption} />
+          <SortSelectTrigger />
         </div>
       </div>
       <CoursesFeed courses={courses} banner={banner} />
