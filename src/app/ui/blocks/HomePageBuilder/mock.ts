@@ -1,7 +1,7 @@
 import { EAssetCardVariant } from '@components/AssetCard/AssetCard'
 import { MOCK_ASSET_CARD } from '@components/AssetCard/mock'
 import { MOCK_MURAL } from '@components/Mural/mock'
-import { IHomePageBuilderProps } from './HomePageBuilder'
+import type { IHomePageBuilderProps } from './HomePageBuilder'
 
 export const HOME_PAGE_BUILDER_MOCK: IHomePageBuilderProps = {
   data: {
