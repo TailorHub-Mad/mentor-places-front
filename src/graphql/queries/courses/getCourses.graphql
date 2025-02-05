@@ -1,32 +1,25 @@
-query GetCourses($filter: courses_filter) {
-  courses(filter: $filter) {
-    id
-    type
-    commercial_name
-    is_official
-    duration
-    is_dual
-    ects
-    degree_type
-    degree_id
-    course_intro
-    description
-    methology
-    structure
-    standsfor
-    info_blocks
-    url
-    schedules
-    start_date
-    is_on_demand
-    application_date
-    requirements
-    videos
-    images
-    tuition_price
-    tuition_price_comment
-    career_opportunities
-    careers
-    official_data_source
+query GetCourses($languageName: String!, $filter: courses_filter, $page: Int, $limit: Int) {
+  courses(filter: $filter, page: $page, limit: $limit) {
+    course_trans(filter: { language_id: { name: { _eq: $languageName } } }) {
+      commercial_name
+      course_id {
+        id
+        type
+        is_official
+        ...CoursesLanguages
+        duration_class
+        duration
+        tuition_price
+        average_price
+        places_available
+        start_date_func {
+          year
+          month
+          day
+        }
+        start_date
+        ...CoursesInstitutionFilter
+      }
+    }
   }
 }
