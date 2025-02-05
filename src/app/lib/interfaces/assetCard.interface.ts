@@ -9,10 +9,10 @@ export interface IAssetCardData {
   ctaHref?: string
   ranking?: number
   details?: IAssetCardDetail[]
-  description?: string
+  description?: string | null
 }
 
 export interface IAssetCardDetail {
   type: TAssetDetailType
-  value: string | number
+  value?: string | number | null
 }

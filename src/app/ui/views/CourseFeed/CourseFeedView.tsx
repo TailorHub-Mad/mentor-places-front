@@ -2,8 +2,18 @@ import type { FC } from 'react'
 import CoursesFeedBlock from '../../blocks/CoursesFeed/CoursesFeedBlock'
 import { ESortDirection } from '../../../lib/enums/globals.enums'
 import { ASSET_CARD_INDEX_MOCK } from '@components/AssetCardIndex/mock'
+import type { GetCoursesQuery } from '../../../../graphql/generated/client'
+import { useCourseFeedMapper } from '../../../lib/mapper/useCourseFeedMapper'
 
-const CourseFeedView: FC = () => {
+export interface ICourseFeedViewProps {
+  courses: GetCoursesQuery['courses']
+}
+
+const CourseFeedView: FC<ICourseFeedViewProps> = ({ courses }) => {
+  const filteredCourses = useCourseFeedMapper(courses)
+
+  console.log({ filteredCourses })
+
   return (
     <div className="course-feed-view page">
       <CoursesFeedBlock

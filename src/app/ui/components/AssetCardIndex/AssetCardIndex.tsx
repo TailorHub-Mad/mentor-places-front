@@ -11,7 +11,7 @@ export interface IAssetCardIndexProps extends IAssetCardData {
   title: string
   universityLogo?: string
   universityName?: string
-  assetThumbnailUrl?: string
+  assetThumbnailUrl?: string | null
   isOnFavPage?: boolean
   isOnComparePage?: boolean
   handleRemove?: MouseEventHandler<HTMLButtonElement>
@@ -59,14 +59,18 @@ const AssetCardIndex: FC<IAssetCardIndexProps> = (props) => {
           <h3 className="font-s text-m-mobile lg:text-m mb-[20px]">{title}</h3>
           {details && (
             <div className="md:flex items-center gap-x-[24px] gap-y-[12px] md:gap-[12px] grid grid-cols-2">
-              {details.map((item, index) => (
-                <AssetDetailCard
-                  key={`asset-detail-card-${item.value}-${index}`}
-                  variant={EAssetCardVariant.index}
-                  text={item.value}
-                  type={item.type}
-                />
-              ))}
+              {details.map((item, index) => {
+                if (!item.value) return null
+
+                return (
+                  <AssetDetailCard
+                    key={`asset-detail-card-${item.value}-${index}`}
+                    variant={EAssetCardVariant.index}
+                    text={item.value}
+                    type={item.type}
+                  />
+                )
+              })}
             </div>
           )}
         </div>

@@ -1,0 +1,7 @@
+fragment CoursesFeed on courses {
+  id
+  type
+  commercial_name
+  is_official
+  duration
+}

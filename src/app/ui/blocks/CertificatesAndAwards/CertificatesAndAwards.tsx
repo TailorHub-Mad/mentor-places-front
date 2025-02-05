@@ -1,4 +1,5 @@
-import CertificationCard, { ICertificationCardProps } from '@components/CertificationCard/CertificationCard'
+import type { ICertificationCardProps } from '@components/CertificationCard/CertificationCard'
+import CertificationCard from '@components/CertificationCard/CertificationCard'
 import type { FC } from 'react'
 
 interface ICertificatesAndAwardsProps {
