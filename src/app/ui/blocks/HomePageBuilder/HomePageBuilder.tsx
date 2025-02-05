@@ -1,9 +1,12 @@
 import type { FC } from 'react'
 import HeroPage from '../HeroPage/HeroPage'
-import { TCTAAction } from '@hooks/useAction'
-import Mural, { IMuralSectionProps } from '@components/Mural/Mural'
-import Banner, { IBannerProps } from '../Banner/Banner'
-import MonthHighlights, { IMonthHighlightsProps } from '../MonthHighlights/MonthHighlights'
+import type { TCTAAction } from '@hooks/useAction'
+import type { IMuralSectionProps } from '@components/Mural/Mural'
+import Mural from '@components/Mural/Mural'
+import type { IBannerProps } from '../Banner/Banner'
+import Banner from '../Banner/Banner'
+import type { IMonthHighlightsProps } from '../MonthHighlights/MonthHighlights'
+import MonthHighlights from '../MonthHighlights/MonthHighlights'
 
 interface IHomePageBuilderProps {
   data: {
