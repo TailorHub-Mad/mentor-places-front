@@ -4,9 +4,9 @@ import CustomSwiper from '@components/Swiper/CustomSwiper'
 import { useTranslations } from 'next-intl'
 import type { FC } from 'react'
 import type { GetUniversityQuery } from '../../../../graphql/generated/client'
-import type { IAssetCardData, IAssetCardDetail } from '@interfaces/assetCard.interface'
+import { transformCourses } from './utils'
 
-interface ICourse {
+export interface ICourse {
   course_id: {
     id: string
     course_trans: {
@@ -36,55 +36,12 @@ interface IInstitutionMastersProps {
 
 const InstitutionMasters: FC<IInstitutionMastersProps> = ({ courses, universityName, universityLogo }) => {
   const t = useTranslations()
-
-  const transformedCourses: (IAssetCardData & { id: string })[] = (
-    courses?.filter((course) => {
-      if (!course?.course_id) return false
-      const { course_trans, images } = course.course_id
-      return course_trans && course_trans[0]?.commercial_name && images
-    }) as ICourse[]
-  ).map((course) => {
-    const details: IAssetCardDetail[] = []
-    const { course_trans, images, learning_format_id, duration, duration_class, tuition_price, is_official, id } = course.course_id
-    if (learning_format_id) {
-      details.push({
-        type: 'format',
-        value: learning_format_id.format_name
-      })
-    }
-    if (duration && duration_class) {
-      details.push({
-        type: 'duration',
-        value: `${duration} ${duration_class}`
-      })
-    }
-    if (tuition_price?.[0]) {
-      details.push({
-        type: 'price',
-        value: `${tuition_price[0].tuition_fee_o} ${tuition_price[0].currency}`
-      })
-    }
-    if (typeof is_official === 'boolean') {
-      details.push({
-        type: 'official',
-        value: is_official ? t('actions.yes') : t('actions.no')
-      })
-    }
-    return {
-      id,
-      title: course_trans[0].commercial_name,
-      universityName,
-      universityLogo,
-      imageSrc: images,
-      details: details.length > 0 ? details : undefined
-    }
-  })
+  const transformedCourses = transformCourses(courses, universityName, universityLogo, t)
 
   return (
     <CustomSwiper
       position={SwiperNavigationPosition.TOP_RIGHT}
-      items={transformedCourses.map((course) => {
-        const { id, title, imageSrc, details } = course
+      items={transformedCourses.map(({ id, title, imageSrc, details }) => {
         return (
           <AssetCard
             key={id}
@@ -99,40 +56,6 @@ const InstitutionMasters: FC<IInstitutionMastersProps> = ({ courses, universityN
           />
         )
       })}
-      // items={(courses || []).map((course) => {
-      //   if (!course?.course_id) return
-      //   const { course_trans, learning_format_id, duration, duration_class, tuition_price, is_official, id, images } = course.course_id
-      //   return (
-      //     <AssetCard
-      //       key={id}
-      //       variant={EAssetCardVariant.withIcons}
-      //       data={{
-      //         title: course_trans[0].commercial_name,
-      //         universityName,
-      //         universityLogo,
-      //         imageSrc: images,
-      //         details: [
-      //           {
-      //             type: 'format',
-      //             value: learning_format_id.format_name
-      //           },
-      //           {
-      //             type: 'duration',
-      //             value: `${duration} ${duration_class}`
-      //           },
-      //           {
-      //             type: 'price',
-      //             value: `${tuition_price[0].tuition_fee_o} ${tuition_price[0].currency}`
-      //           },
-      //           {
-      //             type: 'official',
-      //             value: is_official ? t('actions.yes') : t('actions.no')
-      //           }
-      //         ]
-      //       }}
-      //     />
-      //   )
-      // })}
     />
   )
 }
