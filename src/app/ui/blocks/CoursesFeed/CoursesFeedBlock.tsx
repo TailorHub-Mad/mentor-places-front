@@ -9,12 +9,11 @@ import SortSelectTrigger from './components/SortSelectTrigger'
 export interface ICoursesFeedBlockProps {
   courses: IAssetCardIndexProps[]
   banner: IBannerProps
-  page: number
   totalPages: number
   totalCourses: number
 }
 
-const CoursesFeedBlock: FC<ICoursesFeedBlockProps> = ({ courses, banner, totalPages, page, totalCourses }) => {
+const CoursesFeedBlock: FC<ICoursesFeedBlockProps> = ({ courses, banner, totalPages, totalCourses }) => {
   const t = useTranslations()
 
   return (
@@ -29,7 +28,7 @@ const CoursesFeedBlock: FC<ICoursesFeedBlockProps> = ({ courses, banner, totalPa
         </div>
       </div>
       <CoursesFeed courses={courses} banner={banner} />
-      <Pagination page={page} totalPages={totalPages} />
+      <Pagination totalPages={totalPages} />
     </div>
   )
 }

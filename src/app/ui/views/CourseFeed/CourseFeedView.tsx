@@ -21,7 +21,6 @@ const CourseFeedView: FC<ICourseFeedViewProps> = ({ courses }) => {
           cta: 'Haz tu test GRATIS!',
           action: 'contact'
         }}
-        page={1}
         totalPages={10}
         totalCourses={filteredCourses.length}
       />
