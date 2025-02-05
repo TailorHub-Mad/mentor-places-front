@@ -3,9 +3,9 @@ import type { CodegenConfig } from '@graphql-codegen/cli'
 const config: CodegenConfig = {
   overwrite: true,
   schema: {
-    [process.env.NEXT_PUBLIC_URL_DIRECTUS as string]: {
+    ['https://directus.mentorplaces.com/graphql']: {
       headers: {
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_DIRECTUS}`
+        Authorization: `Bearer KY94GlKXf3U6jouUkevEsHNutI_El9jS`
       }
     }
   },

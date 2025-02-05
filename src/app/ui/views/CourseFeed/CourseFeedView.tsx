@@ -1,7 +1,6 @@
 import type { FC } from 'react'
 import CoursesFeedBlock from '../../blocks/CoursesFeed/CoursesFeedBlock'
 import { ESortDirection } from '../../../lib/enums/globals.enums'
-import { ASSET_CARD_INDEX_MOCK } from '@components/AssetCardIndex/mock'
 import type { GetCoursesQuery } from '../../../../graphql/generated/client'
 import { useCourseFeedMapper } from '../../../lib/mapper/useCourseFeedMapper'
 
@@ -17,7 +16,7 @@ const CourseFeedView: FC<ICourseFeedViewProps> = ({ courses }) => {
   return (
     <div className="course-feed-view page">
       <CoursesFeedBlock
-        courses={Array.from({ length: 10 }).map(() => ASSET_CARD_INDEX_MOCK)}
+        courses={filteredCourses}
         sortOptions={[
           {
             value: 'recomended',

@@ -23,7 +23,6 @@ const AssetCardIndex: FC<IAssetCardIndexProps> = (props) => {
     universityName,
     assetThumbnailUrl,
     title,
-    ctaText,
     details,
     ctaHref,
     isOnFavPage = false,
@@ -76,7 +75,7 @@ const AssetCardIndex: FC<IAssetCardIndexProps> = (props) => {
         </div>
         <div className="asset-card-index__content__footer flex items-center gap-[6px] md:gap-[16px]">
           <Button variant="primary" href={ctaHref}>
-            {ctaText}
+            {t('actions.showMore')}
           </Button>
           {isOnFavPage || isOnComparePage ? (
             <Button variant="text" onClick={handleRemove}>

@@ -3,22 +3,32 @@ import type { GetCoursesQuery } from '../../../graphql/generated/client'
 import { useFilterCollectionByFields } from '@utils/useFilterCollectionByFields'
 
 export const useCourseFeedMapper = (courses: GetCoursesQuery['courses']): IAssetCardIndexProps[] => {
-  const filteredCourses = useFilterCollectionByFields(courses, ['commercial_name'])
+  const coursesTransformed = courses.map((course) => ({
+    ...course.course_trans?.[0] // course_trans is always length === 1 by design
+  }))
 
-  const mappedCourses: IAssetCardIndexProps[] = filteredCourses.map((course) => ({
-    title: course.commercial_name,
-    assetThumbnailUrl: course?.images || '/images/UAX-university-mentor.png',
-    ctaHref: `/courses/${course.id}`,
+  const filteredCourses = useFilterCollectionByFields(coursesTransformed, ['commercial_name'])
+
+  const mappedCourses: IAssetCardIndexProps[] = filteredCourses.flatMap((course) => ({
+    title: course?.commercial_name as string,
+    assetThumbnailUrl: course?.course_id?.images || '/images/UAX-university-mentor.png',
+    ctaHref: `/courses/${course?.id}`,
+    universityName: course?.course_id?.campuses_courses?.[0]?.campuses_id?.campuses_trans?.[0]?.name as string,
+    universityLogo: course?.course_id?.institutions?.[0]?.institution_id?.logo as string,
     details: [
-      { type: 'duration', value: course.duration },
-      { type: 'format', value: course.type }, //TODO: Where get format course
-      { type: 'language', value: 'Español' }, //TODO: Get data from getCourseLanguages hook
-      { type: 'campus', value: 'Madrid' }, //TODO: Where get this info
-      { type: 'startDate', value: course.start_date },
-      { type: 'price', value: course.tuition_price[0] }, //TODO: Change it for new price field
-      { type: 'rating', value: 4.4 }
+      { type: 'duration', value: getFormattedDuration(course?.course_id?.duration, course?.course_id?.duration_class) },
+      { type: 'format', value: course?.course_id?.learning_format_id?.format_name },
+      { type: 'language', value: course?.course_id?.course_language?.[0]?.languages_format_id?.name },
+      { type: 'campus', value: course?.course_id?.campuses_courses?.[0]?.campuses_id?.campuses_trans?.[0]?.name },
+      { type: 'startDate', value: course?.course_id?.start_date },
+      { type: 'price', value: course?.course_id?.average_price }
     ]
   }))
 
   return mappedCourses
+}
+
+const getFormattedDuration = (duration?: string | null, durationClass?: string | null) => {
+  const adjustedDurationClass = duration === '1' ? durationClass?.slice(0, -1) : durationClass
+  return `${duration} ${adjustedDurationClass}`
 }

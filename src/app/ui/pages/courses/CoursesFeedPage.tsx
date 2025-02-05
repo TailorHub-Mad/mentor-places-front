@@ -11,7 +11,7 @@ const CoursesFeedPage: FC = async ({ params: { lng } }: any) => {
     query: GetCoursesDocument
   })
 
-  console.log({ data })
+  console.log('CoursesFeedPage: ', { ...data.courses })
 
   return (
     <div className="course-feed-page">
