@@ -1,7 +1,7 @@
 'use client'
 
 import { type FC, useState } from 'react'
-import { useRouter, useSearchParams } from 'next/navigation' // Import necessary hooks
+import { useRouter, useSearchParams } from 'next/navigation'
 import { ESortDirection } from '../../../../lib/enums/globals.enums'
 import { useDropdownState } from '@hooks/useDropdownState'
 import SelectSearchDropdown from '@components/Form/Inputs/Select/components/SelectDropdownPortal/SelectDropdownPortal'
@@ -42,7 +42,6 @@ const SortSelectTrigger: FC = () => {
   const { isOverflowing, parentRef, spanRef } = useOverflowDetection(selectedSort as string, selectedSort)
   const { isOpen, toggle, targetRef, selectInputRef } = useDropdownState()
 
-  // Update query parameters when values change
   const updateQueryParams = (newSort: string, newOrder: ESortDirection) => {
     const params = new URLSearchParams(searchParams as never)
     params.set('sort', newSort)
