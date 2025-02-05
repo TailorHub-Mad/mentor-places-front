@@ -1,4 +1,4 @@
-query GetCourses($languageName: String!, $filter: courses_filter, $page: Int, $limit: Int) {
+query FilterCourses($languageName: String!, $filter: courses_filter, $page: Int, $limit: Int) {
   courses(filter: $filter, page: $page, limit: $limit) {
     course_trans(filter: { language_id: { name: { _eq: $languageName } } }) {
       commercial_name

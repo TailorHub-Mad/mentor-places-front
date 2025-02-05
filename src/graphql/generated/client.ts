@@ -10598,6 +10598,51 @@ export type GetCoursesLanguagesQuery = {
   course_languages: Array<{ __typename?: 'course_languages'; id: string; name?: string | null; direction?: string | null }>
 }
 
+export type FilterCoursesQueryVariables = Exact<{
+  languageName: Scalars['String']['input']
+  filter?: InputMaybe<Courses_Filter>
+  page?: InputMaybe<Scalars['Int']['input']>
+  limit?: InputMaybe<Scalars['Int']['input']>
+}>
+
+export type FilterCoursesQuery = {
+  __typename?: 'Query'
+  courses: Array<{
+    __typename?: 'courses'
+    course_trans?: Array<{
+      __typename?: 'courses_trans'
+      commercial_name?: string | null
+      course_id?: {
+        __typename?: 'courses'
+        id: string
+        type: string
+        is_official?: boolean | null
+        duration_class?: string | null
+        duration?: string | null
+        tuition_price?: any | null
+        average_price?: string | null
+        places_available?: number | null
+        start_date?: any | null
+        start_date_func?: { __typename?: 'date_functions'; year?: number | null; month?: number | null; day?: number | null } | null
+        course_language?: Array<{
+          __typename?: 'courses_languages_format'
+          languages_format_id?: { __typename?: 'languages_format'; name?: string | null } | null
+        } | null> | null
+        institutions?: Array<{
+          __typename?: 'joininstitutioncourse'
+          institution_id?: {
+            __typename?: 'institutions'
+            logo?: string | null
+            main_image?: string | null
+            top_masters?: string | null
+            institutions_trans?: Array<{ __typename?: 'institutions_trans'; commercial_name?: string | null } | null> | null
+          } | null
+        } | null> | null
+      } | null
+    } | null> | null
+  }>
+}
+
 export type GetCourseQueryVariables = Exact<{
   id: Scalars['ID']['input']
   languageName: Scalars['String']['input']
@@ -10710,51 +10755,6 @@ export type GetCourseQuery = {
       } | null
     } | null> | null
   } | null
-}
-
-export type GetCoursesQueryVariables = Exact<{
-  languageName: Scalars['String']['input']
-  filter?: InputMaybe<Courses_Filter>
-  page?: InputMaybe<Scalars['Int']['input']>
-  limit?: InputMaybe<Scalars['Int']['input']>
-}>
-
-export type GetCoursesQuery = {
-  __typename?: 'Query'
-  courses: Array<{
-    __typename?: 'courses'
-    course_trans?: Array<{
-      __typename?: 'courses_trans'
-      commercial_name?: string | null
-      course_id?: {
-        __typename?: 'courses'
-        id: string
-        type: string
-        is_official?: boolean | null
-        duration_class?: string | null
-        duration?: string | null
-        tuition_price?: any | null
-        average_price?: string | null
-        places_available?: number | null
-        start_date?: any | null
-        start_date_func?: { __typename?: 'date_functions'; year?: number | null; month?: number | null; day?: number | null } | null
-        course_language?: Array<{
-          __typename?: 'courses_languages_format'
-          languages_format_id?: { __typename?: 'languages_format'; name?: string | null } | null
-        } | null> | null
-        institutions?: Array<{
-          __typename?: 'joininstitutioncourse'
-          institution_id?: {
-            __typename?: 'institutions'
-            logo?: string | null
-            main_image?: string | null
-            top_masters?: string | null
-            institutions_trans?: Array<{ __typename?: 'institutions_trans'; commercial_name?: string | null } | null> | null
-          } | null
-        } | null> | null
-      } | null
-    } | null> | null
-  }>
 }
 
 export type GetInstitutionsQueryVariables = Exact<{
@@ -11224,6 +11224,76 @@ export type GetCoursesLanguagesQueryHookResult = ReturnType<typeof useGetCourses
 export type GetCoursesLanguagesLazyQueryHookResult = ReturnType<typeof useGetCoursesLanguagesLazyQuery>
 export type GetCoursesLanguagesSuspenseQueryHookResult = ReturnType<typeof useGetCoursesLanguagesSuspenseQuery>
 export type GetCoursesLanguagesQueryResult = Apollo.QueryResult<GetCoursesLanguagesQuery, GetCoursesLanguagesQueryVariables>
+export const FilterCoursesDocument = gql`
+  query FilterCourses($languageName: String!, $filter: courses_filter, $page: Int, $limit: Int) {
+    courses(filter: $filter, page: $page, limit: $limit) {
+      course_trans(filter: { language_id: { name: { _eq: $languageName } } }) {
+        commercial_name
+        course_id {
+          id
+          type
+          is_official
+          ...CoursesLanguages
+          duration_class
+          duration
+          tuition_price
+          average_price
+          places_available
+          start_date_func {
+            year
+            month
+            day
+          }
+          start_date
+          ...CoursesInstitutionFilter
+        }
+      }
+    }
+  }
+  ${CoursesLanguagesFragmentDoc}
+  ${CoursesInstitutionFilterFragmentDoc}
+`
+
+/**
+ * __useFilterCoursesQuery__
+ *
+ * To run a query within a React component, call `useFilterCoursesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFilterCoursesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFilterCoursesQuery({
+ *   variables: {
+ *      languageName: // value for 'languageName'
+ *      filter: // value for 'filter'
+ *      page: // value for 'page'
+ *      limit: // value for 'limit'
+ *   },
+ * });
+ */
+export function useFilterCoursesQuery(
+  baseOptions: Apollo.QueryHookOptions<FilterCoursesQuery, FilterCoursesQueryVariables> &
+    ({ variables: FilterCoursesQueryVariables; skip?: boolean } | { skip: boolean })
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<FilterCoursesQuery, FilterCoursesQueryVariables>(FilterCoursesDocument, options)
+}
+export function useFilterCoursesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FilterCoursesQuery, FilterCoursesQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<FilterCoursesQuery, FilterCoursesQueryVariables>(FilterCoursesDocument, options)
+}
+export function useFilterCoursesSuspenseQuery(
+  baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<FilterCoursesQuery, FilterCoursesQueryVariables>
+) {
+  const options = baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions }
+  return Apollo.useSuspenseQuery<FilterCoursesQuery, FilterCoursesQueryVariables>(FilterCoursesDocument, options)
+}
+export type FilterCoursesQueryHookResult = ReturnType<typeof useFilterCoursesQuery>
+export type FilterCoursesLazyQueryHookResult = ReturnType<typeof useFilterCoursesLazyQuery>
+export type FilterCoursesSuspenseQueryHookResult = ReturnType<typeof useFilterCoursesSuspenseQuery>
+export type FilterCoursesQueryResult = Apollo.QueryResult<FilterCoursesQuery, FilterCoursesQueryVariables>
 export const GetCourseDocument = gql`
   query getCourse($id: ID!, $languageName: String!) {
     courses_by_id(id: $id) {
@@ -11333,76 +11403,6 @@ export type GetCourseQueryHookResult = ReturnType<typeof useGetCourseQuery>
 export type GetCourseLazyQueryHookResult = ReturnType<typeof useGetCourseLazyQuery>
 export type GetCourseSuspenseQueryHookResult = ReturnType<typeof useGetCourseSuspenseQuery>
 export type GetCourseQueryResult = Apollo.QueryResult<GetCourseQuery, GetCourseQueryVariables>
-export const GetCoursesDocument = gql`
-  query GetCourses($languageName: String!, $filter: courses_filter, $page: Int, $limit: Int) {
-    courses(filter: $filter, page: $page, limit: $limit) {
-      course_trans(filter: { language_id: { name: { _eq: $languageName } } }) {
-        commercial_name
-        course_id {
-          id
-          type
-          is_official
-          ...CoursesLanguages
-          duration_class
-          duration
-          tuition_price
-          average_price
-          places_available
-          start_date_func {
-            year
-            month
-            day
-          }
-          start_date
-          ...CoursesInstitutionFilter
-        }
-      }
-    }
-  }
-  ${CoursesLanguagesFragmentDoc}
-  ${CoursesInstitutionFilterFragmentDoc}
-`
-
-/**
- * __useGetCoursesQuery__
- *
- * To run a query within a React component, call `useGetCoursesQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetCoursesQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetCoursesQuery({
- *   variables: {
- *      languageName: // value for 'languageName'
- *      filter: // value for 'filter'
- *      page: // value for 'page'
- *      limit: // value for 'limit'
- *   },
- * });
- */
-export function useGetCoursesQuery(
-  baseOptions: Apollo.QueryHookOptions<GetCoursesQuery, GetCoursesQueryVariables> &
-    ({ variables: GetCoursesQueryVariables; skip?: boolean } | { skip: boolean })
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<GetCoursesQuery, GetCoursesQueryVariables>(GetCoursesDocument, options)
-}
-export function useGetCoursesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCoursesQuery, GetCoursesQueryVariables>) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GetCoursesQuery, GetCoursesQueryVariables>(GetCoursesDocument, options)
-}
-export function useGetCoursesSuspenseQuery(
-  baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetCoursesQuery, GetCoursesQueryVariables>
-) {
-  const options = baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions }
-  return Apollo.useSuspenseQuery<GetCoursesQuery, GetCoursesQueryVariables>(GetCoursesDocument, options)
-}
-export type GetCoursesQueryHookResult = ReturnType<typeof useGetCoursesQuery>
-export type GetCoursesLazyQueryHookResult = ReturnType<typeof useGetCoursesLazyQuery>
-export type GetCoursesSuspenseQueryHookResult = ReturnType<typeof useGetCoursesSuspenseQuery>
-export type GetCoursesQueryResult = Apollo.QueryResult<GetCoursesQuery, GetCoursesQueryVariables>
 export const GetInstitutionsDocument = gql`
   query GetInstitutions($languageName: String!, $filter: institutions_filter, $page: Int, $limit: Int) {
     institutions(filter: $filter, page: $page, limit: $limit) {
