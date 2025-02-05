@@ -8,7 +8,7 @@ import Banner from '../Banner/Banner'
 import type { IMonthHighlightsProps } from '../MonthHighlights/MonthHighlights'
 import MonthHighlights from '../MonthHighlights/MonthHighlights'
 
-interface IHomePageBuilderProps {
+export interface IHomePageBuilderProps {
   data: {
     hero: {
       title: string

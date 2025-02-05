@@ -5,6 +5,8 @@ import type { GetInstitutionsQuery, GetInstitutionsQueryVariables } from '../../
 import { GetInstitutionsDocument } from '../../graphql/generated/client'
 import { LOCALES_GRAPHQL } from '../../graphql/constants'
 import Link from 'next/link'
+import HomePageBuilder from '../ui/blocks/HomePageBuilder/HomePageBuilder'
+import { HOME_PAGE_BUILDER_MOCK } from '../ui/blocks/HomePageBuilder/mock'
 
 interface IPageProps {
   params: { lng: string }
@@ -30,6 +32,8 @@ const Page: FC<IPageProps> = async ({ params: { lng } }) => {
           </Link>
         )
       })}
+
+      <HomePageBuilder {...HOME_PAGE_BUILDER_MOCK} />
     </>
   )
 }
