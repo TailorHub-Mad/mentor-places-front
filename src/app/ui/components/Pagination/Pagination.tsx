@@ -1,3 +1,5 @@
+'use client'
+
 import type { FC } from 'react'
 import ChevronArrowRight from '@components/icons/ChevronArrowRight'
 import ChevronArrowLeft from '@components/icons/ChevronArrowLeft'
@@ -7,12 +9,15 @@ import { groupPagesPagination } from '@utils/group-pages-pagination'
 export interface IPaginationProps {
   page: number
   totalPages: number
-  onChange: (page: number) => void
   className?: string
 }
 
-const Pagination: FC<IPaginationProps> = ({ totalPages, page, onChange, className }) => {
+const Pagination: FC<IPaginationProps> = ({ totalPages, page, className }) => {
   const pages = Array.from({ length: totalPages }, (_, index) => index + 1)
+
+  const onChange = (page: number) => {
+    console.log('onChange Pagination:', { page })
+  }
 
   const groupedPages = groupPagesPagination(pages, page)
 

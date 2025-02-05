@@ -1,3 +1,5 @@
+'use client'
+
 import React, { type FC } from 'react'
 import { EAssetCardVariant } from '@components/AssetCard/AssetCard'
 import { cx } from '@utils/cx'

@@ -1,3 +1,5 @@
+'use client'
+
 import { breakpoints } from '@theme/foundations/breakpoints.theme'
 import { useEffect, useState } from 'react'
 import useWindowSize from './useWindowSize'

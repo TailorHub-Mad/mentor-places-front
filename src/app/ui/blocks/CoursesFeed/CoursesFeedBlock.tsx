@@ -14,21 +14,17 @@ export interface ICoursesFeedBlockProps {
   page: number
   totalPages: number
   totalCourses: number
-  handlePageChange: (page: number) => void
   sortOptions: ISelectOption[]
   sortOption: string
   sortOrder: ESortDirection
-  handleSortChange: (props: { sort: string; order: ESortDirection }) => void
 }
 
 const CoursesFeedBlock: FC<ICoursesFeedBlockProps> = ({
   courses,
   banner,
-  handlePageChange,
   totalPages,
   page,
   totalCourses,
-  handleSortChange,
   sortOption,
   sortOrder,
   sortOptions
@@ -43,11 +39,11 @@ const CoursesFeedBlock: FC<ICoursesFeedBlockProps> = ({
           <span className="">{t('courseDetails.totalFound')}</span>
         </h2>
         <div className="sort-input-action">
-          <SortSelectTrigger onSelect={handleSortChange} order={sortOrder} sortOptions={sortOptions} selectedSort={sortOption} />
+          <SortSelectTrigger order={sortOrder} sortOptions={sortOptions} selectedSort={sortOption} />
         </div>
       </div>
       <CoursesFeed courses={courses} banner={banner} />
-      <Pagination page={page} totalPages={totalPages} onChange={handlePageChange} />
+      <Pagination page={page} totalPages={totalPages} />
     </div>
   )
 }

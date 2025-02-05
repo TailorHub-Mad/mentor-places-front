@@ -1,3 +1,5 @@
+'use client'
+
 import type { FC } from 'react'
 import { ESortDirection } from '../../../../lib/enums/globals.enums'
 import { useDropdownState } from '@hooks/useDropdownState'
@@ -13,12 +15,15 @@ interface ISortSelectTriggerProps {
   sortOptions: ISelectOption[]
   selectedSort: string
   order: ESortDirection
-  onSelect: (args: { sort: string; order: ESortDirection }) => void
 }
 
-const SortSelectTrigger: FC<ISortSelectTriggerProps> = ({ sortOptions, selectedSort, order, onSelect }) => {
+const SortSelectTrigger: FC<ISortSelectTriggerProps> = ({ sortOptions, selectedSort, order }) => {
   const { isOverflowing, parentRef, spanRef } = useOverflowDetection(selectedSort as string, selectedSort)
   const { isOpen, toggle, targetRef, selectInputRef } = useDropdownState()
+
+  const onSelect = (props: { sort: string; order: ESortDirection }) => {
+    console.log('onSelect', { props })
+  }
 
   const handleSetInputValue = (option: ISelectOption) => {
     onSelect({
