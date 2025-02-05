@@ -1,0 +1,6 @@
+fragment ProfileInfo on profiles {
+  content_title
+  students
+  target
+  data
+}
