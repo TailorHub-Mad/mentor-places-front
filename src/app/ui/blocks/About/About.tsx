@@ -10,7 +10,7 @@ import { useState, type FC } from 'react'
 interface IAboutProps {
   title: string
   intro: string
-  description?: string
+  description?: string | null
   stats?: IStat[]
 }
 

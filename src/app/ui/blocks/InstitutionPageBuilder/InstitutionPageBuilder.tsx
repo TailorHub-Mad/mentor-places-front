@@ -3,154 +3,16 @@ import About from '../About/About'
 import CertificatesAndAwards from '../CertificatesAndAwards/CertificatesAndAwards'
 import KeyPoints from '../KeyPoints/KeyPoints'
 import type { ICampusSliderItem } from '../CampusSlider/CampusSlider'
-import CampusSlider from '../CampusSlider/CampusSlider'
+// import CampusSlider from '../CampusSlider/CampusSlider'
 import ColumnFormatSchedulesBlock from '../ColumnFormatSchedules/ColumnFormatSchedulesBlock'
 import ScholarshipsAndGrants from '../ScholarshipsAndGrants/ScholarshipsAndGrants'
 import HeroInstitution from '../HeroInstitution/HeroInstitution'
 import { titleToBlockId } from '@utils/titleToBlockId'
-import InstitutionMasters from '../InstitutionMasters/InstitutionMasters'
+// import InstitutionMasters from '../InstitutionMasters/InstitutionMasters'
+import type { GetUniversityQuery } from '../../../../graphql/generated/client'
 
 interface IInstitutionPageBuilderProps {
-  data: {
-    institutions_by_id: {
-      institutions_trans: [
-        {
-          commercial_name: string
-          intro: string
-          description: string
-          rank_and_rec: {
-            items: [
-              {
-                type: string
-                description: string
-                source: string
-              },
-              {
-                type: string
-                description: string
-                source: string
-              },
-              {
-                type: string
-                description: string
-                source: string
-              }
-            ]
-          }
-          standsfor: {
-            title: string
-            items: [
-              {
-                header: string
-                body: string
-              },
-              {
-                header: string
-                body: string
-              },
-              {
-                header: string
-                body: string
-              },
-              {
-                header: string
-                body: string
-              }
-            ]
-          }
-          institution_id: {
-            url: string
-            institutions_scholarships_courses: [
-              {
-                id: string
-                scholarships_id: {
-                  id: string
-                  name: string
-                  description: {
-                    name: string
-                    description: string
-                  }
-                  is_active: true
-                  enum: string
-                  academic_course: string
-                  languages_id: {
-                    name: string
-                  }
-                }
-              }
-            ]
-            institution_campuses: {
-              street_address?: string | null
-              city?: string | null
-              postal_code?: string | null
-              country?: string | null
-              phone?: string | null
-              images?: string | null
-              campuses_trans?: {
-                name?: string
-                intro?: string
-                description?: string
-                language_id?: {
-                  id?: string
-                  name?: string
-                }
-              }[]
-            }[]
-
-            logo: string
-            main_image: string
-
-            courses: [
-              {
-                course_id: {
-                  course_trans: [
-                    {
-                      commercial_name: string
-                    }
-                  ]
-                  is_official: boolean
-                  id: string
-                  type: string
-                  duration: string
-                  duration_class: string
-                  learning_format_id: {
-                    format_name: string
-                  }
-                  learning_pace_id: {
-                    pace_name: string
-                  }
-                  meta_tags: string[]
-                  images: string
-                  tuition_price: [
-                    {
-                      date: string
-                      course: string
-                      tuition_fee_o: string
-                      tuition_fee_d: string
-                      currency: string
-                      code: string
-                      discounts: boolean
-                    }
-                  ]
-                  careers_list: string[]
-                }
-              }
-            ]
-          }
-          header_title: string
-          header_rank_and_rec: string
-          header_standsfor: string
-          header_type_and_taxonomy: string
-          header_courses: string
-          header_scholarships: string
-          header_details: {
-            number: number
-            description: string
-          }[]
-        }
-      ]
-    }
-  }
+  data: GetUniversityQuery
 }
 
 interface IRequiredCampusData {
@@ -173,7 +35,10 @@ interface IRequiredCampusData {
  */
 
 const InstitutionPageBuilder: FC<IInstitutionPageBuilderProps> = ({ data }) => {
-  const institution = data.institutions_by_id.institutions_trans[0]
+  const institution = data.institutions_by_id?.institution?.[0]
+
+  if (!institution) return null
+
   const {
     commercial_name,
     header_title,
@@ -190,8 +55,11 @@ const InstitutionPageBuilder: FC<IInstitutionPageBuilderProps> = ({ data }) => {
     header_courses
   } = institution
 
+  if (!institution_id) return null
+
   const { institution_campuses, courses, logo, main_image, institutions_scholarships_courses } = institution_id
 
+  const heroData = commercial_name && logo && main_image
   const aboutBlockData = header_title && intro
   const certificatesAndAwardsData = header_rank_and_rec && rank_and_rec
   const keyPointsData = header_standsfor && standsfor
@@ -200,10 +68,11 @@ const InstitutionPageBuilder: FC<IInstitutionPageBuilderProps> = ({ data }) => {
   const educationalOptionsData = header_type_and_taxonomy // TODO - missing data
 
   const campusData: ICampusSliderItem[] = (
-    institution_campuses.filter(
-      ({ phone, campuses_trans, street_address, images, city, postal_code }) =>
-        phone && campuses_trans?.[0]?.name && street_address && images && city && postal_code
-    ) as IRequiredCampusData[]
+    institution_campuses?.filter((campus) => {
+      if (!campus) return false
+      const { phone, campuses_trans, street_address, images, city, postal_code } = campus
+      return phone && campuses_trans?.[0]?.name && street_address && images && city && postal_code
+    }) as IRequiredCampusData[]
   ).map(({ phone, campuses_trans, street_address, images, postal_code, city }) => ({
     phone,
     name: campuses_trans[0].name,
@@ -212,47 +81,47 @@ const InstitutionPageBuilder: FC<IInstitutionPageBuilderProps> = ({ data }) => {
     image: images
   }))
 
-  if (institution_campuses.length > campusData.length)
+  const blocks: { id: string; text: string }[] = []
+  const headersAndData = [
+    { header: header_title, data: aboutBlockData },
+    { header: header_rank_and_rec, data: certificatesAndAwardsData },
+    { header: header_standsfor, data: keyPointsData },
+    { header: header_type_and_taxonomy, data: educationalOptionsData },
+    { header: header_courses, data: coursesData },
+    { header: header_scholarships, data: scholarshipsData }
+  ]
+
+  headersAndData.forEach((elm) => {
+    if (elm.data && elm.header) blocks.push({ id: elm.header, text: elm.header })
+  })
+
+  if (institution_campuses && institution_campuses.length > campusData.length)
     console.error(`Missing data on ${institution_campuses.length - campusData.length} some campus`)
 
   return (
     <div className="flex flex-col gap-24 page bg-GRAY py-16">
-      {
-        <HeroInstitution
-          title={commercial_name}
-          logo={logo}
-          image={main_image}
-          opinions={undefined}
-          blocks={[
-            { id: header_title, text: header_title },
-            { id: header_rank_and_rec, text: header_rank_and_rec },
-            { id: header_standsfor, text: header_standsfor },
-            { id: header_type_and_taxonomy, text: header_type_and_taxonomy },
-            { id: header_courses, text: header_courses },
-            { id: header_scholarships, text: header_scholarships }
-          ]}
-        />
-      }
+      {heroData && <HeroInstitution title={commercial_name} logo={logo} image={main_image} opinions={undefined} blocks={blocks} />}
 
       {aboutBlockData && (
         <div id={titleToBlockId(header_title)}>
-          <About title={header_title} intro={intro} description={description} stats={header_details} />{' '}
+          <About title={header_title} intro={intro} description={description} stats={header_details} />
         </div>
       )}
 
       {certificatesAndAwardsData && (
         <div id={titleToBlockId(header_rank_and_rec)}>
-          <CertificatesAndAwards title={header_rank_and_rec} cards={rank_and_rec.items} />{' '}
+          <CertificatesAndAwards title={header_rank_and_rec} cards={rank_and_rec.items} />
         </div>
       )}
 
       {keyPointsData && (
         <div id={titleToBlockId(header_standsfor)}>
-          <KeyPoints title={header_standsfor} list={standsfor.items.map((elm) => elm.body)} />{' '}
+          {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+          <KeyPoints title={header_standsfor} list={standsfor.items.map((elm: any) => elm.body)} />
         </div>
       )}
 
-      {campusData.length > 0 && <CampusSlider data={campusData} />}
+      {/* {campusData.length > 0 && <CampusSlider data={campusData} />} */}
 
       {educationalOptionsData && (
         <div id={titleToBlockId(header_type_and_taxonomy)}>
@@ -261,18 +130,18 @@ const InstitutionPageBuilder: FC<IInstitutionPageBuilderProps> = ({ data }) => {
         </div>
       )}
 
-      {coursesData && (
+      {/* {coursesData && (
         <div id={titleToBlockId(header_courses)}>
           <InstitutionMasters courses={courses} universityName={commercial_name} universityLogo={logo} />
         </div>
-      )}
+      )} */}
 
       {scholarshipsData && (
         <div id={titleToBlockId(header_scholarships)}>
           <ScholarshipsAndGrants
             title={header_scholarships}
             list={institutions_scholarships_courses.map((elm) => {
-              return { title: elm.scholarships_id.description.name, description: elm.scholarships_id.description.description }
+              return { title: elm?.scholarships_id?.description.name, description: elm?.scholarships_id?.description.description }
             })}
           />
         </div>

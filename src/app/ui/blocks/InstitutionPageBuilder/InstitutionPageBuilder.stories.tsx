@@ -16,7 +16,7 @@ export const Default: Story = {
   args: {
     data: {
       institutions_by_id: {
-        institutions_trans: [
+        institution: [
           {
             commercial_name: 'Universidad Alfonso X el Sabio',
             intro:
@@ -67,17 +67,13 @@ export const Default: Story = {
               url: 'https://www.uax.com',
               institutions_scholarships_courses: [
                 {
-                  id: '2',
                   scholarships_id: {
-                    id: '1',
-                    name: 'test',
                     description: {
                       name: 'Becas de Excelencia Fundación Universidad Alfonso X el Sabio -Grado en Medicina',
                       description:
                         'Becas otorgadas por la Fundación Universidad Alfonso X el Sabio destinadas a premiar a los estudiantes del grado en medicina con excelentes calificaciones.\n**Dirigida a:**Estudiantes de primero o segundo del grado en Medicina de la UAX.\n**Importe de la Beca: Hasta el 100% de los honorarios de docencia. No incluye reserva y matrícula **Plazo de solicitud:**Entre el 1 de febrero y el 30 de junio de 2024.\nNOTA: Consultar las bases reguladoras.'
                     },
                     is_active: true,
-                    enum: 'sch',
                     academic_course: 'Curso 24/2',
                     languages_id: {
                       name: 'Spanish'
@@ -99,11 +95,7 @@ export const Default: Story = {
                       intro:
                         'El campus de la Universidad Alfonso X el Sabio (UAX) en Villanueva de la Cañada ofrece un entorno moderno y completo para el desarrollo académico y personal de los estudiantes. Ubicado en un área natural a solo 30 minutos de Madrid, el campus cuenta con más de 1.000.000 m2 e instalaciones de última generación, como laboratorios, clínicas, aulas tecnológicas y espacios deportivos. Con capacidad para 15.000 estudiantes. ',
                       description:
-                        'Se trata de uno de los mejores campus de universidades privadas españolas. Ubicado a 30 minutos de Madrid centro, el campus, de estilo americano, cuenta con 1.000.000 de metros cuarados pensados para desarrollar un ambiente de colaboración, desarrollo y aprendizaje entre sus estudiantes. En el campus dispone de:\\n- 100 aulas y seminarios\\n11 laboratorios de investigacion y 45 laboratorios de sumulación\\n- Un hospital veterinario con más de 7.500 m2 de instalaciones\\n- Un hospital virtual de simulación\\n3 residencias con capacidad para más de 720 estudiantes\\nInstalaciones deportivas de primer nivel, incluyendo gimnasio, polideportivo, campos de fútbol, campo de rugby, pistas de tenis y padel, etc.\\n- Simulador de ingeniería aeronáutica',
-                      language_id: {
-                        id: '1',
-                        name: 'Spanish'
-                      }
+                        'Se trata de uno de los mejores campus de universidades privadas españolas. Ubicado a 30 minutos de Madrid centro, el campus, de estilo americano, cuenta con 1.000.000 de metros cuarados pensados para desarrollar un ambiente de colaboración, desarrollo y aprendizaje entre sus estudiantes. En el campus dispone de:\\n- 100 aulas y seminarios\\n11 laboratorios de investigacion y 45 laboratorios de sumulación\\n- Un hospital veterinario con más de 7.500 m2 de instalaciones\\n- Un hospital virtual de simulación\\n3 residencias con capacidad para más de 720 estudiantes\\nInstalaciones deportivas de primer nivel, incluyendo gimnasio, polideportivo, campos de fútbol, campo de rugby, pistas de tenis y padel, etc.\\n- Simulador de ingeniería aeronáutica'
                     }
                   ]
                 },
@@ -154,9 +146,6 @@ export const Default: Story = {
                     learning_format_id: {
                       format_name: 'online'
                     },
-                    learning_pace_id: {
-                      pace_name: 'full_time'
-                    },
                     meta_tags: ['Top 5', 'Promo'],
                     images:
                       'https://www.shutterstock.com/shutterstock/photos/284687528/display_1500/stock-photo-master-word-cloud-education-concept-284687528.jpg',
@@ -170,12 +159,6 @@ export const Default: Story = {
                         code: 'PY',
                         discounts: false
                       }
-                    ],
-                    careers_list: [
-                      'Data Scientist',
-                      'Data Analyst',
-                      'Business Intelligence Analyst',
-                      'Analista de Inteligencia de Mercado y Visualización de Datos'
                     ]
                   }
                 }

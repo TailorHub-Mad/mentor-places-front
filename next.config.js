@@ -10,6 +10,15 @@ const nextConfig = {
       dynamic: 0,
       static: 0
     }
+  },
+  // TODO - Temporary accept all images domains. Images will come from AWS S3
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**'
+      }
+    ]
   }
 }
 

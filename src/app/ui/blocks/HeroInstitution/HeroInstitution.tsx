@@ -1,3 +1,5 @@
+'use client'
+
 import Stars, { type IStarsOpinionsProps } from '@components/Stars/Stars'
 import WishListButton from '@components/WishListButton/WishListButton'
 import useBreakpoint from '@hooks/useBreakpoint'
