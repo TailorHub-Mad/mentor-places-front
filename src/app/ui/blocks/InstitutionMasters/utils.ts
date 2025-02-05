@@ -1,5 +1,5 @@
-import { IAssetCardData, IAssetCardDetail } from '@interfaces/assetCard.interface'
-import { ICourse, InstitutionCourses } from './InstitutionMasters'
+import type { IAssetCardData, IAssetCardDetail } from '@interfaces/assetCard.interface'
+import type { ICourse, InstitutionCourses } from './InstitutionMasters'
 
 export const transformCourses = (
   courses: InstitutionCourses,
