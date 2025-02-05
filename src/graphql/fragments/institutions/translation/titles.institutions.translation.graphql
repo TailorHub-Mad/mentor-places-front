@@ -1,0 +1,9 @@
+fragment InstitutionsTransTitles on institutions_trans {
+  header_title
+  header_rank_and_rec
+  header_standsfor
+  header_type_and_taxonomy
+  header_courses
+  header_scholarships
+  header_details
+}
