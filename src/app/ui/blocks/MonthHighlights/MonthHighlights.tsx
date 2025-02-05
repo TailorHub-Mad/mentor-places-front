@@ -5,7 +5,7 @@ import type { FC } from 'react'
 
 type TItem = IAssetCardProps & { image: string }
 
-interface IMonthHighlightsProps {
+export interface IMonthHighlightsProps {
   title: string
   items: TItem[]
 }

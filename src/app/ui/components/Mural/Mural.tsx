@@ -10,10 +10,19 @@ export interface IMuralProps {
   data: TMuralCard[]
 }
 
-const Mural: FC<IMuralProps> = ({ data }) => {
+export interface IMuralSectionProps extends IMuralProps {
+  title: string
+}
+
+const Mural: FC<IMuralSectionProps> = ({ title, data }) => {
   const { isMobile, isVerticalTablet } = useBreakpoint()
 
-  return isMobile || isVerticalTablet ? <MuralMobile data={data} /> : <MuralDesktop data={data} />
+  return (
+    <section>
+      <h2 className="text-l-mobile font-l-mobile md:text-l md:font-l mb-10">{title}</h2>
+      {isMobile || isVerticalTablet ? <MuralMobile data={data} /> : <MuralDesktop data={data} />}
+    </section>
+  )
 }
 
 export default Mural
