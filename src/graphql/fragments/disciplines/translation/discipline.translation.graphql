@@ -1,0 +1,6 @@
+fragment DisciplineTransInfo on disciplines_trans {
+  discipline
+  specialization_level1
+  specialization_level2
+  keyword
+}
