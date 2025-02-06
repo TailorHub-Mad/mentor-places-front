@@ -1,0 +1,8 @@
+fragment DisciplineInfo on disciplines {
+  menu
+  discipline_visualization
+  specialization_level1_visualization
+  specialization_level2_visualization
+  visualization
+  id
+}

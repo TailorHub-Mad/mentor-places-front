@@ -1,0 +1,12 @@
+fragment CoursesInstitutionFilter on courses {
+  institutions {
+    institution_id {
+      institutions_trans(filter: { language_id: { name: { _eq: $languageName } } }) {
+        ...InstitutionsTransHead
+      }
+      logo
+      main_image
+      top_masters
+    }
+  }
+}
