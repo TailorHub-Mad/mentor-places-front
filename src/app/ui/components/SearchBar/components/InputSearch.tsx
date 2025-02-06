@@ -26,6 +26,7 @@ const InputSearch: FC<ISelectInputProps> = ({ options, placeholder, onChange, di
   const [inputValue, setInputValue] = useState<string>(valueSelected || '')
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const [labelValueSelected, setLabelValueSelected] = useState<string | null>(null)
+  const [hoveredIndex, setHoveredIndex] = useState<number>(-1)
 
   const debounceTimeoutRef = useRef<NodeJS.Timeout | null>(null)
   const blurTimeoutRef = useRef<NodeJS.Timeout | null>(null)
@@ -86,6 +87,31 @@ const InputSearch: FC<ISelectInputProps> = ({ options, placeholder, onChange, di
     setIsDropdownOpen(true)
   }
 
+  const adjustHoveredIndex = (direction: 'up' | 'down') => {
+    setHoveredIndex((prevIndex) =>
+      direction === 'down' ? (prevIndex + 1) % options.length : prevIndex > 0 ? prevIndex - 1 : options.length - 1
+    )
+  }
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (!isDropdownOpen) return
+
+    switch (event.key) {
+      case 'ArrowDown':
+        adjustHoveredIndex('down')
+        break
+      case 'ArrowUp':
+        adjustHoveredIndex('up')
+        break
+      case 'Enter':
+        if (hoveredIndex !== -1) {
+          handleSetInputValue(options[hoveredIndex])
+          setIsDropdownOpen(false)
+        }
+        break
+    }
+  }
+
   return (
     <div className="select-input__wrapper">
       <input
@@ -100,13 +126,20 @@ const InputSearch: FC<ISelectInputProps> = ({ options, placeholder, onChange, di
         onBlur={handleOnBlur}
         value={inputValue}
         onChange={handleInputChange} // Update the input value as user types
+        onKeyDown={handleKeyDown}
       />
       {options?.length > 0 && (
         <SelectSearchDropdown
           className={'px-[9px] py-[5px] bg-WHITE shadow rounded-[8px] mt-[9px] z-50'}
           targetRef={targetRef}
           isVisible={isDropdownOpen}>
-          <OptionList options={options} selectedValue={valueSelected} onSelect={handleSetInputValue} ref={selectInputRef} />
+          <OptionList
+            hoveredIndex={hoveredIndex}
+            options={options}
+            selectedValue={valueSelected}
+            onSelect={handleSetInputValue}
+            ref={selectInputRef}
+          />
         </SelectSearchDropdown>
       )}
     </div>
