@@ -1,0 +1,5 @@
+fragment CourseTransHead on courses_trans {
+  commercial_name
+  intro
+  description
+}

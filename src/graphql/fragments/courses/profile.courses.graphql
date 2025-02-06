@@ -1,0 +1,5 @@
+fragment CoursesProfiles on courses {
+  profiles(filter: { language_id: { name: { _eq: $languageName } } }) {
+    ...ProfileInfo
+  }
+}
