@@ -1,3 +1,5 @@
+'use client'
+
 import AssetCard, { type IAssetCardProps } from '@components/AssetCard/AssetCard'
 import CourseFeaturedDetails from '@components/CourseFeaturedDetails/CourseFeaturedDetails'
 import useBreakpoint from '@hooks/useBreakpoint'
@@ -17,6 +19,7 @@ const HeroCourse: FC<IHeroCourseProps> = ({ image, card, featuredDetails }) => {
     <div
       className="pt-40 md:pt-20"
       style={{
+        maxWidth: '1440px',
         backgroundImage: `url(${image})`,
         width: '100%',
         backgroundRepeat: 'no-repeat',

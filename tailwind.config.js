@@ -24,6 +24,7 @@ export default {
     plugin(function ({ addComponents }) {
       addComponents({
         '.page': {
+          'max-width': '1440px',
           'padding-inline': '1.5rem',
           '@screen lg': {
             'padding-inline': '2.5rem'

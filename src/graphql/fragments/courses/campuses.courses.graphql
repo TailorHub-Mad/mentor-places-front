@@ -1,0 +1,7 @@
+fragment CourseCampuses on courses {
+  campuses_courses {
+    campuses_id {
+      ...CampusesInfo
+    }
+  }
+}
