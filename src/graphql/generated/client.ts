@@ -10538,6 +10538,19 @@ export type CourseTransHeadFragment = {
 
 export type CoursesTransInfoFragment = { __typename?: 'courses_trans'; info_blocks?: any | null; methodology?: string | null }
 
+export type CourseTransTitleFragment = {
+  __typename?: 'courses_trans'
+  header_title?: string | null
+  info_header?: string | null
+  reason_header?: string | null
+  course_syllabus?: string | null
+  format_schedules?: string | null
+  admissions?: string | null
+  title_career_opportunities?: string | null
+  pricing?: string | null
+  header_scholarships?: string | null
+}
+
 export type DisciplineInfoFragment = {
   __typename?: 'disciplines'
   menu: string
@@ -10744,6 +10757,15 @@ export type GetCourseQuery = {
       description?: string | null
       info_blocks?: any | null
       methodology?: string | null
+      header_title?: string | null
+      info_header?: string | null
+      reason_header?: string | null
+      course_syllabus?: string | null
+      format_schedules?: string | null
+      admissions?: string | null
+      title_career_opportunities?: string | null
+      pricing?: string | null
+      header_scholarships?: string | null
       course_id?: {
         __typename?: 'courses'
         id: string
@@ -11203,6 +11225,19 @@ export const CoursesTransInfoFragmentDoc = gql`
     methodology
   }
 `
+export const CourseTransTitleFragmentDoc = gql`
+  fragment CourseTransTitle on courses_trans {
+    header_title
+    info_header
+    reason_header
+    course_syllabus
+    format_schedules
+    admissions
+    title_career_opportunities
+    pricing
+    header_scholarships
+  }
+`
 export const InstitutionsLocationsFragmentDoc = gql`
   fragment InstitutionsLocations on institutions {
     institution_campuses(filter: { campuses_trans: { language_id: { name: { _eq: $languageName } } } }) {
@@ -11409,6 +11444,7 @@ export const GetCourseDocument = gql`
         id
         ...CourseTransHead
         ...CoursesTransInfo
+        ...CourseTransTitle
         standsfor
         course_structure
         schedules
@@ -11468,6 +11504,7 @@ export const GetCourseDocument = gql`
   }
   ${CourseTransHeadFragmentDoc}
   ${CoursesTransInfoFragmentDoc}
+  ${CourseTransTitleFragmentDoc}
   ${CoursesLanguagesFragmentDoc}
   ${CoursesInstitutionFragmentDoc}
   ${CoursesDisciplineFragmentDoc}
