@@ -4,6 +4,7 @@ query getCourse($id: ID!, $languageName: String!) {
       id
       ...CourseTransHead
       ...CoursesTransInfo
+      ...CourseTransTitle
       standsfor
       course_structure
       schedules

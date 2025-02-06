@@ -1,0 +1,11 @@
+fragment CourseTransTitle on courses_trans {
+  header_title
+  info_header
+  reason_header
+  course_syllabus
+  format_schedules
+  admissions
+  title_career_opportunities
+  pricing
+  header_scholarships
+}
