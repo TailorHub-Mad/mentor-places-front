@@ -10830,6 +10830,25 @@ export type GetCourseQuery = {
           target?: any | null
           data?: any | null
         } | null> | null
+        campuses_courses?: Array<{
+          __typename?: 'campuses_courses'
+          campuses_id?: {
+            __typename?: 'campuses'
+            street_address?: string | null
+            city?: string | null
+            country?: string | null
+            postal_code?: string | null
+            images?: string | null
+            phone?: string | null
+            type?: string | null
+            campuses_trans?: Array<{
+              __typename?: 'campuses_trans'
+              intro?: string | null
+              description?: string | null
+              name?: string | null
+            } | null> | null
+          } | null
+        } | null> | null
       } | null
     } | null> | null
   } | null
@@ -11442,6 +11461,7 @@ export const GetCourseDocument = gql`
           ...CoursesInstitution
           ...CoursesDiscipline
           ...CoursesProfiles
+          ...CourseCampuses
         }
       }
     }
@@ -11452,6 +11472,7 @@ export const GetCourseDocument = gql`
   ${CoursesInstitutionFragmentDoc}
   ${CoursesDisciplineFragmentDoc}
   ${CoursesProfilesFragmentDoc}
+  ${CourseCampusesFragmentDoc}
 `
 
 /**
