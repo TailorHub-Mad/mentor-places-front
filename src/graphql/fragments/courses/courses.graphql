@@ -1,6 +1,0 @@
-fragment CoursesFeed on courses {
-  id
-  type
-  is_official
-  duration
-}

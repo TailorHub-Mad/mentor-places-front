@@ -11,31 +11,31 @@ import SelectButton from '@components/Form/Inputs/Select/components/SelectButton
 import { useOverflowDetection } from '@hooks/useOverflowDetection'
 import ArrowUp from '@components/icons/ArrowUp'
 import { cx } from '@utils/cx'
+import { useTranslations } from 'next-intl'
 
 const SortSelectTrigger: FC = () => {
   const router = useRouter()
   const searchParams = useSearchParams()
+  const t = useTranslations()
 
-  // Read queryParams
-  const selectedSortQuery = searchParams.get('sort') || 'recomended'
+  const selectedSortQuery = searchParams.get('sort') || 'recommended'
   const orderQuery = (searchParams.get('order') as ESortDirection) || ESortDirection.ASC
 
-  // Local state to manage sort and order
   const [selectedSort, setSelectedSort] = useState<string>(selectedSortQuery)
   const [order, setOrder] = useState<ESortDirection>(orderQuery)
 
   const sortOptions: ISelectOption[] = [
     {
-      value: 'recomended',
-      label: 'Recomendado'
+      value: 'recommended',
+      label: t('filters.recommended')
     },
     {
       value: 'date',
-      label: 'Fecha'
+      label: t('filters.date')
     },
     {
       value: 'title',
-      label: 'Title'
+      label: t('filters.title')
     }
   ]
 

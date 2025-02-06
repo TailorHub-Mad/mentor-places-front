@@ -1,27 +1,27 @@
 import type { FC } from 'react'
 import CoursesFeedBlock from '../../blocks/CoursesFeed/CoursesFeedBlock'
-import type { GetCoursesQuery } from '../../../../graphql/generated/client'
 import { useCourseFeedMapper } from '../../../lib/mapper/useCourseFeedMapper'
+import type { FilterCoursesQuery } from '../../../../graphql/generated/client'
+import { useTranslations } from 'next-intl'
 
 export interface ICourseFeedViewProps {
-  courses: GetCoursesQuery['courses']
+  courses: FilterCoursesQuery['courses']
 }
 
 const CourseFeedView: FC<ICourseFeedViewProps> = ({ courses }) => {
   const filteredCourses = useCourseFeedMapper(courses)
-
-  console.log({ filteredCourses })
+  const t = useTranslations()
 
   return (
     <div className="course-feed-view page">
       <CoursesFeedBlock
         courses={filteredCourses}
         banner={{
-          text: 'Find out which Master’s programmes match your personality!',
-          cta: 'Haz tu test GRATIS!',
-          action: 'contact'
+          text: t('bannerCourseFeed.text'),
+          cta: t('bannerCourseFeed.cta'),
+          action: 'contact' //TODO: Define action to trigger
         }}
-        totalPages={10}
+        totalPages={10} //TODO: Pending to generate this value on Directus
         totalCourses={filteredCourses.length}
       />
     </div>

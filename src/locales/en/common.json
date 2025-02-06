@@ -59,7 +59,10 @@
     "year": "Year",
     "month": "Month",
     "delete": "Delete",
-    "selectedFilters": "Selected filters"
+    "selectedFilters": "Selected filters",
+    "recommended": "Recommended",
+    "date": "Date",
+    "title": "Title"
   },
   "forms": {
     "signup": {
@@ -105,5 +108,9 @@
   },
   "common": {
     "thanks": "Thanks!"
+  },
+  "bannerCourseFeed": {
+    "text": "Find out which Master’s programmes match your personality!",
+    "cta": "Make your test for free!"
   }
 }
