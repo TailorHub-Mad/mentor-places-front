@@ -48,7 +48,7 @@ const CourseDetailBlock: FC<ICourseDetailBlockProps> = ({ title, ects, isOfficia
 
   return (
     <div className="course-detail-block grid grid-cols-1 md:grid-cols-6 bg-BLUE/15 rounded-[8px] py-[40px] lg:py-[80px] px-[16px] lg:px-[32px]">
-      <div className="course-detail-block__title md:col-span-2 flex flex-col gap-6 mb-10">
+      <div className="course-detail-block__title md:col-span-2 flex flex-col gap-6 mb-10 md:pr-10">
         <h2 className="text-xl-mobile font-xl">{title}</h2>
         {tags && tags.map((tag, index) => <ContentTag key={index} title={tag} className="scale-90 origin-top-left lg:scale-100" />)}
       </div>

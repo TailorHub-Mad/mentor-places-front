@@ -1,3 +1,5 @@
+'use client'
+
 import type { IContentCardData } from '@components/ContentCard/ContentCard'
 import ContentCard, { ContentCardVariant } from '@components/ContentCard/ContentCard'
 import { SwiperNavigationPosition } from '@components/Swiper/components/SwiperNatigation'

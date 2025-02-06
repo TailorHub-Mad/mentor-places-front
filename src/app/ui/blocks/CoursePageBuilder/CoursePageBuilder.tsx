@@ -6,6 +6,9 @@ import type { TAssetDetailOptions } from '@interfaces/assetDetail.type'
 import { titleToBlockId } from '@utils/titleToBlockId'
 import About from '../About/About'
 import CourseDetailBlock from '../CourseDetail/CourseDetailBlock'
+import { getBlocks } from '../InstitutionPageBuilder/utils'
+import ReasonsWhy from '../ReasonsWhy/ReasonsWhy'
+import { IContentCardData } from '@components/ContentCard/ContentCard'
 
 interface ICoursePageBuilderProps {
   data: GetCourseQuery
@@ -16,7 +19,7 @@ const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
 
   if (!course) return null
 
-  const { commercial_name, course_id, intro, description, methodology, info_blocks } = course
+  const { commercial_name, course_id, intro, description, methodology, info_blocks, header_title, reason_header, standsfor } = course
 
   if (!course_id) return null
 
@@ -49,8 +52,18 @@ const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
   const universityName = university?.institutions_trans?.[0]?.commercial_name
 
   const heroData = commercial_name && universityName && images && university && featuredDetails
-  const aboutBlockData = intro
+  const aboutBlockData = intro && header_title
   const courseDetailData = commercial_name
+  const reasonsWhyData = reason_header
+
+  const cards: IContentCardData[] = standsfor.items.map((elm: { header: string; body: string }, idx: number) => ({
+    infoHeaderTitle: idx + 1,
+    title: elm.header,
+    description: elm.body
+  }))
+
+  const headersAndData = [{ header: header_title, data: aboutBlockData }]
+  const blocks = getBlocks(headersAndData)
 
   return (
     <div className="flex flex-col gap-24 page py-16">
@@ -66,13 +79,13 @@ const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
             }
           }}
           featuredDetails={featuredDetails}
+          blocks={blocks}
         />
       )}
 
       {aboutBlockData && (
-        // TODO - header_title
-        <div id={titleToBlockId('')}>
-          <About title={''} intro={intro} description={description} />
+        <div id={titleToBlockId(header_title)}>
+          <About title={header_title} intro={intro} description={description} />
         </div>
       )}
 
@@ -88,6 +101,8 @@ const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
           customItems={info_blocks.items}
         />
       )}
+
+      {reasonsWhyData && cards && <ReasonsWhy title={reason_header} cards={cards} />}
     </div>
   )
 }
