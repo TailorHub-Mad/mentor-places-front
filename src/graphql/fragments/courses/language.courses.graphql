@@ -1,0 +1,7 @@
+fragment CoursesLanguages on courses {
+  course_language(filter: { languages_format_id: { language_id: { name: { _eq: $languageName } } } }) {
+    languages_format_id {
+      name
+    }
+  }
+}

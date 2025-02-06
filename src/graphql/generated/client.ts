@@ -5228,6 +5228,7 @@ export type Courses_Mutated = {
 
 export type Courses_Trans = {
   __typename?: 'courses_trans'
+  admissions?: Maybe<Scalars['String']['output']>
   application_date?: Maybe<Scalars['Date']['output']>
   application_date_func?: Maybe<Date_Functions>
   career_opportunities?: Maybe<Scalars['String']['output']>
@@ -5235,19 +5236,27 @@ export type Courses_Trans = {
   course_id?: Maybe<Courses>
   course_structure?: Maybe<Scalars['JSON']['output']>
   course_structure_func?: Maybe<Count_Functions>
+  course_syllabus?: Maybe<Scalars['String']['output']>
   description?: Maybe<Scalars['String']['output']>
+  format_schedules?: Maybe<Scalars['String']['output']>
+  header_scholarships?: Maybe<Scalars['String']['output']>
+  header_title?: Maybe<Scalars['String']['output']>
   id: Scalars['ID']['output']
   info_blocks?: Maybe<Scalars['JSON']['output']>
   info_blocks_func?: Maybe<Count_Functions>
+  info_header?: Maybe<Scalars['String']['output']>
   intro?: Maybe<Scalars['String']['output']>
   language_id?: Maybe<Languages>
   methodology?: Maybe<Scalars['String']['output']>
+  pricing?: Maybe<Scalars['String']['output']>
+  reason_header?: Maybe<Scalars['String']['output']>
   requirements?: Maybe<Scalars['String']['output']>
   schedules?: Maybe<Scalars['String']['output']>
   standsfor?: Maybe<Scalars['JSON']['output']>
   standsfor_func?: Maybe<Count_Functions>
   start_date?: Maybe<Scalars['Date']['output']>
   start_date_func?: Maybe<Date_Functions>
+  title_career_opportunities?: Maybe<Scalars['String']['output']>
   tuition_price_comments?: Maybe<Scalars['String']['output']>
 }
 
@@ -5285,21 +5294,30 @@ export type Courses_Trans_Aggregated = {
 
 export type Courses_Trans_Aggregated_Count = {
   __typename?: 'courses_trans_aggregated_count'
+  admissions?: Maybe<Scalars['Int']['output']>
   application_date?: Maybe<Scalars['Int']['output']>
   career_opportunities?: Maybe<Scalars['Int']['output']>
   commercial_name?: Maybe<Scalars['Int']['output']>
   course_id?: Maybe<Scalars['Int']['output']>
   course_structure?: Maybe<Scalars['Int']['output']>
+  course_syllabus?: Maybe<Scalars['Int']['output']>
   description?: Maybe<Scalars['Int']['output']>
+  format_schedules?: Maybe<Scalars['Int']['output']>
+  header_scholarships?: Maybe<Scalars['Int']['output']>
+  header_title?: Maybe<Scalars['Int']['output']>
   id?: Maybe<Scalars['Int']['output']>
   info_blocks?: Maybe<Scalars['Int']['output']>
+  info_header?: Maybe<Scalars['Int']['output']>
   intro?: Maybe<Scalars['Int']['output']>
   language_id?: Maybe<Scalars['Int']['output']>
   methodology?: Maybe<Scalars['Int']['output']>
+  pricing?: Maybe<Scalars['Int']['output']>
+  reason_header?: Maybe<Scalars['Int']['output']>
   requirements?: Maybe<Scalars['Int']['output']>
   schedules?: Maybe<Scalars['Int']['output']>
   standsfor?: Maybe<Scalars['Int']['output']>
   start_date?: Maybe<Scalars['Int']['output']>
+  title_career_opportunities?: Maybe<Scalars['Int']['output']>
   tuition_price_comments?: Maybe<Scalars['Int']['output']>
 }
 
@@ -5313,6 +5331,7 @@ export type Courses_Trans_Aggregated_Fields = {
 export type Courses_Trans_Filter = {
   _and?: InputMaybe<Array<InputMaybe<Courses_Trans_Filter>>>
   _or?: InputMaybe<Array<InputMaybe<Courses_Trans_Filter>>>
+  admissions?: InputMaybe<String_Filter_Operators>
   application_date?: InputMaybe<Date_Filter_Operators>
   application_date_func?: InputMaybe<Date_Function_Filter_Operators>
   career_opportunities?: InputMaybe<String_Filter_Operators>
@@ -5320,19 +5339,27 @@ export type Courses_Trans_Filter = {
   course_id?: InputMaybe<Courses_Filter>
   course_structure?: InputMaybe<String_Filter_Operators>
   course_structure_func?: InputMaybe<Count_Function_Filter_Operators>
+  course_syllabus?: InputMaybe<String_Filter_Operators>
   description?: InputMaybe<String_Filter_Operators>
+  format_schedules?: InputMaybe<String_Filter_Operators>
+  header_scholarships?: InputMaybe<String_Filter_Operators>
+  header_title?: InputMaybe<String_Filter_Operators>
   id?: InputMaybe<Number_Filter_Operators>
   info_blocks?: InputMaybe<String_Filter_Operators>
   info_blocks_func?: InputMaybe<Count_Function_Filter_Operators>
+  info_header?: InputMaybe<String_Filter_Operators>
   intro?: InputMaybe<String_Filter_Operators>
   language_id?: InputMaybe<Languages_Filter>
   methodology?: InputMaybe<String_Filter_Operators>
+  pricing?: InputMaybe<String_Filter_Operators>
+  reason_header?: InputMaybe<String_Filter_Operators>
   requirements?: InputMaybe<String_Filter_Operators>
   schedules?: InputMaybe<String_Filter_Operators>
   standsfor?: InputMaybe<String_Filter_Operators>
   standsfor_func?: InputMaybe<Count_Function_Filter_Operators>
   start_date?: InputMaybe<Date_Filter_Operators>
   start_date_func?: InputMaybe<Date_Function_Filter_Operators>
+  title_career_opportunities?: InputMaybe<String_Filter_Operators>
   tuition_price_comments?: InputMaybe<String_Filter_Operators>
 }
 
@@ -5458,21 +5485,30 @@ export type Create_Courses_Languages_Format_Input = {
 }
 
 export type Create_Courses_Trans_Input = {
+  admissions?: InputMaybe<Scalars['String']['input']>
   application_date?: InputMaybe<Scalars['Date']['input']>
   career_opportunities?: InputMaybe<Scalars['String']['input']>
   commercial_name?: InputMaybe<Scalars['String']['input']>
   course_id?: InputMaybe<Create_Courses_Input>
   course_structure?: InputMaybe<Scalars['JSON']['input']>
+  course_syllabus?: InputMaybe<Scalars['String']['input']>
   description?: InputMaybe<Scalars['String']['input']>
+  format_schedules?: InputMaybe<Scalars['String']['input']>
+  header_scholarships?: InputMaybe<Scalars['String']['input']>
+  header_title?: InputMaybe<Scalars['String']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
   info_blocks?: InputMaybe<Scalars['JSON']['input']>
+  info_header?: InputMaybe<Scalars['String']['input']>
   intro?: InputMaybe<Scalars['String']['input']>
   language_id?: InputMaybe<Create_Languages_Input>
   methodology?: InputMaybe<Scalars['String']['input']>
+  pricing?: InputMaybe<Scalars['String']['input']>
+  reason_header?: InputMaybe<Scalars['String']['input']>
   requirements?: InputMaybe<Scalars['String']['input']>
   schedules?: InputMaybe<Scalars['String']['input']>
   standsfor?: InputMaybe<Scalars['JSON']['input']>
   start_date?: InputMaybe<Scalars['Date']['input']>
+  title_career_opportunities?: InputMaybe<Scalars['String']['input']>
   tuition_price_comments?: InputMaybe<Scalars['String']['input']>
 }
 
@@ -9369,21 +9405,30 @@ export type Update_Courses_Languages_Format_Input = {
 }
 
 export type Update_Courses_Trans_Input = {
+  admissions?: InputMaybe<Scalars['String']['input']>
   application_date?: InputMaybe<Scalars['Date']['input']>
   career_opportunities?: InputMaybe<Scalars['String']['input']>
   commercial_name?: InputMaybe<Scalars['String']['input']>
   course_id?: InputMaybe<Update_Courses_Input>
   course_structure?: InputMaybe<Scalars['JSON']['input']>
+  course_syllabus?: InputMaybe<Scalars['String']['input']>
   description?: InputMaybe<Scalars['String']['input']>
+  format_schedules?: InputMaybe<Scalars['String']['input']>
+  header_scholarships?: InputMaybe<Scalars['String']['input']>
+  header_title?: InputMaybe<Scalars['String']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
   info_blocks?: InputMaybe<Scalars['JSON']['input']>
+  info_header?: InputMaybe<Scalars['String']['input']>
   intro?: InputMaybe<Scalars['String']['input']>
   language_id?: InputMaybe<Update_Languages_Input>
   methodology?: InputMaybe<Scalars['String']['input']>
+  pricing?: InputMaybe<Scalars['String']['input']>
+  reason_header?: InputMaybe<Scalars['String']['input']>
   requirements?: InputMaybe<Scalars['String']['input']>
   schedules?: InputMaybe<Scalars['String']['input']>
   standsfor?: InputMaybe<Scalars['JSON']['input']>
   start_date?: InputMaybe<Scalars['Date']['input']>
+  title_career_opportunities?: InputMaybe<Scalars['String']['input']>
   tuition_price_comments?: InputMaybe<Scalars['String']['input']>
 }
 
@@ -10036,21 +10081,30 @@ export type Version_Courses_Languages_Format = {
 
 export type Version_Courses_Trans = {
   __typename?: 'version_courses_trans'
+  admissions?: Maybe<Scalars['String']['output']>
   application_date?: Maybe<Scalars['Date']['output']>
   career_opportunities?: Maybe<Scalars['String']['output']>
   commercial_name?: Maybe<Scalars['String']['output']>
   course_id?: Maybe<Scalars['JSON']['output']>
   course_structure?: Maybe<Scalars['JSON']['output']>
+  course_syllabus?: Maybe<Scalars['String']['output']>
   description?: Maybe<Scalars['String']['output']>
+  format_schedules?: Maybe<Scalars['String']['output']>
+  header_scholarships?: Maybe<Scalars['String']['output']>
+  header_title?: Maybe<Scalars['String']['output']>
   id?: Maybe<Scalars['ID']['output']>
   info_blocks?: Maybe<Scalars['JSON']['output']>
+  info_header?: Maybe<Scalars['String']['output']>
   intro?: Maybe<Scalars['String']['output']>
   language_id?: Maybe<Scalars['JSON']['output']>
   methodology?: Maybe<Scalars['String']['output']>
+  pricing?: Maybe<Scalars['String']['output']>
+  reason_header?: Maybe<Scalars['String']['output']>
   requirements?: Maybe<Scalars['String']['output']>
   schedules?: Maybe<Scalars['String']['output']>
   standsfor?: Maybe<Scalars['JSON']['output']>
   start_date?: Maybe<Scalars['Date']['output']>
+  title_career_opportunities?: Maybe<Scalars['String']['output']>
   tuition_price_comments?: Maybe<Scalars['String']['output']>
 }
 
@@ -10365,12 +10419,118 @@ export type CampusesInfoFragment = {
   } | null> | null
 }
 
-export type CoursesFeedFragment = {
+export type CoursesDisciplineFragment = {
   __typename?: 'courses'
+  disciplines?: Array<{
+    __typename?: 'courses_disciplines'
+    disciplines_id?: {
+      __typename?: 'disciplines'
+      menu: string
+      discipline_visualization?: boolean | null
+      specialization_level1_visualization?: boolean | null
+      specialization_level2_visualization?: boolean | null
+      visualization?: number | null
+      id: string
+      discipline_trans?: Array<{
+        __typename?: 'disciplines_trans'
+        discipline: string
+        specialization_level1?: string | null
+        specialization_level2?: string | null
+        keyword?: string | null
+      } | null> | null
+    } | null
+  } | null> | null
+}
+
+export type CoursesInstitutionFragment = {
+  __typename?: 'courses'
+  institutions?: Array<{
+    __typename?: 'joininstitutioncourse'
+    institution_id?: {
+      __typename?: 'institutions'
+      logo?: string | null
+      main_image?: string | null
+      top_masters?: string | null
+      institutions_trans?: Array<{
+        __typename?: 'institutions_trans'
+        intro?: string | null
+        description?: string | null
+        header_details?: any | null
+        commercial_name?: string | null
+      } | null> | null
+      institutions_scholarships_courses?: Array<{
+        __typename?: 'institutions_scholarships_courses'
+        scholarships_id?: {
+          __typename?: 'scholarships'
+          enum?: string | null
+          description?: any | null
+          academic_course?: string | null
+          is_active?: boolean | null
+          type?: string | null
+        } | null
+      } | null> | null
+    } | null
+  } | null> | null
+}
+
+export type CoursesInstitutionFilterFragment = {
+  __typename?: 'courses'
+  institutions?: Array<{
+    __typename?: 'joininstitutioncourse'
+    institution_id?: {
+      __typename?: 'institutions'
+      logo?: string | null
+      main_image?: string | null
+      top_masters?: string | null
+      institutions_trans?: Array<{ __typename?: 'institutions_trans'; commercial_name?: string | null } | null> | null
+    } | null
+  } | null> | null
+}
+
+export type CoursesLanguagesFragment = {
+  __typename?: 'courses'
+  course_language?: Array<{
+    __typename?: 'courses_languages_format'
+    languages_format_id?: { __typename?: 'languages_format'; name?: string | null } | null
+  } | null> | null
+}
+
+export type CoursesProfilesFragment = {
+  __typename?: 'courses'
+  profiles?: Array<{
+    __typename?: 'profiles'
+    content_title?: string | null
+    students?: any | null
+    target?: any | null
+    data?: any | null
+  } | null> | null
+}
+
+export type CourseTransHeadFragment = {
+  __typename?: 'courses_trans'
+  commercial_name?: string | null
+  intro?: string | null
+  description?: string | null
+}
+
+export type CoursesTransInfoFragment = { __typename?: 'courses_trans'; info_blocks?: any | null; methodology?: string | null }
+
+export type DisciplineInfoFragment = {
+  __typename?: 'disciplines'
+  menu: string
+  discipline_visualization?: boolean | null
+  specialization_level1_visualization?: boolean | null
+  specialization_level2_visualization?: boolean | null
+  visualization?: number | null
   id: string
-  type: string
-  is_official?: boolean | null
-  duration?: string | null
+}
+
+export type DisciplineTransInfoFragment = {
+  __typename?: 'disciplines_trans'
+  discipline: string
+  specialization_level1?: string | null
+  specialization_level2?: string | null
+  keyword?: string | null
 }
 
 export type InstitutionsLocationsFragment = {
@@ -10467,6 +10627,14 @@ export type InstitutionsTransTitlesFragment = {
   header_details?: any | null
 }
 
+export type ProfileInfoFragment = {
+  __typename?: 'profiles'
+  content_title?: string | null
+  students?: any | null
+  target?: any | null
+  data?: any | null
+}
+
 export type ScholarshipsInfoFragment = {
   __typename?: 'scholarships'
   description?: any | null
@@ -10484,28 +10652,75 @@ export type GetCoursesLanguagesQuery = {
   course_languages: Array<{ __typename?: 'course_languages'; id: string; name?: string | null; direction?: string | null }>
 }
 
-export type GetCoursesQueryVariables = Exact<{
+export type FilterCoursesQueryVariables = Exact<{
+  languageName: Scalars['String']['input']
   filter?: InputMaybe<Courses_Filter>
+  page?: InputMaybe<Scalars['Int']['input']>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  sort?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>
 }>
 
-export type GetCoursesQuery = {
+export type FilterCoursesQuery = {
   __typename?: 'Query'
   courses: Array<{
     __typename?: 'courses'
     course_trans?: Array<{
       __typename?: 'courses_trans'
-      id: string
       commercial_name?: string | null
-      intro?: string | null
-      description?: string | null
-      methodology?: string | null
-      course_structure?: any | null
+      course_id?: {
+        __typename?: 'courses'
+        id: string
+        type: string
+        is_official?: boolean | null
+        duration_class?: string | null
+        duration?: string | null
+        tuition_price?: any | null
+        average_price?: string | null
+        places_available?: number | null
+        start_date?: any | null
+        start_date_func?: { __typename?: 'date_functions'; year?: number | null; month?: number | null; day?: number | null } | null
+        course_language?: Array<{
+          __typename?: 'courses_languages_format'
+          languages_format_id?: { __typename?: 'languages_format'; name?: string | null } | null
+        } | null> | null
+        institutions?: Array<{
+          __typename?: 'joininstitutioncourse'
+          institution_id?: {
+            __typename?: 'institutions'
+            logo?: string | null
+            main_image?: string | null
+            top_masters?: string | null
+            institutions_trans?: Array<{ __typename?: 'institutions_trans'; commercial_name?: string | null } | null> | null
+          } | null
+        } | null> | null
+      } | null
+    } | null> | null
+  }>
+}
+
+export type GetCourseQueryVariables = Exact<{
+  id: Scalars['ID']['input']
+  languageName: Scalars['String']['input']
+}>
+
+export type GetCourseQuery = {
+  __typename?: 'Query'
+  courses_by_id?: {
+    __typename?: 'courses'
+    course_trans?: Array<{
+      __typename?: 'courses_trans'
+      id: string
       standsfor?: any | null
-      info_blocks?: any | null
+      course_structure?: any | null
       schedules?: string | null
       requirements?: string | null
       career_opportunities?: string | null
       tuition_price_comments?: string | null
+      commercial_name?: string | null
+      intro?: string | null
+      description?: string | null
+      info_blocks?: any | null
+      methodology?: string | null
       course_id?: {
         __typename?: 'courses'
         id: string
@@ -10530,26 +10745,38 @@ export type GetCoursesQuery = {
         start_date?: any | null
         places_available?: number | null
         end_date?: any | null
-        bilinguals_id?: { __typename?: 'bilinguals'; name: string } | null
-        learning_format_id?: { __typename?: 'learning_format'; format_name?: string | null } | null
-        learning_pace_id?: { __typename?: 'learning_pace'; pace_name?: string | null } | null
-        campuses_courses?: Array<{
-          __typename?: 'campuses_courses'
-          campuses_id?: {
-            __typename?: 'campuses'
-            campuses_trans?: Array<{
-              __typename?: 'campuses_trans'
-              name?: string | null
+        bilinguals?: { __typename?: 'bilinguals'; name: string } | null
+        learning_pace?: { __typename?: 'learning_pace'; pace_name?: string | null } | null
+        learning_format?: { __typename?: 'learning_format'; format_name?: string | null } | null
+        start_date_func?: { __typename?: 'date_functions'; year?: number | null; month?: number | null; day?: number | null } | null
+        end_date_func?: { __typename?: 'date_functions'; year?: number | null; month?: number | null; day?: number | null } | null
+        course_language?: Array<{
+          __typename?: 'courses_languages_format'
+          languages_format_id?: { __typename?: 'languages_format'; name?: string | null } | null
+        } | null> | null
+        institutions?: Array<{
+          __typename?: 'joininstitutioncourse'
+          institution_id?: {
+            __typename?: 'institutions'
+            logo?: string | null
+            main_image?: string | null
+            top_masters?: string | null
+            institutions_trans?: Array<{
+              __typename?: 'institutions_trans'
               intro?: string | null
               description?: string | null
-              campuses_id?: {
-                __typename?: 'campuses'
-                street_address?: string | null
-                city?: string | null
-                postal_code?: string | null
-                country?: string | null
-                phone?: string | null
-                images?: string | null
+              header_details?: any | null
+              commercial_name?: string | null
+            } | null> | null
+            institutions_scholarships_courses?: Array<{
+              __typename?: 'institutions_scholarships_courses'
+              scholarships_id?: {
+                __typename?: 'scholarships'
+                enum?: string | null
+                description?: any | null
+                academic_course?: string | null
+                is_active?: boolean | null
+                type?: string | null
               } | null
             } | null> | null
           } | null
@@ -10580,42 +10807,9 @@ export type GetCoursesQuery = {
           target?: any | null
           data?: any | null
         } | null> | null
-        institutions?: Array<{
-          __typename?: 'joininstitutioncourse'
-          institution_id?: {
-            __typename?: 'institutions'
-            logo?: string | null
-            main_image?: string | null
-            top_masters?: string | null
-            institutions_trans?: Array<{
-              __typename?: 'institutions_trans'
-              intro?: string | null
-              description?: string | null
-              commercial_name?: string | null
-            } | null> | null
-            institutions_scholarships_courses?: Array<{
-              __typename?: 'institutions_scholarships_courses'
-              scholarships_id?: {
-                __typename?: 'scholarships'
-                name?: string | null
-                description?: any | null
-                is_active?: boolean | null
-                enum?: string | null
-                academic_course?: string | null
-                type?: string | null
-              } | null
-            } | null> | null
-          } | null
-        } | null> | null
-        start_date_func?: { __typename?: 'date_functions'; year?: number | null; month?: number | null; day?: number | null } | null
-        end_date_func?: { __typename?: 'date_functions'; year?: number | null; month?: number | null; day?: number | null } | null
-        course_language?: Array<{
-          __typename?: 'courses_languages_format'
-          languages_format_id?: { __typename?: 'languages_format'; name?: string | null } | null
-        } | null> | null
       } | null
     } | null> | null
-  }>
+  } | null
 }
 
 export type GetInstitutionsQueryVariables = Exact<{
@@ -10812,12 +11006,133 @@ export type GetUsersWithSettingsQuery = {
   }>
 }
 
-export const CoursesFeedFragmentDoc = gql`
-  fragment CoursesFeed on courses {
+export const DisciplineInfoFragmentDoc = gql`
+  fragment DisciplineInfo on disciplines {
+    menu
+    discipline_visualization
+    specialization_level1_visualization
+    specialization_level2_visualization
+    visualization
     id
+  }
+`
+export const DisciplineTransInfoFragmentDoc = gql`
+  fragment DisciplineTransInfo on disciplines_trans {
+    discipline
+    specialization_level1
+    specialization_level2
+    keyword
+  }
+`
+export const CoursesDisciplineFragmentDoc = gql`
+  fragment CoursesDiscipline on courses {
+    disciplines {
+      disciplines_id {
+        ...DisciplineInfo
+        discipline_trans(filter: { language: { name: { _eq: $languageName } } }) {
+          ...DisciplineTransInfo
+        }
+      }
+    }
+  }
+  ${DisciplineInfoFragmentDoc}
+  ${DisciplineTransInfoFragmentDoc}
+`
+export const InstitutionsTransAboutFragmentDoc = gql`
+  fragment InstitutionsTransAbout on institutions_trans {
+    intro
+    description
+    header_details
+  }
+`
+export const InstitutionsTransHeadFragmentDoc = gql`
+  fragment InstitutionsTransHead on institutions_trans {
+    commercial_name
+  }
+`
+export const ScholarshipsInfoFragmentDoc = gql`
+  fragment ScholarshipsInfo on scholarships {
+    description
+    academic_course
+    is_active
     type
-    is_official
-    duration
+  }
+`
+export const CoursesInstitutionFragmentDoc = gql`
+  fragment CoursesInstitution on courses {
+    institutions {
+      institution_id {
+        institutions_trans(filter: { language_id: { name: { _eq: $languageName } } }) {
+          ...InstitutionsTransAbout
+          ...InstitutionsTransHead
+        }
+        logo
+        main_image
+        top_masters
+        institutions_scholarships_courses {
+          scholarships_id(filter: { languages_id: { name: { _eq: $languageName } } }) {
+            ...ScholarshipsInfo
+            enum
+          }
+        }
+      }
+    }
+  }
+  ${InstitutionsTransAboutFragmentDoc}
+  ${InstitutionsTransHeadFragmentDoc}
+  ${ScholarshipsInfoFragmentDoc}
+`
+export const CoursesInstitutionFilterFragmentDoc = gql`
+  fragment CoursesInstitutionFilter on courses {
+    institutions {
+      institution_id {
+        institutions_trans(filter: { language_id: { name: { _eq: $languageName } } }) {
+          ...InstitutionsTransHead
+        }
+        logo
+        main_image
+        top_masters
+      }
+    }
+  }
+  ${InstitutionsTransHeadFragmentDoc}
+`
+export const CoursesLanguagesFragmentDoc = gql`
+  fragment CoursesLanguages on courses {
+    course_language(filter: { languages_format_id: { language_id: { name: { _eq: $languageName } } } }) {
+      languages_format_id {
+        name
+      }
+    }
+  }
+`
+export const ProfileInfoFragmentDoc = gql`
+  fragment ProfileInfo on profiles {
+    content_title
+    students
+    target
+    data
+  }
+`
+export const CoursesProfilesFragmentDoc = gql`
+  fragment CoursesProfiles on courses {
+    profiles(filter: { language_id: { name: { _eq: $languageName } } }) {
+      ...ProfileInfo
+    }
+  }
+  ${ProfileInfoFragmentDoc}
+`
+export const CourseTransHeadFragmentDoc = gql`
+  fragment CourseTransHead on courses_trans {
+    commercial_name
+    intro
+    description
+  }
+`
+export const CoursesTransInfoFragmentDoc = gql`
+  fragment CoursesTransInfo on courses_trans {
+    info_blocks
+    methodology
   }
 `
 export const CampusesInfoFragmentDoc = gql`
@@ -10873,14 +11188,6 @@ export const InstitutionsHeadFragmentDoc = gql`
     main_image
   }
 `
-export const ScholarshipsInfoFragmentDoc = gql`
-  fragment ScholarshipsInfo on scholarships {
-    description
-    academic_course
-    is_active
-    type
-  }
-`
 export const InstitutionsScholarshipsFragmentDoc = gql`
   fragment InstitutionsScholarships on institutions {
     institutions_scholarships_courses(filter: { scholarships_id: { languages_id: { name: { _eq: $languageName } } } }) {
@@ -10901,18 +11208,6 @@ export const InstitutionsTagsFragmentDoc = gql`
         name
       }
     }
-  }
-`
-export const InstitutionsTransAboutFragmentDoc = gql`
-  fragment InstitutionsTransAbout on institutions_trans {
-    intro
-    description
-    header_details
-  }
-`
-export const InstitutionsTransHeadFragmentDoc = gql`
-  fragment InstitutionsTransHead on institutions_trans {
-    commercial_name
   }
 `
 export const InstitutionsTransRankAndRecFragmentDoc = gql`
@@ -10984,18 +11279,86 @@ export type GetCoursesLanguagesQueryHookResult = ReturnType<typeof useGetCourses
 export type GetCoursesLanguagesLazyQueryHookResult = ReturnType<typeof useGetCoursesLanguagesLazyQuery>
 export type GetCoursesLanguagesSuspenseQueryHookResult = ReturnType<typeof useGetCoursesLanguagesSuspenseQuery>
 export type GetCoursesLanguagesQueryResult = Apollo.QueryResult<GetCoursesLanguagesQuery, GetCoursesLanguagesQueryVariables>
-export const GetCoursesDocument = gql`
-  query GetCourses($filter: courses_filter) {
-    courses(filter: $filter) {
-      course_trans {
-        id
+export const FilterCoursesDocument = gql`
+  query FilterCourses($languageName: String!, $filter: courses_filter, $page: Int, $limit: Int, $sort: [String!]) {
+    courses(filter: $filter, page: $page, limit: $limit, sort: $sort) {
+      course_trans(filter: { language_id: { name: { _eq: $languageName } } }) {
         commercial_name
-        intro
-        description
-        methodology
-        course_structure
+        course_id {
+          id
+          type
+          is_official
+          ...CoursesLanguages
+          duration_class
+          duration
+          tuition_price
+          average_price
+          places_available
+          start_date_func {
+            year
+            month
+            day
+          }
+          start_date
+          ...CoursesInstitutionFilter
+        }
+      }
+    }
+  }
+  ${CoursesLanguagesFragmentDoc}
+  ${CoursesInstitutionFilterFragmentDoc}
+`
+
+/**
+ * __useFilterCoursesQuery__
+ *
+ * To run a query within a React component, call `useFilterCoursesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFilterCoursesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFilterCoursesQuery({
+ *   variables: {
+ *      languageName: // value for 'languageName'
+ *      filter: // value for 'filter'
+ *      page: // value for 'page'
+ *      limit: // value for 'limit'
+ *      sort: // value for 'sort'
+ *   },
+ * });
+ */
+export function useFilterCoursesQuery(
+  baseOptions: Apollo.QueryHookOptions<FilterCoursesQuery, FilterCoursesQueryVariables> &
+    ({ variables: FilterCoursesQueryVariables; skip?: boolean } | { skip: boolean })
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<FilterCoursesQuery, FilterCoursesQueryVariables>(FilterCoursesDocument, options)
+}
+export function useFilterCoursesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FilterCoursesQuery, FilterCoursesQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<FilterCoursesQuery, FilterCoursesQueryVariables>(FilterCoursesDocument, options)
+}
+export function useFilterCoursesSuspenseQuery(
+  baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<FilterCoursesQuery, FilterCoursesQueryVariables>
+) {
+  const options = baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions }
+  return Apollo.useSuspenseQuery<FilterCoursesQuery, FilterCoursesQueryVariables>(FilterCoursesDocument, options)
+}
+export type FilterCoursesQueryHookResult = ReturnType<typeof useFilterCoursesQuery>
+export type FilterCoursesLazyQueryHookResult = ReturnType<typeof useFilterCoursesLazyQuery>
+export type FilterCoursesSuspenseQueryHookResult = ReturnType<typeof useFilterCoursesSuspenseQuery>
+export type FilterCoursesQueryResult = Apollo.QueryResult<FilterCoursesQuery, FilterCoursesQueryVariables>
+export const GetCourseDocument = gql`
+  query getCourse($id: ID!, $languageName: String!) {
+    courses_by_id(id: $id) {
+      course_trans(filter: { language_id: { name: { _eq: $languageName } } }) {
+        id
+        ...CourseTransHead
+        ...CoursesTransInfo
         standsfor
-        info_blocks
+        course_structure
         schedules
         requirements
         career_opportunities
@@ -11005,7 +11368,7 @@ export const GetCoursesDocument = gql`
           type
           is_official
           duration
-          bilinguals_id {
+          bilinguals: bilinguals_id {
             name
           }
           is_dual
@@ -11019,77 +11382,17 @@ export const GetCoursesDocument = gql`
           images
           tuition_price
           official_data_source
-          learning_format_id {
-            format_name
-          }
-          learning_pace_id {
+          learning_pace: learning_pace_id {
             pace_name
+          }
+          learning_format: learning_format_id {
+            format_name
           }
           careers_list
           duration_class
           meta_tags
           average_price
-          campuses_courses {
-            campuses_id {
-              campuses_trans(filter: { language_id: { id: { _eq: "1" } } }) {
-                name
-                intro
-                description
-                campuses_id {
-                  street_address
-                  city
-                  postal_code
-                  country
-                  phone
-                  images
-                }
-              }
-            }
-          }
-          disciplines {
-            disciplines_id {
-              menu
-              discipline_visualization
-              specialization_level1_visualization
-              specialization_level2_visualization
-              visualization
-              id
-              discipline_trans(filter: { language: { id: { _eq: "1" } } }) {
-                discipline
-                specialization_level1
-                specialization_level2
-                keyword
-              }
-            }
-          }
-          profiles(filter: { language_id: { id: { _eq: "1" } } }) {
-            content_title
-            students
-            target
-            data
-          }
-          institutions {
-            institution_id {
-              institutions_trans(filter: { language_id: { id: { _eq: "1" } } }) {
-                intro
-                description
-                commercial_name
-              }
-              logo
-              main_image
-              top_masters
-              institutions_scholarships_courses {
-                scholarships_id(filter: { languages_id: { id: { _eq: "1" } } }) {
-                  name
-                  description
-                  is_active
-                  enum
-                  academic_course
-                  type
-                }
-              }
-            }
-          }
+          ...CoursesLanguages
           start_date_func {
             year
             month
@@ -11103,51 +11406,59 @@ export const GetCoursesDocument = gql`
             month
             day
           }
-          course_language(filter: { languages_format_id: { language_id: { id: { _eq: "1" } } } }) {
-            languages_format_id {
-              name
-            }
-          }
+          ...CoursesInstitution
+          ...CoursesDiscipline
+          ...CoursesProfiles
         }
       }
     }
   }
+  ${CourseTransHeadFragmentDoc}
+  ${CoursesTransInfoFragmentDoc}
+  ${CoursesLanguagesFragmentDoc}
+  ${CoursesInstitutionFragmentDoc}
+  ${CoursesDisciplineFragmentDoc}
+  ${CoursesProfilesFragmentDoc}
 `
 
 /**
- * __useGetCoursesQuery__
+ * __useGetCourseQuery__
  *
- * To run a query within a React component, call `useGetCoursesQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetCoursesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetCourseQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCourseQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetCoursesQuery({
+ * const { data, loading, error } = useGetCourseQuery({
  *   variables: {
- *      filter: // value for 'filter'
+ *      id: // value for 'id'
+ *      languageName: // value for 'languageName'
  *   },
  * });
  */
-export function useGetCoursesQuery(baseOptions?: Apollo.QueryHookOptions<GetCoursesQuery, GetCoursesQueryVariables>) {
+export function useGetCourseQuery(
+  baseOptions: Apollo.QueryHookOptions<GetCourseQuery, GetCourseQueryVariables> &
+    ({ variables: GetCourseQueryVariables; skip?: boolean } | { skip: boolean })
+) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<GetCoursesQuery, GetCoursesQueryVariables>(GetCoursesDocument, options)
+  return Apollo.useQuery<GetCourseQuery, GetCourseQueryVariables>(GetCourseDocument, options)
 }
-export function useGetCoursesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCoursesQuery, GetCoursesQueryVariables>) {
+export function useGetCourseLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCourseQuery, GetCourseQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GetCoursesQuery, GetCoursesQueryVariables>(GetCoursesDocument, options)
+  return Apollo.useLazyQuery<GetCourseQuery, GetCourseQueryVariables>(GetCourseDocument, options)
 }
-export function useGetCoursesSuspenseQuery(
-  baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetCoursesQuery, GetCoursesQueryVariables>
+export function useGetCourseSuspenseQuery(
+  baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetCourseQuery, GetCourseQueryVariables>
 ) {
   const options = baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions }
-  return Apollo.useSuspenseQuery<GetCoursesQuery, GetCoursesQueryVariables>(GetCoursesDocument, options)
+  return Apollo.useSuspenseQuery<GetCourseQuery, GetCourseQueryVariables>(GetCourseDocument, options)
 }
-export type GetCoursesQueryHookResult = ReturnType<typeof useGetCoursesQuery>
-export type GetCoursesLazyQueryHookResult = ReturnType<typeof useGetCoursesLazyQuery>
-export type GetCoursesSuspenseQueryHookResult = ReturnType<typeof useGetCoursesSuspenseQuery>
-export type GetCoursesQueryResult = Apollo.QueryResult<GetCoursesQuery, GetCoursesQueryVariables>
+export type GetCourseQueryHookResult = ReturnType<typeof useGetCourseQuery>
+export type GetCourseLazyQueryHookResult = ReturnType<typeof useGetCourseLazyQuery>
+export type GetCourseSuspenseQueryHookResult = ReturnType<typeof useGetCourseSuspenseQuery>
+export type GetCourseQueryResult = Apollo.QueryResult<GetCourseQuery, GetCourseQueryVariables>
 export const GetInstitutionsDocument = gql`
   query GetInstitutions($languageName: String!, $filter: institutions_filter, $page: Int, $limit: Int) {
     institutions(filter: $filter, page: $page, limit: $limit) {

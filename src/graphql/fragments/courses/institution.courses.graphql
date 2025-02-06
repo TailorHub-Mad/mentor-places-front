@@ -1,0 +1,19 @@
+fragment CoursesInstitution on courses {
+  institutions {
+    institution_id {
+      institutions_trans(filter: { language_id: { name: { _eq: $languageName } } }) {
+        ...InstitutionsTransAbout
+        ...InstitutionsTransHead
+      }
+      logo
+      main_image
+      top_masters
+      institutions_scholarships_courses {
+        scholarships_id(filter: { languages_id: { name: { _eq: $languageName } } }) {
+          ...ScholarshipsInfo
+          enum
+        }
+      }
+    }
+  }
+}
