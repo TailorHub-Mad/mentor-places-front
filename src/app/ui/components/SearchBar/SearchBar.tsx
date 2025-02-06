@@ -24,22 +24,18 @@ export interface ISearchBarProps {
 const SearchBar: FC<ISearchBarProps> = ({ onChange, valuesSelected, options, onSearch }) => {
   const t = useTranslations()
 
-  const [searchQuery, setSearchQuery] = useState<ISearchQuery>(valuesSelected)
+  const [selectedValues, setSelectedValues] = useState<IValuesSelected>(valuesSelected)
 
-  const handleOnChange = () => {
-    onChange({
-      [ESearchType.LOCATION]: searchQuery.location,
-      [ESearchType.DISCIPLINE]: searchQuery.discipline
-    })
+  // Helper to update the selected values and trigger onChange
+  const updateSelectedValues = (newValues: Partial<IValuesSelected>) => {
+    const updatedValues = { ...selectedValues, ...newValues }
+    setSelectedValues(updatedValues)
+    onChange(updatedValues)
   }
 
-  const handleSearchQuery = (value: string, type: ESearchType) => {
+  const updateSearchQuery = (value: string, type: ESearchType) => {
     onSearch(value, type)
-    setSearchQuery((prev) => ({ ...prev, [type]: value }))
-    onChange({
-      ...searchQuery,
-      [type]: value
-    })
+    updateSelectedValues({ [type]: value })
   }
 
   return (
@@ -47,25 +43,25 @@ const SearchBar: FC<ISearchBarProps> = ({ onChange, valuesSelected, options, onS
       <div className="search-bar__discipline">
         <InputSearch
           type={ESearchType.DISCIPLINE}
-          valueSelected={valuesSelected.discipline || searchQuery.discipline}
-          onChange={(value) => handleSearchQuery(value.id, ESearchType.DISCIPLINE)}
+          valueSelected={selectedValues.discipline || valuesSelected.discipline}
+          onChange={(value) => updateSearchQuery(value.id, ESearchType.DISCIPLINE)}
           placeholder={t('search.disciplinePlaceholder')}
           options={options.discipline}
-          onSearch={handleSearchQuery}
+          onSearch={updateSearchQuery}
         />
       </div>
       <div className="search-bar__location">
         <InputSearch
           type={ESearchType.LOCATION}
-          valueSelected={valuesSelected.location || searchQuery.location}
-          onChange={(value) => handleSearchQuery(value.id, ESearchType.LOCATION)}
+          valueSelected={selectedValues.location || valuesSelected.location}
+          onChange={(value) => updateSearchQuery(value.id, ESearchType.LOCATION)}
           placeholder={t('search.locationPlaceholder')}
           options={options.location}
-          onSearch={handleSearchQuery}
+          onSearch={updateSearchQuery}
         />
       </div>
       <div className="search-bar__button">
-        <Button onClick={handleOnChange}>{t('actions.search')}</Button>
+        <Button onClick={() => onChange(selectedValues)}>{t('actions.search')}</Button>
       </div>
     </div>
   )
