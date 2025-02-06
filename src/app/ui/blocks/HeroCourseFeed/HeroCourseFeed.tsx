@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 import Image from 'next/image'
-import { useScreenWidth } from '@hooks/useScreenWidth'
+import { useScreenSize } from '@hooks/useScreenSize'
 import useBreakpoint from '@hooks/useBreakpoint'
 import SearchBar, { type ESearchType, type ISearchQuery } from '@components/SearchBar/SearchBar'
 import type { ISearchOptions, IValuesSelected } from '@components/SearchBar/SearchBar'
@@ -16,7 +16,7 @@ export interface IHeroCourseFeedProps {
 }
 
 const HeroCourseFeed: FC<IHeroCourseFeedProps> = ({ title, description, imageSrc, onChange, valuesSelected, options, onSearch }) => {
-  const screenWidth = useScreenWidth()
+  const { screenWidth } = useScreenSize()
   const { isMobile } = useBreakpoint()
 
   const imageHeight = isMobile ? (screenWidth / 3) * 2 : (screenWidth / 2) * 3
