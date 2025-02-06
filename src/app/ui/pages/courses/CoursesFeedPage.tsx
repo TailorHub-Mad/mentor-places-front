@@ -2,20 +2,30 @@ import type { FC } from 'react'
 import { unstable_setRequestLocale } from 'next-intl/server'
 import CourseFeedView from '@views/CourseFeed/CourseFeedView'
 import client from '@configs/apolloClient'
-import { GetCoursesDocument, type GetCoursesQuery, type GetCoursesQueryVariables } from '../../../../graphql/generated/client'
+import { FilterCoursesDocument, type FilterCoursesQuery, type FilterCoursesQueryVariables } from '../../../../graphql/generated/client'
+import { type ELocale } from '../../../lib/enums/globals.enums'
+import { LOCALES_GRAPHQL } from '../../../../graphql/constants'
+import { getPaginationFromParams } from '@utils/getPaginationFromParams'
+import { getSortingString } from '@utils/getSortingString'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const CoursesFeedPage: FC<{ params: { lng: string }; searchParams: URLSearchParams }> = async ({ params: { lng }, searchParams }: any) => {
+const CoursesFeedPage: FC<{ params: { lng: ELocale }; searchParams: any }> = async ({ params: { lng }, searchParams }) => {
   unstable_setRequestLocale(lng)
 
-  const order_by = createSorting(searchParams)
+  const sortArray = getSortingString(searchParams)
+  const pagination = getPaginationFromParams(new URLSearchParams(searchParams)) // Extract pagination info
 
-  console.log({ order_by })
-  const { data } = await client.query<GetCoursesQuery, GetCoursesQueryVariables>({
-    query: GetCoursesDocument
+  const { page, limit } = pagination
+
+  const { data } = await client.query<FilterCoursesQuery, FilterCoursesQueryVariables>({
+    query: FilterCoursesDocument,
+    variables: {
+      languageName: LOCALES_GRAPHQL[lng],
+      page,
+      limit,
+      sort: sortArray
+    }
   })
-
-  console.log('CoursesFeedPage: ', { ...data.courses })
 
   return (
     <div className="course-feed-page">
@@ -25,20 +35,3 @@ const CoursesFeedPage: FC<{ params: { lng: string }; searchParams: URLSearchPara
 }
 
 export default CoursesFeedPage
-
-function createSorting(searchParams: { order: string; sort: string }) {
-  const order_by: Record<string, string> = {} // Initialize the order_by object
-
-  // Extract sort and order parameters from the URLSearchParams object
-  const sort = searchParams.sort
-  const order = searchParams.order || 'asc' // Default to ascending order if not provided
-
-  // Handle sorting based on `sort`
-  if (sort === 'date') {
-    order_by.start_date = order // Sort by start_date (asc/desc)
-  } else if (sort === 'title') {
-    order_by.commercial_name = order // Sort by commercial_name (asc/desc)
-  }
-
-  return order_by
-}
