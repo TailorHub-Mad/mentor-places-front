@@ -54,6 +54,10 @@ export type Mutation = {
   create_courses_items: Array<Courses>
   create_courses_languages_format_item?: Maybe<Courses_Languages_Format>
   create_courses_languages_format_items: Array<Courses_Languages_Format>
+  create_courses_learning_format_item?: Maybe<Courses_Learning_Format>
+  create_courses_learning_format_items: Array<Courses_Learning_Format>
+  create_courses_learning_pace_item?: Maybe<Courses_Learning_Pace>
+  create_courses_learning_pace_items: Array<Courses_Learning_Pace>
   create_courses_trans_item?: Maybe<Courses_Trans>
   create_courses_trans_items: Array<Courses_Trans>
   create_disciplines_item?: Maybe<Disciplines>
@@ -142,6 +146,10 @@ export type Mutation = {
   delete_courses_items?: Maybe<Delete_Many>
   delete_courses_languages_format_item?: Maybe<Delete_One>
   delete_courses_languages_format_items?: Maybe<Delete_Many>
+  delete_courses_learning_format_item?: Maybe<Delete_One>
+  delete_courses_learning_format_items?: Maybe<Delete_Many>
+  delete_courses_learning_pace_item?: Maybe<Delete_One>
+  delete_courses_learning_pace_items?: Maybe<Delete_Many>
   delete_courses_trans_item?: Maybe<Delete_One>
   delete_courses_trans_items?: Maybe<Delete_Many>
   delete_disciplines_item?: Maybe<Delete_One>
@@ -242,6 +250,12 @@ export type Mutation = {
   update_courses_languages_format_batch: Array<Courses_Languages_Format>
   update_courses_languages_format_item?: Maybe<Courses_Languages_Format>
   update_courses_languages_format_items: Array<Courses_Languages_Format>
+  update_courses_learning_format_batch: Array<Courses_Learning_Format>
+  update_courses_learning_format_item?: Maybe<Courses_Learning_Format>
+  update_courses_learning_format_items: Array<Courses_Learning_Format>
+  update_courses_learning_pace_batch: Array<Courses_Learning_Pace>
+  update_courses_learning_pace_item?: Maybe<Courses_Learning_Pace>
+  update_courses_learning_pace_items: Array<Courses_Learning_Pace>
   update_courses_trans_batch: Array<Courses_Trans>
   update_courses_trans_item?: Maybe<Courses_Trans>
   update_courses_trans_items: Array<Courses_Trans>
@@ -501,6 +515,34 @@ export type MutationCreate_Courses_Languages_Format_ItemArgs = {
 export type MutationCreate_Courses_Languages_Format_ItemsArgs = {
   data?: InputMaybe<Array<Create_Courses_Languages_Format_Input>>
   filter?: InputMaybe<Courses_Languages_Format_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationCreate_Courses_Learning_Format_ItemArgs = {
+  data: Create_Courses_Learning_Format_Input
+}
+
+export type MutationCreate_Courses_Learning_Format_ItemsArgs = {
+  data?: InputMaybe<Array<Create_Courses_Learning_Format_Input>>
+  filter?: InputMaybe<Courses_Learning_Format_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationCreate_Courses_Learning_Pace_ItemArgs = {
+  data: Create_Courses_Learning_Pace_Input
+}
+
+export type MutationCreate_Courses_Learning_Pace_ItemsArgs = {
+  data?: InputMaybe<Array<Create_Courses_Learning_Pace_Input>>
+  filter?: InputMaybe<Courses_Learning_Pace_Filter>
   limit?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
   page?: InputMaybe<Scalars['Int']['input']>
@@ -1049,6 +1091,22 @@ export type MutationDelete_Courses_Languages_Format_ItemArgs = {
 }
 
 export type MutationDelete_Courses_Languages_Format_ItemsArgs = {
+  ids: Array<InputMaybe<Scalars['ID']['input']>>
+}
+
+export type MutationDelete_Courses_Learning_Format_ItemArgs = {
+  id: Scalars['ID']['input']
+}
+
+export type MutationDelete_Courses_Learning_Format_ItemsArgs = {
+  ids: Array<InputMaybe<Scalars['ID']['input']>>
+}
+
+export type MutationDelete_Courses_Learning_Pace_ItemArgs = {
+  id: Scalars['ID']['input']
+}
+
+export type MutationDelete_Courses_Learning_Pace_ItemsArgs = {
   ids: Array<InputMaybe<Scalars['ID']['input']>>
 }
 
@@ -1612,6 +1670,58 @@ export type MutationUpdate_Courses_Languages_Format_ItemArgs = {
 export type MutationUpdate_Courses_Languages_Format_ItemsArgs = {
   data: Update_Courses_Languages_Format_Input
   filter?: InputMaybe<Courses_Languages_Format_Filter>
+  ids: Array<InputMaybe<Scalars['ID']['input']>>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationUpdate_Courses_Learning_Format_BatchArgs = {
+  data?: InputMaybe<Array<Update_Courses_Learning_Format_Input>>
+  filter?: InputMaybe<Courses_Learning_Format_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationUpdate_Courses_Learning_Format_ItemArgs = {
+  data: Update_Courses_Learning_Format_Input
+  id: Scalars['ID']['input']
+}
+
+export type MutationUpdate_Courses_Learning_Format_ItemsArgs = {
+  data: Update_Courses_Learning_Format_Input
+  filter?: InputMaybe<Courses_Learning_Format_Filter>
+  ids: Array<InputMaybe<Scalars['ID']['input']>>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationUpdate_Courses_Learning_Pace_BatchArgs = {
+  data?: InputMaybe<Array<Update_Courses_Learning_Pace_Input>>
+  filter?: InputMaybe<Courses_Learning_Pace_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationUpdate_Courses_Learning_Pace_ItemArgs = {
+  data: Update_Courses_Learning_Pace_Input
+  id: Scalars['ID']['input']
+}
+
+export type MutationUpdate_Courses_Learning_Pace_ItemsArgs = {
+  data: Update_Courses_Learning_Pace_Input
+  filter?: InputMaybe<Courses_Learning_Pace_Filter>
   ids: Array<InputMaybe<Scalars['ID']['input']>>
   limit?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
@@ -2502,6 +2612,14 @@ export type Query = {
   courses_languages_format_aggregated: Array<Courses_Languages_Format_Aggregated>
   courses_languages_format_by_id?: Maybe<Courses_Languages_Format>
   courses_languages_format_by_version?: Maybe<Version_Courses_Languages_Format>
+  courses_learning_format: Array<Courses_Learning_Format>
+  courses_learning_format_aggregated: Array<Courses_Learning_Format_Aggregated>
+  courses_learning_format_by_id?: Maybe<Courses_Learning_Format>
+  courses_learning_format_by_version?: Maybe<Version_Courses_Learning_Format>
+  courses_learning_pace: Array<Courses_Learning_Pace>
+  courses_learning_pace_aggregated: Array<Courses_Learning_Pace_Aggregated>
+  courses_learning_pace_by_id?: Maybe<Courses_Learning_Pace>
+  courses_learning_pace_by_version?: Maybe<Version_Courses_Learning_Pace>
   courses_trans: Array<Courses_Trans>
   courses_trans_aggregated: Array<Courses_Trans_Aggregated>
   courses_trans_by_id?: Maybe<Courses_Trans>
@@ -2976,6 +3094,64 @@ export type QueryCourses_Languages_Format_By_IdArgs = {
 }
 
 export type QueryCourses_Languages_Format_By_VersionArgs = {
+  id: Scalars['ID']['input']
+  version: Scalars['String']['input']
+}
+
+export type QueryCourses_Learning_FormatArgs = {
+  filter?: InputMaybe<Courses_Learning_Format_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type QueryCourses_Learning_Format_AggregatedArgs = {
+  filter?: InputMaybe<Courses_Learning_Format_Filter>
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type QueryCourses_Learning_Format_By_IdArgs = {
+  id: Scalars['ID']['input']
+  version?: InputMaybe<Scalars['String']['input']>
+}
+
+export type QueryCourses_Learning_Format_By_VersionArgs = {
+  id: Scalars['ID']['input']
+  version: Scalars['String']['input']
+}
+
+export type QueryCourses_Learning_PaceArgs = {
+  filter?: InputMaybe<Courses_Learning_Pace_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type QueryCourses_Learning_Pace_AggregatedArgs = {
+  filter?: InputMaybe<Courses_Learning_Pace_Filter>
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type QueryCourses_Learning_Pace_By_IdArgs = {
+  id: Scalars['ID']['input']
+  version?: InputMaybe<Scalars['String']['input']>
+}
+
+export type QueryCourses_Learning_Pace_By_VersionArgs = {
   id: Scalars['ID']['input']
   version: Scalars['String']['input']
 }
@@ -3921,6 +4097,8 @@ export type Subscription = {
   courses_category_courses_mutated?: Maybe<Courses_Category_Courses_Mutated>
   courses_disciplines_mutated?: Maybe<Courses_Disciplines_Mutated>
   courses_languages_format_mutated?: Maybe<Courses_Languages_Format_Mutated>
+  courses_learning_format_mutated?: Maybe<Courses_Learning_Format_Mutated>
+  courses_learning_pace_mutated?: Maybe<Courses_Learning_Pace_Mutated>
   courses_mutated?: Maybe<Courses_Mutated>
   courses_trans_mutated?: Maybe<Courses_Trans_Mutated>
   directus_access_mutated?: Maybe<Directus_Access_Mutated>
@@ -4018,6 +4196,14 @@ export type SubscriptionCourses_Disciplines_MutatedArgs = {
 }
 
 export type SubscriptionCourses_Languages_Format_MutatedArgs = {
+  event?: InputMaybe<EventEnum>
+}
+
+export type SubscriptionCourses_Learning_Format_MutatedArgs = {
+  event?: InputMaybe<EventEnum>
+}
+
+export type SubscriptionCourses_Learning_Pace_MutatedArgs = {
   event?: InputMaybe<EventEnum>
 }
 
@@ -4810,8 +4996,10 @@ export type Courses = {
   is_dual?: Maybe<Scalars['Boolean']['output']>
   is_official?: Maybe<Scalars['Boolean']['output']>
   is_on_demand?: Maybe<Scalars['Boolean']['output']>
-  learning_format_id?: Maybe<Learning_Format>
-  learning_pace_id?: Maybe<Learning_Pace>
+  learning_format_id?: Maybe<Array<Maybe<Courses_Learning_Format>>>
+  learning_format_id_func?: Maybe<Count_Functions>
+  learning_pace_id?: Maybe<Array<Maybe<Courses_Learning_Pace>>>
+  learning_pace_id_func?: Maybe<Count_Functions>
   meta_tags?: Maybe<Scalars['JSON']['output']>
   meta_tags_func?: Maybe<Count_Functions>
   official_data_source?: Maybe<Scalars['String']['output']>
@@ -4882,7 +5070,7 @@ export type CoursesInstitutionsArgs = {
 }
 
 export type CoursesLearning_Format_IdArgs = {
-  filter?: InputMaybe<Learning_Format_Filter>
+  filter?: InputMaybe<Courses_Learning_Format_Filter>
   limit?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
   page?: InputMaybe<Scalars['Int']['input']>
@@ -4891,7 +5079,7 @@ export type CoursesLearning_Format_IdArgs = {
 }
 
 export type CoursesLearning_Pace_IdArgs = {
-  filter?: InputMaybe<Learning_Pace_Filter>
+  filter?: InputMaybe<Courses_Learning_Pace_Filter>
   limit?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
   page?: InputMaybe<Scalars['Int']['input']>
@@ -4962,8 +5150,6 @@ export type Courses_Aggregated_Fields = {
   degree_id?: Maybe<Scalars['Float']['output']>
   ects?: Maybe<Scalars['Float']['output']>
   id?: Maybe<Scalars['Float']['output']>
-  learning_format_id?: Maybe<Scalars['Float']['output']>
-  learning_pace_id?: Maybe<Scalars['Float']['output']>
   places_available?: Maybe<Scalars['Float']['output']>
 }
 
@@ -5134,8 +5320,10 @@ export type Courses_Filter = {
   is_dual?: InputMaybe<Boolean_Filter_Operators>
   is_official?: InputMaybe<Boolean_Filter_Operators>
   is_on_demand?: InputMaybe<Boolean_Filter_Operators>
-  learning_format_id?: InputMaybe<Learning_Format_Filter>
-  learning_pace_id?: InputMaybe<Learning_Pace_Filter>
+  learning_format_id?: InputMaybe<Courses_Learning_Format_Filter>
+  learning_format_id_func?: InputMaybe<Count_Function_Filter_Operators>
+  learning_pace_id?: InputMaybe<Courses_Learning_Pace_Filter>
+  learning_pace_id_func?: InputMaybe<Count_Function_Filter_Operators>
   meta_tags?: InputMaybe<String_Filter_Operators>
   meta_tags_func?: InputMaybe<Count_Function_Filter_Operators>
   official_data_source?: InputMaybe<String_Filter_Operators>
@@ -5215,6 +5403,142 @@ export type Courses_Languages_Format_Filter = {
 export type Courses_Languages_Format_Mutated = {
   __typename?: 'courses_languages_format_mutated'
   data?: Maybe<Courses_Languages_Format>
+  event?: Maybe<EventEnum>
+  key: Scalars['ID']['output']
+}
+
+export type Courses_Learning_Format = {
+  __typename?: 'courses_learning_format'
+  courses_id?: Maybe<Courses>
+  id: Scalars['ID']['output']
+  learning_format_id?: Maybe<Learning_Format>
+}
+
+export type Courses_Learning_FormatCourses_IdArgs = {
+  filter?: InputMaybe<Courses_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type Courses_Learning_FormatLearning_Format_IdArgs = {
+  filter?: InputMaybe<Learning_Format_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type Courses_Learning_Format_Aggregated = {
+  __typename?: 'courses_learning_format_aggregated'
+  avg?: Maybe<Courses_Learning_Format_Aggregated_Fields>
+  avgDistinct?: Maybe<Courses_Learning_Format_Aggregated_Fields>
+  count?: Maybe<Courses_Learning_Format_Aggregated_Count>
+  countAll?: Maybe<Scalars['Int']['output']>
+  countDistinct?: Maybe<Courses_Learning_Format_Aggregated_Count>
+  group?: Maybe<Scalars['JSON']['output']>
+  max?: Maybe<Courses_Learning_Format_Aggregated_Fields>
+  min?: Maybe<Courses_Learning_Format_Aggregated_Fields>
+  sum?: Maybe<Courses_Learning_Format_Aggregated_Fields>
+  sumDistinct?: Maybe<Courses_Learning_Format_Aggregated_Fields>
+}
+
+export type Courses_Learning_Format_Aggregated_Count = {
+  __typename?: 'courses_learning_format_aggregated_count'
+  courses_id?: Maybe<Scalars['Int']['output']>
+  id?: Maybe<Scalars['Int']['output']>
+  learning_format_id?: Maybe<Scalars['Int']['output']>
+}
+
+export type Courses_Learning_Format_Aggregated_Fields = {
+  __typename?: 'courses_learning_format_aggregated_fields'
+  courses_id?: Maybe<Scalars['Float']['output']>
+  id?: Maybe<Scalars['Float']['output']>
+  learning_format_id?: Maybe<Scalars['Float']['output']>
+}
+
+export type Courses_Learning_Format_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Courses_Learning_Format_Filter>>>
+  _or?: InputMaybe<Array<InputMaybe<Courses_Learning_Format_Filter>>>
+  courses_id?: InputMaybe<Courses_Filter>
+  id?: InputMaybe<Number_Filter_Operators>
+  learning_format_id?: InputMaybe<Learning_Format_Filter>
+}
+
+export type Courses_Learning_Format_Mutated = {
+  __typename?: 'courses_learning_format_mutated'
+  data?: Maybe<Courses_Learning_Format>
+  event?: Maybe<EventEnum>
+  key: Scalars['ID']['output']
+}
+
+export type Courses_Learning_Pace = {
+  __typename?: 'courses_learning_pace'
+  courses_id?: Maybe<Courses>
+  id: Scalars['ID']['output']
+  learning_pace_id?: Maybe<Learning_Pace>
+}
+
+export type Courses_Learning_PaceCourses_IdArgs = {
+  filter?: InputMaybe<Courses_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type Courses_Learning_PaceLearning_Pace_IdArgs = {
+  filter?: InputMaybe<Learning_Pace_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type Courses_Learning_Pace_Aggregated = {
+  __typename?: 'courses_learning_pace_aggregated'
+  avg?: Maybe<Courses_Learning_Pace_Aggregated_Fields>
+  avgDistinct?: Maybe<Courses_Learning_Pace_Aggregated_Fields>
+  count?: Maybe<Courses_Learning_Pace_Aggregated_Count>
+  countAll?: Maybe<Scalars['Int']['output']>
+  countDistinct?: Maybe<Courses_Learning_Pace_Aggregated_Count>
+  group?: Maybe<Scalars['JSON']['output']>
+  max?: Maybe<Courses_Learning_Pace_Aggregated_Fields>
+  min?: Maybe<Courses_Learning_Pace_Aggregated_Fields>
+  sum?: Maybe<Courses_Learning_Pace_Aggregated_Fields>
+  sumDistinct?: Maybe<Courses_Learning_Pace_Aggregated_Fields>
+}
+
+export type Courses_Learning_Pace_Aggregated_Count = {
+  __typename?: 'courses_learning_pace_aggregated_count'
+  courses_id?: Maybe<Scalars['Int']['output']>
+  id?: Maybe<Scalars['Int']['output']>
+  learning_pace_id?: Maybe<Scalars['Int']['output']>
+}
+
+export type Courses_Learning_Pace_Aggregated_Fields = {
+  __typename?: 'courses_learning_pace_aggregated_fields'
+  courses_id?: Maybe<Scalars['Float']['output']>
+  id?: Maybe<Scalars['Float']['output']>
+  learning_pace_id?: Maybe<Scalars['Float']['output']>
+}
+
+export type Courses_Learning_Pace_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Courses_Learning_Pace_Filter>>>
+  _or?: InputMaybe<Array<InputMaybe<Courses_Learning_Pace_Filter>>>
+  courses_id?: InputMaybe<Courses_Filter>
+  id?: InputMaybe<Number_Filter_Operators>
+  learning_pace_id?: InputMaybe<Learning_Pace_Filter>
+}
+
+export type Courses_Learning_Pace_Mutated = {
+  __typename?: 'courses_learning_pace_mutated'
+  data?: Maybe<Courses_Learning_Pace>
   event?: Maybe<EventEnum>
   key: Scalars['ID']['output']
 }
@@ -5465,8 +5789,8 @@ export type Create_Courses_Input = {
   is_dual?: InputMaybe<Scalars['Boolean']['input']>
   is_official?: InputMaybe<Scalars['Boolean']['input']>
   is_on_demand?: InputMaybe<Scalars['Boolean']['input']>
-  learning_format_id?: InputMaybe<Create_Learning_Format_Input>
-  learning_pace_id?: InputMaybe<Create_Learning_Pace_Input>
+  learning_format_id?: InputMaybe<Array<InputMaybe<Create_Courses_Learning_Format_Input>>>
+  learning_pace_id?: InputMaybe<Array<InputMaybe<Create_Courses_Learning_Pace_Input>>>
   meta_tags?: InputMaybe<Scalars['JSON']['input']>
   official_data_source?: InputMaybe<Scalars['String']['input']>
   places_available?: InputMaybe<Scalars['Int']['input']>
@@ -5482,6 +5806,18 @@ export type Create_Courses_Languages_Format_Input = {
   courses_id?: InputMaybe<Create_Courses_Input>
   id?: InputMaybe<Scalars['ID']['input']>
   languages_format_id?: InputMaybe<Create_Languages_Format_Input>
+}
+
+export type Create_Courses_Learning_Format_Input = {
+  courses_id?: InputMaybe<Create_Courses_Input>
+  id?: InputMaybe<Scalars['ID']['input']>
+  learning_format_id?: InputMaybe<Create_Learning_Format_Input>
+}
+
+export type Create_Courses_Learning_Pace_Input = {
+  courses_id?: InputMaybe<Create_Courses_Input>
+  id?: InputMaybe<Scalars['ID']['input']>
+  learning_pace_id?: InputMaybe<Create_Learning_Pace_Input>
 }
 
 export type Create_Courses_Trans_Input = {
@@ -5623,6 +5959,7 @@ export type Create_Directus_Users_Input = {
 }
 
 export type Create_Disciplines_Input = {
+  courses?: InputMaybe<Array<InputMaybe<Create_Courses_Disciplines_Input>>>
   discipline_trans?: InputMaybe<Array<InputMaybe<Create_Disciplines_Trans_Input>>>
   discipline_visualization?: InputMaybe<Scalars['Boolean']['input']>
   id: Scalars['ID']['input']
@@ -7232,6 +7569,7 @@ export type Directus_Webhooks_Mutated = {
 
 export type Disciplines = {
   __typename?: 'disciplines'
+  courses?: Maybe<Array<Maybe<Courses_Disciplines>>>
   discipline_trans?: Maybe<Array<Maybe<Disciplines_Trans>>>
   discipline_trans_func?: Maybe<Count_Functions>
   discipline_visualization?: Maybe<Scalars['Boolean']['output']>
@@ -7240,6 +7578,15 @@ export type Disciplines = {
   specialization_level1_visualization?: Maybe<Scalars['Boolean']['output']>
   specialization_level2_visualization?: Maybe<Scalars['Boolean']['output']>
   visualization?: Maybe<Scalars['Int']['output']>
+}
+
+export type DisciplinesCoursesArgs = {
+  filter?: InputMaybe<Courses_Disciplines_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
 export type DisciplinesDiscipline_TransArgs = {
@@ -7285,6 +7632,7 @@ export type Disciplines_Aggregated_Fields = {
 export type Disciplines_Filter = {
   _and?: InputMaybe<Array<InputMaybe<Disciplines_Filter>>>
   _or?: InputMaybe<Array<InputMaybe<Disciplines_Filter>>>
+  courses?: InputMaybe<Courses_Disciplines_Filter>
   discipline_trans?: InputMaybe<Disciplines_Trans_Filter>
   discipline_trans_func?: InputMaybe<Count_Function_Filter_Operators>
   discipline_visualization?: InputMaybe<Boolean_Filter_Operators>
@@ -9385,8 +9733,8 @@ export type Update_Courses_Input = {
   is_dual?: InputMaybe<Scalars['Boolean']['input']>
   is_official?: InputMaybe<Scalars['Boolean']['input']>
   is_on_demand?: InputMaybe<Scalars['Boolean']['input']>
-  learning_format_id?: InputMaybe<Update_Learning_Format_Input>
-  learning_pace_id?: InputMaybe<Update_Learning_Pace_Input>
+  learning_format_id?: InputMaybe<Array<InputMaybe<Update_Courses_Learning_Format_Input>>>
+  learning_pace_id?: InputMaybe<Array<InputMaybe<Update_Courses_Learning_Pace_Input>>>
   meta_tags?: InputMaybe<Scalars['JSON']['input']>
   official_data_source?: InputMaybe<Scalars['String']['input']>
   places_available?: InputMaybe<Scalars['Int']['input']>
@@ -9402,6 +9750,18 @@ export type Update_Courses_Languages_Format_Input = {
   courses_id?: InputMaybe<Update_Courses_Input>
   id?: InputMaybe<Scalars['ID']['input']>
   languages_format_id?: InputMaybe<Update_Languages_Format_Input>
+}
+
+export type Update_Courses_Learning_Format_Input = {
+  courses_id?: InputMaybe<Update_Courses_Input>
+  id?: InputMaybe<Scalars['ID']['input']>
+  learning_format_id?: InputMaybe<Update_Learning_Format_Input>
+}
+
+export type Update_Courses_Learning_Pace_Input = {
+  courses_id?: InputMaybe<Update_Courses_Input>
+  id?: InputMaybe<Scalars['ID']['input']>
+  learning_pace_id?: InputMaybe<Update_Learning_Pace_Input>
 }
 
 export type Update_Courses_Trans_Input = {
@@ -9543,6 +9903,7 @@ export type Update_Directus_Users_Input = {
 }
 
 export type Update_Disciplines_Input = {
+  courses?: InputMaybe<Array<InputMaybe<Update_Courses_Disciplines_Input>>>
   discipline_trans?: InputMaybe<Array<InputMaybe<Update_Disciplines_Trans_Input>>>
   discipline_visualization?: InputMaybe<Scalars['Boolean']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
@@ -10079,6 +10440,20 @@ export type Version_Courses_Languages_Format = {
   languages_format_id?: Maybe<Scalars['JSON']['output']>
 }
 
+export type Version_Courses_Learning_Format = {
+  __typename?: 'version_courses_learning_format'
+  courses_id?: Maybe<Scalars['JSON']['output']>
+  id?: Maybe<Scalars['ID']['output']>
+  learning_format_id?: Maybe<Scalars['JSON']['output']>
+}
+
+export type Version_Courses_Learning_Pace = {
+  __typename?: 'version_courses_learning_pace'
+  courses_id?: Maybe<Scalars['JSON']['output']>
+  id?: Maybe<Scalars['ID']['output']>
+  learning_pace_id?: Maybe<Scalars['JSON']['output']>
+}
+
 export type Version_Courses_Trans = {
   __typename?: 'version_courses_trans'
   admissions?: Maybe<Scalars['String']['output']>
@@ -10110,6 +10485,7 @@ export type Version_Courses_Trans = {
 
 export type Version_Disciplines = {
   __typename?: 'version_disciplines'
+  courses?: Maybe<Scalars['JSON']['output']>
   discipline_trans?: Maybe<Scalars['JSON']['output']>
   discipline_visualization?: Maybe<Scalars['Boolean']['output']>
   id?: Maybe<Scalars['ID']['output']>
@@ -10604,7 +10980,10 @@ export type InstitutionsCoursesFragment = {
       meta_tags?: any | null
       images?: string | null
       course_trans?: Array<{ __typename?: 'courses_trans'; commercial_name?: string | null } | null> | null
-      learning_format_id?: { __typename?: 'learning_format'; format_name?: string | null } | null
+      learning_format_id?: Array<{
+        __typename?: 'courses_learning_format'
+        learning_format_id?: { __typename?: 'learning_format'; format_name?: string | null } | null
+      } | null> | null
     } | null
   } | null> | null
 }
@@ -10791,8 +11170,14 @@ export type GetCourseQuery = {
         places_available?: number | null
         end_date?: any | null
         bilinguals?: { __typename?: 'bilinguals'; name: string } | null
-        learning_pace?: { __typename?: 'learning_pace'; pace_name?: string | null } | null
-        learning_format?: { __typename?: 'learning_format'; format_name?: string | null } | null
+        learning_format?: Array<{
+          __typename?: 'courses_learning_format'
+          learning_format_id?: { __typename?: 'learning_format'; format_name?: string | null } | null
+        } | null> | null
+        learning_pace?: Array<{
+          __typename?: 'courses_learning_pace'
+          learning_pace_id?: { __typename?: 'learning_pace'; pace_name?: string | null } | null
+        } | null> | null
         start_date_func?: { __typename?: 'date_functions'; year?: number | null; month?: number | null; day?: number | null } | null
         end_date_func?: { __typename?: 'date_functions'; year?: number | null; month?: number | null; day?: number | null } | null
         course_language?: Array<{
@@ -10944,7 +11329,10 @@ export type GetInstitutionsQuery = {
             meta_tags?: any | null
             images?: string | null
             course_trans?: Array<{ __typename?: 'courses_trans'; commercial_name?: string | null } | null> | null
-            learning_format_id?: { __typename?: 'learning_format'; format_name?: string | null } | null
+            learning_format_id?: Array<{
+              __typename?: 'courses_learning_format'
+              learning_format_id?: { __typename?: 'learning_format'; format_name?: string | null } | null
+            } | null> | null
           } | null
         } | null> | null
       } | null
@@ -11024,7 +11412,10 @@ export type GetUniversityQuery = {
             meta_tags?: any | null
             images?: string | null
             course_trans?: Array<{ __typename?: 'courses_trans'; commercial_name?: string | null } | null> | null
-            learning_format_id?: { __typename?: 'learning_format'; format_name?: string | null } | null
+            learning_format_id?: Array<{
+              __typename?: 'courses_learning_format'
+              learning_format_id?: { __typename?: 'learning_format'; format_name?: string | null } | null
+            } | null> | null
           } | null
         } | null> | null
       } | null
@@ -11261,7 +11652,9 @@ export const InstitutionsCoursesFragmentDoc = gql`
         duration_class
         meta_tags
         learning_format_id {
-          format_name
+          learning_format_id {
+            format_name
+          }
         }
         images
       }
@@ -11470,11 +11863,15 @@ export const GetCourseDocument = gql`
           images
           tuition_price
           official_data_source
-          learning_pace: learning_pace_id {
-            pace_name
-          }
           learning_format: learning_format_id {
-            format_name
+            learning_format_id {
+              format_name
+            }
+          }
+          learning_pace: learning_pace_id {
+            learning_pace_id {
+              pace_name
+            }
           }
           careers_list
           duration_class
