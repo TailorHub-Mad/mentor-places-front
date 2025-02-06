@@ -10419,6 +10419,29 @@ export type CampusesInfoFragment = {
   } | null> | null
 }
 
+export type CourseCampusesFragment = {
+  __typename?: 'courses'
+  campuses_courses?: Array<{
+    __typename?: 'campuses_courses'
+    campuses_id?: {
+      __typename?: 'campuses'
+      street_address?: string | null
+      city?: string | null
+      country?: string | null
+      postal_code?: string | null
+      images?: string | null
+      phone?: string | null
+      type?: string | null
+      campuses_trans?: Array<{
+        __typename?: 'campuses_trans'
+        intro?: string | null
+        description?: string | null
+        name?: string | null
+      } | null> | null
+    } | null
+  } | null> | null
+}
+
 export type CoursesDisciplineFragment = {
   __typename?: 'courses'
   disciplines?: Array<{
@@ -10807,6 +10830,25 @@ export type GetCourseQuery = {
           target?: any | null
           data?: any | null
         } | null> | null
+        campuses_courses?: Array<{
+          __typename?: 'campuses_courses'
+          campuses_id?: {
+            __typename?: 'campuses'
+            street_address?: string | null
+            city?: string | null
+            country?: string | null
+            postal_code?: string | null
+            images?: string | null
+            phone?: string | null
+            type?: string | null
+            campuses_trans?: Array<{
+              __typename?: 'campuses_trans'
+              intro?: string | null
+              description?: string | null
+              name?: string | null
+            } | null> | null
+          } | null
+        } | null> | null
       } | null
     } | null> | null
   } | null
@@ -11006,6 +11048,32 @@ export type GetUsersWithSettingsQuery = {
   }>
 }
 
+export const CampusesInfoFragmentDoc = gql`
+  fragment CampusesInfo on campuses {
+    street_address
+    city
+    country
+    postal_code
+    images
+    phone
+    type
+    campuses_trans(filter: { language_id: { name: { _eq: $languageName } } }) {
+      intro
+      description
+      name
+    }
+  }
+`
+export const CourseCampusesFragmentDoc = gql`
+  fragment CourseCampuses on courses {
+    campuses_courses {
+      campuses_id {
+        ...CampusesInfo
+      }
+    }
+  }
+  ${CampusesInfoFragmentDoc}
+`
 export const DisciplineInfoFragmentDoc = gql`
   fragment DisciplineInfo on disciplines {
     menu
@@ -11133,22 +11201,6 @@ export const CoursesTransInfoFragmentDoc = gql`
   fragment CoursesTransInfo on courses_trans {
     info_blocks
     methodology
-  }
-`
-export const CampusesInfoFragmentDoc = gql`
-  fragment CampusesInfo on campuses {
-    street_address
-    city
-    country
-    postal_code
-    images
-    phone
-    type
-    campuses_trans {
-      intro
-      description
-      name
-    }
   }
 `
 export const InstitutionsLocationsFragmentDoc = gql`
@@ -11409,6 +11461,7 @@ export const GetCourseDocument = gql`
           ...CoursesInstitution
           ...CoursesDiscipline
           ...CoursesProfiles
+          ...CourseCampuses
         }
       }
     }
@@ -11419,6 +11472,7 @@ export const GetCourseDocument = gql`
   ${CoursesInstitutionFragmentDoc}
   ${CoursesDisciplineFragmentDoc}
   ${CoursesProfilesFragmentDoc}
+  ${CourseCampusesFragmentDoc}
 `
 
 /**
