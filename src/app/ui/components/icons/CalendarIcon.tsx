@@ -1,6 +1,6 @@
 import type { SVGProps } from 'react'
 
-const AwardIcon = (props: SVGProps<SVGSVGElement>) => {
+const CalendarIcon = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path
@@ -17,4 +17,4 @@ const AwardIcon = (props: SVGProps<SVGSVGElement>) => {
   )
 }
 
-export default AwardIcon
+export default CalendarIcon

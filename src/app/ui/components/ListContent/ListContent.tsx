@@ -1,6 +1,7 @@
 'use client'
 
 import ShowMoreButton from '@components/ShowMoreButton'
+import StringToRichText from '@components/StringToRichText/StringToRichText'
 import { useState, type FC } from 'react'
 
 export interface IListContentItem {
@@ -27,7 +28,7 @@ const ListContent: FC<IListContentProps> = ({ list, initiallyShown = 3 }) => {
             <p className="text-m-mobile font-l-mobile md:text-m md:font-m" style={{ marginTop: isFirst ? 0 : 24 }}>
               {elm.title}
             </p>
-            <p className="s mt-2 text-BLACK/60">{elm.description}</p>
+            <StringToRichText text={elm.description} className="mt-2 text-BLACK/60" />
             {!isLast && <hr className="h-[1px} border-BLACK/10 mt-5" />}
           </div>
         )

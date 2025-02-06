@@ -24,9 +24,9 @@ export default {
     plugin(function ({ addComponents }) {
       addComponents({
         '.page': {
-          'margin-inline': '1.5rem',
+          'padding-inline': '1.5rem',
           '@screen lg': {
-            'margin-inline': '2.5rem'
+            'padding-inline': '2.5rem'
           }
         }
       })

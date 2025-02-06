@@ -4,8 +4,8 @@ import { getLocalizeNumber } from '@utils/getLocalizeNumber'
 import useBreakpoint from '@hooks/useBreakpoint'
 
 export interface IStat {
-  value: string | number
-  title: string
+  number: number
+  description: string
 }
 
 export interface IStatsInfoProps {
@@ -21,10 +21,10 @@ const StatsInfo: FC<IStatsInfoProps> = ({ stats }) => {
       {stats.map((stat, index) => {
         const isLast = index !== stats.length - 1
         return (
-          <div className="w-full md:w-fit flex flex-col items-center md:block" key={`stats-info__card-${stat.title}-${index}`}>
+          <div className="w-full md:w-fit flex flex-col items-center md:block" key={`stats-info__card-${stat.description}-${index}`}>
             <div className="stats-info__card flex flex-col items-center text-center max-w-[130px]">
-              <span className="card-title font-xl text-m">{getLocalizeNumber(stat.value, locale as string)}</span>
-              <span className="card-value text-BLACK/60 font-s text-s">{stat.title}</span>
+              <span className="card-title font-xl text-m">{getLocalizeNumber(stat.number, locale as string)}</span>
+              <span className="card-value text-BLACK/60 font-s text-s">{stat.description}</span>
             </div>
             {isMobile && isLast && <hr className="border-BLACK/10 w-full mt-10" />}
           </div>
