@@ -53,7 +53,12 @@
     "showLess": "Ver menos",
     "BackToTop": "Volver arriba",
     "yes": "Sí",
-    "no": "No"
+    "no": "No",
+    "search": "Buscar"
+  },
+  "search": {
+    "disciplinePlaceholder": "¿Qué quieres estudiar?",
+    "locationPlaceholder": "Estudiar en cualquier lugar"
   },
   "filters": {
     "year": "Año",
