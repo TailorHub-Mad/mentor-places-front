@@ -12,13 +12,20 @@ query FilterCourses($languageName: String!, $filter: courses_filter, $page: Int,
         tuition_price
         average_price
         places_available
+        images
         start_date_func {
           year
           month
           day
         }
         start_date
+        learning_format: learning_format_id {
+          learning_format_id {
+            format_name
+          }
+        }
         ...CoursesInstitutionFilter
+        ...CourseCampuses
       }
     }
   }

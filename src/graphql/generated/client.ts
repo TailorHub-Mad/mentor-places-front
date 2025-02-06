@@ -11092,8 +11092,13 @@ export type FilterCoursesQuery = {
         tuition_price?: any | null
         average_price?: string | null
         places_available?: number | null
+        images?: string | null
         start_date?: any | null
         start_date_func?: { __typename?: 'date_functions'; year?: number | null; month?: number | null; day?: number | null } | null
+        learning_format?: Array<{
+          __typename?: 'courses_learning_format'
+          learning_format_id?: { __typename?: 'learning_format'; format_name?: string | null } | null
+        } | null> | null
         course_language?: Array<{
           __typename?: 'courses_languages_format'
           languages_format_id?: { __typename?: 'languages_format'; name?: string | null } | null
@@ -11106,6 +11111,25 @@ export type FilterCoursesQuery = {
             main_image?: string | null
             top_masters?: string | null
             institutions_trans?: Array<{ __typename?: 'institutions_trans'; commercial_name?: string | null } | null> | null
+          } | null
+        } | null> | null
+        campuses_courses?: Array<{
+          __typename?: 'campuses_courses'
+          campuses_id?: {
+            __typename?: 'campuses'
+            street_address?: string | null
+            city?: string | null
+            country?: string | null
+            postal_code?: string | null
+            images?: string | null
+            phone?: string | null
+            type?: string | null
+            campuses_trans?: Array<{
+              __typename?: 'campuses_trans'
+              intro?: string | null
+              description?: string | null
+              name?: string | null
+            } | null> | null
           } | null
         } | null> | null
       } | null
@@ -11774,19 +11798,27 @@ export const FilterCoursesDocument = gql`
           tuition_price
           average_price
           places_available
+          images
           start_date_func {
             year
             month
             day
           }
           start_date
+          learning_format: learning_format_id {
+            learning_format_id {
+              format_name
+            }
+          }
           ...CoursesInstitutionFilter
+          ...CourseCampuses
         }
       }
     }
   }
   ${CoursesLanguagesFragmentDoc}
   ${CoursesInstitutionFilterFragmentDoc}
+  ${CourseCampusesFragmentDoc}
 `
 
 /**
