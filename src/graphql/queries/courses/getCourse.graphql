@@ -30,11 +30,15 @@ query getCourse($id: ID!, $languageName: String!) {
         images
         tuition_price
         official_data_source
-        learning_pace: learning_pace_id {
-          pace_name
-        }
         learning_format: learning_format_id {
-          format_name
+          learning_format_id {
+            format_name
+          }
+        }
+        learning_pace: learning_pace_id {
+          learning_pace_id {
+            pace_name
+          }
         }
         careers_list
         duration_class
