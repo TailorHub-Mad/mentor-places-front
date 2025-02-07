@@ -5,6 +5,8 @@ import type { FilterCoursesQuery } from '../../../../graphql/generated/client'
 import { useTranslations } from 'next-intl'
 import FilterSideBar from '@components/Filters/SideBar/FilterSideBar'
 import { FILTER_SIDEBAR_MOCK } from '@components/Filters/SideBar/mock'
+import HeroCourseFeed from '../../blocks/HeroCourseFeed/HeroCourseFeed'
+import { HERO_COURSE_FEED_MOCK } from '../../blocks/HeroCourseFeed/mock'
 
 export interface ICourseFeedViewProps {
   courses: FilterCoursesQuery['courses']
@@ -15,8 +17,9 @@ const CourseFeedView: FC<ICourseFeedViewProps> = ({ courses }) => {
   const t = useTranslations()
 
   return (
-    <div className="course-feed-view">
-      <div className="flex flex-wrap gap-3 page">
+    <div className="course-feed-view page">
+      <HeroCourseFeed {...HERO_COURSE_FEED_MOCK} />
+      <div className="flex flex-wrap gap-3">
         <FilterSideBar filters={FILTER_SIDEBAR_MOCK.filters} />
         <CoursesFeedBlock
           courses={filteredCourses}
