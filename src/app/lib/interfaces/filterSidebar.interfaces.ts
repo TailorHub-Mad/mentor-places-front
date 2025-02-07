@@ -15,10 +15,10 @@ export interface IFilterItem extends IFilterValue {
   count?: number
 }
 
-interface IFilterCategory {
+export interface IFilterCategory {
   title: string
   id: string
-  filters: IFilterItem[]
+  filters?: IFilterItem[]
 }
 
 export interface IFilterSelection extends IFilterValue {
@@ -27,9 +27,5 @@ export interface IFilterSelection extends IFilterValue {
 }
 
 export interface IFilterSideBarProps {
-  filterSelected: IFilterSelection[]
-  onChange: (value: IFilterSelection) => void
-  onClear: () => void
   filters: IFilterCategory[]
-  defaultOpen?: string
 }

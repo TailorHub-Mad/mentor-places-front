@@ -12,7 +12,7 @@ export interface IInputRangeProps {
   max?: number
   isOnModal?: boolean
   onChange: (value: IFilterSelection) => void
-  selectedFilterValues: IFilterSelection[]
+  selectedFilterValues?: IFilterSelection[]
   filterType: TFilterTypeProps
 }
 
@@ -28,7 +28,7 @@ const InputRange: FC<IInputRangeProps> = ({
   max = DEFAULT_MAX,
   min = DEFAULT_MIN
 }) => {
-  const rangeSelect = (selectedFilterValues.find((f) => f.id === id)?.value as string[]) ?? [min, max]
+  const rangeSelect = (selectedFilterValues?.find((f) => f.id === id)?.value as string[]) ?? [min, max]
   const rangeSelectToNumber =
     rangeSelect.length > 1 ? rangeSelect?.map((value) => Number(value)).filter((value) => !isNaN(value)) : [min, max]
 

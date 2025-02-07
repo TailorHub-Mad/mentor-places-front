@@ -1,0 +1,16 @@
+query GetDisciplines($languageName: String!) {
+  disciplines {
+    menu
+    discipline_visualization
+    id
+    visualization
+    specialization_level1_visualization
+    specialization_level2_visualization
+    discipline_trans(filter: { language: { name: { _eq: $languageName } } }) {
+      discipline
+      specialization_level1
+      specialization_level2
+      keyword
+    }
+  }
+}
