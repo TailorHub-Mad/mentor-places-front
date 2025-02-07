@@ -37,6 +37,6 @@ const MOCK_COURSE_TERM_1: ICourseSyllabus = {
 }
 
 export const COURSE_SYLLABUS_MOCK: ICourseSyllabusProps = {
-  period: 'year',
+  tabs: ['Año 1', 'Año 2'],
   terms: [MOCK_COURSE_TERM_1, MOCK_COURSE_TERM_2]
 }

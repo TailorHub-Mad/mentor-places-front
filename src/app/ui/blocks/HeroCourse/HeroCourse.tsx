@@ -5,7 +5,8 @@ import CourseFeaturedDetails from '@components/CourseFeaturedDetails/CourseFeatu
 import useBreakpoint from '@hooks/useBreakpoint'
 import { type TAssetDetailOptions } from '@interfaces/assetDetail.type'
 import type { FC } from 'react'
-import TagList, { IBlock } from '../HeroInstitution/components/TagList'
+import type { IBlock } from '../HeroInstitution/components/TagList'
+import TagList from '../HeroInstitution/components/TagList'
 
 interface IHeroCourseProps {
   image: string

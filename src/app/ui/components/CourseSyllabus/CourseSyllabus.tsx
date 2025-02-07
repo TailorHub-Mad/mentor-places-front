@@ -4,10 +4,9 @@ import { type FC, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { cx } from '@utils/cx'
 
-const CourseSyllabus: FC<ICourseSyllabusProps> = ({ terms, period }) => {
+const CourseSyllabus: FC<ICourseSyllabusProps> = ({ terms, tabs }) => {
   const termsLength = terms.length
   const t = useTranslations()
-  const termsPeriodString = t(`courseDetails.period.${period}`)
 
   const [openTab, setOpenTab] = useState(0)
   const [showAllSubjects, setShowAllSubjects] = useState(false) // State for toggling between limited and full view
@@ -29,8 +28,7 @@ const CourseSyllabus: FC<ICourseSyllabusProps> = ({ terms, period }) => {
               })}
               onClick={() => handleOpenTab(index)}
               key={`course-syllabus__tabs-${index}`}>
-              <span className="period-string mr-1 capitalize">{termsPeriodString}</span>
-              <span className="period-number">{index + 1}</span>
+              <span className="tabs-string mr-1 capitalize">{tabs[index]}</span>
             </button>
           ))}
         </div>
@@ -78,6 +76,6 @@ export interface ICourseSyllabus {
 }
 
 export interface ICourseSyllabusProps {
-  period: 'year' | 'semester' | 'term'
+  tabs: string[]
   terms: ICourseSyllabus[]
 }

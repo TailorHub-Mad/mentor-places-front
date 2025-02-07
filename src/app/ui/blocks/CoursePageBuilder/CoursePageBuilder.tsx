@@ -8,7 +8,10 @@ import About from '../About/About'
 import CourseDetailBlock from '../CourseDetail/CourseDetailBlock'
 import { getBlocks } from '../InstitutionPageBuilder/utils'
 import ReasonsWhy from '../ReasonsWhy/ReasonsWhy'
-import { IContentCardData } from '@components/ContentCard/ContentCard'
+import type { IContentCardData } from '@components/ContentCard/ContentCard'
+import CourseSyllabus from '@components/CourseSyllabus/CourseSyllabus'
+// import ColumnFormatSchedulesBlock from '../ColumnFormatSchedules/ColumnFormatSchedulesBlock'
+import ColumnContent from '../ColumnContent/ColumnContent'
 
 interface ICoursePageBuilderProps {
   data: GetCourseQuery
@@ -19,7 +22,21 @@ const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
 
   if (!course) return null
 
-  const { commercial_name, course_id, intro, description, methodology, info_blocks, header_title, reason_header, standsfor } = course
+  const {
+    commercial_name,
+    course_id,
+    intro,
+    description,
+    methodology,
+    info_blocks,
+    header_title,
+    reason_header,
+    standsfor,
+    // format_schedules,
+    title_career_opportunities,
+    career_opportunities,
+    course_structure
+  } = course
 
   if (!course_id) return null
 
@@ -36,14 +53,15 @@ const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
     type,
     is_official,
     ects,
-    places_available
+    places_available,
+    careers_list
   } = course_id
 
   const university = institutions?.[0]?.institution_id
 
   const featuredDetails: TAssetDetailOptions = {
     duration: `${duration} ${duration_class}`,
-    format: learning_format?.format_name || undefined,
+    format: learning_format?.map((elm) => elm?.learning_format_id?.format_name).join(' / ') || undefined,
     language: course_language?.[0]?.languages_format_id?.name || undefined,
     campus: campuses_courses?.[0]?.campuses_id?.campuses_trans?.[0]?.name || undefined,
     startDate: start_date
@@ -55,6 +73,8 @@ const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
   const aboutBlockData = intro && header_title
   const courseDetailData = commercial_name
   const reasonsWhyData = reason_header
+  // const formatSchedulesData = format_schedules
+  const careerOpportunitiesData = title_career_opportunities && career_opportunities
 
   const cards: IContentCardData[] = standsfor.items.map((elm: { header: string; body: string }, idx: number) => ({
     infoHeaderTitle: idx + 1,
@@ -64,6 +84,24 @@ const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
 
   const headersAndData = [{ header: header_title, data: aboutBlockData }]
   const blocks = getBlocks(headersAndData)
+
+  const courseSyllabusTerms = course_structure.table.map((elm: [string, (number | string)[][]]) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [_, ...rest] = elm[1]
+    return {
+      subjects: rest.map((subject) => {
+        return {
+          title: subject[0],
+          type: subject[1],
+          ects: subject[2]
+        }
+      })
+    }
+  })
+
+  const courseSyllabusTabs = course_structure.table.map((elm: [string, (number | string)[][]]) => {
+    return elm[0]
+  })
 
   return (
     <div className="flex flex-col gap-24 page py-16">
@@ -103,6 +141,17 @@ const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
       )}
 
       {reasonsWhyData && cards && <ReasonsWhy title={reason_header} cards={cards} />}
+
+      {<CourseSyllabus tabs={courseSyllabusTabs} terms={courseSyllabusTerms} />}
+
+      {/* {formatSchedulesData && <ColumnFormatSchedulesBlock title={format_schedules} cards={[]} />} */}
+
+      {careerOpportunitiesData && (
+        <ColumnContent
+          columnTitle={{ title: title_career_opportunities, theme: 'dark' }}
+          columnContent={{ richText: career_opportunities, list: careers_list.map((elm: string) => ({ title: elm })) }}
+        />
+      )}
     </div>
   )
 }

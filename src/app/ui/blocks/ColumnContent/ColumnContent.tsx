@@ -2,7 +2,7 @@ import ContentBlock from '@components/ContentBlock/ContentBlock'
 import type { TCTAAction } from '@hooks/useAction'
 import type { FC } from 'react'
 import ListContent, { type IListContentItem } from '@components/ListContent/ListContent'
-import RichText from '@components/RichText/RichText'
+import StringToRichText from '@components/StringToRichText/StringToRichText'
 
 export interface IColumnContentProps {
   columnTitle: {
@@ -27,7 +27,7 @@ const ColumnContent: FC<IColumnContentProps> = ({ columnTitle, columnContent }) 
         <ContentBlock {...columnTitle} />
       </div>
       <div className="column-content-block__content flex flex-col gap-3 items-start">
-        {columnContent?.richText && <RichText content={columnContent.richText} maxLines={columnContent?.maxLinesShown} />}
+        {columnContent?.richText && <StringToRichText text={columnContent.richText} className="text-BLACK/80" />}
         {columnContent?.list && <ListContent list={columnContent.list} initiallyShown={columnContent?.maxLinesShown} />}
       </div>
     </div>
