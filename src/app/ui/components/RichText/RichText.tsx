@@ -41,7 +41,7 @@ const RichText: FC<IRichTextProps> = ({ content, maxLines = MAX_LINES_DEFAULT, w
     <div style={{ width }}>
       <div
         ref={contentRef}
-        className="rich-text"
+        className="rich-text leading-[28px]"
         dangerouslySetInnerHTML={{ __html: content }}
         style={{
           color,

@@ -21,11 +21,7 @@ const AssetCardFooter: FC<AssetCardFooterProps> = ({ ctaText, variant, universit
         </div>
       )
     case EAssetCardVariant.withIcons:
-      return (
-        <div className="asset-card__footer px-[30px] pb-[34px]">
-          <Button variant="primary">{ctaText}</Button>
-        </div>
-      )
+      return <div className="asset-card__footer px-[30px] pb-[34px]">{ctaText && <Button variant="primary">{ctaText}</Button>}</div>
 
     case EAssetCardVariant.hero:
       return (

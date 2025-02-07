@@ -4,6 +4,7 @@ query getCourse($id: ID!, $languageName: String!) {
       id
       ...CourseTransHead
       ...CoursesTransInfo
+      ...CourseTransTitle
       standsfor
       course_structure
       schedules
@@ -29,6 +30,16 @@ query getCourse($id: ID!, $languageName: String!) {
         images
         tuition_price
         official_data_source
+        learning_format: learning_format_id {
+          learning_format_id {
+            format_name
+          }
+        }
+        learning_pace: learning_pace_id {
+          learning_pace_id {
+            pace_name
+          }
+        }
         careers_list
         duration_class
         meta_tags
@@ -50,6 +61,7 @@ query getCourse($id: ID!, $languageName: String!) {
         ...CoursesInstitution
         ...CoursesDiscipline
         ...CoursesProfiles
+        ...CourseCampuses
       }
     }
   }

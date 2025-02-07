@@ -10795,6 +10795,29 @@ export type CampusesInfoFragment = {
   } | null> | null
 }
 
+export type CourseCampusesFragment = {
+  __typename?: 'courses'
+  campuses_courses?: Array<{
+    __typename?: 'campuses_courses'
+    campuses_id?: {
+      __typename?: 'campuses'
+      street_address?: string | null
+      city?: string | null
+      country?: string | null
+      postal_code?: string | null
+      images?: string | null
+      phone?: string | null
+      type?: string | null
+      campuses_trans?: Array<{
+        __typename?: 'campuses_trans'
+        intro?: string | null
+        description?: string | null
+        name?: string | null
+      } | null> | null
+    } | null
+  } | null> | null
+}
+
 export type CoursesDisciplineFragment = {
   __typename?: 'courses'
   disciplines?: Array<{
@@ -10891,6 +10914,19 @@ export type CourseTransHeadFragment = {
 
 export type CoursesTransInfoFragment = { __typename?: 'courses_trans'; info_blocks?: any | null; methodology?: string | null }
 
+export type CourseTransTitleFragment = {
+  __typename?: 'courses_trans'
+  header_title?: string | null
+  info_header?: string | null
+  reason_header?: string | null
+  course_syllabus?: string | null
+  format_schedules?: string | null
+  admissions?: string | null
+  title_career_opportunities?: string | null
+  pricing?: string | null
+  header_scholarships?: string | null
+}
+
 export type DisciplineInfoFragment = {
   __typename?: 'disciplines'
   menu: string
@@ -10944,6 +10980,10 @@ export type InstitutionsCoursesFragment = {
       meta_tags?: any | null
       images?: string | null
       course_trans?: Array<{ __typename?: 'courses_trans'; commercial_name?: string | null } | null> | null
+      learning_format_id?: Array<{
+        __typename?: 'courses_learning_format'
+        learning_format_id?: { __typename?: 'learning_format'; format_name?: string | null } | null
+      } | null> | null
     } | null
   } | null> | null
 }
@@ -11052,8 +11092,13 @@ export type FilterCoursesQuery = {
         tuition_price?: any | null
         average_price?: string | null
         places_available?: number | null
+        images?: string | null
         start_date?: any | null
         start_date_func?: { __typename?: 'date_functions'; year?: number | null; month?: number | null; day?: number | null } | null
+        learning_format?: Array<{
+          __typename?: 'courses_learning_format'
+          learning_format_id?: { __typename?: 'learning_format'; format_name?: string | null } | null
+        } | null> | null
         course_language?: Array<{
           __typename?: 'courses_languages_format'
           languages_format_id?: { __typename?: 'languages_format'; name?: string | null } | null
@@ -11066,6 +11111,25 @@ export type FilterCoursesQuery = {
             main_image?: string | null
             top_masters?: string | null
             institutions_trans?: Array<{ __typename?: 'institutions_trans'; commercial_name?: string | null } | null> | null
+          } | null
+        } | null> | null
+        campuses_courses?: Array<{
+          __typename?: 'campuses_courses'
+          campuses_id?: {
+            __typename?: 'campuses'
+            street_address?: string | null
+            city?: string | null
+            country?: string | null
+            postal_code?: string | null
+            images?: string | null
+            phone?: string | null
+            type?: string | null
+            campuses_trans?: Array<{
+              __typename?: 'campuses_trans'
+              intro?: string | null
+              description?: string | null
+              name?: string | null
+            } | null> | null
           } | null
         } | null> | null
       } | null
@@ -11096,6 +11160,15 @@ export type GetCourseQuery = {
       description?: string | null
       info_blocks?: any | null
       methodology?: string | null
+      header_title?: string | null
+      info_header?: string | null
+      reason_header?: string | null
+      course_syllabus?: string | null
+      format_schedules?: string | null
+      admissions?: string | null
+      title_career_opportunities?: string | null
+      pricing?: string | null
+      header_scholarships?: string | null
       course_id?: {
         __typename?: 'courses'
         id: string
@@ -11121,6 +11194,14 @@ export type GetCourseQuery = {
         places_available?: number | null
         end_date?: any | null
         bilinguals?: { __typename?: 'bilinguals'; name: string } | null
+        learning_format?: Array<{
+          __typename?: 'courses_learning_format'
+          learning_format_id?: { __typename?: 'learning_format'; format_name?: string | null } | null
+        } | null> | null
+        learning_pace?: Array<{
+          __typename?: 'courses_learning_pace'
+          learning_pace_id?: { __typename?: 'learning_pace'; pace_name?: string | null } | null
+        } | null> | null
         start_date_func?: { __typename?: 'date_functions'; year?: number | null; month?: number | null; day?: number | null } | null
         end_date_func?: { __typename?: 'date_functions'; year?: number | null; month?: number | null; day?: number | null } | null
         course_language?: Array<{
@@ -11180,33 +11261,28 @@ export type GetCourseQuery = {
           target?: any | null
           data?: any | null
         } | null> | null
+        campuses_courses?: Array<{
+          __typename?: 'campuses_courses'
+          campuses_id?: {
+            __typename?: 'campuses'
+            street_address?: string | null
+            city?: string | null
+            country?: string | null
+            postal_code?: string | null
+            images?: string | null
+            phone?: string | null
+            type?: string | null
+            campuses_trans?: Array<{
+              __typename?: 'campuses_trans'
+              intro?: string | null
+              description?: string | null
+              name?: string | null
+            } | null> | null
+          } | null
+        } | null> | null
       } | null
     } | null> | null
   } | null
-}
-
-export type GetDisciplinesQueryVariables = Exact<{
-  languageName: Scalars['String']['input']
-}>
-
-export type GetDisciplinesQuery = {
-  __typename?: 'Query'
-  disciplines: Array<{
-    __typename?: 'disciplines'
-    menu: string
-    discipline_visualization?: boolean | null
-    id: string
-    visualization?: number | null
-    specialization_level1_visualization?: boolean | null
-    specialization_level2_visualization?: boolean | null
-    discipline_trans?: Array<{
-      __typename?: 'disciplines_trans'
-      discipline: string
-      specialization_level1?: string | null
-      specialization_level2?: string | null
-      keyword?: string | null
-    } | null> | null
-  }>
 }
 
 export type GetInstitutionsQueryVariables = Exact<{
@@ -11277,6 +11353,10 @@ export type GetInstitutionsQuery = {
             meta_tags?: any | null
             images?: string | null
             course_trans?: Array<{ __typename?: 'courses_trans'; commercial_name?: string | null } | null> | null
+            learning_format_id?: Array<{
+              __typename?: 'courses_learning_format'
+              learning_format_id?: { __typename?: 'learning_format'; format_name?: string | null } | null
+            } | null> | null
           } | null
         } | null> | null
       } | null
@@ -11356,6 +11436,10 @@ export type GetUniversityQuery = {
             meta_tags?: any | null
             images?: string | null
             course_trans?: Array<{ __typename?: 'courses_trans'; commercial_name?: string | null } | null> | null
+            learning_format_id?: Array<{
+              __typename?: 'courses_learning_format'
+              learning_format_id?: { __typename?: 'learning_format'; format_name?: string | null } | null
+            } | null> | null
           } | null
         } | null> | null
       } | null
@@ -11401,6 +11485,32 @@ export type GetUsersWithSettingsQuery = {
   }>
 }
 
+export const CampusesInfoFragmentDoc = gql`
+  fragment CampusesInfo on campuses {
+    street_address
+    city
+    country
+    postal_code
+    images
+    phone
+    type
+    campuses_trans(filter: { language_id: { name: { _eq: $languageName } } }) {
+      intro
+      description
+      name
+    }
+  }
+`
+export const CourseCampusesFragmentDoc = gql`
+  fragment CourseCampuses on courses {
+    campuses_courses {
+      campuses_id {
+        ...CampusesInfo
+      }
+    }
+  }
+  ${CampusesInfoFragmentDoc}
+`
 export const DisciplineInfoFragmentDoc = gql`
   fragment DisciplineInfo on disciplines {
     menu
@@ -11530,20 +11640,17 @@ export const CoursesTransInfoFragmentDoc = gql`
     methodology
   }
 `
-export const CampusesInfoFragmentDoc = gql`
-  fragment CampusesInfo on campuses {
-    street_address
-    city
-    country
-    postal_code
-    images
-    phone
-    type
-    campuses_trans {
-      intro
-      description
-      name
-    }
+export const CourseTransTitleFragmentDoc = gql`
+  fragment CourseTransTitle on courses_trans {
+    header_title
+    info_header
+    reason_header
+    course_syllabus
+    format_schedules
+    admissions
+    title_career_opportunities
+    pricing
+    header_scholarships
   }
 `
 export const InstitutionsLocationsFragmentDoc = gql`
@@ -11568,6 +11675,11 @@ export const InstitutionsCoursesFragmentDoc = gql`
         duration
         duration_class
         meta_tags
+        learning_format_id {
+          learning_format_id {
+            format_name
+          }
+        }
         images
       }
     }
@@ -11686,19 +11798,27 @@ export const FilterCoursesDocument = gql`
           tuition_price
           average_price
           places_available
+          images
           start_date_func {
             year
             month
             day
           }
           start_date
+          learning_format: learning_format_id {
+            learning_format_id {
+              format_name
+            }
+          }
           ...CoursesInstitutionFilter
+          ...CourseCampuses
         }
       }
     }
   }
   ${CoursesLanguagesFragmentDoc}
   ${CoursesInstitutionFilterFragmentDoc}
+  ${CourseCampusesFragmentDoc}
 `
 
 /**
@@ -11749,6 +11869,7 @@ export const GetCourseDocument = gql`
         id
         ...CourseTransHead
         ...CoursesTransInfo
+        ...CourseTransTitle
         standsfor
         course_structure
         schedules
@@ -11774,6 +11895,16 @@ export const GetCourseDocument = gql`
           images
           tuition_price
           official_data_source
+          learning_format: learning_format_id {
+            learning_format_id {
+              format_name
+            }
+          }
+          learning_pace: learning_pace_id {
+            learning_pace_id {
+              pace_name
+            }
+          }
           careers_list
           duration_class
           meta_tags
@@ -11795,16 +11926,19 @@ export const GetCourseDocument = gql`
           ...CoursesInstitution
           ...CoursesDiscipline
           ...CoursesProfiles
+          ...CourseCampuses
         }
       }
     }
   }
   ${CourseTransHeadFragmentDoc}
   ${CoursesTransInfoFragmentDoc}
+  ${CourseTransTitleFragmentDoc}
   ${CoursesLanguagesFragmentDoc}
   ${CoursesInstitutionFragmentDoc}
   ${CoursesDisciplineFragmentDoc}
   ${CoursesProfilesFragmentDoc}
+  ${CourseCampusesFragmentDoc}
 `
 
 /**
@@ -11845,62 +11979,6 @@ export type GetCourseQueryHookResult = ReturnType<typeof useGetCourseQuery>
 export type GetCourseLazyQueryHookResult = ReturnType<typeof useGetCourseLazyQuery>
 export type GetCourseSuspenseQueryHookResult = ReturnType<typeof useGetCourseSuspenseQuery>
 export type GetCourseQueryResult = Apollo.QueryResult<GetCourseQuery, GetCourseQueryVariables>
-export const GetDisciplinesDocument = gql`
-  query GetDisciplines($languageName: String!) {
-    disciplines {
-      menu
-      discipline_visualization
-      id
-      visualization
-      specialization_level1_visualization
-      specialization_level2_visualization
-      discipline_trans(filter: { language: { name: { _eq: $languageName } } }) {
-        discipline
-        specialization_level1
-        specialization_level2
-        keyword
-      }
-    }
-  }
-`
-
-/**
- * __useGetDisciplinesQuery__
- *
- * To run a query within a React component, call `useGetDisciplinesQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetDisciplinesQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetDisciplinesQuery({
- *   variables: {
- *      languageName: // value for 'languageName'
- *   },
- * });
- */
-export function useGetDisciplinesQuery(
-  baseOptions: Apollo.QueryHookOptions<GetDisciplinesQuery, GetDisciplinesQueryVariables> &
-    ({ variables: GetDisciplinesQueryVariables; skip?: boolean } | { skip: boolean })
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<GetDisciplinesQuery, GetDisciplinesQueryVariables>(GetDisciplinesDocument, options)
-}
-export function useGetDisciplinesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetDisciplinesQuery, GetDisciplinesQueryVariables>) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GetDisciplinesQuery, GetDisciplinesQueryVariables>(GetDisciplinesDocument, options)
-}
-export function useGetDisciplinesSuspenseQuery(
-  baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetDisciplinesQuery, GetDisciplinesQueryVariables>
-) {
-  const options = baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions }
-  return Apollo.useSuspenseQuery<GetDisciplinesQuery, GetDisciplinesQueryVariables>(GetDisciplinesDocument, options)
-}
-export type GetDisciplinesQueryHookResult = ReturnType<typeof useGetDisciplinesQuery>
-export type GetDisciplinesLazyQueryHookResult = ReturnType<typeof useGetDisciplinesLazyQuery>
-export type GetDisciplinesSuspenseQueryHookResult = ReturnType<typeof useGetDisciplinesSuspenseQuery>
-export type GetDisciplinesQueryResult = Apollo.QueryResult<GetDisciplinesQuery, GetDisciplinesQueryVariables>
 export const GetInstitutionsDocument = gql`
   query GetInstitutions($languageName: String!, $filter: institutions_filter, $page: Int, $limit: Int) {
     institutions(filter: $filter, page: $page, limit: $limit) {

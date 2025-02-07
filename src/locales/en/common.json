@@ -53,7 +53,12 @@
     "showLess": "Show less",
     "BackToTop": "Back to top",
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "search": "Search"
+  },
+  "search": {
+    "disciplinePlaceholder": "What do you want to study?",
+    "locationPlaceholder": "Study anywhere"
   },
   "filters": {
     "year": "Year",
