@@ -20,17 +20,13 @@
     "price": "Price",
     "type": "Type",
     "ects": "ECTS",
+    "period": "Period",
     "seats": "Seats",
     "official": "Official",
     "methodology": "Methodology",
     "internship": "Internship",
     "internshipAbroad": "Internship Abroad",
-    "totalFound": "courses found",
-    "period": {
-      "year": "year",
-      "semester": "semester",
-      "term": "term"
-    }
+    "totalFound": "courses found"
   },
   "rating": {
     "1": "Terrible",

@@ -9,12 +9,18 @@ import CourseDetailBlock from '../CourseDetail/CourseDetailBlock'
 import { getBlocks } from '../InstitutionPageBuilder/utils'
 import ReasonsWhy from '../ReasonsWhy/ReasonsWhy'
 import type { IContentCardData } from '@components/ContentCard/ContentCard'
-import CourseSyllabus from '@components/CourseSyllabus/CourseSyllabus'
-// import ColumnFormatSchedulesBlock from '../ColumnFormatSchedules/ColumnFormatSchedulesBlock'
+import CourseSyllabus, { type ICourseSyllabus } from '@components/CourseSyllabus/CourseSyllabus'
+import ColumnFormatSchedulesBlock from '../ColumnFormatSchedules/ColumnFormatSchedulesBlock'
 import ColumnContent from '../ColumnContent/ColumnContent'
 
 interface ICoursePageBuilderProps {
   data: GetCourseQuery
+}
+
+interface IAcademicYear {
+  year: string
+  headings: { name_heading: string; duration_heading: string; type_heading: string; period_heading: string }
+  subjects: [{ name: string; duration: string; type: string; period: string | null }]
 }
 
 const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
@@ -32,7 +38,7 @@ const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
     header_title,
     reason_header,
     standsfor,
-    // format_schedules,
+    format_schedules,
     title_career_opportunities,
     career_opportunities,
     course_structure
@@ -73,7 +79,7 @@ const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
   const aboutBlockData = intro && header_title
   const courseDetailData = commercial_name
   const reasonsWhyData = reason_header
-  // const formatSchedulesData = format_schedules
+  const formatSchedulesData = format_schedules
   const careerOpportunitiesData = title_career_opportunities && career_opportunities
 
   const cards: IContentCardData[] = standsfor.items.map((elm: { header: string; body: string }, idx: number) => ({
@@ -85,22 +91,21 @@ const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
   const headersAndData = [{ header: header_title, data: aboutBlockData }]
   const blocks = getBlocks(headersAndData)
 
-  const courseSyllabusTerms = course_structure.table.map((elm: [string, (number | string)[][]]) => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [_, ...rest] = elm[1]
+  const courseSyllabusTerms: ICourseSyllabus[] = course_structure.academic_years.map((elm: IAcademicYear) => {
     return {
-      subjects: rest.map((subject) => {
+      subjects: elm.subjects.map((subject) => {
         return {
-          title: subject[0],
-          type: subject[1],
-          ects: subject[2]
+          title: subject.name,
+          type: subject.type,
+          ects: subject.duration,
+          period: subject.period || '-'
         }
       })
     }
   })
 
-  const courseSyllabusTabs = course_structure.table.map((elm: [string, (number | string)[][]]) => {
-    return elm[0]
+  const courseSyllabusTabs = course_structure.academic_years.map((elm: IAcademicYear) => {
+    return elm.year
   })
 
   return (
@@ -144,7 +149,7 @@ const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
 
       {<CourseSyllabus tabs={courseSyllabusTabs} terms={courseSyllabusTerms} />}
 
-      {/* {formatSchedulesData && <ColumnFormatSchedulesBlock title={format_schedules} cards={[]} />} */}
+      {formatSchedulesData && <ColumnFormatSchedulesBlock title={format_schedules} cards={[]} />}
 
       {careerOpportunitiesData && (
         <ColumnContent

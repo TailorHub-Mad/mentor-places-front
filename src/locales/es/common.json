@@ -20,17 +20,13 @@
     "price": "Precio",
     "type": "Tipo",
     "ects": "ECTS",
+    "period": "Período",
     "seats": "Plazas",
     "official": "Oficial",
     "methodology": "Metodología",
     "internship": "Prácticas",
     "internshipAbroad": "Prácticas en el extranjero",
-    "totalFound": "másters encontrados",
-    "period": {
-      "year": "año",
-      "semester": "semestre",
-      "term": "curso"
-    }
+    "totalFound": "másters encontrados"
   },
   "rating": {
     "1": "Malo",

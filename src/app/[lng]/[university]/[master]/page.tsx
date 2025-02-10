@@ -72,49 +72,82 @@ export async function generateStaticParams({ params: { locale } }: { params: { l
 //           ]
 //         },
 //         course_structure: {
-//           schema: 1,
-//           table: [
-//             [
-//               'Máster en Business Analytics, IA & Machine Learning',
-//               [
-//                 ['Asignatura', 'Tipo', 'ECTs'],
-//                 ['Introducción a la Analítica de Negocios y Comercia', 'FB', 3],
-//                 ['Analítica Jurídica y Gubernamental', 'FB', 1],
-//                 ['Ética, Dato y Personal', 'FB', 3],
-//                 ['CDO, Data Governance y Datamanagement', 'OB', 2],
-//                 ['Arquitectura BigData y Cloud', 'OB', 6],
-//                 ['Data Engineering', 'OB', 5],
-//                 ['Data Analytics', 'OB', 12],
-//                 ['Reporting y Visualización', 'OB', 3],
-//                 ['Storytelling & BigData Business Case', 'OB', 2]
+//           academic_years: [
+//             {
+//               year: 'Primer Curso',
+//               headings: { name_heading: 'Asignaturas', duration_heading: 'Créditos', type_heading: 'Carácter*', period_heading: 'Anual' },
+//               subjects: [
+//                 { name: 'Deportes colectivos I', duration: '8', type: 'OB', period: null },
+//                 { name: 'Deportes individuales', duration: '12', type: 'FB', period: null },
+//                 { name: 'Sistemática y Kinesiología del ejercicio', duration: '4', type: 'OB', period: '1' },
+//                 { name: 'Comunicación profesional y documentación', duration: '6', type: 'FB', period: '1' },
+//                 { name: 'Informática Aplicada', duration: '6', type: 'FB', period: '1' },
+//                 { name: 'Anatomía Humana', duration: '6', type: 'FB', period: '1' },
+//                 { name: 'Deportes de combate', duration: '4', type: 'OB', period: '2' },
+//                 { name: 'Expresión corporal y danza', duration: '4', type: 'OB', period: '2' },
+//                 { name: 'Actividades físicas en la naturaleza', duration: '4', type: 'OB', period: '2' },
+//                 { name: 'Fisiología Humana', duration: '6', type: 'FB', period: '2' }
 //               ]
-//             ],
-//             [
-//               'Especialidad 1: IA & Machine Learning',
-//               [
-//                 ['Asigntura', 'Tipo', 'ECTs'],
-//                 ['Introducción a la Inteligencia Artificial', 'OPT', 3],
-//                 ['Machine Learning en el mundo empresarial', 'OPT', 3],
-//                 ['Procesamiento Natural del Lenguaje', 'OPT', 3],
-//                 ['Robótica', 'OPT', 3],
-//                 ['Futuro de la IA y su aplicación empresarial', 'OPT', 3],
-//                 ['Proyecto de aplicación profesional', 'OPT', 12]
+//             },
+//             {
+//               year: 'Segundo Curso',
+//               headings: { name_heading: 'Asignaturas', duration_heading: 'Créditos', type_heading: 'Carácter*', period_heading: 'Anual' },
+//               subjects: [
+//                 { name: 'Deportes colectivos II', duration: '8', type: 'OB', period: null },
+//                 { name: 'Deportes con implementos', duration: '6', type: 'OB', period: null },
+//                 { name: 'Biomecánica', duration: '6', type: 'FB', period: null },
+//                 { name: 'Fisiología del ejercicio', duration: '6', type: 'FB', period: null },
+//                 { name: 'Educación física de base y juegos motores', duration: '6', type: 'OB', period: '1' },
+//                 { name: 'Actividad física y deporte para personas con discapacidad', duration: '4', type: 'OB', period: '1' },
+//                 { name: 'Estructura y función del aparato locomotor', duration: '6', type: 'FB', period: '1' },
+//                 { name: 'Comunicación en lengua extranjera I', duration: '6', type: 'OB', period: '2' },
+//                 { name: 'Estadística', duration: '6', type: 'OB', period: '2' },
+//                 { name: 'Historia del Olimpismo, de la actividad física y deporte', duration: '6', type: 'FB', period: '2' }
 //               ]
-//             ],
-//             [
-//               'Especialidad 2: Management Analytics',
-//               [
-//                 ['Asignatura', 'Tipo', 'ECTs'],
-//                 ['Introducción a la Inteligencia Artificial', 'OPT', 3],
-//                 ['Machine Learning en el mundo empresarial', 'OPT', 3],
-//                 ['Procesamiento Natural del Lenguaje', 'OPT', 3],
-//                 ['Robótica', 'OPT', 3],
-//                 ['Futuro de la IA y su aplicación empresarial', 'OPT', 3],
-//                 ['Proyecto de aplicación profesional', 'OPT', 12]
+//             },
+//             {
+//               year: 'Tercer Curso',
+//               headings: { name_heading: 'Asignaturas', duration_heading: 'Créditos', type_heading: 'Carácter*', period_heading: 'Anual' },
+//               subjects: [
+//                 { name: 'Actividad física y salud', duration: '8', type: 'OB', period: null },
+//                 { name: 'Enseñanza de la actividad física y del deporte I', duration: '6', type: 'OB', period: null },
+//                 { name: 'Especialización deportiva', duration: '6', type: 'OB', period: null },
+//                 { name: 'Nuevas tendencias del entrenamiento en fitness', duration: '8', type: 'OB', period: null },
+//                 { name: 'Nutrición deportiva', duration: '6', type: 'OB', period: null },
+//                 { name: 'Teoría y práctica del entrenamiento deportivo', duration: '8', type: 'OB', period: null },
+//                 { name: 'Educación física de base y juegos motores', duration: '6', type: 'OB', period: '1' },
+//                 { name: 'Actividad física y deporte para personas con discapacidad', duration: '4', type: 'OB', period: '1' },
+//                 { name: 'Estructura y función del aparato locomotor', duration: '6', type: 'FB', period: '1' },
+//                 { name: 'Comunicación en lengua extranjera II', duration: '6', type: 'OB', period: '2' },
+//                 { name: 'Legislación deportiva', duration: '4', type: 'OB', period: '2' },
+//                 { name: 'Prevención de lesiones y primeros auxilios', duration: '4', type: 'OB', period: '2' }
 //               ]
-//             ]
+//             },
+//             {
+//               year: 'Cuarto Curso',
+//               headings: { name_heading: 'Asignaturas', duration_heading: 'Créditos', type_heading: 'Carácter*', period_heading: 'Anual' },
+//               subjects: [
+//                 { name: 'Evaluación funcional del rendimiento físico y deportivo', duration: '6', type: 'OB', period: null },
+//                 { name: 'Maestría Deportiva', duration: '6', type: 'OB', period: null },
+//                 { name: 'Planificación y gestión deportiva', duration: '6', type: 'OB', period: null },
+//                 { name: 'Prácticas académicas externas', duration: '12', type: 'OB', period: null },
+//                 {
+//                   name: 'Actividades coreográficas y acondicionamiento físico con soporte musical',
+//                   duration: '4',
+//                   type: 'OB',
+//                   period: '1'
+//                 },
+//                 {
+//                   name: 'Introducción a la investigación en ciencias de la actividad física y del deporte',
+//                   duration: '4',
+//                   type: 'OB',
+//                   period: '1'
+//                 },
+//                 { name: 'Trabajo Fin de Grado', duration: '6', type: 'OB', period: '2' }
+//               ]
+//             }
 //           ],
-//           notes: 'OB = Obligatoria   OPT = Optativa'
+//           notes: '*Carácter: FB: Formación Básica, OB: Obligatorio, OP: Optativo.'
 //         },
 //         schedules: '"**Presencial:** L a J de 17 a 21 h  y  V de 16 a 20 h',
 //         requirements:
