@@ -28,4 +28,5 @@ export interface IFilterSelection extends IFilterValue {
 
 export interface IFilterSideBarProps {
   filters: IFilterCategory[]
+  className?: string
 }

@@ -6,8 +6,9 @@ import useAccordionItems from '@components/Accordion/useAccordionItems'
 import FilterBlock from '@components/Filters/SideBar/components/FilterBlock'
 import FilterSelectedControl from '@components/Filters/SideBar/components/FilterSelectedControl'
 import type { IFilterCategory, IFilterSelection, IFilterSideBarProps } from '@interfaces/filterSidebar.interfaces'
+import { cx } from '@utils/cx'
 
-const FilterSideBar: FC<IFilterSideBarProps> = ({ filters }) => {
+const FilterSideBar: FC<IFilterSideBarProps> = ({ filters, className }) => {
   const defaultOpen = ''
   const { openItems, handleAccordion } = useAccordionItems(defaultOpen)
   const [filterSelected, setFilterSelected] = useState<IFilterSelection[]>([])
@@ -58,7 +59,7 @@ const FilterSideBar: FC<IFilterSideBarProps> = ({ filters }) => {
   }, [filterSelected, searchParams, router])
 
   return (
-    <div className="filter-sidebar px-4 py-8 md:px-8 shadow rounded-[8px]">
+    <div className={cx('filter-sidebar px-4 py-8 md:px-8 md:shadow rounded-[8px]', className)}>
       <div className="filter-sidebar__header">
         {filterSelected.length > 0 && <FilterSelectedControl filterSelected={filterSelected} onChange={handleChange} onClear={onClear} />}
       </div>

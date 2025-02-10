@@ -3,10 +3,10 @@ import CoursesFeedBlock from '../../blocks/CoursesFeed/CoursesFeedBlock'
 import { useCourseFeedMapper } from '../../../lib/mapper/useCourseFeedMapper'
 import type { FilterCoursesQuery } from '../../../../graphql/generated/client'
 import { useTranslations } from 'next-intl'
-import FilterSideBar from '@components/Filters/SideBar/FilterSideBar'
 import { FILTER_SIDEBAR_MOCK } from '@components/Filters/SideBar/mock'
 import HeroCourseFeed from '../../blocks/HeroCourseFeed/HeroCourseFeed'
 import { HERO_COURSE_FEED_MOCK } from '../../blocks/HeroCourseFeed/mock'
+import FilterSidebarBlock from '../../blocks/FilterSidebar/FilterSidebarBlock'
 
 export interface ICourseFeedViewProps {
   courses: FilterCoursesQuery['courses']
@@ -19,9 +19,12 @@ const CourseFeedView: FC<ICourseFeedViewProps> = ({ courses }) => {
   return (
     <div className="course-feed-view page">
       <HeroCourseFeed {...HERO_COURSE_FEED_MOCK} />
-      <div className="flex flex-wrap gap-3">
-        <FilterSideBar filters={FILTER_SIDEBAR_MOCK.filters} />
+      <div className="grid grid-cols-1 lg:grid-cols-6 gap-3">
+        <div className="filter-sidebar-block col-span-2">
+          <FilterSidebarBlock filters={FILTER_SIDEBAR_MOCK.filters} />
+        </div>
         <CoursesFeedBlock
+          className="col-span-4"
           courses={filteredCourses}
           banner={{
             text: t('bannerCourseFeed.text'),

@@ -61,6 +61,7 @@
     "locationPlaceholder": "Estudiar en cualquier lugar"
   },
   "filters": {
+    "name": "Filtros",
     "year": "Año",
     "month": "Mes",
     "delete": "Borrar",

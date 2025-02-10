@@ -78,7 +78,7 @@ const SortSelectTrigger: FC = () => {
 
   return (
     <>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between w-min">
         <SelectButton
           ref={targetRef}
           disabled={false}
