@@ -12,7 +12,10 @@ import type { IContentCardData } from '@components/ContentCard/ContentCard'
 import CourseSyllabus, { type ICourseSyllabus } from '@components/CourseSyllabus/CourseSyllabus'
 import ColumnFormatSchedulesBlock from '../ColumnFormatSchedules/ColumnFormatSchedulesBlock'
 import ColumnContent from '../ColumnContent/ColumnContent'
-import { IAssetFeaturesCardProps } from '@components/AssetFeaturesCard/AssetFeaturesCard'
+import type { IAssetFeaturesCardProps } from '@components/AssetFeaturesCard/AssetFeaturesCard'
+import Admissions from '../Admissions/Admissions'
+import { useTranslations } from 'next-intl'
+import { createDateString } from './utils'
 
 interface ICoursePageBuilderProps {
   data: GetCourseQuery
@@ -25,6 +28,7 @@ interface IAcademicYear {
 }
 
 const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
+  const t = useTranslations()
   const course = data.courses_by_id?.course_trans?.[0]
 
   if (!course) return null
@@ -43,7 +47,9 @@ const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
     title_career_opportunities,
     career_opportunities,
     course_structure,
-    schedules
+    schedules,
+    admissions,
+    requirements
   } = course
 
   if (!course_id) return null
@@ -63,7 +69,9 @@ const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
     ects,
     places_available,
     careers_list,
-    learning_pace
+    learning_pace,
+    start_date_func,
+    end_date_func
   } = course_id
 
   const university = institutions?.[0]?.institution_id
@@ -84,6 +92,7 @@ const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
   const reasonsWhyData = reason_header
   const formatSchedulesData = format_schedules
   const careerOpportunitiesData = title_career_opportunities && career_opportunities
+  const admissionsData = admissions && start_date_func && end_date_func
 
   const cards: IContentCardData[] = standsfor.items.map((elm: { header: string; body: string }, idx: number) => ({
     infoHeaderTitle: idx + 1,
@@ -165,6 +174,19 @@ const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
       {<CourseSyllabus tabs={courseSyllabusTabs} terms={courseSyllabusTerms} />}
 
       {formatSchedulesData && <ColumnFormatSchedulesBlock title={format_schedules} cards={[formatCard, campusCard]} />}
+
+      {admissionsData && (
+        <Admissions
+          title={admissions}
+          cta={{ text: t('actions.callUs'), action: 'contact' }}
+          description={requirements}
+          start={{ date: createDateString(start_date_func), text: t('courseDetails.startDate') }}
+          application={{
+            date: createDateString(end_date_func),
+            text: t('courseDetails.applicationDate')
+          }}
+        />
+      )}
 
       {careerOpportunitiesData && (
         <ColumnContent

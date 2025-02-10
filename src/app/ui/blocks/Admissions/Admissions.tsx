@@ -16,7 +16,7 @@ interface IAdmissionsProps {
     text: string
     action: TCTAAction
   }
-  description: string
+  description?: string | null
   start: IDate
   application: IDate
 }

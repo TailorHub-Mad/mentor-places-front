@@ -26,7 +26,8 @@
     "methodology": "Methodology",
     "internship": "Internship",
     "internshipAbroad": "Internship Abroad",
-    "totalFound": "courses found"
+    "totalFound": "courses found",
+    "applicationDate": "Application deadline"
   },
   "rating": {
     "1": "Terrible",
@@ -50,7 +51,8 @@
     "BackToTop": "Back to top",
     "yes": "Yes",
     "no": "No",
-    "search": "Search"
+    "search": "Search",
+    "callUs": "Call us"
   },
   "search": {
     "disciplinePlaceholder": "What do you want to study?",

@@ -26,7 +26,8 @@
     "methodology": "Metodología",
     "internship": "Prácticas",
     "internshipAbroad": "Prácticas en el extranjero",
-    "totalFound": "másters encontrados"
+    "totalFound": "másters encontrados",
+    "applicationDate": "Fecha límite aplicación"
   },
   "rating": {
     "1": "Malo",
@@ -50,7 +51,8 @@
     "BackToTop": "Volver arriba",
     "yes": "Sí",
     "no": "No",
-    "search": "Buscar"
+    "search": "Buscar",
+    "callUs": "Llámanos"
   },
   "search": {
     "disciplinePlaceholder": "¿Qué quieres estudiar?",
