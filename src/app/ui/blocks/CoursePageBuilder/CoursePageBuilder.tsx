@@ -12,6 +12,7 @@ import type { IContentCardData } from '@components/ContentCard/ContentCard'
 import CourseSyllabus, { type ICourseSyllabus } from '@components/CourseSyllabus/CourseSyllabus'
 import ColumnFormatSchedulesBlock from '../ColumnFormatSchedules/ColumnFormatSchedulesBlock'
 import ColumnContent from '../ColumnContent/ColumnContent'
+import { IAssetFeaturesCardProps } from '@components/AssetFeaturesCard/AssetFeaturesCard'
 
 interface ICoursePageBuilderProps {
   data: GetCourseQuery
@@ -41,7 +42,8 @@ const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
     format_schedules,
     title_career_opportunities,
     career_opportunities,
-    course_structure
+    course_structure,
+    schedules
   } = course
 
   if (!course_id) return null
@@ -60,7 +62,8 @@ const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
     is_official,
     ects,
     places_available,
-    careers_list
+    careers_list,
+    learning_pace
   } = course_id
 
   const university = institutions?.[0]?.institution_id
@@ -108,6 +111,18 @@ const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
     return elm.year
   })
 
+  const formatCard: IAssetFeaturesCardProps = {
+    icon: 'campus',
+    description: '', // TODO?
+    tags: (learning_format || []).map((elm) => ({ label: elm?.learning_format_id?.format_name || '' }))
+  }
+
+  const campusCard: IAssetFeaturesCardProps = {
+    icon: 'duration',
+    description: schedules || '',
+    tags: (learning_pace || []).map((elm) => ({ label: elm?.learning_pace_id?.pace_name || '' }))
+  }
+
   return (
     <div className="flex flex-col gap-24 page py-16">
       {heroData && (
@@ -149,7 +164,7 @@ const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
 
       {<CourseSyllabus tabs={courseSyllabusTabs} terms={courseSyllabusTerms} />}
 
-      {formatSchedulesData && <ColumnFormatSchedulesBlock title={format_schedules} cards={[]} />}
+      {formatSchedulesData && <ColumnFormatSchedulesBlock title={format_schedules} cards={[formatCard, campusCard]} />}
 
       {careerOpportunitiesData && (
         <ColumnContent
