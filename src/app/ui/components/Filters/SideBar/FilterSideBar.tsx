@@ -5,104 +5,66 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import useAccordionItems from '@components/Accordion/useAccordionItems'
 import FilterBlock from '@components/Filters/SideBar/components/FilterBlock'
 import FilterSelectedControl from '@components/Filters/SideBar/components/FilterSelectedControl'
-import type { IFilterSelection, IFilterSideBarProps } from '@interfaces/filterSidebar.interfaces'
+import type { IFilterCategory, IFilterSelection, IFilterSideBarProps } from '@interfaces/filterSidebar.interfaces'
 
 const FilterSideBar: FC<IFilterSideBarProps> = ({ filters }) => {
   const defaultOpen = ''
   const { openItems, handleAccordion } = useAccordionItems(defaultOpen)
-
   const [filterSelected, setFilterSelected] = useState<IFilterSelection[]>([])
   const router = useRouter()
   const searchParams = useSearchParams()
 
-  const onClear = () => {
-    setFilterSelected([])
-  }
+  const onClear = () => setFilterSelected([])
 
   const handleChange = (value: IFilterSelection) => {
-    const selectedFiltersUpdate = updateFilter(value, filterSelected)
-    setFilterSelected(selectedFiltersUpdate)
+    setFilterSelected((prev) => updateFilter(value, prev))
   }
 
   // Initialize `filterSelected` from URLSearchParams only on the first render
   useEffect(() => {
-    const params = searchParams
-    if (!params) return
+    const urlParams = searchParams
+    if (!urlParams) return
 
-    const filtersFromParams: IFilterSelection[] = []
+    const parsedFilters: IFilterSelection[] = [
+      ...parseDateFilter(urlParams),
+      ...parsePriceFilter(urlParams),
+      ...parseCategoryFilters(urlParams, filters)
+    ]
 
-    // Parse `date` filter
-    if (params.has('date')) {
-      filtersFromParams.push({
-        id: 'date',
-        value: params.get('date')!.split(',') // Split value into array (if applicable)
-      })
-    }
-
-    // Parse `price` filter
-    if (params.has('price')) {
-      filtersFromParams.push({
-        id: 'price',
-        value: params.get('price')!.split(',') // Split value into array (if applicable)
-      })
-    }
-
-    // Parse `cat` filters
-    if (params.has('cat')) {
-      const catFilters = params.get('cat')!.split('|') // Split multiple categories by `|`
-      catFilters.forEach((catFilter) => {
-        const [id, value] = catFilter.split(':') // Split each category by `:`
-        if (id && value) {
-          filtersFromParams.push({
-            id,
-            value: value.includes(',') ? value.split(',') : value // Split multi-valued cats
-          })
-        }
-      })
-    }
-
-    // Set `filterSelected` based on URL parameters (run only during first render)
-    setFilterSelected(filtersFromParams)
-  }, []) // Empty dependency array ensures it only runs on the first render
+    setFilterSelected(parsedFilters)
+  }, [searchParams])
 
   // Update `URLSearchParams` whenever `filterSelected` changes
   useEffect(() => {
-    const params = new URLSearchParams(searchParams.toString()) // Initialize with existing params
-
+    const urlParams = new URLSearchParams(searchParams.toString())
     const categories: string[] = []
 
     filterSelected.forEach((filter) => {
-      if (filter.id.includes('date')) {
-        params.set('date', Array.isArray(filter.value) ? filter.value.join(',') : String(filter.value))
-      } else if (filter.id.includes('price')) {
-        params.set('price', Array.isArray(filter.value) ? filter.value.join(',') : String(filter.value))
+      if (filter.id === 'date' || filter.id === 'price') {
+        urlParams.set(filter.id, Array.isArray(filter.value) ? filter.value.join(',') : String(filter.value))
       } else {
-        // For other filter types, add them under `cat` as concatenated values
-        categories.push(`${filter.id}:${Array.isArray(filter.value) ? filter.value.join(',') : String(filter.value)}`)
+        // Only include `id` for category filters
+        categories.push(filter.id)
       }
     })
 
-    // Add concatenated `cat` parameter if there are categories
     if (categories.length > 0) {
-      params.set('cat', categories.join('|'))
+      urlParams.set('cat', categories.join('|'))
     } else {
-      params.delete('cat') // Ensure unused params aren't included
+      urlParams.delete('cat')
     }
 
-    // Persist the updated parameters
-    router.replace(`?${params.toString()}`)
-  }, [filterSelected, searchParams, router]) // Ensure dependencies include `searchParams`
+    router.replace(`?${urlParams.toString()}`)
+  }, [filterSelected, searchParams, router])
 
   return (
     <div className="filter-sidebar px-4 py-8 md:px-8 shadow rounded-[8px]">
       <div className="filter-sidebar__header">
-        {filterSelected && filterSelected.length > 0 && (
-          <FilterSelectedControl filterSelected={filterSelected} onChange={handleChange} onClear={onClear} />
-        )}
+        {filterSelected.length > 0 && <FilterSelectedControl filterSelected={filterSelected} onChange={handleChange} onClear={onClear} />}
       </div>
       {filters.map((filter, index) => {
         const { filters, title, id } = filter
-        if (!filters) return
+        if (!filters) return null
         return (
           <FilterBlock
             key={`filter-block-${id}-${index}`}
@@ -123,30 +85,51 @@ const FilterSideBar: FC<IFilterSideBarProps> = ({ filters }) => {
 
 export default FilterSideBar
 
+const parseDateFilter = (params: URLSearchParams): IFilterSelection[] =>
+  params.has('date')
+    ? [
+        {
+          id: 'date',
+          value: params.get('date')!.split(',')
+        }
+      ]
+    : []
+
+const parsePriceFilter = (params: URLSearchParams): IFilterSelection[] =>
+  params.has('price')
+    ? [
+        {
+          id: 'price',
+          value: params.get('price')!.split(',')
+        }
+      ]
+    : []
+
+const parseCategoryFilters = (params: URLSearchParams, filters: IFilterCategory[]): IFilterSelection[] => {
+  if (!params.has('cat')) return []
+  return params
+    .get('cat')!
+    .split('|')
+    .map((catFilter) => {
+      const id = catFilter.split(':')[0]
+
+      const nestedFilter = filters
+        .flatMap((filter) => filter.filters || []) // Flatten all nested `filters` arrays
+        .find((f) => f.id === id) // Find the one with a matching id
+
+      return { id, value: nestedFilter?.title || id }
+    })
+}
+
 const updateFilter = (newFilter: IFilterSelection, currentFilters: IFilterSelection[] = []): IFilterSelection[] => {
-  const filterByIdExcludes = (filters: IFilterSelection[], idPart: string) => filters.filter((filter) => !filter.id.includes(idPart))
+  const FILTER_TYPES = ['date', 'price']
+  const excludeFilters = (filters: IFilterSelection[], idPart: string) => filters.filter((filter) => !filter.id.includes(idPart))
 
-  const isFilterPresent = currentFilters.some((filter) => filter.id === newFilter.id)
-
-  const isNewFilterValue =
-    Array.isArray(newFilter.value) &&
-    newFilter.value.length > 1 &&
-    Array.isArray(newFilter.value) &&
-    new Set(newFilter.value.map((item) => (typeof item === 'string' ? item : ''))).size > 1
-
-  if (['price', 'date'].some((type) => newFilter.id.includes(type))) {
-    if (newFilter.id.includes('price') && Array.isArray(newFilter.value) && newFilter.value.length > 1) {
-      return [...filterByIdExcludes(currentFilters, 'price'), newFilter]
-    }
-    if (isFilterPresent && !isNewFilterValue) {
-      return currentFilters.filter((filter) => filter.id !== newFilter.id)
-    }
-    return [...filterByIdExcludes(currentFilters, 'date'), newFilter]
+  if (FILTER_TYPES.some((type) => newFilter.id.includes(type))) {
+    return [...excludeFilters(currentFilters, newFilter.id), newFilter]
   }
 
-  if (isFilterPresent) {
-    return currentFilters.filter((filter) => filter.id !== newFilter.id)
-  }
-
-  return [...currentFilters, newFilter]
+  return currentFilters.some((filter) => filter.id === newFilter.id)
+    ? currentFilters.filter((filter) => filter.id !== newFilter.id)
+    : [...currentFilters, newFilter]
 }
