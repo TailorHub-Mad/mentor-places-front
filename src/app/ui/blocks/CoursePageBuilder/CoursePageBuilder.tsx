@@ -1,4 +1,4 @@
-import type { FC } from 'react'
+import { type FC } from 'react'
 import type { GetCourseQuery } from '../../../../graphql/generated/client'
 import HeroCourse from '../HeroCourse/HeroCourse'
 import { EAssetCardVariant } from '@components/AssetCard/AssetCard'
@@ -23,6 +23,7 @@ import ContactBanner from '@components/ContactBanner/ContactBanner'
 import { EColor } from '@theme/foundations/colors.foundations'
 import StudentProfile from '../StudentProfile/StudentProfile'
 import CourseSyllabusBlock from '../CourseSyllabus/CourseSyllabusBlock'
+import UniversityInfo from '../UniversityInfo/UniversityInfo'
 
 interface ICoursePageBuilderProps {
   data: GetCourseQuery
@@ -245,6 +246,8 @@ const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
         button={t('contactBanner.button')}
         backgroundColor={EColor.YELLOW}
       />
+
+      {institutions && institutions[0] && <UniversityInfo institutions={institutions} />}
     </div>
   )
 }
