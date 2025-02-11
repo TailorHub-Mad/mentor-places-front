@@ -111,5 +111,10 @@
   },
   "common": {
     "thanks": "¡Gracias!"
+  },
+  "contactBanner": {
+    "topText": "Contáctanos",
+    "title": "Te ayudamos a seleccionar tu máster",
+    "button": "Más información"
   }
 }

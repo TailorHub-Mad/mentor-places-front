@@ -19,6 +19,8 @@ import { createDateString } from './utils'
 import PriceSection from '../PriceSection/PriceSection'
 import type { InfoCardPriceProps } from '@components/PriceCard/PriceCard'
 import ScholarshipsAndGrants from '../ScholarshipsAndGrants/ScholarshipsAndGrants'
+import ContactBanner from '@components/ContactBanner/ContactBanner'
+import { EColor } from '@theme/foundations/colors.foundations'
 
 interface ICoursePageBuilderProps {
   data: GetCourseQuery
@@ -231,6 +233,13 @@ const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
           />
         </div>
       )}
+
+      <ContactBanner
+        topText={t('contactBanner.topText')}
+        title={t('contactBanner.title')}
+        button={t('contactBanner.button')}
+        backgroundColor={EColor.YELLOW}
+      />
     </div>
   )
 }

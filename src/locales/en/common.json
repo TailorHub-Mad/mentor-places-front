@@ -111,5 +111,10 @@
   },
   "common": {
     "thanks": "Thanks!"
+  },
+  "contactBanner": {
+    "topText": "Contact us",
+    "title": "We help you select your master's degree",
+    "button": "More info"
   }
 }
