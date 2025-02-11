@@ -21,6 +21,7 @@ import type { InfoCardPriceProps } from '@components/PriceCard/PriceCard'
 import ScholarshipsAndGrants from '../ScholarshipsAndGrants/ScholarshipsAndGrants'
 import ContactBanner from '@components/ContactBanner/ContactBanner'
 import { EColor } from '@theme/foundations/colors.foundations'
+import StudentProfile from '../StudentProfile/StudentProfile'
 
 interface ICoursePageBuilderProps {
   data: GetCourseQuery
@@ -88,7 +89,8 @@ const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
     learning_pace,
     start_date_func,
     end_date_func,
-    tuition_price
+    tuition_price,
+    profiles
   } = course_id
 
   const university = institutions?.[0]?.institution_id
@@ -211,6 +213,8 @@ const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
           }}
         />
       )}
+
+      {profiles && profiles[0] && <StudentProfile profile={profiles[0]} />}
 
       {careerOpportunitiesData && (
         <ColumnContent
