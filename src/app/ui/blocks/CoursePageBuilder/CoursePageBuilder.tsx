@@ -16,6 +16,8 @@ import type { IAssetFeaturesCardProps } from '@components/AssetFeaturesCard/Asse
 import Admissions from '../Admissions/Admissions'
 import { useTranslations } from 'next-intl'
 import { createDateString } from './utils'
+import PriceSection from '../PriceSection/PriceSection'
+import type { InfoCardPriceProps } from '@components/PriceCard/PriceCard'
 
 interface ICoursePageBuilderProps {
   data: GetCourseQuery
@@ -25,6 +27,16 @@ interface IAcademicYear {
   year: string
   headings: { name_heading: string; duration_heading: string; type_heading: string; period_heading: string }
   subjects: [{ name: string; duration: string; type: string; period: string | null }]
+}
+
+interface IPrice {
+  date: string
+  course: string
+  tuition_fee_o: string
+  tuition_fee_d: string
+  currency: string
+  code: string
+  discounts: boolean
 }
 
 const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
@@ -71,7 +83,8 @@ const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
     careers_list,
     learning_pace,
     start_date_func,
-    end_date_func
+    end_date_func,
+    tuition_price
   } = course_id
 
   const university = institutions?.[0]?.institution_id
@@ -132,6 +145,13 @@ const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
     tags: (learning_pace || []).map((elm) => ({ label: elm?.learning_pace_id?.pace_name || '' }))
   }
 
+  const prices: InfoCardPriceProps[] = []
+
+  tuition_price.forEach((price: IPrice) => {
+    prices.push({ infoHeaderTitle: price.tuition_fee_o, title: t('courseDetails.officialPrice'), type: 'official' })
+    if (price.discounts) prices.push({ infoHeaderTitle: price.tuition_fee_d, title: t('courseDetails.discountPrice'), type: 'discount' })
+  })
+
   return (
     <div className="flex flex-col gap-24 page py-16">
       {heroData && (
@@ -178,7 +198,6 @@ const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
       {admissionsData && (
         <Admissions
           title={admissions}
-          cta={{ text: t('actions.callUs'), action: 'contact' }}
           description={requirements}
           start={{ date: createDateString(start_date_func), text: t('courseDetails.startDate') }}
           application={{
@@ -194,6 +213,8 @@ const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
           columnContent={{ richText: career_opportunities, list: careers_list.map((elm: string) => ({ title: elm })) }}
         />
       )}
+
+      {<PriceSection title={t('prices')} description={requirements} prices={prices} />}
     </div>
   )
 }
