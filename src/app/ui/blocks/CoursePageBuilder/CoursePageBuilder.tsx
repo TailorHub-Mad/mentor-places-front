@@ -18,6 +18,7 @@ import { useTranslations } from 'next-intl'
 import { createDateString } from './utils'
 import PriceSection from '../PriceSection/PriceSection'
 import type { InfoCardPriceProps } from '@components/PriceCard/PriceCard'
+import ScholarshipsAndGrants from '../ScholarshipsAndGrants/ScholarshipsAndGrants'
 
 interface ICoursePageBuilderProps {
   data: GetCourseQuery
@@ -61,7 +62,8 @@ const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
     course_structure,
     schedules,
     admissions,
-    requirements
+    requirements,
+    header_scholarships
   } = course
 
   if (!course_id) return null
@@ -106,6 +108,7 @@ const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
   const formatSchedulesData = format_schedules
   const careerOpportunitiesData = title_career_opportunities && career_opportunities
   const admissionsData = admissions && start_date_func && end_date_func
+  const scholarshipsData = header_scholarships && institutions?.[0]?.institution_id?.institutions_scholarships_courses
 
   const cards: IContentCardData[] = standsfor.items.map((elm: { header: string; body: string }, idx: number) => ({
     infoHeaderTitle: idx + 1,
@@ -215,6 +218,19 @@ const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
       )}
 
       {<PriceSection title={t('prices')} description={requirements} prices={prices} />}
+
+      {scholarshipsData && (
+        <div id={titleToBlockId(header_scholarships)}>
+          <ScholarshipsAndGrants
+            title={header_scholarships}
+            list={(institutions?.[0]?.institution_id?.institutions_scholarships_courses || [])
+              .filter((elm) => elm?.scholarships_id)
+              .map((elm) => {
+                return { title: elm?.scholarships_id?.description.name, description: elm?.scholarships_id?.description.description }
+              })}
+          />
+        </div>
+      )}
     </div>
   )
 }
