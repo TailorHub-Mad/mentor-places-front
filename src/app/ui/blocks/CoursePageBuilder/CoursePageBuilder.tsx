@@ -9,7 +9,7 @@ import CourseDetailBlock from '../CourseDetail/CourseDetailBlock'
 import { getBlocks } from '../InstitutionPageBuilder/utils'
 import ReasonsWhy from '../ReasonsWhy/ReasonsWhy'
 import type { IContentCardData } from '@components/ContentCard/ContentCard'
-import CourseSyllabus, { type ICourseSyllabus } from '@components/CourseSyllabus/CourseSyllabus'
+import { type ICourseSyllabus } from '@components/CourseSyllabus/CourseSyllabus'
 import ColumnFormatSchedulesBlock from '../ColumnFormatSchedules/ColumnFormatSchedulesBlock'
 import ColumnContent from '../ColumnContent/ColumnContent'
 import type { IAssetFeaturesCardProps } from '@components/AssetFeaturesCard/AssetFeaturesCard'
@@ -22,6 +22,7 @@ import ScholarshipsAndGrants from '../ScholarshipsAndGrants/ScholarshipsAndGrant
 import ContactBanner from '@components/ContactBanner/ContactBanner'
 import { EColor } from '@theme/foundations/colors.foundations'
 import StudentProfile from '../StudentProfile/StudentProfile'
+import CourseSyllabusBlock from '../CourseSyllabus/CourseSyllabusBlock'
 
 interface ICoursePageBuilderProps {
   data: GetCourseQuery
@@ -198,7 +199,7 @@ const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
 
       {reasonsWhyData && cards && <ReasonsWhy title={reason_header} cards={cards} />}
 
-      {<CourseSyllabus tabs={courseSyllabusTabs} terms={courseSyllabusTerms} />}
+      {<CourseSyllabusBlock title="Temario" courseSyllabus={{ tabs: courseSyllabusTabs, terms: courseSyllabusTerms }} />}
 
       {formatSchedulesData && <ColumnFormatSchedulesBlock title={format_schedules} cards={[formatCard, campusCard]} />}
 
