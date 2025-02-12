@@ -1,3 +1,5 @@
+'use client'
+
 import AssetCard, { type IAssetCardProps } from '@components/AssetCard/AssetCard'
 import { SwiperNavigationPosition } from '@components/Swiper/components/SwiperNatigation'
 import CustomSwiper from '@components/Swiper/CustomSwiper'
