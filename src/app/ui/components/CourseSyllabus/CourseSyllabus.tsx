@@ -4,10 +4,9 @@ import { type FC, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { cx } from '@utils/cx'
 
-const CourseSyllabus: FC<ICourseSyllabusProps> = ({ terms, period }) => {
+const CourseSyllabus: FC<ICourseSyllabusProps> = ({ terms, tabs }) => {
   const termsLength = terms.length
   const t = useTranslations()
-  const termsPeriodString = t(`courseDetails.period.${period}`)
 
   const [openTab, setOpenTab] = useState(0)
   const [showAllSubjects, setShowAllSubjects] = useState(false) // State for toggling between limited and full view
@@ -21,7 +20,7 @@ const CourseSyllabus: FC<ICourseSyllabusProps> = ({ terms, period }) => {
   return (
     <div className="course-syllabus">
       <div className="course-syllabus__tabs grid grid-cols-1 md:grid-cols-10 gap-4 border-b border-BLACK/10 ">
-        <div className="tabs-buttons col-span-8">
+        <div className="tabs-buttons col-span-7">
           {Array.from({ length: termsLength }, (_, index) => (
             <button
               className={cx('pr-4 py-2', {
@@ -29,20 +28,20 @@ const CourseSyllabus: FC<ICourseSyllabusProps> = ({ terms, period }) => {
               })}
               onClick={() => handleOpenTab(index)}
               key={`course-syllabus__tabs-${index}`}>
-              <span className="period-string mr-1 capitalize">{termsPeriodString}</span>
-              <span className="period-number">{index + 1}</span>
+              <span className="tabs-string mr-1 capitalize">{tabs[index]}</span>
             </button>
           ))}
         </div>
         <span className="text-center text-BLACK/60 font-s text-s hidden md:block">{t('courseDetails.type')}</span>
         <span className="text-center text-BLACK/60 font-s text-s hidden md:block">{t('courseDetails.ects')}</span>
+        <span className="text-center text-BLACK/60 font-s text-s hidden md:block">{t('courseDetails.period')}</span>
       </div>
       <div className="course-syllabus__subjects-list">
         {displayedSubjects.map((subject, index) => (
           <div
             key={`${subject.title}-${index}`}
             className="course-syllabus__subject-list__item grid grid-cols-2 md:grid-cols-10 gap-2 justify-between border-b border-BLACK/10 py-4">
-            <span className="title col-span-2 md:col-span-8 text-s font-s">{subject.title}</span>
+            <span className="title col-span-2 md:col-span-7 text-s font-s">{subject.title}</span>
             <div className="type text-start md:text-center md:col-span-1 text-s font-s">
               <span className="md:hidden text-s font-s">{t('courseDetails.type')}: </span>
               {subject.type}
@@ -50,6 +49,10 @@ const CourseSyllabus: FC<ICourseSyllabusProps> = ({ terms, period }) => {
             <div className="ects text-start md:text-center md:col-span-1 text-s font-s">
               <span className="md:hidden text-s font-s">{t('courseDetails.ects')}: </span>
               {subject.ects}
+            </div>
+            <div className="ects text-start md:text-center md:col-span-1 text-s font-s">
+              <span className="md:hidden text-s font-s">{t('courseDetails.ects')}: </span>
+              {subject.period}
             </div>
           </div>
         ))}
@@ -70,7 +73,8 @@ export default CourseSyllabus
 export interface ISubject {
   title: string
   type: string
-  ects: number
+  ects: string
+  period: string
 }
 
 export interface ICourseSyllabus {
@@ -78,6 +82,6 @@ export interface ICourseSyllabus {
 }
 
 export interface ICourseSyllabusProps {
-  period: 'year' | 'semester' | 'term'
+  tabs: string[]
   terms: ICourseSyllabus[]
 }

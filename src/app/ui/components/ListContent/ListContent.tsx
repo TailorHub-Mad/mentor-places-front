@@ -6,7 +6,7 @@ import { useState, type FC } from 'react'
 
 export interface IListContentItem {
   title: string
-  description: string
+  description?: string
 }
 
 export interface IListContentProps {
@@ -28,7 +28,7 @@ const ListContent: FC<IListContentProps> = ({ list, initiallyShown = 3 }) => {
             <p className="text-m-mobile font-l-mobile md:text-m md:font-m" style={{ marginTop: isFirst ? 0 : 24 }}>
               {elm.title}
             </p>
-            <StringToRichText text={elm.description} className="mt-2 text-BLACK/60" />
+            {elm.description && <StringToRichText text={elm.description} className="mt-2 text-BLACK/60" />}
             {!isLast && <hr className="h-[1px} border-BLACK/10 mt-5" />}
           </div>
         )

@@ -1,3 +1,5 @@
+'use client'
+
 import type { ReactNode } from 'react'
 import React, { type FC } from 'react'
 import { Swiper as SwiperCore, SwiperSlide as SwiperCoreSlide } from 'swiper/react'

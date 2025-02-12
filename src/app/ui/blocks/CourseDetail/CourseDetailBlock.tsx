@@ -11,21 +11,10 @@ export interface ICourseDetailBlockProps {
   ects?: number
   seats?: number
   methodology?: string
-  internship?: string
-  internshipAbroad?: string
+  customItems?: { header: string; body: string }[]
 }
 
-const CourseDetailBlock: FC<ICourseDetailBlockProps> = ({
-  title,
-  ects,
-  internshipAbroad,
-  isOfficial,
-  seats,
-  tags,
-  type,
-  methodology,
-  internship
-}) => {
+const CourseDetailBlock: FC<ICourseDetailBlockProps> = ({ title, ects, isOfficial, seats, tags, type, methodology, customItems }) => {
   const t = useTranslations()
 
   const renderCourseDetailItems = () => {
@@ -34,10 +23,14 @@ const CourseDetailBlock: FC<ICourseDetailBlockProps> = ({
       { title: t('courseDetails.official'), description: isOfficial ? t('actions.yes') : t('actions.no') },
       { title: t('courseDetails.ects'), description: ects ? `${ects}` : undefined },
       { title: t('courseDetails.seats'), description: seats ? `${seats}` : undefined },
-      { title: t('courseDetails.methodology'), description: methodology, className: 'col-span-2' },
-      { title: t('courseDetails.internship'), description: internship, className: 'col-span-2' },
-      { title: t('courseDetails.internshipAbroad'), description: internshipAbroad, className: 'col-span-2' }
+      { title: t('courseDetails.methodology'), description: methodology, className: 'col-span-2' }
     ]
+
+    if (customItems) {
+      customItems.forEach((elm) => {
+        items.push({ title: elm.header, description: elm.body, className: 'col-span-2' })
+      })
+    }
 
     return items.map((item, index) => {
       if (!item.description) return
@@ -55,8 +48,8 @@ const CourseDetailBlock: FC<ICourseDetailBlockProps> = ({
 
   return (
     <div className="course-detail-block grid grid-cols-1 md:grid-cols-6 bg-BLUE/15 rounded-[8px] py-[40px] lg:py-[80px] px-[16px] lg:px-[32px]">
-      <div className="course-detail-block__title md:col-span-2 flex flex-col gap-6 mb-10">
-        <h2 className="text-xl-mobile font-xl cols">{title}</h2>
+      <div className="course-detail-block__title md:col-span-2 flex flex-col gap-6 mb-10 md:pr-10">
+        <h2 className="text-xl-mobile font-xl">{title}</h2>
         {tags && tags.map((tag, index) => <ContentTag key={index} title={tag} className="scale-90 origin-top-left lg:scale-100" />)}
       </div>
       <div className="course-detail-block__content md:col-span-4 grid grid-cols-2 gap-4">{renderCourseDetailItems()}</div>

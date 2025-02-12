@@ -7,7 +7,7 @@ import StringToRichText from '@components/StringToRichText/StringToRichText'
 import useBreakpoint from '@hooks/useBreakpoint'
 import { useState, type FC } from 'react'
 
-interface IAboutProps {
+export interface IAboutProps {
   title: string
   intro: string
   description?: string | null

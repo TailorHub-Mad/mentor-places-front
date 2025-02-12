@@ -3,24 +3,24 @@ import type { IStatsInfoProps } from '@components/StatsInfo/StatsInfo'
 export const STATS_INFO_MOCK: IStatsInfoProps = {
   stats: [
     {
-      value: 40,
-      title: 'Másters'
+      number: 40,
+      description: 'Másters'
     },
     {
-      value: 10,
-      title: 'Universidades'
+      number: 10,
+      description: 'Universidades'
     },
     {
-      value: 100,
-      title: 'Cursos'
+      number: 100,
+      description: 'Cursos'
     },
     {
-      value: 3500,
-      title: 'Estudiantes de postgrado'
+      number: 3500,
+      description: 'Estudiantes de postgrado'
     },
     {
-      value: 1000,
-      title: 'Estudiantes internacionales'
+      number: 1000,
+      description: 'Estudiantes internacionales'
     }
   ]
 }

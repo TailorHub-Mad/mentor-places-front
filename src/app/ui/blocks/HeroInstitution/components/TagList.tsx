@@ -15,7 +15,7 @@ interface ITagListProps {
 
 const TagList: FC<ITagListProps> = ({ blocks }) => {
   return (
-    <div className="flex flex-wrap gap-4 mt-16">
+    <div className="flex flex-wrap gap-x-4 gap-y-6 mt-16">
       {blocks.map((block) => {
         return (
           <ContentTag

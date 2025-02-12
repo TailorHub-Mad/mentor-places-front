@@ -59,7 +59,6 @@ query getCourse($id: ID!, $languageName: String!) {
           day
         }
         ...CoursesInstitution
-        ...CoursesDiscipline
         ...CoursesProfiles
         ...CourseCampuses
       }
