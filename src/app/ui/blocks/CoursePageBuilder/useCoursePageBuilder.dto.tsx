@@ -1,38 +1,19 @@
 import { EAssetCardVariant } from '@components/AssetCard/AssetCard'
 import type { GetCourseQuery } from '../../../../graphql/generated/client'
-import type { TAssetDetailOptions } from '@interfaces/assetDetail.type'
 import { getBlocks } from '../InstitutionPageBuilder/utils'
 import type { IHeroCourseProps } from '../HeroCourse/HeroCourse'
 import type { IAboutProps } from '../About/About'
 import type { ICourseDetailBlockProps } from '../CourseDetail/CourseDetailBlock'
 import type { IReasonsWhyProps } from '../ReasonsWhy/ReasonsWhy'
 import type { ICourseSyllabusBlockProps } from '../CourseSyllabus/CourseSyllabusBlock'
-import type { ICourseSyllabus } from '@components/CourseSyllabus/CourseSyllabus'
 import type { IFormatSchedulesBlockProps } from '../ColumnFormatSchedules/ColumnFormatSchedulesBlock'
 import type { IAssetFeaturesCardProps } from '@components/AssetFeaturesCard/AssetFeaturesCard'
 import type { IAdmissionsProps } from '../Admissions/Admissions'
-import { createDateString } from './utils'
+import { buildCards, buildCourseSyllabus, buildFeaturedDetails, buildPrices, createDateString } from './utils'
 import { useTranslations } from 'next-intl'
 import type { IColumnContentProps } from '../ColumnContent/ColumnContent'
 import type { IScholarshipsAndGrantsProps } from '../ScholarshipsAndGrants/ScholarshipsAndGrants'
 import type { IPriceSectionProps } from '../PriceSection/PriceSection'
-import type { InfoCardPriceProps } from '@components/PriceCard/PriceCard'
-
-interface IAcademicYear {
-  year: string
-  headings: { name_heading: string; duration_heading: string; type_heading: string; period_heading: string }
-  subjects: [{ name: string; duration: string; type: string; period: string | null }]
-}
-
-interface IPrice {
-  date: string
-  course: string
-  tuition_fee_o: string
-  tuition_fee_d: string
-  currency: string
-  code: string
-  discounts: boolean
-}
 
 interface ICousePageBuilderDto {
   heroData: IHeroCourseProps | null
@@ -46,52 +27,6 @@ interface ICousePageBuilderDto {
   scholarshipsData: IScholarshipsAndGrantsProps | null
   priceData: IPriceSectionProps
 }
-
-interface ILearningFormat {
-  __typename: string
-  learning_format_id: { __typename: string; format_name: string }
-}
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const buildFeaturedDetails = (courseData: any): TAssetDetailOptions => ({
-  duration: `${courseData.duration} ${courseData.duration_class}`,
-  format: courseData.learning_format?.map((elm: ILearningFormat) => elm?.learning_format_id?.format_name).join(' / ') || undefined,
-  language: courseData.course_language?.[0]?.languages_format_id?.name || undefined,
-  campus: courseData.campuses_courses?.[0]?.campuses_id?.campuses_trans?.[0]?.name || undefined,
-  startDate: courseData.start_date
-})
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const buildCards = (standsFor: any) =>
-  standsFor.items.map((elm: { header: string; body: string }, idx: number) => ({
-    infoHeaderTitle: idx + 1,
-    title: elm.header,
-    description: elm.body
-  }))
-
-const buildCourseSyllabus = (academicYears: IAcademicYear[]) => {
-  const terms: ICourseSyllabus[] = academicYears.map((elm) => ({
-    subjects: elm.subjects.map((subject) => ({
-      title: subject.name,
-      type: subject.type,
-      ects: subject.duration,
-      period: subject.period || '-'
-    }))
-  }))
-
-  const tabs = academicYears.map((elm) => elm.year)
-
-  return { tabs, terms }
-}
-
-const buildPrices = (tuitionPrice: IPrice[], officialTitle: string, discountTitle: string) =>
-  tuitionPrice.reduce((acc: InfoCardPriceProps[], price) => {
-    acc.push({ infoHeaderTitle: price.tuition_fee_o, title: officialTitle, type: 'official' })
-    if (price.discounts) {
-      acc.push({ infoHeaderTitle: price.tuition_fee_d, title: discountTitle, type: 'discount' })
-    }
-    return acc
-  }, [])
 
 export const useCoursePageBuilderDto = (data: GetCourseQuery): ICousePageBuilderDto | null => {
   const t = useTranslations()
