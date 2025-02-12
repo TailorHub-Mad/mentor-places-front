@@ -12,10 +12,13 @@ interface IUniversityInfoProps {
 
 const UniversityInfo: FC<IUniversityInfoProps> = ({ institutions }) => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false)
-  if (!institutions || !institutions[0] || !institutions[0].institution_id) return null
-  const { institutions_trans } = institutions[0].institution_id
-  if (!institutions_trans || !institutions_trans[0]) return null
-  const { commercial_name, intro, description, header_details } = institutions_trans[0]
+
+  const institution = institutions?.[0]?.institution_id
+  const institutionTrans = institution?.institutions_trans?.[0]
+
+  if (!institutionTrans) return null
+
+  const { commercial_name, intro, description, header_details } = institutionTrans
   if (!commercial_name || !intro || !header_details) return null
 
   return (

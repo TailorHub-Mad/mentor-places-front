@@ -7,7 +7,7 @@ import useAction from '@hooks/useAction'
 import { useTranslations } from 'next-intl'
 import type { FC } from 'react'
 
-interface IPriceSectionProps {
+export interface IPriceSectionProps {
   title: string
   description?: string | null
   prices: InfoCardPriceProps[]

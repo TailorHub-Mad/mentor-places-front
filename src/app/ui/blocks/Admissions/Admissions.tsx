@@ -10,7 +10,7 @@ interface IDate {
   text: string
 }
 
-interface IAdmissionsProps {
+export interface IAdmissionsProps {
   title: string
   description?: string | null
   start: IDate

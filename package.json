@@ -10,7 +10,7 @@
                       "postinstall": "husky install",
                       "storybook": "storybook dev -p 6006",
                       "build-storybook": "storybook build",
-                      "codegen": "dotenv graphql-codegen --config codegen.ts"
+                      "codegen": "dotenv -e .env yarn graphql-codegen --config codegen.ts"
             },
             "dependencies": {
                       "@apollo/client": "^3.12.3",
@@ -23,6 +23,7 @@
                       "autoprefixer": "^10.4.20",
                       "clsx": "^2.1.1",
                       "cx": "^24.9.3",
+                      "dotenv-cli": "^8.0.0",
                       "firebase": "^10.14.0",
                       "framer-motion": "^11.11.0",
                       "graphql": "^16.10.0",

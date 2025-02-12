@@ -8,7 +8,7 @@ import type { FC } from 'react'
 import type { IBlock } from '../HeroInstitution/components/TagList'
 import TagList from '../HeroInstitution/components/TagList'
 
-interface IHeroCourseProps {
+export interface IHeroCourseProps {
   image: string
   card: IAssetCardProps
   featuredDetails: TAssetDetailOptions
