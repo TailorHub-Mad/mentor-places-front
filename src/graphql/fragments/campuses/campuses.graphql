@@ -6,7 +6,7 @@ fragment CampusesInfo on campuses {
   images
   phone
   type
-  campuses_trans {
+  campuses_trans(filter: { language_id: { name: { _eq: $languageName } } }) {
     intro
     description
     name

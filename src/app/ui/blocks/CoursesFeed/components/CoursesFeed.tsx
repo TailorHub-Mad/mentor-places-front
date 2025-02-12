@@ -1,3 +1,5 @@
+'use client'
+
 import type { FC } from 'react'
 import { Fragment } from 'react'
 import AssetCardIndex, { type IAssetCardIndexProps } from '@components/AssetCardIndex/AssetCardIndex'

@@ -1,0 +1,10 @@
+fragment CoursesDiscipline on courses {
+  disciplines {
+    disciplines_id {
+      ...DisciplineInfo
+      discipline_trans(filter: { language: { name: { _eq: $languageName } } }) {
+        ...DisciplineTransInfo
+      }
+    }
+  }
+}

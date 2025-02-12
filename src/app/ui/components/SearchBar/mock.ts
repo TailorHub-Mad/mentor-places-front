@@ -1,0 +1,113 @@
+import type { ESearchType, ISearchBarProps, ISearchQuery } from '@components/SearchBar/SearchBar'
+import type { ISelectOption } from '@components/Form/Inputs/Select/InputSelect'
+
+export const EUROPEAN_CITY_MOCK_DATA: ISelectOption[] = [
+  { value: 'london', label: 'London' },
+  { value: 'paris', label: 'Paris' },
+  { value: 'berlin', label: 'Berlin' },
+  { value: 'madrid', label: 'Madrid' },
+  { value: 'rome', label: 'Rome' },
+  { value: 'vienna', label: 'Vienna' },
+  { value: 'budapest', label: 'Budapest' },
+  { value: 'barcelona', label: 'Barcelona' },
+  { value: 'prague', label: 'Prague' },
+  { value: 'amsterdam', label: 'Amsterdam' },
+  { value: 'munich', label: 'Munich' },
+  { value: 'warsaw', label: 'Warsaw' },
+  { value: 'stockholm', label: 'Stockholm' },
+  { value: 'lisbon', label: 'Lisbon' },
+  { value: 'copenhagen', label: 'Copenhagen' },
+  { value: 'brussels', label: 'Brussels' },
+  { value: 'edinburgh', label: 'Edinburgh' },
+  { value: 'helsinki', label: 'Helsinki' },
+  { value: 'dublin', label: 'Dublin' },
+  { value: 'zurich', label: 'Zurich' },
+  { value: 'athens', label: 'Athens' },
+  { value: 'oslo', label: 'Oslo' },
+  { value: 'belgrade', label: 'Belgrade' },
+  { value: 'krakow', label: 'Krakow' },
+  { value: 'venice', label: 'Venice' },
+  { value: 'porto', label: 'Porto' },
+  { value: 'milan', label: 'Milan' },
+  { value: 'seville', label: 'Seville' },
+  { value: 'florence', label: 'Florence' },
+  { value: 'valencia', label: 'Valencia' },
+  { value: 'hamburg', label: 'Hamburg' },
+  { value: 'ljubljana', label: 'Ljubljana' },
+  { value: 'tallinn', label: 'Tallinn' },
+  { value: 'riga', label: 'Riga' },
+  { value: 'vilnius', label: 'Vilnius' },
+  { value: 'dubrovnik', label: 'Dubrovnik' },
+  { value: 'sofia', label: 'Sofia' },
+  { value: 'zagreb', label: 'Zagreb' },
+  { value: 'sarajevo', label: 'Sarajevo' },
+  { value: 'bucharest', label: 'Bucharest' },
+  { value: 'bratislava', label: 'Bratislava' },
+  { value: 'luxembourg', label: 'Luxembourg' },
+  { value: 'skopje', label: 'Skopje' },
+  { value: 'reykjavik', label: 'Reykjavik' },
+  { value: 'podgorica', label: 'Podgorica' },
+  { value: 'tirana', label: 'Tirana' },
+  { value: 'valletta', label: 'Valletta' },
+  { value: 'andorra-la-vella', label: 'Andorra la Vella' },
+  { value: 'monaco', label: 'Monaco' },
+  { value: 'san-marino', label: 'San Marino' }
+]
+export const DISCIPLINES_MOCK_DATA: ISelectOption[] = [
+  { value: 'computer-science', label: 'Computer Science' },
+  { value: 'mathematics', label: 'Mathematics' },
+  { value: 'physics', label: 'Physics' },
+  { value: 'chemistry', label: 'Chemistry' },
+  { value: 'biology', label: 'Biology' },
+  { value: 'engineering', label: 'Engineering' },
+  { value: 'medicine', label: 'Medicine' },
+  { value: 'law', label: 'Law' },
+  { value: 'business-administration', label: 'Business Administration' },
+  { value: 'economics', label: 'Economics' },
+  { value: 'psychology', label: 'Psychology' },
+  { value: 'sociology', label: 'Sociology' },
+  { value: 'philosophy', label: 'Philosophy' },
+  { value: 'linguistics', label: 'Linguistics' },
+  { value: 'literature', label: 'Literature' },
+  { value: 'history', label: 'History' },
+  { value: 'architecture', label: 'Architecture' },
+  { value: 'political-science', label: 'Political Science' },
+  { value: 'geography', label: 'Geography' },
+  { value: 'environmental-science', label: 'Environmental Science' },
+  { value: 'art', label: 'Art' },
+  { value: 'music', label: 'Music' },
+  { value: 'education', label: 'Education' },
+  { value: 'communication', label: 'Communication' },
+  { value: 'sports-science', label: 'Sports Science' },
+  { value: 'data-science', label: 'Data Science' },
+  { value: 'robotics', label: 'Robotics' },
+  { value: 'astronomy', label: 'Astronomy' },
+  { value: 'anthropology', label: 'Anthropology' },
+  { value: 'theology', label: 'Theology' },
+  { value: 'creative-writing', label: 'Creative Writing' },
+  { value: 'veterinary-medicine', label: 'Veterinary Medicine' },
+  { value: 'nursing', label: 'Nursing' },
+  { value: 'industrial-design', label: 'Industrial Design' },
+  { value: 'international-relations', label: 'International Relations' },
+  { value: 'urban-planning', label: 'Urban Planning' },
+  { value: 'graphic-design', label: 'Graphic Design' },
+  { value: 'performing-arts', label: 'Performing Arts' },
+  { value: 'public-health', label: 'Public Health' }
+]
+
+export const SEARCH_BAR_MOCK: ISearchBarProps = {
+  onChange: function (query: ISearchQuery): void {
+    console.log('onChange', { query })
+  },
+  valuesSelected: {
+    location: '',
+    discipline: ''
+  },
+  options: {
+    location: EUROPEAN_CITY_MOCK_DATA,
+    discipline: DISCIPLINES_MOCK_DATA
+  },
+  onSearch: function (value: string, type: ESearchType): void {
+    console.log('onSearch: ', { value, type })
+  }
+}

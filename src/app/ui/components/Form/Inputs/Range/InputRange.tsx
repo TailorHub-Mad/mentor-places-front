@@ -3,8 +3,6 @@ import MultiRangeSlider from '@components/Form/Inputs/Range/components/MultiRang
 
 import { type IFilterSelection } from '@interfaces/filterSidebar.interfaces'
 
-export type TFilterTypeProps = 'price' | 'rating' | 'distance' // Example types
-
 export interface IInputRangeProps {
   id: string
   label?: string
@@ -12,8 +10,7 @@ export interface IInputRangeProps {
   max?: number
   isOnModal?: boolean
   onChange: (value: IFilterSelection) => void
-  selectedFilterValues: IFilterSelection[]
-  filterType: TFilterTypeProps
+  selectedFilterValues?: IFilterSelection[]
 }
 
 const DEFAULT_MIN = 100
@@ -28,7 +25,7 @@ const InputRange: FC<IInputRangeProps> = ({
   max = DEFAULT_MAX,
   min = DEFAULT_MIN
 }) => {
-  const rangeSelect = (selectedFilterValues.find((f) => f.id === id)?.value as string[]) ?? [min, max]
+  const rangeSelect = (selectedFilterValues?.find((f) => f.id === id)?.value as string[]) ?? [min, max]
   const rangeSelectToNumber =
     rangeSelect.length > 1 ? rangeSelect?.map((value) => Number(value)).filter((value) => !isNaN(value)) : [min, max]
 

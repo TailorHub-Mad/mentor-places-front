@@ -53,13 +53,22 @@
     "showLess": "Show less",
     "BackToTop": "Back to top",
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "search": "Search"
+  },
+  "search": {
+    "disciplinePlaceholder": "What do you want to study?",
+    "locationPlaceholder": "Study anywhere"
   },
   "filters": {
+    "name": "Filters",
     "year": "Year",
     "month": "Month",
     "delete": "Delete",
-    "selectedFilters": "Selected filters"
+    "selectedFilters": "Selected filters",
+    "recommended": "Recommended",
+    "date": "Date",
+    "title": "Title"
   },
   "forms": {
     "signup": {
@@ -105,5 +114,9 @@
   },
   "common": {
     "thanks": "Thanks!"
+  },
+  "bannerCourseFeed": {
+    "text": "Find out which Master’s programmes match your personality!",
+    "cta": "Make your test for free!"
   }
 }

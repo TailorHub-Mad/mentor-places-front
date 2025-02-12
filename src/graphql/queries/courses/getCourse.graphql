@@ -1,0 +1,68 @@
+query getCourse($id: ID!, $languageName: String!) {
+  courses_by_id(id: $id) {
+    course_trans(filter: { language_id: { name: { _eq: $languageName } } }) {
+      id
+      ...CourseTransHead
+      ...CoursesTransInfo
+      ...CourseTransTitle
+      standsfor
+      course_structure
+      schedules
+      requirements
+      career_opportunities
+      tuition_price_comments
+      course_id {
+        id
+        type
+        is_official
+        duration
+        bilinguals: bilinguals_id {
+          name
+        }
+        is_dual
+        ects
+        degree_type
+        degree_id
+        url
+        is_on_demand
+        application_date
+        videos
+        images
+        tuition_price
+        official_data_source
+        learning_format: learning_format_id {
+          learning_format_id {
+            format_name
+          }
+        }
+        learning_pace: learning_pace_id {
+          learning_pace_id {
+            pace_name
+          }
+        }
+        careers_list
+        duration_class
+        meta_tags
+        average_price
+        ...CoursesLanguages
+        start_date_func {
+          year
+          month
+          day
+        }
+        start_date
+        places_available
+        end_date
+        end_date_func {
+          year
+          month
+          day
+        }
+        ...CoursesInstitution
+        ...CoursesDiscipline
+        ...CoursesProfiles
+        ...CourseCampuses
+      }
+    }
+  }
+}

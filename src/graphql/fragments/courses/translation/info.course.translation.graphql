@@ -1,0 +1,4 @@
+fragment CoursesTransInfo on courses_trans {
+  info_blocks
+  methodology
+}
