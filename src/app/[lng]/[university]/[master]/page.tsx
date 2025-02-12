@@ -21,7 +21,11 @@ const Page: FC<IPageProps> = async ({ params: { lng, master } }) => {
     }
   })
 
-  return <CoursePageBuilder data={data} />
+  return (
+    <div className="flex justify-center">
+      <CoursePageBuilder data={data} />
+    </div>
+  )
 }
 
 export default Page

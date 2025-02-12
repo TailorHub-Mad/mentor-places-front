@@ -60,73 +60,74 @@ const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
   } = dto
 
   return (
-    <div className="flex flex-col gap-24 page py-16">
+    <div className="max-w-[1440px]">
       {heroData && <HeroCourse {...heroData} />}
+      <div className="flex flex-col gap-24 page py-16">
+        {header_title && aboutBlockData && (
+          <div id={titleToBlockId(header_title)}>
+            <About {...aboutBlockData} />
+          </div>
+        )}
 
-      {header_title && aboutBlockData && (
-        <div id={titleToBlockId(header_title)}>
-          <About {...aboutBlockData} />
+        {commercial_name && courseDetailData && (
+          <div id={titleToBlockId(commercial_name)}>
+            <CourseDetailBlock {...courseDetailData} />
+          </div>
+        )}
+
+        {reason_header && reasonsWhyData && (
+          <div id={titleToBlockId(reason_header)}>
+            <ReasonsWhy {...reasonsWhyData} />
+          </div>
+        )}
+
+        <div id={titleToBlockId(t('syllabus'))}>
+          <CourseSyllabusBlock {...courseSyllabusData} />
         </div>
-      )}
 
-      {commercial_name && courseDetailData && (
-        <div id={titleToBlockId(commercial_name)}>
-          <CourseDetailBlock {...courseDetailData} />
+        {format_schedules && formatSchedulesData && (
+          <div id={titleToBlockId(format_schedules)}>
+            <ColumnFormatSchedulesBlock {...formatSchedulesData} />
+          </div>
+        )}
+
+        {admissions && admissionsData && (
+          <div id={titleToBlockId(admissions)}>
+            <Admissions {...admissionsData} />
+          </div>
+        )}
+
+        {profiles && profiles[0] && profiles[0].content_title && (
+          <div id={titleToBlockId(profiles[0].content_title)}>
+            <StudentProfile profile={profiles[0]} />
+          </div>
+        )}
+
+        {title_career_opportunities && careerOpportunitiesData && (
+          <div id={titleToBlockId(title_career_opportunities)}>
+            <ColumnContent {...careerOpportunitiesData} />
+          </div>
+        )}
+
+        <div id={titleToBlockId(t('prices'))}>
+          <PriceSection {...priceData} />
         </div>
-      )}
 
-      {reason_header && reasonsWhyData && (
-        <div id={titleToBlockId(reason_header)}>
-          <ReasonsWhy {...reasonsWhyData} />
-        </div>
-      )}
+        {header_scholarships && scholarshipsData && (
+          <div id={titleToBlockId(header_scholarships)}>
+            <ScholarshipsAndGrants {...scholarshipsData} />
+          </div>
+        )}
 
-      <div id={titleToBlockId(t('syllabus'))}>
-        <CourseSyllabusBlock {...courseSyllabusData} />
+        <ContactBanner
+          topText={t('contactBanner.topText')}
+          title={t('contactBanner.title')}
+          button={t('contactBanner.button')}
+          backgroundColor={EColor.YELLOW}
+        />
+
+        {institutions && institutions[0] && <UniversityInfo institutions={institutions} />}
       </div>
-
-      {format_schedules && formatSchedulesData && (
-        <div id={titleToBlockId(format_schedules)}>
-          <ColumnFormatSchedulesBlock {...formatSchedulesData} />
-        </div>
-      )}
-
-      {admissions && admissionsData && (
-        <div id={titleToBlockId(admissions)}>
-          <Admissions {...admissionsData} />
-        </div>
-      )}
-
-      {profiles && profiles[0] && profiles[0].content_title && (
-        <div id={titleToBlockId(profiles[0].content_title)}>
-          <StudentProfile profile={profiles[0]} />
-        </div>
-      )}
-
-      {title_career_opportunities && careerOpportunitiesData && (
-        <div id={titleToBlockId(title_career_opportunities)}>
-          <ColumnContent {...careerOpportunitiesData} />
-        </div>
-      )}
-
-      <div id={titleToBlockId(t('prices'))}>
-        <PriceSection {...priceData} />
-      </div>
-
-      {header_scholarships && scholarshipsData && (
-        <div id={titleToBlockId(header_scholarships)}>
-          <ScholarshipsAndGrants {...scholarshipsData} />
-        </div>
-      )}
-
-      <ContactBanner
-        topText={t('contactBanner.topText')}
-        title={t('contactBanner.title')}
-        button={t('contactBanner.button')}
-        backgroundColor={EColor.YELLOW}
-      />
-
-      {institutions && institutions[0] && <UniversityInfo institutions={institutions} />}
     </div>
   )
 }
