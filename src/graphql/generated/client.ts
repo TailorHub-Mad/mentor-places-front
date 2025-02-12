@@ -5723,8 +5723,6 @@ export type Courses = {
   course_trans_func?: Maybe<Count_Functions>
   degree_id?: Maybe<Scalars['Int']['output']>
   degree_type?: Maybe<Scalars['String']['output']>
-  disciplines?: Maybe<Array<Maybe<Main_Taxonomy_Courses>>>
-  disciplines_func?: Maybe<Count_Functions>
   duration?: Maybe<Scalars['String']['output']>
   duration_class?: Maybe<Scalars['String']['output']>
   ects?: Maybe<Scalars['Int']['output']>
@@ -5742,6 +5740,8 @@ export type Courses = {
   learning_format_id_func?: Maybe<Count_Functions>
   learning_pace_id?: Maybe<Array<Maybe<Courses_Learning_Pace>>>
   learning_pace_id_func?: Maybe<Count_Functions>
+  main_taxonomy?: Maybe<Array<Maybe<Main_Taxonomy_Courses>>>
+  main_taxonomy_func?: Maybe<Count_Functions>
   meta_tags?: Maybe<Scalars['JSON']['output']>
   meta_tags_func?: Maybe<Count_Functions>
   official_data_source?: Maybe<Scalars['String']['output']>
@@ -5793,15 +5793,6 @@ export type CoursesCourse_TransArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
-export type CoursesDisciplinesArgs = {
-  filter?: InputMaybe<Main_Taxonomy_Courses_Filter>
-  limit?: InputMaybe<Scalars['Int']['input']>
-  offset?: InputMaybe<Scalars['Int']['input']>
-  page?: InputMaybe<Scalars['Int']['input']>
-  search?: InputMaybe<Scalars['String']['input']>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
 export type CoursesInstitutionsArgs = {
   filter?: InputMaybe<Joininstitutioncourse_Filter>
   limit?: InputMaybe<Scalars['Int']['input']>
@@ -5822,6 +5813,15 @@ export type CoursesLearning_Format_IdArgs = {
 
 export type CoursesLearning_Pace_IdArgs = {
   filter?: InputMaybe<Courses_Learning_Pace_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type CoursesMain_TaxonomyArgs = {
+  filter?: InputMaybe<Main_Taxonomy_Courses_Filter>
   limit?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
   page?: InputMaybe<Scalars['Int']['input']>
@@ -5863,7 +5863,6 @@ export type Courses_Aggregated_Count = {
   course_trans?: Maybe<Scalars['Int']['output']>
   degree_id?: Maybe<Scalars['Int']['output']>
   degree_type?: Maybe<Scalars['Int']['output']>
-  disciplines?: Maybe<Scalars['Int']['output']>
   duration?: Maybe<Scalars['Int']['output']>
   duration_class?: Maybe<Scalars['Int']['output']>
   ects?: Maybe<Scalars['Int']['output']>
@@ -5877,6 +5876,7 @@ export type Courses_Aggregated_Count = {
   is_on_demand?: Maybe<Scalars['Int']['output']>
   learning_format_id?: Maybe<Scalars['Int']['output']>
   learning_pace_id?: Maybe<Scalars['Int']['output']>
+  main_taxonomy?: Maybe<Scalars['Int']['output']>
   meta_tags?: Maybe<Scalars['Int']['output']>
   official_data_source?: Maybe<Scalars['Int']['output']>
   places_available?: Maybe<Scalars['Int']['output']>
@@ -6049,8 +6049,6 @@ export type Courses_Filter = {
   course_trans_func?: InputMaybe<Count_Function_Filter_Operators>
   degree_id?: InputMaybe<Number_Filter_Operators>
   degree_type?: InputMaybe<String_Filter_Operators>
-  disciplines?: InputMaybe<Main_Taxonomy_Courses_Filter>
-  disciplines_func?: InputMaybe<Count_Function_Filter_Operators>
   duration?: InputMaybe<String_Filter_Operators>
   duration_class?: InputMaybe<String_Filter_Operators>
   ects?: InputMaybe<Number_Filter_Operators>
@@ -6068,6 +6066,8 @@ export type Courses_Filter = {
   learning_format_id_func?: InputMaybe<Count_Function_Filter_Operators>
   learning_pace_id?: InputMaybe<Courses_Learning_Pace_Filter>
   learning_pace_id_func?: InputMaybe<Count_Function_Filter_Operators>
+  main_taxonomy?: InputMaybe<Main_Taxonomy_Courses_Filter>
+  main_taxonomy_func?: InputMaybe<Count_Function_Filter_Operators>
   meta_tags?: InputMaybe<String_Filter_Operators>
   meta_tags_func?: InputMaybe<Count_Function_Filter_Operators>
   official_data_source?: InputMaybe<String_Filter_Operators>
@@ -6521,7 +6521,6 @@ export type Create_Courses_Input = {
   course_trans?: InputMaybe<Array<InputMaybe<Create_Courses_Trans_Input>>>
   degree_id?: InputMaybe<Scalars['Int']['input']>
   degree_type?: InputMaybe<Scalars['String']['input']>
-  disciplines?: InputMaybe<Array<InputMaybe<Create_Main_Taxonomy_Courses_Input>>>
   duration?: InputMaybe<Scalars['String']['input']>
   duration_class?: InputMaybe<Scalars['String']['input']>
   ects?: InputMaybe<Scalars['Int']['input']>
@@ -6535,6 +6534,7 @@ export type Create_Courses_Input = {
   is_on_demand?: InputMaybe<Scalars['Boolean']['input']>
   learning_format_id?: InputMaybe<Array<InputMaybe<Create_Courses_Learning_Format_Input>>>
   learning_pace_id?: InputMaybe<Array<InputMaybe<Create_Courses_Learning_Pace_Input>>>
+  main_taxonomy?: InputMaybe<Array<InputMaybe<Create_Main_Taxonomy_Courses_Input>>>
   meta_tags?: InputMaybe<Scalars['JSON']['input']>
   official_data_source?: InputMaybe<Scalars['String']['input']>
   places_available?: InputMaybe<Scalars['Int']['input']>
@@ -9336,10 +9336,7 @@ export type Main_Taxonomy_Aggregated_Count = {
 
 export type Main_Taxonomy_Aggregated_Fields = {
   __typename?: 'main_taxonomy_aggregated_fields'
-  discipline?: Maybe<Scalars['Float']['output']>
   id?: Maybe<Scalars['Float']['output']>
-  specialization_level1?: Maybe<Scalars['Float']['output']>
-  specialization_level2?: Maybe<Scalars['Float']['output']>
 }
 
 export type Main_Taxonomy_Courses = {
@@ -10609,16 +10606,10 @@ export type TaxonomyTaxonomy_TransArgs = {
 
 export type Taxonomy_Aggregated = {
   __typename?: 'taxonomy_aggregated'
-  avg?: Maybe<Taxonomy_Aggregated_Fields>
-  avgDistinct?: Maybe<Taxonomy_Aggregated_Fields>
   count?: Maybe<Taxonomy_Aggregated_Count>
   countAll?: Maybe<Scalars['Int']['output']>
   countDistinct?: Maybe<Taxonomy_Aggregated_Count>
   group?: Maybe<Scalars['JSON']['output']>
-  max?: Maybe<Taxonomy_Aggregated_Fields>
-  min?: Maybe<Taxonomy_Aggregated_Fields>
-  sum?: Maybe<Taxonomy_Aggregated_Fields>
-  sumDistinct?: Maybe<Taxonomy_Aggregated_Fields>
 }
 
 export type Taxonomy_Aggregated_Count = {
@@ -10627,15 +10618,10 @@ export type Taxonomy_Aggregated_Count = {
   taxonomy_trans?: Maybe<Scalars['Int']['output']>
 }
 
-export type Taxonomy_Aggregated_Fields = {
-  __typename?: 'taxonomy_aggregated_fields'
-  id?: Maybe<Scalars['Float']['output']>
-}
-
 export type Taxonomy_Filter = {
   _and?: InputMaybe<Array<InputMaybe<Taxonomy_Filter>>>
   _or?: InputMaybe<Array<InputMaybe<Taxonomy_Filter>>>
-  id?: InputMaybe<Number_Filter_Operators>
+  id?: InputMaybe<String_Filter_Operators>
   taxonomy_trans?: InputMaybe<Taxonomy_Trans_Filter>
   taxonomy_trans_func?: InputMaybe<Count_Function_Filter_Operators>
 }
@@ -10658,16 +10644,10 @@ export type Taxonomy_Level1Taxonomy_Level1_TransArgs = {
 
 export type Taxonomy_Level1_Aggregated = {
   __typename?: 'taxonomy_level1_aggregated'
-  avg?: Maybe<Taxonomy_Level1_Aggregated_Fields>
-  avgDistinct?: Maybe<Taxonomy_Level1_Aggregated_Fields>
   count?: Maybe<Taxonomy_Level1_Aggregated_Count>
   countAll?: Maybe<Scalars['Int']['output']>
   countDistinct?: Maybe<Taxonomy_Level1_Aggregated_Count>
   group?: Maybe<Scalars['JSON']['output']>
-  max?: Maybe<Taxonomy_Level1_Aggregated_Fields>
-  min?: Maybe<Taxonomy_Level1_Aggregated_Fields>
-  sum?: Maybe<Taxonomy_Level1_Aggregated_Fields>
-  sumDistinct?: Maybe<Taxonomy_Level1_Aggregated_Fields>
 }
 
 export type Taxonomy_Level1_Aggregated_Count = {
@@ -10676,15 +10656,10 @@ export type Taxonomy_Level1_Aggregated_Count = {
   taxonomy_level1_trans?: Maybe<Scalars['Int']['output']>
 }
 
-export type Taxonomy_Level1_Aggregated_Fields = {
-  __typename?: 'taxonomy_level1_aggregated_fields'
-  id?: Maybe<Scalars['Float']['output']>
-}
-
 export type Taxonomy_Level1_Filter = {
   _and?: InputMaybe<Array<InputMaybe<Taxonomy_Level1_Filter>>>
   _or?: InputMaybe<Array<InputMaybe<Taxonomy_Level1_Filter>>>
-  id?: InputMaybe<Number_Filter_Operators>
+  id?: InputMaybe<String_Filter_Operators>
   taxonomy_level1_trans?: InputMaybe<Taxonomy_Level1_Trans_Filter>
   taxonomy_level1_trans_func?: InputMaybe<Count_Function_Filter_Operators>
 }
@@ -10746,15 +10721,13 @@ export type Taxonomy_Level1_Trans_Aggregated_Count = {
 
 export type Taxonomy_Level1_Trans_Aggregated_Fields = {
   __typename?: 'taxonomy_level1_trans_aggregated_fields'
-  id?: Maybe<Scalars['Float']['output']>
   language?: Maybe<Scalars['Float']['output']>
-  taxonomy_level1_id?: Maybe<Scalars['Float']['output']>
 }
 
 export type Taxonomy_Level1_Trans_Filter = {
   _and?: InputMaybe<Array<InputMaybe<Taxonomy_Level1_Trans_Filter>>>
   _or?: InputMaybe<Array<InputMaybe<Taxonomy_Level1_Trans_Filter>>>
-  id?: InputMaybe<Number_Filter_Operators>
+  id?: InputMaybe<String_Filter_Operators>
   language?: InputMaybe<Languages_Filter>
   name?: InputMaybe<String_Filter_Operators>
   taxonomy_level1_id?: InputMaybe<Taxonomy_Level1_Filter>
@@ -10785,16 +10758,10 @@ export type Taxonomy_Level2Taxonomy_Level2_TransArgs = {
 
 export type Taxonomy_Level2_Aggregated = {
   __typename?: 'taxonomy_level2_aggregated'
-  avg?: Maybe<Taxonomy_Level2_Aggregated_Fields>
-  avgDistinct?: Maybe<Taxonomy_Level2_Aggregated_Fields>
   count?: Maybe<Taxonomy_Level2_Aggregated_Count>
   countAll?: Maybe<Scalars['Int']['output']>
   countDistinct?: Maybe<Taxonomy_Level2_Aggregated_Count>
   group?: Maybe<Scalars['JSON']['output']>
-  max?: Maybe<Taxonomy_Level2_Aggregated_Fields>
-  min?: Maybe<Taxonomy_Level2_Aggregated_Fields>
-  sum?: Maybe<Taxonomy_Level2_Aggregated_Fields>
-  sumDistinct?: Maybe<Taxonomy_Level2_Aggregated_Fields>
 }
 
 export type Taxonomy_Level2_Aggregated_Count = {
@@ -10803,15 +10770,10 @@ export type Taxonomy_Level2_Aggregated_Count = {
   taxonomy_level2_trans?: Maybe<Scalars['Int']['output']>
 }
 
-export type Taxonomy_Level2_Aggregated_Fields = {
-  __typename?: 'taxonomy_level2_aggregated_fields'
-  id?: Maybe<Scalars['Float']['output']>
-}
-
 export type Taxonomy_Level2_Filter = {
   _and?: InputMaybe<Array<InputMaybe<Taxonomy_Level2_Filter>>>
   _or?: InputMaybe<Array<InputMaybe<Taxonomy_Level2_Filter>>>
-  id?: InputMaybe<Number_Filter_Operators>
+  id?: InputMaybe<String_Filter_Operators>
   taxonomy_level2_trans?: InputMaybe<Taxonomy_Level2_Trans_Filter>
   taxonomy_level2_trans_func?: InputMaybe<Count_Function_Filter_Operators>
 }
@@ -10873,15 +10835,13 @@ export type Taxonomy_Level2_Trans_Aggregated_Count = {
 
 export type Taxonomy_Level2_Trans_Aggregated_Fields = {
   __typename?: 'taxonomy_level2_trans_aggregated_fields'
-  id?: Maybe<Scalars['Float']['output']>
   language?: Maybe<Scalars['Float']['output']>
-  taxonomy_level2_id?: Maybe<Scalars['Float']['output']>
 }
 
 export type Taxonomy_Level2_Trans_Filter = {
   _and?: InputMaybe<Array<InputMaybe<Taxonomy_Level2_Trans_Filter>>>
   _or?: InputMaybe<Array<InputMaybe<Taxonomy_Level2_Trans_Filter>>>
-  id?: InputMaybe<Number_Filter_Operators>
+  id?: InputMaybe<String_Filter_Operators>
   language?: InputMaybe<Languages_Filter>
   name?: InputMaybe<String_Filter_Operators>
   taxonomy_level2_id?: InputMaybe<Taxonomy_Level2_Filter>
@@ -10951,15 +10911,13 @@ export type Taxonomy_Trans_Aggregated_Count = {
 
 export type Taxonomy_Trans_Aggregated_Fields = {
   __typename?: 'taxonomy_trans_aggregated_fields'
-  id?: Maybe<Scalars['Float']['output']>
   language?: Maybe<Scalars['Float']['output']>
-  taxonomy_id?: Maybe<Scalars['Float']['output']>
 }
 
 export type Taxonomy_Trans_Filter = {
   _and?: InputMaybe<Array<InputMaybe<Taxonomy_Trans_Filter>>>
   _or?: InputMaybe<Array<InputMaybe<Taxonomy_Trans_Filter>>>
-  id?: InputMaybe<Number_Filter_Operators>
+  id?: InputMaybe<String_Filter_Operators>
   language?: InputMaybe<Languages_Filter>
   name?: InputMaybe<String_Filter_Operators>
   taxonomy_id?: InputMaybe<Taxonomy_Filter>
@@ -11055,7 +11013,6 @@ export type Update_Courses_Input = {
   course_trans?: InputMaybe<Array<InputMaybe<Update_Courses_Trans_Input>>>
   degree_id?: InputMaybe<Scalars['Int']['input']>
   degree_type?: InputMaybe<Scalars['String']['input']>
-  disciplines?: InputMaybe<Array<InputMaybe<Update_Main_Taxonomy_Courses_Input>>>
   duration?: InputMaybe<Scalars['String']['input']>
   duration_class?: InputMaybe<Scalars['String']['input']>
   ects?: InputMaybe<Scalars['Int']['input']>
@@ -11069,6 +11026,7 @@ export type Update_Courses_Input = {
   is_on_demand?: InputMaybe<Scalars['Boolean']['input']>
   learning_format_id?: InputMaybe<Array<InputMaybe<Update_Courses_Learning_Format_Input>>>
   learning_pace_id?: InputMaybe<Array<InputMaybe<Update_Courses_Learning_Pace_Input>>>
+  main_taxonomy?: InputMaybe<Array<InputMaybe<Update_Main_Taxonomy_Courses_Input>>>
   meta_tags?: InputMaybe<Scalars['JSON']['input']>
   official_data_source?: InputMaybe<Scalars['String']['input']>
   places_available?: InputMaybe<Scalars['Int']['input']>
@@ -11778,7 +11736,6 @@ export type Version_Courses = {
   course_trans?: Maybe<Scalars['JSON']['output']>
   degree_id?: Maybe<Scalars['Int']['output']>
   degree_type?: Maybe<Scalars['String']['output']>
-  disciplines?: Maybe<Scalars['JSON']['output']>
   duration?: Maybe<Scalars['String']['output']>
   duration_class?: Maybe<Scalars['String']['output']>
   ects?: Maybe<Scalars['Int']['output']>
@@ -11792,6 +11749,7 @@ export type Version_Courses = {
   is_on_demand?: Maybe<Scalars['Boolean']['output']>
   learning_format_id?: Maybe<Scalars['JSON']['output']>
   learning_pace_id?: Maybe<Scalars['JSON']['output']>
+  main_taxonomy?: Maybe<Scalars['JSON']['output']>
   meta_tags?: Maybe<Scalars['JSON']['output']>
   official_data_source?: Maybe<Scalars['String']['output']>
   places_available?: Maybe<Scalars['Int']['output']>
@@ -12685,6 +12643,41 @@ export type GetCourseQuery = {
   } | null
 }
 
+export type GroupDisciplinesQueryVariables = Exact<{
+  languageName: Scalars['String']['input']
+  filter?: InputMaybe<Main_Taxonomy_Filter>
+}>
+
+export type GroupDisciplinesQuery = {
+  __typename?: 'Query'
+  main_taxonomy: Array<{
+    __typename?: 'main_taxonomy'
+    id: string
+    discipline_visualization?: boolean | null
+    specialization_level1_visualization?: boolean | null
+    specialization_level2_visualization?: boolean | null
+    discipline?: {
+      __typename?: 'taxonomy'
+      id: string
+      taxonomy_trans?: Array<{ __typename?: 'taxonomy_trans'; id: string; name?: string | null } | null> | null
+    } | null
+    specialization_level1?: {
+      __typename?: 'taxonomy_level1'
+      id: string
+      taxonomy_level1_trans?: Array<{ __typename?: 'taxonomy_level1_trans'; id: string; name?: string | null } | null> | null
+    } | null
+    specialization_level2?: {
+      __typename?: 'taxonomy_level2'
+      id: string
+      taxonomy_level2_trans?: Array<{ __typename?: 'taxonomy_level2_trans'; name?: string | null } | null> | null
+    } | null
+    courses?: Array<{
+      __typename?: 'main_taxonomy_courses'
+      courses_id?: { __typename?: 'courses'; id: string; id_mp?: string | null } | null
+    } | null> | null
+  }>
+}
+
 export type GetInstitutionsQueryVariables = Exact<{
   languageName: Scalars['String']['input']
   filter?: InputMaybe<Institutions_Filter>
@@ -13363,6 +13356,83 @@ export type GetCourseQueryHookResult = ReturnType<typeof useGetCourseQuery>
 export type GetCourseLazyQueryHookResult = ReturnType<typeof useGetCourseLazyQuery>
 export type GetCourseSuspenseQueryHookResult = ReturnType<typeof useGetCourseSuspenseQuery>
 export type GetCourseQueryResult = Apollo.QueryResult<GetCourseQuery, GetCourseQueryVariables>
+export const GroupDisciplinesDocument = gql`
+  query GroupDisciplines($languageName: String!, $filter: main_taxonomy_filter) {
+    main_taxonomy {
+      id
+      discipline {
+        taxonomy_trans(filter: { language: { name: { _eq: $languageName } } }) {
+          id
+          name
+        }
+        id
+      }
+      discipline_visualization
+      specialization_level1 {
+        taxonomy_level1_trans(filter: { language: { name: { _eq: $languageName } } }) {
+          id
+          name
+        }
+        id
+      }
+      specialization_level1_visualization
+      specialization_level2 {
+        taxonomy_level2_trans(filter: { language: { name: { _eq: $languageName } } }) {
+          name
+        }
+        id
+      }
+      specialization_level2_visualization
+      courses {
+        courses_id {
+          id
+          id_mp
+        }
+      }
+    }
+  }
+`
+
+/**
+ * __useGroupDisciplinesQuery__
+ *
+ * To run a query within a React component, call `useGroupDisciplinesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGroupDisciplinesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGroupDisciplinesQuery({
+ *   variables: {
+ *      languageName: // value for 'languageName'
+ *      filter: // value for 'filter'
+ *   },
+ * });
+ */
+export function useGroupDisciplinesQuery(
+  baseOptions: Apollo.QueryHookOptions<GroupDisciplinesQuery, GroupDisciplinesQueryVariables> &
+    ({ variables: GroupDisciplinesQueryVariables; skip?: boolean } | { skip: boolean })
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<GroupDisciplinesQuery, GroupDisciplinesQueryVariables>(GroupDisciplinesDocument, options)
+}
+export function useGroupDisciplinesLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GroupDisciplinesQuery, GroupDisciplinesQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GroupDisciplinesQuery, GroupDisciplinesQueryVariables>(GroupDisciplinesDocument, options)
+}
+export function useGroupDisciplinesSuspenseQuery(
+  baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GroupDisciplinesQuery, GroupDisciplinesQueryVariables>
+) {
+  const options = baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions }
+  return Apollo.useSuspenseQuery<GroupDisciplinesQuery, GroupDisciplinesQueryVariables>(GroupDisciplinesDocument, options)
+}
+export type GroupDisciplinesQueryHookResult = ReturnType<typeof useGroupDisciplinesQuery>
+export type GroupDisciplinesLazyQueryHookResult = ReturnType<typeof useGroupDisciplinesLazyQuery>
+export type GroupDisciplinesSuspenseQueryHookResult = ReturnType<typeof useGroupDisciplinesSuspenseQuery>
+export type GroupDisciplinesQueryResult = Apollo.QueryResult<GroupDisciplinesQuery, GroupDisciplinesQueryVariables>
 export const GetInstitutionsDocument = gql`
   query GetInstitutions($languageName: String!, $filter: institutions_filter, $page: Int, $limit: Int) {
     institutions(filter: $filter, page: $page, limit: $limit) {
