@@ -1,0 +1,34 @@
+query Disciplines($languageName: String!, $filter: main_taxonomy_filter) {
+  main_taxonomy {
+    id
+    discipline {
+      taxonomy_trans(filter: { language: { name: { _eq: $languageName } } }) {
+        id
+        name
+      }
+      id
+    }
+    discipline_visualization
+    specialization_level1 {
+      taxonomy_level1_trans(filter: { language: { name: { _eq: $languageName } } }) {
+        id
+        name
+      }
+      id
+    }
+    specialization_level1_visualization
+    specialization_level2 {
+      taxonomy_level2_trans(filter: { language: { name: { _eq: $languageName } } }) {
+        name
+      }
+      id
+    }
+    specialization_level2_visualization
+    courses {
+      courses_id {
+        id
+        id_mp
+      }
+    }
+  }
+}
