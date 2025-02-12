@@ -10,7 +10,7 @@
                       "postinstall": "husky install",
                       "storybook": "storybook dev -p 6006",
                       "build-storybook": "storybook build",
-                      "codegen": "dotenv graphql-codegen --config codegen.ts"
+                      "codegen": "dotenv -e .env yarn graphql-codegen --config codegen.ts"
             },
             "dependencies": {
                       "@apollo/client": "^3.12.3",
@@ -73,6 +73,7 @@
                       "@types/react-dom": "18.3.0",
                       "@vercel/style-guide": "^6.0.0",
                       "dotenv": "^16.4.5",
+                      "dotenv-cli": "^8.0.0",
                       "eslint": "^9.11.1",
                       "eslint-config-next": "^14.2.14",
                       "eslint-config-prettier": "9.1.0",

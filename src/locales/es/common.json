@@ -61,10 +61,14 @@
     "locationPlaceholder": "Estudiar en cualquier lugar"
   },
   "filters": {
+    "name": "Filtros",
     "year": "Año",
     "month": "Mes",
     "delete": "Borrar",
-    "selectedFilters": "Filtros seleccionados"
+    "selectedFilters": "Filtros seleccionados",
+    "recommended": "Recomendados",
+    "date": "Fecha",
+    "title": "Nombre"
   },
   "forms": {
     "signup": {
@@ -110,5 +114,9 @@
   },
   "common": {
     "thanks": "¡Gracias!"
+  },
+  "bannerCourseFeed": {
+    "text": "Descubre qué programa de master encaja con tu personalidad",
+    "cta": "Realizar test gratuito"
   }
 }

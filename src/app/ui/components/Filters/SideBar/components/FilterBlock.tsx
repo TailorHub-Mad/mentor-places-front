@@ -14,7 +14,7 @@ const FilterBlock: FC<IFilterBlockProps> = ({ title, filters, openItems, onToggl
     return filters.map((filter, childIndex) => {
       const currentIndex = `${parentIndex}-${childIndex}`
       const isNested = isIFilterItemArray(filter.value) // Use type guard here
-      const isFilterSelected = filterSelected.some((f) => f.id === filter.id)
+      const isFilterSelected = filterSelected?.some((f) => f.id === filter.id) || false
 
       if (!isNested) {
         // Render a single filter item
@@ -61,7 +61,7 @@ interface IFilterBlockProps {
   onToggle: (index: string) => void
   openItems: Set<string>
   filters: IFilterItem[]
-  filterSelected: IFilterSelection[]
+  filterSelected?: IFilterSelection[]
   onChange: (value: IFilterSelection) => void
   id: string
 }

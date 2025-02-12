@@ -1,18 +1,29 @@
+'use client'
+
 import type { FC } from 'react'
 import ChevronArrowRight from '@components/icons/ChevronArrowRight'
 import ChevronArrowLeft from '@components/icons/ChevronArrowLeft'
 import { cx } from '@utils/cx'
 import { groupPagesPagination } from '@utils/group-pages-pagination'
+import { useSearchParams, useRouter } from 'next/navigation'
 
 export interface IPaginationProps {
-  page: number
   totalPages: number
-  onChange: (page: number) => void
   className?: string
 }
 
-const Pagination: FC<IPaginationProps> = ({ totalPages, page, onChange, className }) => {
+const Pagination: FC<IPaginationProps> = ({ totalPages, className }) => {
+  const searchParams = useSearchParams()
+  const router = useRouter()
+
+  const page = parseInt(searchParams.get('page') || '1', 10)
   const pages = Array.from({ length: totalPages }, (_, index) => index + 1)
+
+  const onChange = (newPage: number) => {
+    const params = new URLSearchParams(Array.from(searchParams.entries()))
+    params.set('page', newPage.toString())
+    router.push(`?${params.toString()}`)
+  }
 
   const groupedPages = groupPagesPagination(pages, page)
 

@@ -7872,6 +7872,17 @@
       languageName: node
       linkType: hard
     
+    "cross-spawn@npm:^7.0.6":
+      version: 7.0.6
+      resolution: "cross-spawn@npm:7.0.6"
+      dependencies:
+        path-key: "npm:^3.1.0"
+        shebang-command: "npm:^2.0.0"
+        which: "npm:^2.0.1"
+      checksum: 10c0/053ea8b2135caff68a9e81470e845613e374e7309a47731e81639de3eaeb90c3d01af0e0b44d2ab9d50b43467223b88567dfeb3262db942dc063b9976718ffc1
+      languageName: node
+      linkType: hard
+    
     "crypto-browserify@npm:^3.12.0":
       version: 3.12.0
       resolution: "crypto-browserify@npm:3.12.0"
@@ -8351,7 +8362,28 @@
       languageName: node
       linkType: hard
     
-    "dotenv@npm:^16.0.0":
+    "dotenv-cli@npm:^8.0.0":
+      version: 8.0.0
+      resolution: "dotenv-cli@npm:8.0.0"
+      dependencies:
+        cross-spawn: "npm:^7.0.6"
+        dotenv: "npm:^16.3.0"
+        dotenv-expand: "npm:^10.0.0"
+        minimist: "npm:^1.2.6"
+      bin:
+        dotenv: cli.js
+      checksum: 10c0/000469632758b7b44aaaa80cbbbd7f0c94dc170ec02e51aa8d8280341a0108fb7407954c23054257b77235b064033efdb8745836633eb6fd1586924953cf0528
+      languageName: node
+      linkType: hard
+    
+    "dotenv-expand@npm:^10.0.0":
+      version: 10.0.0
+      resolution: "dotenv-expand@npm:10.0.0"
+      checksum: 10c0/298f5018e29cfdcb0b5f463ba8e8627749103fbcf6cf81c561119115754ed582deee37b49dfc7253028aaba875ab7aea5fa90e5dac88e511d009ab0e6677924e
+      languageName: node
+      linkType: hard
+    
+    "dotenv@npm:^16.0.0, dotenv@npm:^16.3.0":
       version: 16.4.7
       resolution: "dotenv@npm:16.4.7"
       checksum: 10c0/be9f597e36a8daf834452daa1f4cc30e5375a5968f98f46d89b16b983c567398a330580c88395069a77473943c06b877d1ca25b4afafcdd6d4adb549e8293462
@@ -13816,6 +13848,7 @@
         clsx: "npm:^2.1.1"
         cx: "npm:^24.9.3"
         dotenv: "npm:^16.4.5"
+        dotenv-cli: "npm:^8.0.0"
         eslint: "npm:^9.11.1"
         eslint-config-next: "npm:^14.2.14"
         eslint-config-prettier: "npm:9.1.0"

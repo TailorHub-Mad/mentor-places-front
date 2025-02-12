@@ -23,7 +23,7 @@ const FilterSelectedControl: FC<IFilterSelectedControlProps> = ({ filterSelected
   }
 
   return (
-    <div className="filter-selected-control">
+    <div className="filter-selected-control max-w-[320px]">
       <div className="filter-selected-control__header mb-[20px] flex items-center justify-between">
         <h3 className="font-s text-s">{t('filters.selectedFilters')}</h3>
         {filterSelected.length > 1 && (

@@ -4,50 +4,33 @@ import { type IBannerProps } from '../Banner/Banner'
 import CoursesFeed from './components/CoursesFeed'
 import Pagination from '@components/Pagination/Pagination'
 import { useTranslations } from 'next-intl'
-import type { ESortDirection } from '../../../lib/enums/globals.enums'
 import SortSelectTrigger from './components/SortSelectTrigger'
-import type { ISelectOption } from '@components/Form/Inputs/Select/InputSelect'
+import { cx } from '@utils/cx'
 
 export interface ICoursesFeedBlockProps {
   courses: IAssetCardIndexProps[]
   banner: IBannerProps
-  page: number
   totalPages: number
   totalCourses: number
-  handlePageChange: (page: number) => void
-  sortOptions: ISelectOption[]
-  sortOption: string
-  sortOrder: ESortDirection
-  handleSortChange: (props: { sort: string; order: ESortDirection }) => void
+  className?: string
 }
 
-const CoursesFeedBlock: FC<ICoursesFeedBlockProps> = ({
-  courses,
-  banner,
-  handlePageChange,
-  totalPages,
-  page,
-  totalCourses,
-  handleSortChange,
-  sortOption,
-  sortOrder,
-  sortOptions
-}) => {
+const CoursesFeedBlock: FC<ICoursesFeedBlockProps> = ({ courses, banner, totalPages, totalCourses, className }) => {
   const t = useTranslations()
 
   return (
-    <div className="courses-feed-block flex flex-col gap-[24px]">
-      <div className="course-feed-block__header flex items-center justify-between">
+    <div className={cx('courses-feed-block flex flex-col gap-[24px]', className)}>
+      <div className="course-feed-block__header flex flex-col md:flex-row md:items-center md:justify-between">
         <h2 className="font-s text-m-mobile">
           <span className="">{totalCourses}&nbsp;</span>
           <span className="">{t('courseDetails.totalFound')}</span>
         </h2>
         <div className="sort-input-action">
-          <SortSelectTrigger onSelect={handleSortChange} order={sortOrder} sortOptions={sortOptions} selectedSort={sortOption} />
+          <SortSelectTrigger />
         </div>
       </div>
       <CoursesFeed courses={courses} banner={banner} />
-      <Pagination page={page} totalPages={totalPages} onChange={handlePageChange} />
+      <Pagination totalPages={totalPages} />
     </div>
   )
 }

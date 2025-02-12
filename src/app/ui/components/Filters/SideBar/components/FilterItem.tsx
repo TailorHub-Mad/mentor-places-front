@@ -11,7 +11,7 @@ interface IFilterItemProps {
   selected: boolean
   onChange: (value: IFilterSelection) => void
   type: EFilterType
-  filterSelected: IFilterSelection[]
+  filterSelected?: IFilterSelection[]
 }
 
 const FilterItem: FC<IFilterItemProps> = ({ type, onChange, selected, id, title, count, filterSelected }) => {

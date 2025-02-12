@@ -1,4 +1,7 @@
-import type { FC } from 'react'
+'use client'
+
+import { type FC, useState } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { ESortDirection } from '../../../../lib/enums/globals.enums'
 import { useDropdownState } from '@hooks/useDropdownState'
 import SelectSearchDropdown from '@components/Form/Inputs/Select/components/SelectDropdownPortal/SelectDropdownPortal'
@@ -8,37 +11,60 @@ import SelectButton from '@components/Form/Inputs/Select/components/SelectButton
 import { useOverflowDetection } from '@hooks/useOverflowDetection'
 import ArrowUp from '@components/icons/ArrowUp'
 import { cx } from '@utils/cx'
+import { useTranslations } from 'next-intl'
 
-interface ISortSelectTriggerProps {
-  sortOptions: ISelectOption[]
-  selectedSort: string
-  order: ESortDirection
-  onSelect: (args: { sort: string; order: ESortDirection }) => void
-}
+const SortSelectTrigger: FC = () => {
+  const router = useRouter()
+  const searchParams = useSearchParams()
+  const t = useTranslations()
 
-const SortSelectTrigger: FC<ISortSelectTriggerProps> = ({ sortOptions, selectedSort, order, onSelect }) => {
+  const selectedSortQuery = searchParams.get('sort') || 'recommended'
+  const orderQuery = (searchParams.get('order') as ESortDirection) || ESortDirection.ASC
+
+  const [selectedSort, setSelectedSort] = useState<string>(selectedSortQuery)
+  const [order, setOrder] = useState<ESortDirection>(orderQuery)
+
+  const sortOptions: ISelectOption[] = [
+    {
+      value: 'recommended',
+      label: t('filters.recommended')
+    },
+    {
+      value: 'date',
+      label: t('filters.date')
+    },
+    {
+      value: 'title',
+      label: t('filters.title')
+    }
+  ]
+
   const { isOverflowing, parentRef, spanRef } = useOverflowDetection(selectedSort as string, selectedSort)
   const { isOpen, toggle, targetRef, selectInputRef } = useDropdownState()
 
+  const updateQueryParams = (newSort: string, newOrder: ESortDirection) => {
+    const params = new URLSearchParams(searchParams as never)
+    params.set('sort', newSort)
+    params.set('order', newOrder)
+    router.push(`?${params.toString()}`)
+  }
+
   const handleSetInputValue = (option: ISelectOption) => {
-    onSelect({
-      sort: option.value,
-      order
-    })
+    setSelectedSort(option.value)
+    updateQueryParams(option.value, order)
     toggle()
   }
 
-  const handleSortOrder = (order: ESortDirection) => {
-    onSelect({
-      sort: selectedSort,
-      order
-    })
+  const handleSortOrder = () => {
+    const newOrder = order === ESortDirection.ASC ? ESortDirection.DESC : ESortDirection.ASC
+    setOrder(newOrder)
+    updateQueryParams(selectedSort, newOrder)
   }
 
   const renderSortButton = () => {
     const isAsc = order === ESortDirection.ASC
     return (
-      <button onClick={() => handleSortOrder(isAsc ? ESortDirection.DESC : ESortDirection.ASC)}>
+      <button onClick={handleSortOrder}>
         <ArrowUp
           className={cx({
             'rotate-180': isAsc
@@ -52,7 +78,7 @@ const SortSelectTrigger: FC<ISortSelectTriggerProps> = ({ sortOptions, selectedS
 
   return (
     <>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between w-min">
         <SelectButton
           ref={targetRef}
           disabled={false}
