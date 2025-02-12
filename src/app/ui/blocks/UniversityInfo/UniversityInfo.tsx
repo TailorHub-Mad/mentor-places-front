@@ -5,12 +5,14 @@ import type { CoursesInstitutionFragment } from '../../../../graphql/generated/c
 import StringToRichText from '@components/StringToRichText/StringToRichText'
 import ShowMoreButton from '@components/ShowMoreButton'
 import Button from '@components/Button/Button'
+import { useTranslations } from 'next-intl'
 
 interface IUniversityInfoProps {
   institutions: CoursesInstitutionFragment['institutions']
 }
 
 const UniversityInfo: FC<IUniversityInfoProps> = ({ institutions }) => {
+  const t = useTranslations()
   const [isExpanded, setIsExpanded] = useState<boolean>(false)
 
   const institution = institutions?.[0]?.institution_id
@@ -26,7 +28,7 @@ const UniversityInfo: FC<IUniversityInfoProps> = ({ institutions }) => {
       <div className="flex flex-col gap-7 md:gap-[118px] md:flex-row">
         <div>
           <h3 className="text-m font-m md:text-xl-mobile md:font-xl">{commercial_name}</h3>
-          <Button className="mt-7">Más información</Button>
+          <Button className="mt-7">{t('contactBanner.button')}</Button>
         </div>
         <div>
           {!isExpanded && <StringToRichText text={intro} />}
