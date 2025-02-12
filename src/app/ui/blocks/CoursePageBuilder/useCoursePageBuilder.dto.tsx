@@ -2,7 +2,6 @@ import { EAssetCardVariant } from '@components/AssetCard/AssetCard'
 import type { GetCourseQuery } from '../../../../graphql/generated/client'
 import type { TAssetDetailOptions } from '@interfaces/assetDetail.type'
 import { getBlocks } from '../InstitutionPageBuilder/utils'
-import type { IContentCardData } from '@components/ContentCard/ContentCard'
 import type { IHeroCourseProps } from '../HeroCourse/HeroCourse'
 import type { IAboutProps } from '../About/About'
 import type { ICourseDetailBlockProps } from '../CourseDetail/CourseDetailBlock'
@@ -40,13 +39,59 @@ interface ICousePageBuilderDto {
   aboutBlockData: IAboutProps | null
   courseDetailData: ICourseDetailBlockProps | null
   reasonsWhyData: IReasonsWhyProps | null
-  courseSyllabusData: ICourseSyllabusBlockProps // | null
+  courseSyllabusData: ICourseSyllabusBlockProps
   formatSchedulesData: IFormatSchedulesBlockProps | null
   admissionsData: IAdmissionsProps | null
   careerOpportunitiesData: IColumnContentProps | null
   scholarshipsData: IScholarshipsAndGrantsProps | null
-  priceData: IPriceSectionProps // | null
+  priceData: IPriceSectionProps
 }
+
+interface ILearningFormat {
+  __typename: string
+  learning_format_id: { __typename: string; format_name: string }
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const buildFeaturedDetails = (courseData: any): TAssetDetailOptions => ({
+  duration: `${courseData.duration} ${courseData.duration_class}`,
+  format: courseData.learning_format?.map((elm: ILearningFormat) => elm?.learning_format_id?.format_name).join(' / ') || undefined,
+  language: courseData.course_language?.[0]?.languages_format_id?.name || undefined,
+  campus: courseData.campuses_courses?.[0]?.campuses_id?.campuses_trans?.[0]?.name || undefined,
+  startDate: courseData.start_date
+})
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const buildCards = (standsFor: any) =>
+  standsFor.items.map((elm: { header: string; body: string }, idx: number) => ({
+    infoHeaderTitle: idx + 1,
+    title: elm.header,
+    description: elm.body
+  }))
+
+const buildCourseSyllabus = (academicYears: IAcademicYear[]) => {
+  const terms: ICourseSyllabus[] = academicYears.map((elm) => ({
+    subjects: elm.subjects.map((subject) => ({
+      title: subject.name,
+      type: subject.type,
+      ects: subject.duration,
+      period: subject.period || '-'
+    }))
+  }))
+
+  const tabs = academicYears.map((elm) => elm.year)
+
+  return { tabs, terms }
+}
+
+const buildPrices = (tuitionPrice: IPrice[], officialTitle: string, discountTitle: string) =>
+  tuitionPrice.reduce((acc: InfoCardPriceProps[], price) => {
+    acc.push({ infoHeaderTitle: price.tuition_fee_o, title: officialTitle, type: 'official' })
+    if (price.discounts) {
+      acc.push({ infoHeaderTitle: price.tuition_fee_d, title: discountTitle, type: 'discount' })
+    }
+    return acc
+  }, [])
 
 export const useCoursePageBuilderDto = (data: GetCourseQuery): ICousePageBuilderDto | null => {
   const t = useTranslations()
@@ -79,12 +124,7 @@ export const useCoursePageBuilderDto = (data: GetCourseQuery): ICousePageBuilder
   const {
     images,
     institutions,
-    start_date,
-    course_language,
     learning_format,
-    duration,
-    duration_class,
-    campuses_courses,
     meta_tags,
     type,
     is_official,
@@ -101,13 +141,10 @@ export const useCoursePageBuilderDto = (data: GetCourseQuery): ICousePageBuilder
   const university = institutions?.[0]?.institution_id
   const universityName = university?.institutions_trans?.[0]?.commercial_name
 
-  const featuredDetails: TAssetDetailOptions = {
-    duration: `${duration} ${duration_class}`,
-    format: learning_format?.map((elm) => elm?.learning_format_id?.format_name).join(' / ') || undefined,
-    language: course_language?.[0]?.languages_format_id?.name || undefined,
-    campus: campuses_courses?.[0]?.campuses_id?.campuses_trans?.[0]?.name || undefined,
-    startDate: start_date
-  }
+  const featuredDetails = buildFeaturedDetails(course_id)
+  const cards = buildCards(standsfor)
+  const { tabs: courseSyllabusTabs, terms: courseSyllabusTerms } = buildCourseSyllabus(course_structure.academic_years)
+  const prices = buildPrices(tuition_price, t('courseDetails.officialPrice'), t('courseDetails.discountPrice'))
 
   const requiredHeroData = commercial_name && universityName && images && university && featuredDetails
   const requiredAboutBlockData = intro && header_title
@@ -117,12 +154,6 @@ export const useCoursePageBuilderDto = (data: GetCourseQuery): ICousePageBuilder
   const requiredAdmissionsData = admissions && start_date_func && end_date_func
   const requiredCareerOpportunitiesData = title_career_opportunities && career_opportunities
   const requiredScholarshipsData = header_scholarships && institutions?.[0]?.institution_id?.institutions_scholarships_courses
-
-  const cards: IContentCardData[] = standsfor.items.map((elm: { header: string; body: string }, idx: number) => ({
-    infoHeaderTitle: idx + 1,
-    title: elm.header,
-    description: elm.body
-  }))
 
   const headersAndData = [
     { header: header_title, data: requiredAboutBlockData },
@@ -138,23 +169,6 @@ export const useCoursePageBuilderDto = (data: GetCourseQuery): ICousePageBuilder
   ]
   const blocks = getBlocks(headersAndData)
 
-  const courseSyllabusTerms: ICourseSyllabus[] = course_structure.academic_years.map((elm: IAcademicYear) => {
-    return {
-      subjects: elm.subjects.map((subject) => {
-        return {
-          title: subject.name,
-          type: subject.type,
-          ects: subject.duration,
-          period: subject.period || '-'
-        }
-      })
-    }
-  })
-
-  const courseSyllabusTabs: string[] = course_structure.academic_years.map((elm: IAcademicYear) => {
-    return elm.year
-  })
-
   const formatCard: IAssetFeaturesCardProps = {
     icon: 'campus',
     description: '', // TODO?
@@ -166,13 +180,6 @@ export const useCoursePageBuilderDto = (data: GetCourseQuery): ICousePageBuilder
     description: schedules || '',
     tags: (learning_pace || []).map((elm) => ({ label: elm?.learning_pace_id?.pace_name || '' }))
   }
-
-  const prices: InfoCardPriceProps[] = []
-
-  tuition_price.forEach((price: IPrice) => {
-    prices.push({ infoHeaderTitle: price.tuition_fee_o, title: t('courseDetails.officialPrice'), type: 'official' })
-    if (price.discounts) prices.push({ infoHeaderTitle: price.tuition_fee_d, title: t('courseDetails.discountPrice'), type: 'discount' })
-  })
 
   return {
     heroData: requiredHeroData
@@ -216,7 +223,7 @@ export const useCoursePageBuilderDto = (data: GetCourseQuery): ICousePageBuilder
         }
       : null,
     courseSyllabusData: {
-      title: 'Temario',
+      title: t('syllabus'),
       courseSyllabus: { tabs: courseSyllabusTabs, terms: courseSyllabusTerms }
     },
     formatSchedulesData: requiredFormatSchedulesData

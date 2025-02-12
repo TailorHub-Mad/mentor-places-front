@@ -73,7 +73,7 @@ export default CourseSyllabus
 export interface ISubject {
   title: string
   type: string
-  ects: number
+  ects: string
   period: string
 }
 
