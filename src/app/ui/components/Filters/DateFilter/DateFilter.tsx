@@ -9,7 +9,7 @@ import { type IFilterSelection } from '@interfaces/filterSidebar.interfaces'
 interface IDateFilterProps {
   id: string
   onChange: (value: IFilterSelection) => void
-  filterSelected: IFilterSelection[]
+  filterSelected?: IFilterSelection[]
 }
 
 const DateFilter: FC<IDateFilterProps> = ({ onChange, filterSelected, id }) => {
@@ -21,13 +21,13 @@ const DateFilter: FC<IDateFilterProps> = ({ onChange, filterSelected, id }) => {
   const years = createSelectOption(getLocalizedYears(locale, currentYear, 5))
 
   const [selectedDate, setSelectedDate] = useState<{ month: string | null; year: string | null }>({
-    month: (filterSelected.find((filter) => filter.id === id)?.value[0] as string) || null,
-    year: (filterSelected.find((filter) => filter.id === id)?.value[1] as string) || null
+    month: (filterSelected?.find((filter) => filter.id === id)?.value[0] as string) || null,
+    year: (filterSelected?.find((filter) => filter.id === id)?.value[1] as string) || null
   })
 
   // Sync selectedDate with filterSelected changes
   useEffect(() => {
-    const matchingFilter = filterSelected.find((filter) => filter.id === id)
+    const matchingFilter = filterSelected?.find((filter) => filter.id === id)
     const updatedDate = {
       month: (matchingFilter?.value[0] as string) || null,
       year: (matchingFilter?.value[1] as string) || null
