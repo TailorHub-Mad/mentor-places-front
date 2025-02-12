@@ -5,8 +5,9 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import useAccordionItems from '@components/Accordion/useAccordionItems'
 import FilterBlock from '@components/Filters/SideBar/components/FilterBlock'
 import FilterSelectedControl from '@components/Filters/SideBar/components/FilterSelectedControl'
-import type { IFilterCategory, IFilterSelection, IFilterSideBarProps } from '@interfaces/filterSidebar.interfaces'
+import type { IFilterSelection, IFilterSideBarProps } from '@interfaces/filterSidebar.interfaces'
 import { cx } from '@utils/cx'
+import { parseCategoryFilters, parseDateFilter, parsePriceFilter, updateFilter } from '@components/Filters/SideBar/utils/handleFilters'
 
 const FilterSideBar: FC<IFilterSideBarProps> = ({ filters, className }) => {
   const defaultOpen = ''
@@ -85,52 +86,3 @@ const FilterSideBar: FC<IFilterSideBarProps> = ({ filters, className }) => {
 }
 
 export default FilterSideBar
-
-const parseDateFilter = (params: URLSearchParams): IFilterSelection[] =>
-  params.has('date')
-    ? [
-        {
-          id: 'date',
-          value: params.get('date')!.split(',')
-        }
-      ]
-    : []
-
-const parsePriceFilter = (params: URLSearchParams): IFilterSelection[] =>
-  params.has('price')
-    ? [
-        {
-          id: 'price',
-          value: params.get('price')!.split(',')
-        }
-      ]
-    : []
-
-const parseCategoryFilters = (params: URLSearchParams, filters: IFilterCategory[]): IFilterSelection[] => {
-  if (!params.has('cat')) return []
-  return params
-    .get('cat')!
-    .split('|')
-    .map((catFilter) => {
-      const id = catFilter.split(':')[0]
-
-      const nestedFilter = filters
-        .flatMap((filter) => filter.filters || []) // Flatten all nested `filters` arrays
-        .find((f) => f.id === id) // Find the one with a matching id
-
-      return { id, value: nestedFilter?.title || id }
-    })
-}
-
-const updateFilter = (newFilter: IFilterSelection, currentFilters: IFilterSelection[] = []): IFilterSelection[] => {
-  const FILTER_TYPES = ['date', 'price']
-  const excludeFilters = (filters: IFilterSelection[], idPart: string) => filters.filter((filter) => !filter.id.includes(idPart))
-
-  if (FILTER_TYPES.some((type) => newFilter.id.includes(type))) {
-    return [...excludeFilters(currentFilters, newFilter.id), newFilter]
-  }
-
-  return currentFilters.some((filter) => filter.id === newFilter.id)
-    ? currentFilters.filter((filter) => filter.id !== newFilter.id)
-    : [...currentFilters, newFilter]
-}
