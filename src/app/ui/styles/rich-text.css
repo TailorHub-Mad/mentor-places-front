@@ -1,37 +1,57 @@
 .rich-text {
   color: #666666;
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-xl text-BLACK;
-  }
+}
 
-  h2 {
-    @apply text-l-mobile;
-  }
+.rich-text h1,
+.rich-text h2,
+.rich-text h3,
+.rich-text h4,
+.rich-text h5,
+.rich-text h6 {
+  @apply font-xl text-BLACK;
+}
 
-  h3 {
-    @apply text-[24px];
-  }
+.rich-text h2 {
+  @apply text-l-mobile;
+}
 
-  p, span, a, li, ul, strong {
-    @apply font-s;
-  }
+.rich-text h3 {
+  @apply text-[24px];
+}
 
-  a:hover {
-    text-decoration: underline;
-  }
+.rich-text h4 {
+  @apply text-[20px];
+}
 
-  a {
-    color: #B3B3B3;
-    text-decoration: none;
-  }
+.rich-text h5 {
+  @apply text-[18px];
+}
 
-  ul {
-    padding-left: 1.5em;
-    list-style: disc;
-  }
 
-  p, ul {
-    margin: 0 0 16px 0;
-  }
+.rich-text p,
+.rich-text span,
+.rich-text a,
+.rich-text li,
+.rich-text ul,
+.rich-text strong {
+  @apply font-s;
+}
+
+.rich-text a:hover {
+  text-decoration: underline;
+}
+
+.rich-text a {
+  color: #B3B3B3;
+  text-decoration: none;
+}
+
+.rich-text ul {
+  padding-left: 1.5em;
+  list-style: disc;
+}
+
+.rich-text p, ul {
+  margin: 0 0 16px 0;
 }
 
