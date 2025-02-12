@@ -1,7 +1,7 @@
 import type { TAssetDetailType } from '@interfaces/assetDetail.type'
 
 export interface IAssetCardData {
-  title: string
+  title?: string
   universityName?: string
   universityLogo?: string
   imageSrc?: string
