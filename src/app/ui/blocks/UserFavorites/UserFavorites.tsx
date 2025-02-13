@@ -1,6 +1,7 @@
 'use client'
 
-import AssetCardIndex, { IAssetCardIndexProps } from '@components/AssetCardIndex/AssetCardIndex'
+import type { IAssetCardIndexProps } from '@components/AssetCardIndex/AssetCardIndex'
+import AssetCardIndex from '@components/AssetCardIndex/AssetCardIndex'
 import { SwiperNavigationPosition } from '@components/Swiper/components/SwiperNatigation'
 import CustomSwiper from '@components/Swiper/CustomSwiper'
 import useBreakpoint from '@hooks/useBreakpoint'
