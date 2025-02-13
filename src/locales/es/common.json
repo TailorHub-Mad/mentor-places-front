@@ -20,17 +20,16 @@
     "price": "Precio",
     "type": "Tipo",
     "ects": "ECTS",
+    "period": "Período",
     "seats": "Plazas",
     "official": "Oficial",
     "methodology": "Metodología",
     "internship": "Prácticas",
     "internshipAbroad": "Prácticas en el extranjero",
     "totalFound": "másters encontrados",
-    "period": {
-      "year": "año",
-      "semester": "semestre",
-      "term": "curso"
-    }
+    "applicationDate": "Fecha límite aplicación",
+    "officialPrice": "Precio oficial",
+    "discountPrice": "Precio descuento"
   },
   "rating": {
     "1": "Malo",
@@ -45,6 +44,8 @@
   "faqs": "FAQ's",
   "sharePost": "Comparte este post",
   "backToArticles": "Volver a artículos",
+  "prices": "Precios",
+  "syllabus": "Temario",
   "actions": {
     "compare": "Comparar",
     "remove": "Eliminar",
@@ -56,7 +57,8 @@
     "BackToTop": "Volver arriba",
     "yes": "Sí",
     "no": "No",
-    "search": "Buscar"
+    "search": "Buscar",
+    "callUs": "Llámanos"
   },
   "search": {
     "disciplinePlaceholder": "¿Qué quieres estudiar?",
@@ -116,6 +118,11 @@
   },
   "common": {
     "thanks": "¡Gracias!"
+  },
+  "contactBanner": {
+    "topText": "Contáctanos",
+    "title": "Te ayudamos a seleccionar tu máster",
+    "button": "Más información"
   },
   "bannerCourseFeed": {
     "text": "Descubre qué programa de master encaja con tu personalidad",

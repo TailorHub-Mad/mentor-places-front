@@ -15,6 +15,7 @@ type Story = StoryObj<typeof Mural>
 
 export const Default: Story = {
   args: {
+    title: '¿Por qué elegir Mentor Places?',
     data: MOCK_MURAL
   }
 }

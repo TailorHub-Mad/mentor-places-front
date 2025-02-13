@@ -23,7 +23,7 @@ const TextMuralCard: FC<ITextMuralCardProps & IMuralCard> = ({ title, color, bac
       })}
       style={{ backgroundColor, color, width, height }}>
       <p
-        className={cx('text-m-mobile font-m-mobile lg:text-m lg:font-m', {
+        className={cx('text-m-mobile font-m-mobile lg:text-m lg:font-m max-w-[76%]', {
           'text-center': !showText
         })}>
         {title}

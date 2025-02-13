@@ -1,3 +1,5 @@
+'use client'
+
 import type { IContentCardData } from '@components/ContentCard/ContentCard'
 import ContentCard, { ContentCardVariant } from '@components/ContentCard/ContentCard'
 import { SwiperNavigationPosition } from '@components/Swiper/components/SwiperNatigation'
@@ -5,7 +7,7 @@ import CustomSwiper from '@components/Swiper/CustomSwiper'
 import useBreakpoint from '@hooks/useBreakpoint'
 import type { FC } from 'react'
 
-interface IReasonsWhyProps {
+export interface IReasonsWhyProps {
   title: string
   cards: IContentCardData[]
 }

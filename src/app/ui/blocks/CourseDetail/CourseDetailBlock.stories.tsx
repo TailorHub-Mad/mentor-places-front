@@ -21,7 +21,6 @@ export const WithEmptyFields: Story = {
   args: {
     ...COURSE_DETAIL_BLOCK_MOCK,
     methodology: undefined,
-    internship: undefined,
     seats: undefined
   }
 }

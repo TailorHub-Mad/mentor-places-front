@@ -84,6 +84,10 @@ export type Mutation = {
   create_learning_format_items: Array<Learning_Format>
   create_learning_pace_item?: Maybe<Learning_Pace>
   create_learning_pace_items: Array<Learning_Pace>
+  create_main_taxonomy_courses_item?: Maybe<Main_Taxonomy_Courses>
+  create_main_taxonomy_courses_items: Array<Main_Taxonomy_Courses>
+  create_main_taxonomy_item?: Maybe<Main_Taxonomy>
+  create_main_taxonomy_items: Array<Main_Taxonomy>
   create_menu_items_item?: Maybe<Menu_Items>
   create_menu_items_items: Array<Menu_Items>
   create_menus_item?: Maybe<Menus>
@@ -118,6 +122,18 @@ export type Mutation = {
   create_tag_institutions_items: Array<Tag_Institutions>
   create_tag_posts_item?: Maybe<Tag_Posts>
   create_tag_posts_items: Array<Tag_Posts>
+  create_taxonomy_item?: Maybe<Taxonomy>
+  create_taxonomy_items: Array<Taxonomy>
+  create_taxonomy_level1_item?: Maybe<Taxonomy_Level1>
+  create_taxonomy_level1_items: Array<Taxonomy_Level1>
+  create_taxonomy_level1_trans_item?: Maybe<Taxonomy_Level1_Trans>
+  create_taxonomy_level1_trans_items: Array<Taxonomy_Level1_Trans>
+  create_taxonomy_level2_item?: Maybe<Taxonomy_Level2>
+  create_taxonomy_level2_items: Array<Taxonomy_Level2>
+  create_taxonomy_level2_trans_item?: Maybe<Taxonomy_Level2_Trans>
+  create_taxonomy_level2_trans_items: Array<Taxonomy_Level2_Trans>
+  create_taxonomy_trans_item?: Maybe<Taxonomy_Trans>
+  create_taxonomy_trans_items: Array<Taxonomy_Trans>
   create_user_setting_item?: Maybe<User_Setting>
   create_user_setting_items: Array<User_Setting>
   create_users_item?: Maybe<Users>
@@ -176,6 +192,10 @@ export type Mutation = {
   delete_learning_format_items?: Maybe<Delete_Many>
   delete_learning_pace_item?: Maybe<Delete_One>
   delete_learning_pace_items?: Maybe<Delete_Many>
+  delete_main_taxonomy_courses_item?: Maybe<Delete_One>
+  delete_main_taxonomy_courses_items?: Maybe<Delete_Many>
+  delete_main_taxonomy_item?: Maybe<Delete_One>
+  delete_main_taxonomy_items?: Maybe<Delete_Many>
   delete_menu_items_item?: Maybe<Delete_One>
   delete_menu_items_items?: Maybe<Delete_Many>
   delete_menus_item?: Maybe<Delete_One>
@@ -210,6 +230,18 @@ export type Mutation = {
   delete_tag_institutions_items?: Maybe<Delete_Many>
   delete_tag_posts_item?: Maybe<Delete_One>
   delete_tag_posts_items?: Maybe<Delete_Many>
+  delete_taxonomy_item?: Maybe<Delete_One>
+  delete_taxonomy_items?: Maybe<Delete_Many>
+  delete_taxonomy_level1_item?: Maybe<Delete_One>
+  delete_taxonomy_level1_items?: Maybe<Delete_Many>
+  delete_taxonomy_level1_trans_item?: Maybe<Delete_One>
+  delete_taxonomy_level1_trans_items?: Maybe<Delete_Many>
+  delete_taxonomy_level2_item?: Maybe<Delete_One>
+  delete_taxonomy_level2_items?: Maybe<Delete_Many>
+  delete_taxonomy_level2_trans_item?: Maybe<Delete_One>
+  delete_taxonomy_level2_trans_items?: Maybe<Delete_Many>
+  delete_taxonomy_trans_item?: Maybe<Delete_One>
+  delete_taxonomy_trans_items?: Maybe<Delete_Many>
   delete_user_setting_item?: Maybe<Delete_One>
   delete_user_setting_items?: Maybe<Delete_Many>
   delete_users_item?: Maybe<Delete_One>
@@ -295,6 +327,12 @@ export type Mutation = {
   update_learning_pace_batch: Array<Learning_Pace>
   update_learning_pace_item?: Maybe<Learning_Pace>
   update_learning_pace_items: Array<Learning_Pace>
+  update_main_taxonomy_batch: Array<Main_Taxonomy>
+  update_main_taxonomy_courses_batch: Array<Main_Taxonomy_Courses>
+  update_main_taxonomy_courses_item?: Maybe<Main_Taxonomy_Courses>
+  update_main_taxonomy_courses_items: Array<Main_Taxonomy_Courses>
+  update_main_taxonomy_item?: Maybe<Main_Taxonomy>
+  update_main_taxonomy_items: Array<Main_Taxonomy>
   update_menu_items_batch: Array<Menu_Items>
   update_menu_items_item?: Maybe<Menu_Items>
   update_menu_items_items: Array<Menu_Items>
@@ -346,6 +384,24 @@ export type Mutation = {
   update_tag_posts_batch: Array<Tag_Posts>
   update_tag_posts_item?: Maybe<Tag_Posts>
   update_tag_posts_items: Array<Tag_Posts>
+  update_taxonomy_batch: Array<Taxonomy>
+  update_taxonomy_item?: Maybe<Taxonomy>
+  update_taxonomy_items: Array<Taxonomy>
+  update_taxonomy_level1_batch: Array<Taxonomy_Level1>
+  update_taxonomy_level1_item?: Maybe<Taxonomy_Level1>
+  update_taxonomy_level1_items: Array<Taxonomy_Level1>
+  update_taxonomy_level1_trans_batch: Array<Taxonomy_Level1_Trans>
+  update_taxonomy_level1_trans_item?: Maybe<Taxonomy_Level1_Trans>
+  update_taxonomy_level1_trans_items: Array<Taxonomy_Level1_Trans>
+  update_taxonomy_level2_batch: Array<Taxonomy_Level2>
+  update_taxonomy_level2_item?: Maybe<Taxonomy_Level2>
+  update_taxonomy_level2_items: Array<Taxonomy_Level2>
+  update_taxonomy_level2_trans_batch: Array<Taxonomy_Level2_Trans>
+  update_taxonomy_level2_trans_item?: Maybe<Taxonomy_Level2_Trans>
+  update_taxonomy_level2_trans_items: Array<Taxonomy_Level2_Trans>
+  update_taxonomy_trans_batch: Array<Taxonomy_Trans>
+  update_taxonomy_trans_item?: Maybe<Taxonomy_Trans>
+  update_taxonomy_trans_items: Array<Taxonomy_Trans>
   update_user_setting_batch: Array<User_Setting>
   update_user_setting_item?: Maybe<User_Setting>
   update_user_setting_items: Array<User_Setting>
@@ -732,6 +788,34 @@ export type MutationCreate_Learning_Pace_ItemsArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
+export type MutationCreate_Main_Taxonomy_Courses_ItemArgs = {
+  data: Create_Main_Taxonomy_Courses_Input
+}
+
+export type MutationCreate_Main_Taxonomy_Courses_ItemsArgs = {
+  data?: InputMaybe<Array<Create_Main_Taxonomy_Courses_Input>>
+  filter?: InputMaybe<Main_Taxonomy_Courses_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationCreate_Main_Taxonomy_ItemArgs = {
+  data: Create_Main_Taxonomy_Input
+}
+
+export type MutationCreate_Main_Taxonomy_ItemsArgs = {
+  data?: InputMaybe<Array<Create_Main_Taxonomy_Input>>
+  filter?: InputMaybe<Main_Taxonomy_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
 export type MutationCreate_Menu_Items_ItemArgs = {
   data: Create_Menu_Items_Input
 }
@@ -963,6 +1047,90 @@ export type MutationCreate_Tag_Posts_ItemArgs = {
 export type MutationCreate_Tag_Posts_ItemsArgs = {
   data?: InputMaybe<Array<Create_Tag_Posts_Input>>
   filter?: InputMaybe<Tag_Posts_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationCreate_Taxonomy_ItemArgs = {
+  data: Create_Taxonomy_Input
+}
+
+export type MutationCreate_Taxonomy_ItemsArgs = {
+  data?: InputMaybe<Array<Create_Taxonomy_Input>>
+  filter?: InputMaybe<Taxonomy_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationCreate_Taxonomy_Level1_ItemArgs = {
+  data: Create_Taxonomy_Level1_Input
+}
+
+export type MutationCreate_Taxonomy_Level1_ItemsArgs = {
+  data?: InputMaybe<Array<Create_Taxonomy_Level1_Input>>
+  filter?: InputMaybe<Taxonomy_Level1_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationCreate_Taxonomy_Level1_Trans_ItemArgs = {
+  data: Create_Taxonomy_Level1_Trans_Input
+}
+
+export type MutationCreate_Taxonomy_Level1_Trans_ItemsArgs = {
+  data?: InputMaybe<Array<Create_Taxonomy_Level1_Trans_Input>>
+  filter?: InputMaybe<Taxonomy_Level1_Trans_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationCreate_Taxonomy_Level2_ItemArgs = {
+  data: Create_Taxonomy_Level2_Input
+}
+
+export type MutationCreate_Taxonomy_Level2_ItemsArgs = {
+  data?: InputMaybe<Array<Create_Taxonomy_Level2_Input>>
+  filter?: InputMaybe<Taxonomy_Level2_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationCreate_Taxonomy_Level2_Trans_ItemArgs = {
+  data: Create_Taxonomy_Level2_Trans_Input
+}
+
+export type MutationCreate_Taxonomy_Level2_Trans_ItemsArgs = {
+  data?: InputMaybe<Array<Create_Taxonomy_Level2_Trans_Input>>
+  filter?: InputMaybe<Taxonomy_Level2_Trans_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationCreate_Taxonomy_Trans_ItemArgs = {
+  data: Create_Taxonomy_Trans_Input
+}
+
+export type MutationCreate_Taxonomy_Trans_ItemsArgs = {
+  data?: InputMaybe<Array<Create_Taxonomy_Trans_Input>>
+  filter?: InputMaybe<Taxonomy_Trans_Filter>
   limit?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
   page?: InputMaybe<Scalars['Int']['input']>
@@ -1214,6 +1382,22 @@ export type MutationDelete_Learning_Pace_ItemsArgs = {
   ids: Array<InputMaybe<Scalars['ID']['input']>>
 }
 
+export type MutationDelete_Main_Taxonomy_Courses_ItemArgs = {
+  id: Scalars['ID']['input']
+}
+
+export type MutationDelete_Main_Taxonomy_Courses_ItemsArgs = {
+  ids: Array<InputMaybe<Scalars['ID']['input']>>
+}
+
+export type MutationDelete_Main_Taxonomy_ItemArgs = {
+  id: Scalars['ID']['input']
+}
+
+export type MutationDelete_Main_Taxonomy_ItemsArgs = {
+  ids: Array<InputMaybe<Scalars['ID']['input']>>
+}
+
 export type MutationDelete_Menu_Items_ItemArgs = {
   id: Scalars['ID']['input']
 }
@@ -1347,6 +1531,54 @@ export type MutationDelete_Tag_Posts_ItemArgs = {
 }
 
 export type MutationDelete_Tag_Posts_ItemsArgs = {
+  ids: Array<InputMaybe<Scalars['ID']['input']>>
+}
+
+export type MutationDelete_Taxonomy_ItemArgs = {
+  id: Scalars['ID']['input']
+}
+
+export type MutationDelete_Taxonomy_ItemsArgs = {
+  ids: Array<InputMaybe<Scalars['ID']['input']>>
+}
+
+export type MutationDelete_Taxonomy_Level1_ItemArgs = {
+  id: Scalars['ID']['input']
+}
+
+export type MutationDelete_Taxonomy_Level1_ItemsArgs = {
+  ids: Array<InputMaybe<Scalars['ID']['input']>>
+}
+
+export type MutationDelete_Taxonomy_Level1_Trans_ItemArgs = {
+  id: Scalars['ID']['input']
+}
+
+export type MutationDelete_Taxonomy_Level1_Trans_ItemsArgs = {
+  ids: Array<InputMaybe<Scalars['ID']['input']>>
+}
+
+export type MutationDelete_Taxonomy_Level2_ItemArgs = {
+  id: Scalars['ID']['input']
+}
+
+export type MutationDelete_Taxonomy_Level2_ItemsArgs = {
+  ids: Array<InputMaybe<Scalars['ID']['input']>>
+}
+
+export type MutationDelete_Taxonomy_Level2_Trans_ItemArgs = {
+  id: Scalars['ID']['input']
+}
+
+export type MutationDelete_Taxonomy_Level2_Trans_ItemsArgs = {
+  ids: Array<InputMaybe<Scalars['ID']['input']>>
+}
+
+export type MutationDelete_Taxonomy_Trans_ItemArgs = {
+  id: Scalars['ID']['input']
+}
+
+export type MutationDelete_Taxonomy_Trans_ItemsArgs = {
   ids: Array<InputMaybe<Scalars['ID']['input']>>
 }
 
@@ -2068,6 +2300,58 @@ export type MutationUpdate_Learning_Pace_ItemsArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
+export type MutationUpdate_Main_Taxonomy_BatchArgs = {
+  data?: InputMaybe<Array<Update_Main_Taxonomy_Input>>
+  filter?: InputMaybe<Main_Taxonomy_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationUpdate_Main_Taxonomy_Courses_BatchArgs = {
+  data?: InputMaybe<Array<Update_Main_Taxonomy_Courses_Input>>
+  filter?: InputMaybe<Main_Taxonomy_Courses_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationUpdate_Main_Taxonomy_Courses_ItemArgs = {
+  data: Update_Main_Taxonomy_Courses_Input
+  id: Scalars['ID']['input']
+}
+
+export type MutationUpdate_Main_Taxonomy_Courses_ItemsArgs = {
+  data: Update_Main_Taxonomy_Courses_Input
+  filter?: InputMaybe<Main_Taxonomy_Courses_Filter>
+  ids: Array<InputMaybe<Scalars['ID']['input']>>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationUpdate_Main_Taxonomy_ItemArgs = {
+  data: Update_Main_Taxonomy_Input
+  id: Scalars['ID']['input']
+}
+
+export type MutationUpdate_Main_Taxonomy_ItemsArgs = {
+  data: Update_Main_Taxonomy_Input
+  filter?: InputMaybe<Main_Taxonomy_Filter>
+  ids: Array<InputMaybe<Scalars['ID']['input']>>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
 export type MutationUpdate_Menu_Items_BatchArgs = {
   data?: InputMaybe<Array<Update_Menu_Items_Input>>
   filter?: InputMaybe<Menu_Items_Filter>
@@ -2510,6 +2794,162 @@ export type MutationUpdate_Tag_Posts_ItemsArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
+export type MutationUpdate_Taxonomy_BatchArgs = {
+  data?: InputMaybe<Array<Update_Taxonomy_Input>>
+  filter?: InputMaybe<Taxonomy_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationUpdate_Taxonomy_ItemArgs = {
+  data: Update_Taxonomy_Input
+  id: Scalars['ID']['input']
+}
+
+export type MutationUpdate_Taxonomy_ItemsArgs = {
+  data: Update_Taxonomy_Input
+  filter?: InputMaybe<Taxonomy_Filter>
+  ids: Array<InputMaybe<Scalars['ID']['input']>>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationUpdate_Taxonomy_Level1_BatchArgs = {
+  data?: InputMaybe<Array<Update_Taxonomy_Level1_Input>>
+  filter?: InputMaybe<Taxonomy_Level1_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationUpdate_Taxonomy_Level1_ItemArgs = {
+  data: Update_Taxonomy_Level1_Input
+  id: Scalars['ID']['input']
+}
+
+export type MutationUpdate_Taxonomy_Level1_ItemsArgs = {
+  data: Update_Taxonomy_Level1_Input
+  filter?: InputMaybe<Taxonomy_Level1_Filter>
+  ids: Array<InputMaybe<Scalars['ID']['input']>>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationUpdate_Taxonomy_Level1_Trans_BatchArgs = {
+  data?: InputMaybe<Array<Update_Taxonomy_Level1_Trans_Input>>
+  filter?: InputMaybe<Taxonomy_Level1_Trans_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationUpdate_Taxonomy_Level1_Trans_ItemArgs = {
+  data: Update_Taxonomy_Level1_Trans_Input
+  id: Scalars['ID']['input']
+}
+
+export type MutationUpdate_Taxonomy_Level1_Trans_ItemsArgs = {
+  data: Update_Taxonomy_Level1_Trans_Input
+  filter?: InputMaybe<Taxonomy_Level1_Trans_Filter>
+  ids: Array<InputMaybe<Scalars['ID']['input']>>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationUpdate_Taxonomy_Level2_BatchArgs = {
+  data?: InputMaybe<Array<Update_Taxonomy_Level2_Input>>
+  filter?: InputMaybe<Taxonomy_Level2_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationUpdate_Taxonomy_Level2_ItemArgs = {
+  data: Update_Taxonomy_Level2_Input
+  id: Scalars['ID']['input']
+}
+
+export type MutationUpdate_Taxonomy_Level2_ItemsArgs = {
+  data: Update_Taxonomy_Level2_Input
+  filter?: InputMaybe<Taxonomy_Level2_Filter>
+  ids: Array<InputMaybe<Scalars['ID']['input']>>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationUpdate_Taxonomy_Level2_Trans_BatchArgs = {
+  data?: InputMaybe<Array<Update_Taxonomy_Level2_Trans_Input>>
+  filter?: InputMaybe<Taxonomy_Level2_Trans_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationUpdate_Taxonomy_Level2_Trans_ItemArgs = {
+  data: Update_Taxonomy_Level2_Trans_Input
+  id: Scalars['ID']['input']
+}
+
+export type MutationUpdate_Taxonomy_Level2_Trans_ItemsArgs = {
+  data: Update_Taxonomy_Level2_Trans_Input
+  filter?: InputMaybe<Taxonomy_Level2_Trans_Filter>
+  ids: Array<InputMaybe<Scalars['ID']['input']>>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationUpdate_Taxonomy_Trans_BatchArgs = {
+  data?: InputMaybe<Array<Update_Taxonomy_Trans_Input>>
+  filter?: InputMaybe<Taxonomy_Trans_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationUpdate_Taxonomy_Trans_ItemArgs = {
+  data: Update_Taxonomy_Trans_Input
+  id: Scalars['ID']['input']
+}
+
+export type MutationUpdate_Taxonomy_Trans_ItemsArgs = {
+  data: Update_Taxonomy_Trans_Input
+  filter?: InputMaybe<Taxonomy_Trans_Filter>
+  ids: Array<InputMaybe<Scalars['ID']['input']>>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
 export type MutationUpdate_User_Setting_BatchArgs = {
   data?: InputMaybe<Array<Update_User_Setting_Input>>
   filter?: InputMaybe<User_Setting_Filter>
@@ -2672,6 +3112,14 @@ export type Query = {
   learning_pace_aggregated: Array<Learning_Pace_Aggregated>
   learning_pace_by_id?: Maybe<Learning_Pace>
   learning_pace_by_version?: Maybe<Version_Learning_Pace>
+  main_taxonomy: Array<Main_Taxonomy>
+  main_taxonomy_aggregated: Array<Main_Taxonomy_Aggregated>
+  main_taxonomy_by_id?: Maybe<Main_Taxonomy>
+  main_taxonomy_by_version?: Maybe<Version_Main_Taxonomy>
+  main_taxonomy_courses: Array<Main_Taxonomy_Courses>
+  main_taxonomy_courses_aggregated: Array<Main_Taxonomy_Courses_Aggregated>
+  main_taxonomy_courses_by_id?: Maybe<Main_Taxonomy_Courses>
+  main_taxonomy_courses_by_version?: Maybe<Version_Main_Taxonomy_Courses>
   menu_items: Array<Menu_Items>
   menu_items_aggregated: Array<Menu_Items_Aggregated>
   menu_items_by_id?: Maybe<Menu_Items>
@@ -2740,6 +3188,30 @@ export type Query = {
   tag_posts_aggregated: Array<Tag_Posts_Aggregated>
   tag_posts_by_id?: Maybe<Tag_Posts>
   tag_posts_by_version?: Maybe<Version_Tag_Posts>
+  taxonomy: Array<Taxonomy>
+  taxonomy_aggregated: Array<Taxonomy_Aggregated>
+  taxonomy_by_id?: Maybe<Taxonomy>
+  taxonomy_by_version?: Maybe<Version_Taxonomy>
+  taxonomy_level1: Array<Taxonomy_Level1>
+  taxonomy_level1_aggregated: Array<Taxonomy_Level1_Aggregated>
+  taxonomy_level1_by_id?: Maybe<Taxonomy_Level1>
+  taxonomy_level1_by_version?: Maybe<Version_Taxonomy_Level1>
+  taxonomy_level1_trans: Array<Taxonomy_Level1_Trans>
+  taxonomy_level1_trans_aggregated: Array<Taxonomy_Level1_Trans_Aggregated>
+  taxonomy_level1_trans_by_id?: Maybe<Taxonomy_Level1_Trans>
+  taxonomy_level1_trans_by_version?: Maybe<Version_Taxonomy_Level1_Trans>
+  taxonomy_level2: Array<Taxonomy_Level2>
+  taxonomy_level2_aggregated: Array<Taxonomy_Level2_Aggregated>
+  taxonomy_level2_by_id?: Maybe<Taxonomy_Level2>
+  taxonomy_level2_by_version?: Maybe<Version_Taxonomy_Level2>
+  taxonomy_level2_trans: Array<Taxonomy_Level2_Trans>
+  taxonomy_level2_trans_aggregated: Array<Taxonomy_Level2_Trans_Aggregated>
+  taxonomy_level2_trans_by_id?: Maybe<Taxonomy_Level2_Trans>
+  taxonomy_level2_trans_by_version?: Maybe<Version_Taxonomy_Level2_Trans>
+  taxonomy_trans: Array<Taxonomy_Trans>
+  taxonomy_trans_aggregated: Array<Taxonomy_Trans_Aggregated>
+  taxonomy_trans_by_id?: Maybe<Taxonomy_Trans>
+  taxonomy_trans_by_version?: Maybe<Version_Taxonomy_Trans>
   user_setting: Array<User_Setting>
   user_setting_aggregated: Array<User_Setting_Aggregated>
   user_setting_by_id?: Maybe<User_Setting>
@@ -3533,6 +4005,64 @@ export type QueryLearning_Pace_By_VersionArgs = {
   version: Scalars['String']['input']
 }
 
+export type QueryMain_TaxonomyArgs = {
+  filter?: InputMaybe<Main_Taxonomy_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type QueryMain_Taxonomy_AggregatedArgs = {
+  filter?: InputMaybe<Main_Taxonomy_Filter>
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type QueryMain_Taxonomy_By_IdArgs = {
+  id: Scalars['ID']['input']
+  version?: InputMaybe<Scalars['String']['input']>
+}
+
+export type QueryMain_Taxonomy_By_VersionArgs = {
+  id: Scalars['ID']['input']
+  version: Scalars['String']['input']
+}
+
+export type QueryMain_Taxonomy_CoursesArgs = {
+  filter?: InputMaybe<Main_Taxonomy_Courses_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type QueryMain_Taxonomy_Courses_AggregatedArgs = {
+  filter?: InputMaybe<Main_Taxonomy_Courses_Filter>
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type QueryMain_Taxonomy_Courses_By_IdArgs = {
+  id: Scalars['ID']['input']
+  version?: InputMaybe<Scalars['String']['input']>
+}
+
+export type QueryMain_Taxonomy_Courses_By_VersionArgs = {
+  id: Scalars['ID']['input']
+  version: Scalars['String']['input']
+}
+
 export type QueryMenu_ItemsArgs = {
   filter?: InputMaybe<Menu_Items_Filter>
   limit?: InputMaybe<Scalars['Int']['input']>
@@ -4026,6 +4556,180 @@ export type QueryTag_Posts_By_VersionArgs = {
   version: Scalars['String']['input']
 }
 
+export type QueryTaxonomyArgs = {
+  filter?: InputMaybe<Taxonomy_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type QueryTaxonomy_AggregatedArgs = {
+  filter?: InputMaybe<Taxonomy_Filter>
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type QueryTaxonomy_By_IdArgs = {
+  id: Scalars['ID']['input']
+  version?: InputMaybe<Scalars['String']['input']>
+}
+
+export type QueryTaxonomy_By_VersionArgs = {
+  id: Scalars['ID']['input']
+  version: Scalars['String']['input']
+}
+
+export type QueryTaxonomy_Level1Args = {
+  filter?: InputMaybe<Taxonomy_Level1_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type QueryTaxonomy_Level1_AggregatedArgs = {
+  filter?: InputMaybe<Taxonomy_Level1_Filter>
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type QueryTaxonomy_Level1_By_IdArgs = {
+  id: Scalars['ID']['input']
+  version?: InputMaybe<Scalars['String']['input']>
+}
+
+export type QueryTaxonomy_Level1_By_VersionArgs = {
+  id: Scalars['ID']['input']
+  version: Scalars['String']['input']
+}
+
+export type QueryTaxonomy_Level1_TransArgs = {
+  filter?: InputMaybe<Taxonomy_Level1_Trans_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type QueryTaxonomy_Level1_Trans_AggregatedArgs = {
+  filter?: InputMaybe<Taxonomy_Level1_Trans_Filter>
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type QueryTaxonomy_Level1_Trans_By_IdArgs = {
+  id: Scalars['ID']['input']
+  version?: InputMaybe<Scalars['String']['input']>
+}
+
+export type QueryTaxonomy_Level1_Trans_By_VersionArgs = {
+  id: Scalars['ID']['input']
+  version: Scalars['String']['input']
+}
+
+export type QueryTaxonomy_Level2Args = {
+  filter?: InputMaybe<Taxonomy_Level2_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type QueryTaxonomy_Level2_AggregatedArgs = {
+  filter?: InputMaybe<Taxonomy_Level2_Filter>
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type QueryTaxonomy_Level2_By_IdArgs = {
+  id: Scalars['ID']['input']
+  version?: InputMaybe<Scalars['String']['input']>
+}
+
+export type QueryTaxonomy_Level2_By_VersionArgs = {
+  id: Scalars['ID']['input']
+  version: Scalars['String']['input']
+}
+
+export type QueryTaxonomy_Level2_TransArgs = {
+  filter?: InputMaybe<Taxonomy_Level2_Trans_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type QueryTaxonomy_Level2_Trans_AggregatedArgs = {
+  filter?: InputMaybe<Taxonomy_Level2_Trans_Filter>
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type QueryTaxonomy_Level2_Trans_By_IdArgs = {
+  id: Scalars['ID']['input']
+  version?: InputMaybe<Scalars['String']['input']>
+}
+
+export type QueryTaxonomy_Level2_Trans_By_VersionArgs = {
+  id: Scalars['ID']['input']
+  version: Scalars['String']['input']
+}
+
+export type QueryTaxonomy_TransArgs = {
+  filter?: InputMaybe<Taxonomy_Trans_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type QueryTaxonomy_Trans_AggregatedArgs = {
+  filter?: InputMaybe<Taxonomy_Trans_Filter>
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type QueryTaxonomy_Trans_By_IdArgs = {
+  id: Scalars['ID']['input']
+  version?: InputMaybe<Scalars['String']['input']>
+}
+
+export type QueryTaxonomy_Trans_By_VersionArgs = {
+  id: Scalars['ID']['input']
+  version: Scalars['String']['input']
+}
+
 export type QueryUser_SettingArgs = {
   filter?: InputMaybe<User_Setting_Filter>
   limit?: InputMaybe<Scalars['Int']['input']>
@@ -4134,6 +4838,8 @@ export type Subscription = {
   languages_mutated?: Maybe<Languages_Mutated>
   learning_format_mutated?: Maybe<Learning_Format_Mutated>
   learning_pace_mutated?: Maybe<Learning_Pace_Mutated>
+  main_taxonomy_courses_mutated?: Maybe<Main_Taxonomy_Courses_Mutated>
+  main_taxonomy_mutated?: Maybe<Main_Taxonomy_Mutated>
   menu_items_mutated?: Maybe<Menu_Items_Mutated>
   menus_mutated?: Maybe<Menus_Mutated>
   pages_mutated?: Maybe<Pages_Mutated>
@@ -4151,6 +4857,12 @@ export type Subscription = {
   tag_courses_mutated?: Maybe<Tag_Courses_Mutated>
   tag_institutions_mutated?: Maybe<Tag_Institutions_Mutated>
   tag_posts_mutated?: Maybe<Tag_Posts_Mutated>
+  taxonomy_level1_mutated?: Maybe<Taxonomy_Level1_Mutated>
+  taxonomy_level1_trans_mutated?: Maybe<Taxonomy_Level1_Trans_Mutated>
+  taxonomy_level2_mutated?: Maybe<Taxonomy_Level2_Mutated>
+  taxonomy_level2_trans_mutated?: Maybe<Taxonomy_Level2_Trans_Mutated>
+  taxonomy_mutated?: Maybe<Taxonomy_Mutated>
+  taxonomy_trans_mutated?: Maybe<Taxonomy_Trans_Mutated>
   user_setting_mutated?: Maybe<User_Setting_Mutated>
   users_mutated?: Maybe<Users_Mutated>
 }
@@ -4347,6 +5059,14 @@ export type SubscriptionLearning_Pace_MutatedArgs = {
   event?: InputMaybe<EventEnum>
 }
 
+export type SubscriptionMain_Taxonomy_Courses_MutatedArgs = {
+  event?: InputMaybe<EventEnum>
+}
+
+export type SubscriptionMain_Taxonomy_MutatedArgs = {
+  event?: InputMaybe<EventEnum>
+}
+
 export type SubscriptionMenu_Items_MutatedArgs = {
   event?: InputMaybe<EventEnum>
 }
@@ -4412,6 +5132,30 @@ export type SubscriptionTag_Institutions_MutatedArgs = {
 }
 
 export type SubscriptionTag_Posts_MutatedArgs = {
+  event?: InputMaybe<EventEnum>
+}
+
+export type SubscriptionTaxonomy_Level1_MutatedArgs = {
+  event?: InputMaybe<EventEnum>
+}
+
+export type SubscriptionTaxonomy_Level1_Trans_MutatedArgs = {
+  event?: InputMaybe<EventEnum>
+}
+
+export type SubscriptionTaxonomy_Level2_MutatedArgs = {
+  event?: InputMaybe<EventEnum>
+}
+
+export type SubscriptionTaxonomy_Level2_Trans_MutatedArgs = {
+  event?: InputMaybe<EventEnum>
+}
+
+export type SubscriptionTaxonomy_MutatedArgs = {
+  event?: InputMaybe<EventEnum>
+}
+
+export type SubscriptionTaxonomy_Trans_MutatedArgs = {
   event?: InputMaybe<EventEnum>
 }
 
@@ -4549,7 +5293,6 @@ export type Campuses = {
   id: Scalars['ID']['output']
   images?: Maybe<Scalars['String']['output']>
   institutions_id?: Maybe<Institutions>
-  name?: Maybe<Scalars['String']['output']>
   phone?: Maybe<Scalars['String']['output']>
   postal_code?: Maybe<Scalars['String']['output']>
   street_address?: Maybe<Scalars['String']['output']>
@@ -4596,7 +5339,6 @@ export type Campuses_Aggregated_Count = {
   id?: Maybe<Scalars['Int']['output']>
   images?: Maybe<Scalars['Int']['output']>
   institutions_id?: Maybe<Scalars['Int']['output']>
-  name?: Maybe<Scalars['Int']['output']>
   phone?: Maybe<Scalars['Int']['output']>
   postal_code?: Maybe<Scalars['Int']['output']>
   street_address?: Maybe<Scalars['Int']['output']>
@@ -4687,7 +5429,6 @@ export type Campuses_Filter = {
   id?: InputMaybe<Number_Filter_Operators>
   images?: InputMaybe<String_Filter_Operators>
   institutions_id?: InputMaybe<Institutions_Filter>
-  name?: InputMaybe<String_Filter_Operators>
   phone?: InputMaybe<String_Filter_Operators>
   postal_code?: InputMaybe<String_Filter_Operators>
   street_address?: InputMaybe<String_Filter_Operators>
@@ -4982,14 +5723,13 @@ export type Courses = {
   course_trans_func?: Maybe<Count_Functions>
   degree_id?: Maybe<Scalars['Int']['output']>
   degree_type?: Maybe<Scalars['String']['output']>
-  disciplines?: Maybe<Array<Maybe<Courses_Disciplines>>>
-  disciplines_func?: Maybe<Count_Functions>
   duration?: Maybe<Scalars['String']['output']>
   duration_class?: Maybe<Scalars['String']['output']>
   ects?: Maybe<Scalars['Int']['output']>
   end_date?: Maybe<Scalars['Date']['output']>
   end_date_func?: Maybe<Date_Functions>
   id: Scalars['ID']['output']
+  id_mp?: Maybe<Scalars['String']['output']>
   images?: Maybe<Scalars['String']['output']>
   institutions?: Maybe<Array<Maybe<Joininstitutioncourse>>>
   institutions_func?: Maybe<Count_Functions>
@@ -5000,6 +5740,8 @@ export type Courses = {
   learning_format_id_func?: Maybe<Count_Functions>
   learning_pace_id?: Maybe<Array<Maybe<Courses_Learning_Pace>>>
   learning_pace_id_func?: Maybe<Count_Functions>
+  main_taxonomy?: Maybe<Array<Maybe<Main_Taxonomy_Courses>>>
+  main_taxonomy_func?: Maybe<Count_Functions>
   meta_tags?: Maybe<Scalars['JSON']['output']>
   meta_tags_func?: Maybe<Count_Functions>
   official_data_source?: Maybe<Scalars['String']['output']>
@@ -5051,15 +5793,6 @@ export type CoursesCourse_TransArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
-export type CoursesDisciplinesArgs = {
-  filter?: InputMaybe<Courses_Disciplines_Filter>
-  limit?: InputMaybe<Scalars['Int']['input']>
-  offset?: InputMaybe<Scalars['Int']['input']>
-  page?: InputMaybe<Scalars['Int']['input']>
-  search?: InputMaybe<Scalars['String']['input']>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
 export type CoursesInstitutionsArgs = {
   filter?: InputMaybe<Joininstitutioncourse_Filter>
   limit?: InputMaybe<Scalars['Int']['input']>
@@ -5080,6 +5813,15 @@ export type CoursesLearning_Format_IdArgs = {
 
 export type CoursesLearning_Pace_IdArgs = {
   filter?: InputMaybe<Courses_Learning_Pace_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type CoursesMain_TaxonomyArgs = {
+  filter?: InputMaybe<Main_Taxonomy_Courses_Filter>
   limit?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
   page?: InputMaybe<Scalars['Int']['input']>
@@ -5121,12 +5863,12 @@ export type Courses_Aggregated_Count = {
   course_trans?: Maybe<Scalars['Int']['output']>
   degree_id?: Maybe<Scalars['Int']['output']>
   degree_type?: Maybe<Scalars['Int']['output']>
-  disciplines?: Maybe<Scalars['Int']['output']>
   duration?: Maybe<Scalars['Int']['output']>
   duration_class?: Maybe<Scalars['Int']['output']>
   ects?: Maybe<Scalars['Int']['output']>
   end_date?: Maybe<Scalars['Int']['output']>
   id?: Maybe<Scalars['Int']['output']>
+  id_mp?: Maybe<Scalars['Int']['output']>
   images?: Maybe<Scalars['Int']['output']>
   institutions?: Maybe<Scalars['Int']['output']>
   is_dual?: Maybe<Scalars['Int']['output']>
@@ -5134,6 +5876,7 @@ export type Courses_Aggregated_Count = {
   is_on_demand?: Maybe<Scalars['Int']['output']>
   learning_format_id?: Maybe<Scalars['Int']['output']>
   learning_pace_id?: Maybe<Scalars['Int']['output']>
+  main_taxonomy?: Maybe<Scalars['Int']['output']>
   meta_tags?: Maybe<Scalars['Int']['output']>
   official_data_source?: Maybe<Scalars['Int']['output']>
   places_available?: Maybe<Scalars['Int']['output']>
@@ -5306,14 +6049,13 @@ export type Courses_Filter = {
   course_trans_func?: InputMaybe<Count_Function_Filter_Operators>
   degree_id?: InputMaybe<Number_Filter_Operators>
   degree_type?: InputMaybe<String_Filter_Operators>
-  disciplines?: InputMaybe<Courses_Disciplines_Filter>
-  disciplines_func?: InputMaybe<Count_Function_Filter_Operators>
   duration?: InputMaybe<String_Filter_Operators>
   duration_class?: InputMaybe<String_Filter_Operators>
   ects?: InputMaybe<Number_Filter_Operators>
   end_date?: InputMaybe<Date_Filter_Operators>
   end_date_func?: InputMaybe<Date_Function_Filter_Operators>
   id?: InputMaybe<Number_Filter_Operators>
+  id_mp?: InputMaybe<String_Filter_Operators>
   images?: InputMaybe<String_Filter_Operators>
   institutions?: InputMaybe<Joininstitutioncourse_Filter>
   institutions_func?: InputMaybe<Count_Function_Filter_Operators>
@@ -5324,6 +6066,8 @@ export type Courses_Filter = {
   learning_format_id_func?: InputMaybe<Count_Function_Filter_Operators>
   learning_pace_id?: InputMaybe<Courses_Learning_Pace_Filter>
   learning_pace_id_func?: InputMaybe<Count_Function_Filter_Operators>
+  main_taxonomy?: InputMaybe<Main_Taxonomy_Courses_Filter>
+  main_taxonomy_func?: InputMaybe<Count_Function_Filter_Operators>
   meta_tags?: InputMaybe<String_Filter_Operators>
   meta_tags_func?: InputMaybe<Count_Function_Filter_Operators>
   official_data_source?: InputMaybe<String_Filter_Operators>
@@ -5719,7 +6463,6 @@ export type Create_Campuses_Input = {
   id?: InputMaybe<Scalars['ID']['input']>
   images?: InputMaybe<Scalars['String']['input']>
   institutions_id?: InputMaybe<Create_Institutions_Input>
-  name?: InputMaybe<Scalars['String']['input']>
   phone?: InputMaybe<Scalars['String']['input']>
   postal_code?: InputMaybe<Scalars['String']['input']>
   street_address?: InputMaybe<Scalars['String']['input']>
@@ -5778,12 +6521,12 @@ export type Create_Courses_Input = {
   course_trans?: InputMaybe<Array<InputMaybe<Create_Courses_Trans_Input>>>
   degree_id?: InputMaybe<Scalars['Int']['input']>
   degree_type?: InputMaybe<Scalars['String']['input']>
-  disciplines?: InputMaybe<Array<InputMaybe<Create_Courses_Disciplines_Input>>>
   duration?: InputMaybe<Scalars['String']['input']>
   duration_class?: InputMaybe<Scalars['String']['input']>
   ects?: InputMaybe<Scalars['Int']['input']>
   end_date?: InputMaybe<Scalars['Date']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
+  id_mp?: InputMaybe<Scalars['String']['input']>
   images?: InputMaybe<Scalars['String']['input']>
   institutions?: InputMaybe<Array<InputMaybe<Create_Joininstitutioncourse_Input>>>
   is_dual?: InputMaybe<Scalars['Boolean']['input']>
@@ -5791,6 +6534,7 @@ export type Create_Courses_Input = {
   is_on_demand?: InputMaybe<Scalars['Boolean']['input']>
   learning_format_id?: InputMaybe<Array<InputMaybe<Create_Courses_Learning_Format_Input>>>
   learning_pace_id?: InputMaybe<Array<InputMaybe<Create_Courses_Learning_Pace_Input>>>
+  main_taxonomy?: InputMaybe<Array<InputMaybe<Create_Main_Taxonomy_Courses_Input>>>
   meta_tags?: InputMaybe<Scalars['JSON']['input']>
   official_data_source?: InputMaybe<Scalars['String']['input']>
   places_available?: InputMaybe<Scalars['Int']['input']>
@@ -5989,21 +6733,17 @@ export type Create_Institutions_Input = {
   acronym?: InputMaybe<Scalars['String']['input']>
   commercial_name?: InputMaybe<Scalars['String']['input']>
   courses?: InputMaybe<Array<InputMaybe<Create_Joininstitutioncourse_Input>>>
-  description?: InputMaybe<Scalars['String']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
+  id_mp: Scalars['String']['input']
   images?: InputMaybe<Scalars['String']['input']>
   institution_campuses?: InputMaybe<Array<InputMaybe<Create_Campuses_Input>>>
   institutions_scholarships_courses?: InputMaybe<Array<InputMaybe<Create_Institutions_Scholarships_Courses_Input>>>
   institutions_trans?: InputMaybe<Array<InputMaybe<Create_Institutions_Trans_Input>>>
-  intro?: InputMaybe<Scalars['String']['input']>
   logo?: InputMaybe<Scalars['String']['input']>
   main_image?: InputMaybe<Scalars['String']['input']>
   meta_type_tags?: InputMaybe<Array<InputMaybe<Create_Institutions_Tag_Institutions_Input>>>
-  name: Scalars['String']['input']
   official_data_source?: InputMaybe<Scalars['String']['input']>
   ownership?: InputMaybe<Scalars['String']['input']>
-  rank_and_rec?: InputMaybe<Scalars['JSON']['input']>
-  standsfor?: InputMaybe<Scalars['JSON']['input']>
   top_masters?: InputMaybe<Scalars['String']['input']>
   type?: InputMaybe<Scalars['String']['input']>
   url?: InputMaybe<Scalars['String']['input']>
@@ -6066,6 +6806,24 @@ export type Create_Learning_Format_Input = {
 export type Create_Learning_Pace_Input = {
   id?: InputMaybe<Scalars['ID']['input']>
   pace_name?: InputMaybe<Scalars['String']['input']>
+}
+
+export type Create_Main_Taxonomy_Courses_Input = {
+  courses_id?: InputMaybe<Create_Courses_Input>
+  id?: InputMaybe<Scalars['ID']['input']>
+  main_taxonomy_id?: InputMaybe<Create_Main_Taxonomy_Input>
+}
+
+export type Create_Main_Taxonomy_Input = {
+  courses?: InputMaybe<Array<InputMaybe<Create_Main_Taxonomy_Courses_Input>>>
+  discipline?: InputMaybe<Create_Taxonomy_Input>
+  discipline_visualization?: InputMaybe<Scalars['Boolean']['input']>
+  id?: InputMaybe<Scalars['ID']['input']>
+  menu?: InputMaybe<Scalars['String']['input']>
+  specialization_level1?: InputMaybe<Create_Taxonomy_Level1_Input>
+  specialization_level1_visualization?: InputMaybe<Scalars['Boolean']['input']>
+  specialization_level2?: InputMaybe<Create_Taxonomy_Level2_Input>
+  specialization_level2_visualization?: InputMaybe<Scalars['Boolean']['input']>
 }
 
 export type Create_Menu_Items_Input = {
@@ -6198,6 +6956,42 @@ export type Create_Tag_Posts_Input = {
   description?: InputMaybe<Scalars['String']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
   name?: InputMaybe<Scalars['String']['input']>
+}
+
+export type Create_Taxonomy_Input = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  taxonomy_trans?: InputMaybe<Array<InputMaybe<Create_Taxonomy_Trans_Input>>>
+}
+
+export type Create_Taxonomy_Level1_Input = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  taxonomy_level1_trans?: InputMaybe<Array<InputMaybe<Create_Taxonomy_Level1_Trans_Input>>>
+}
+
+export type Create_Taxonomy_Level1_Trans_Input = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  language?: InputMaybe<Create_Languages_Input>
+  name?: InputMaybe<Scalars['String']['input']>
+  taxonomy_level1_id?: InputMaybe<Create_Taxonomy_Level1_Input>
+}
+
+export type Create_Taxonomy_Level2_Input = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  taxonomy_level2_trans?: InputMaybe<Array<InputMaybe<Create_Taxonomy_Level2_Trans_Input>>>
+}
+
+export type Create_Taxonomy_Level2_Trans_Input = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  language?: InputMaybe<Create_Languages_Input>
+  name?: InputMaybe<Scalars['String']['input']>
+  taxonomy_level2_id?: InputMaybe<Create_Taxonomy_Level2_Input>
+}
+
+export type Create_Taxonomy_Trans_Input = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  language?: InputMaybe<Create_Languages_Input>
+  name?: InputMaybe<Scalars['String']['input']>
+  taxonomy_id?: InputMaybe<Create_Taxonomy_Input>
 }
 
 export type Create_User_Setting_Input = {
@@ -7801,8 +8595,8 @@ export type Institutions = {
   commercial_name?: Maybe<Scalars['String']['output']>
   courses?: Maybe<Array<Maybe<Joininstitutioncourse>>>
   courses_func?: Maybe<Count_Functions>
-  description?: Maybe<Scalars['String']['output']>
   id: Scalars['ID']['output']
+  id_mp: Scalars['String']['output']
   images?: Maybe<Scalars['String']['output']>
   institution_campuses?: Maybe<Array<Maybe<Campuses>>>
   institution_campuses_func?: Maybe<Count_Functions>
@@ -7810,18 +8604,12 @@ export type Institutions = {
   institutions_scholarships_courses_func?: Maybe<Count_Functions>
   institutions_trans?: Maybe<Array<Maybe<Institutions_Trans>>>
   institutions_trans_func?: Maybe<Count_Functions>
-  intro?: Maybe<Scalars['String']['output']>
   logo?: Maybe<Scalars['String']['output']>
   main_image?: Maybe<Scalars['String']['output']>
   meta_type_tags?: Maybe<Array<Maybe<Institutions_Tag_Institutions>>>
   meta_type_tags_func?: Maybe<Count_Functions>
-  name: Scalars['String']['output']
   official_data_source?: Maybe<Scalars['String']['output']>
   ownership?: Maybe<Scalars['String']['output']>
-  rank_and_rec?: Maybe<Scalars['JSON']['output']>
-  rank_and_rec_func?: Maybe<Count_Functions>
-  standsfor?: Maybe<Scalars['JSON']['output']>
-  standsfor_func?: Maybe<Count_Functions>
   top_masters?: Maybe<Scalars['String']['output']>
   type?: Maybe<Scalars['String']['output']>
   url?: Maybe<Scalars['String']['output']>
@@ -7892,21 +8680,17 @@ export type Institutions_Aggregated_Count = {
   acronym?: Maybe<Scalars['Int']['output']>
   commercial_name?: Maybe<Scalars['Int']['output']>
   courses?: Maybe<Scalars['Int']['output']>
-  description?: Maybe<Scalars['Int']['output']>
   id?: Maybe<Scalars['Int']['output']>
+  id_mp?: Maybe<Scalars['Int']['output']>
   images?: Maybe<Scalars['Int']['output']>
   institution_campuses?: Maybe<Scalars['Int']['output']>
   institutions_scholarships_courses?: Maybe<Scalars['Int']['output']>
   institutions_trans?: Maybe<Scalars['Int']['output']>
-  intro?: Maybe<Scalars['Int']['output']>
   logo?: Maybe<Scalars['Int']['output']>
   main_image?: Maybe<Scalars['Int']['output']>
   meta_type_tags?: Maybe<Scalars['Int']['output']>
-  name?: Maybe<Scalars['Int']['output']>
   official_data_source?: Maybe<Scalars['Int']['output']>
   ownership?: Maybe<Scalars['Int']['output']>
-  rank_and_rec?: Maybe<Scalars['Int']['output']>
-  standsfor?: Maybe<Scalars['Int']['output']>
   top_masters?: Maybe<Scalars['Int']['output']>
   type?: Maybe<Scalars['Int']['output']>
   url?: Maybe<Scalars['Int']['output']>
@@ -7925,8 +8709,8 @@ export type Institutions_Filter = {
   commercial_name?: InputMaybe<String_Filter_Operators>
   courses?: InputMaybe<Joininstitutioncourse_Filter>
   courses_func?: InputMaybe<Count_Function_Filter_Operators>
-  description?: InputMaybe<String_Filter_Operators>
   id?: InputMaybe<Number_Filter_Operators>
+  id_mp?: InputMaybe<String_Filter_Operators>
   images?: InputMaybe<String_Filter_Operators>
   institution_campuses?: InputMaybe<Campuses_Filter>
   institution_campuses_func?: InputMaybe<Count_Function_Filter_Operators>
@@ -7934,18 +8718,12 @@ export type Institutions_Filter = {
   institutions_scholarships_courses_func?: InputMaybe<Count_Function_Filter_Operators>
   institutions_trans?: InputMaybe<Institutions_Trans_Filter>
   institutions_trans_func?: InputMaybe<Count_Function_Filter_Operators>
-  intro?: InputMaybe<String_Filter_Operators>
   logo?: InputMaybe<String_Filter_Operators>
   main_image?: InputMaybe<String_Filter_Operators>
   meta_type_tags?: InputMaybe<Institutions_Tag_Institutions_Filter>
   meta_type_tags_func?: InputMaybe<Count_Function_Filter_Operators>
-  name?: InputMaybe<String_Filter_Operators>
   official_data_source?: InputMaybe<String_Filter_Operators>
   ownership?: InputMaybe<String_Filter_Operators>
-  rank_and_rec?: InputMaybe<String_Filter_Operators>
-  rank_and_rec_func?: InputMaybe<Count_Function_Filter_Operators>
-  standsfor?: InputMaybe<String_Filter_Operators>
-  standsfor_func?: InputMaybe<Count_Function_Filter_Operators>
   top_masters?: InputMaybe<String_Filter_Operators>
   type?: InputMaybe<String_Filter_Operators>
   url?: InputMaybe<String_Filter_Operators>
@@ -8475,6 +9253,178 @@ export type Learning_Pace_Filter = {
 export type Learning_Pace_Mutated = {
   __typename?: 'learning_pace_mutated'
   data?: Maybe<Learning_Pace>
+  event?: Maybe<EventEnum>
+  key: Scalars['ID']['output']
+}
+
+export type Main_Taxonomy = {
+  __typename?: 'main_taxonomy'
+  courses?: Maybe<Array<Maybe<Main_Taxonomy_Courses>>>
+  courses_func?: Maybe<Count_Functions>
+  discipline?: Maybe<Taxonomy>
+  discipline_visualization?: Maybe<Scalars['Boolean']['output']>
+  id: Scalars['ID']['output']
+  menu?: Maybe<Scalars['String']['output']>
+  specialization_level1?: Maybe<Taxonomy_Level1>
+  specialization_level1_visualization?: Maybe<Scalars['Boolean']['output']>
+  specialization_level2?: Maybe<Taxonomy_Level2>
+  specialization_level2_visualization?: Maybe<Scalars['Boolean']['output']>
+}
+
+export type Main_TaxonomyCoursesArgs = {
+  filter?: InputMaybe<Main_Taxonomy_Courses_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type Main_TaxonomyDisciplineArgs = {
+  filter?: InputMaybe<Taxonomy_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type Main_TaxonomySpecialization_Level1Args = {
+  filter?: InputMaybe<Taxonomy_Level1_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type Main_TaxonomySpecialization_Level2Args = {
+  filter?: InputMaybe<Taxonomy_Level2_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type Main_Taxonomy_Aggregated = {
+  __typename?: 'main_taxonomy_aggregated'
+  avg?: Maybe<Main_Taxonomy_Aggregated_Fields>
+  avgDistinct?: Maybe<Main_Taxonomy_Aggregated_Fields>
+  count?: Maybe<Main_Taxonomy_Aggregated_Count>
+  countAll?: Maybe<Scalars['Int']['output']>
+  countDistinct?: Maybe<Main_Taxonomy_Aggregated_Count>
+  group?: Maybe<Scalars['JSON']['output']>
+  max?: Maybe<Main_Taxonomy_Aggregated_Fields>
+  min?: Maybe<Main_Taxonomy_Aggregated_Fields>
+  sum?: Maybe<Main_Taxonomy_Aggregated_Fields>
+  sumDistinct?: Maybe<Main_Taxonomy_Aggregated_Fields>
+}
+
+export type Main_Taxonomy_Aggregated_Count = {
+  __typename?: 'main_taxonomy_aggregated_count'
+  courses?: Maybe<Scalars['Int']['output']>
+  discipline?: Maybe<Scalars['Int']['output']>
+  discipline_visualization?: Maybe<Scalars['Int']['output']>
+  id?: Maybe<Scalars['Int']['output']>
+  menu?: Maybe<Scalars['Int']['output']>
+  specialization_level1?: Maybe<Scalars['Int']['output']>
+  specialization_level1_visualization?: Maybe<Scalars['Int']['output']>
+  specialization_level2?: Maybe<Scalars['Int']['output']>
+  specialization_level2_visualization?: Maybe<Scalars['Int']['output']>
+}
+
+export type Main_Taxonomy_Aggregated_Fields = {
+  __typename?: 'main_taxonomy_aggregated_fields'
+  id?: Maybe<Scalars['Float']['output']>
+}
+
+export type Main_Taxonomy_Courses = {
+  __typename?: 'main_taxonomy_courses'
+  courses_id?: Maybe<Courses>
+  id: Scalars['ID']['output']
+  main_taxonomy_id?: Maybe<Main_Taxonomy>
+}
+
+export type Main_Taxonomy_CoursesCourses_IdArgs = {
+  filter?: InputMaybe<Courses_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type Main_Taxonomy_CoursesMain_Taxonomy_IdArgs = {
+  filter?: InputMaybe<Main_Taxonomy_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type Main_Taxonomy_Courses_Aggregated = {
+  __typename?: 'main_taxonomy_courses_aggregated'
+  avg?: Maybe<Main_Taxonomy_Courses_Aggregated_Fields>
+  avgDistinct?: Maybe<Main_Taxonomy_Courses_Aggregated_Fields>
+  count?: Maybe<Main_Taxonomy_Courses_Aggregated_Count>
+  countAll?: Maybe<Scalars['Int']['output']>
+  countDistinct?: Maybe<Main_Taxonomy_Courses_Aggregated_Count>
+  group?: Maybe<Scalars['JSON']['output']>
+  max?: Maybe<Main_Taxonomy_Courses_Aggregated_Fields>
+  min?: Maybe<Main_Taxonomy_Courses_Aggregated_Fields>
+  sum?: Maybe<Main_Taxonomy_Courses_Aggregated_Fields>
+  sumDistinct?: Maybe<Main_Taxonomy_Courses_Aggregated_Fields>
+}
+
+export type Main_Taxonomy_Courses_Aggregated_Count = {
+  __typename?: 'main_taxonomy_courses_aggregated_count'
+  courses_id?: Maybe<Scalars['Int']['output']>
+  id?: Maybe<Scalars['Int']['output']>
+  main_taxonomy_id?: Maybe<Scalars['Int']['output']>
+}
+
+export type Main_Taxonomy_Courses_Aggregated_Fields = {
+  __typename?: 'main_taxonomy_courses_aggregated_fields'
+  courses_id?: Maybe<Scalars['Float']['output']>
+  id?: Maybe<Scalars['Float']['output']>
+  main_taxonomy_id?: Maybe<Scalars['Float']['output']>
+}
+
+export type Main_Taxonomy_Courses_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Main_Taxonomy_Courses_Filter>>>
+  _or?: InputMaybe<Array<InputMaybe<Main_Taxonomy_Courses_Filter>>>
+  courses_id?: InputMaybe<Courses_Filter>
+  id?: InputMaybe<Number_Filter_Operators>
+  main_taxonomy_id?: InputMaybe<Main_Taxonomy_Filter>
+}
+
+export type Main_Taxonomy_Courses_Mutated = {
+  __typename?: 'main_taxonomy_courses_mutated'
+  data?: Maybe<Main_Taxonomy_Courses>
+  event?: Maybe<EventEnum>
+  key: Scalars['ID']['output']
+}
+
+export type Main_Taxonomy_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Main_Taxonomy_Filter>>>
+  _or?: InputMaybe<Array<InputMaybe<Main_Taxonomy_Filter>>>
+  courses?: InputMaybe<Main_Taxonomy_Courses_Filter>
+  courses_func?: InputMaybe<Count_Function_Filter_Operators>
+  discipline?: InputMaybe<Taxonomy_Filter>
+  discipline_visualization?: InputMaybe<Boolean_Filter_Operators>
+  id?: InputMaybe<Number_Filter_Operators>
+  menu?: InputMaybe<String_Filter_Operators>
+  specialization_level1?: InputMaybe<Taxonomy_Level1_Filter>
+  specialization_level1_visualization?: InputMaybe<Boolean_Filter_Operators>
+  specialization_level2?: InputMaybe<Taxonomy_Level2_Filter>
+  specialization_level2_visualization?: InputMaybe<Boolean_Filter_Operators>
+}
+
+export type Main_Taxonomy_Mutated = {
+  __typename?: 'main_taxonomy_mutated'
+  data?: Maybe<Main_Taxonomy>
   event?: Maybe<EventEnum>
   key: Scalars['ID']['output']
 }
@@ -9638,6 +10588,348 @@ export type Tag_Posts_Mutated = {
   key: Scalars['ID']['output']
 }
 
+export type Taxonomy = {
+  __typename?: 'taxonomy'
+  id: Scalars['ID']['output']
+  taxonomy_trans?: Maybe<Array<Maybe<Taxonomy_Trans>>>
+  taxonomy_trans_func?: Maybe<Count_Functions>
+}
+
+export type TaxonomyTaxonomy_TransArgs = {
+  filter?: InputMaybe<Taxonomy_Trans_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type Taxonomy_Aggregated = {
+  __typename?: 'taxonomy_aggregated'
+  count?: Maybe<Taxonomy_Aggregated_Count>
+  countAll?: Maybe<Scalars['Int']['output']>
+  countDistinct?: Maybe<Taxonomy_Aggregated_Count>
+  group?: Maybe<Scalars['JSON']['output']>
+}
+
+export type Taxonomy_Aggregated_Count = {
+  __typename?: 'taxonomy_aggregated_count'
+  id?: Maybe<Scalars['Int']['output']>
+  taxonomy_trans?: Maybe<Scalars['Int']['output']>
+}
+
+export type Taxonomy_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Taxonomy_Filter>>>
+  _or?: InputMaybe<Array<InputMaybe<Taxonomy_Filter>>>
+  id?: InputMaybe<String_Filter_Operators>
+  taxonomy_trans?: InputMaybe<Taxonomy_Trans_Filter>
+  taxonomy_trans_func?: InputMaybe<Count_Function_Filter_Operators>
+}
+
+export type Taxonomy_Level1 = {
+  __typename?: 'taxonomy_level1'
+  id: Scalars['ID']['output']
+  taxonomy_level1_trans?: Maybe<Array<Maybe<Taxonomy_Level1_Trans>>>
+  taxonomy_level1_trans_func?: Maybe<Count_Functions>
+}
+
+export type Taxonomy_Level1Taxonomy_Level1_TransArgs = {
+  filter?: InputMaybe<Taxonomy_Level1_Trans_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type Taxonomy_Level1_Aggregated = {
+  __typename?: 'taxonomy_level1_aggregated'
+  count?: Maybe<Taxonomy_Level1_Aggregated_Count>
+  countAll?: Maybe<Scalars['Int']['output']>
+  countDistinct?: Maybe<Taxonomy_Level1_Aggregated_Count>
+  group?: Maybe<Scalars['JSON']['output']>
+}
+
+export type Taxonomy_Level1_Aggregated_Count = {
+  __typename?: 'taxonomy_level1_aggregated_count'
+  id?: Maybe<Scalars['Int']['output']>
+  taxonomy_level1_trans?: Maybe<Scalars['Int']['output']>
+}
+
+export type Taxonomy_Level1_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Taxonomy_Level1_Filter>>>
+  _or?: InputMaybe<Array<InputMaybe<Taxonomy_Level1_Filter>>>
+  id?: InputMaybe<String_Filter_Operators>
+  taxonomy_level1_trans?: InputMaybe<Taxonomy_Level1_Trans_Filter>
+  taxonomy_level1_trans_func?: InputMaybe<Count_Function_Filter_Operators>
+}
+
+export type Taxonomy_Level1_Mutated = {
+  __typename?: 'taxonomy_level1_mutated'
+  data?: Maybe<Taxonomy_Level1>
+  event?: Maybe<EventEnum>
+  key: Scalars['ID']['output']
+}
+
+export type Taxonomy_Level1_Trans = {
+  __typename?: 'taxonomy_level1_trans'
+  id: Scalars['ID']['output']
+  language?: Maybe<Languages>
+  name?: Maybe<Scalars['String']['output']>
+  taxonomy_level1_id?: Maybe<Taxonomy_Level1>
+}
+
+export type Taxonomy_Level1_TransLanguageArgs = {
+  filter?: InputMaybe<Languages_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type Taxonomy_Level1_TransTaxonomy_Level1_IdArgs = {
+  filter?: InputMaybe<Taxonomy_Level1_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type Taxonomy_Level1_Trans_Aggregated = {
+  __typename?: 'taxonomy_level1_trans_aggregated'
+  avg?: Maybe<Taxonomy_Level1_Trans_Aggregated_Fields>
+  avgDistinct?: Maybe<Taxonomy_Level1_Trans_Aggregated_Fields>
+  count?: Maybe<Taxonomy_Level1_Trans_Aggregated_Count>
+  countAll?: Maybe<Scalars['Int']['output']>
+  countDistinct?: Maybe<Taxonomy_Level1_Trans_Aggregated_Count>
+  group?: Maybe<Scalars['JSON']['output']>
+  max?: Maybe<Taxonomy_Level1_Trans_Aggregated_Fields>
+  min?: Maybe<Taxonomy_Level1_Trans_Aggregated_Fields>
+  sum?: Maybe<Taxonomy_Level1_Trans_Aggregated_Fields>
+  sumDistinct?: Maybe<Taxonomy_Level1_Trans_Aggregated_Fields>
+}
+
+export type Taxonomy_Level1_Trans_Aggregated_Count = {
+  __typename?: 'taxonomy_level1_trans_aggregated_count'
+  id?: Maybe<Scalars['Int']['output']>
+  language?: Maybe<Scalars['Int']['output']>
+  name?: Maybe<Scalars['Int']['output']>
+  taxonomy_level1_id?: Maybe<Scalars['Int']['output']>
+}
+
+export type Taxonomy_Level1_Trans_Aggregated_Fields = {
+  __typename?: 'taxonomy_level1_trans_aggregated_fields'
+  language?: Maybe<Scalars['Float']['output']>
+}
+
+export type Taxonomy_Level1_Trans_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Taxonomy_Level1_Trans_Filter>>>
+  _or?: InputMaybe<Array<InputMaybe<Taxonomy_Level1_Trans_Filter>>>
+  id?: InputMaybe<String_Filter_Operators>
+  language?: InputMaybe<Languages_Filter>
+  name?: InputMaybe<String_Filter_Operators>
+  taxonomy_level1_id?: InputMaybe<Taxonomy_Level1_Filter>
+}
+
+export type Taxonomy_Level1_Trans_Mutated = {
+  __typename?: 'taxonomy_level1_trans_mutated'
+  data?: Maybe<Taxonomy_Level1_Trans>
+  event?: Maybe<EventEnum>
+  key: Scalars['ID']['output']
+}
+
+export type Taxonomy_Level2 = {
+  __typename?: 'taxonomy_level2'
+  id: Scalars['ID']['output']
+  taxonomy_level2_trans?: Maybe<Array<Maybe<Taxonomy_Level2_Trans>>>
+  taxonomy_level2_trans_func?: Maybe<Count_Functions>
+}
+
+export type Taxonomy_Level2Taxonomy_Level2_TransArgs = {
+  filter?: InputMaybe<Taxonomy_Level2_Trans_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type Taxonomy_Level2_Aggregated = {
+  __typename?: 'taxonomy_level2_aggregated'
+  count?: Maybe<Taxonomy_Level2_Aggregated_Count>
+  countAll?: Maybe<Scalars['Int']['output']>
+  countDistinct?: Maybe<Taxonomy_Level2_Aggregated_Count>
+  group?: Maybe<Scalars['JSON']['output']>
+}
+
+export type Taxonomy_Level2_Aggregated_Count = {
+  __typename?: 'taxonomy_level2_aggregated_count'
+  id?: Maybe<Scalars['Int']['output']>
+  taxonomy_level2_trans?: Maybe<Scalars['Int']['output']>
+}
+
+export type Taxonomy_Level2_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Taxonomy_Level2_Filter>>>
+  _or?: InputMaybe<Array<InputMaybe<Taxonomy_Level2_Filter>>>
+  id?: InputMaybe<String_Filter_Operators>
+  taxonomy_level2_trans?: InputMaybe<Taxonomy_Level2_Trans_Filter>
+  taxonomy_level2_trans_func?: InputMaybe<Count_Function_Filter_Operators>
+}
+
+export type Taxonomy_Level2_Mutated = {
+  __typename?: 'taxonomy_level2_mutated'
+  data?: Maybe<Taxonomy_Level2>
+  event?: Maybe<EventEnum>
+  key: Scalars['ID']['output']
+}
+
+export type Taxonomy_Level2_Trans = {
+  __typename?: 'taxonomy_level2_trans'
+  id: Scalars['ID']['output']
+  language?: Maybe<Languages>
+  name?: Maybe<Scalars['String']['output']>
+  taxonomy_level2_id?: Maybe<Taxonomy_Level2>
+}
+
+export type Taxonomy_Level2_TransLanguageArgs = {
+  filter?: InputMaybe<Languages_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type Taxonomy_Level2_TransTaxonomy_Level2_IdArgs = {
+  filter?: InputMaybe<Taxonomy_Level2_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type Taxonomy_Level2_Trans_Aggregated = {
+  __typename?: 'taxonomy_level2_trans_aggregated'
+  avg?: Maybe<Taxonomy_Level2_Trans_Aggregated_Fields>
+  avgDistinct?: Maybe<Taxonomy_Level2_Trans_Aggregated_Fields>
+  count?: Maybe<Taxonomy_Level2_Trans_Aggregated_Count>
+  countAll?: Maybe<Scalars['Int']['output']>
+  countDistinct?: Maybe<Taxonomy_Level2_Trans_Aggregated_Count>
+  group?: Maybe<Scalars['JSON']['output']>
+  max?: Maybe<Taxonomy_Level2_Trans_Aggregated_Fields>
+  min?: Maybe<Taxonomy_Level2_Trans_Aggregated_Fields>
+  sum?: Maybe<Taxonomy_Level2_Trans_Aggregated_Fields>
+  sumDistinct?: Maybe<Taxonomy_Level2_Trans_Aggregated_Fields>
+}
+
+export type Taxonomy_Level2_Trans_Aggregated_Count = {
+  __typename?: 'taxonomy_level2_trans_aggregated_count'
+  id?: Maybe<Scalars['Int']['output']>
+  language?: Maybe<Scalars['Int']['output']>
+  name?: Maybe<Scalars['Int']['output']>
+  taxonomy_level2_id?: Maybe<Scalars['Int']['output']>
+}
+
+export type Taxonomy_Level2_Trans_Aggregated_Fields = {
+  __typename?: 'taxonomy_level2_trans_aggregated_fields'
+  language?: Maybe<Scalars['Float']['output']>
+}
+
+export type Taxonomy_Level2_Trans_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Taxonomy_Level2_Trans_Filter>>>
+  _or?: InputMaybe<Array<InputMaybe<Taxonomy_Level2_Trans_Filter>>>
+  id?: InputMaybe<String_Filter_Operators>
+  language?: InputMaybe<Languages_Filter>
+  name?: InputMaybe<String_Filter_Operators>
+  taxonomy_level2_id?: InputMaybe<Taxonomy_Level2_Filter>
+}
+
+export type Taxonomy_Level2_Trans_Mutated = {
+  __typename?: 'taxonomy_level2_trans_mutated'
+  data?: Maybe<Taxonomy_Level2_Trans>
+  event?: Maybe<EventEnum>
+  key: Scalars['ID']['output']
+}
+
+export type Taxonomy_Mutated = {
+  __typename?: 'taxonomy_mutated'
+  data?: Maybe<Taxonomy>
+  event?: Maybe<EventEnum>
+  key: Scalars['ID']['output']
+}
+
+export type Taxonomy_Trans = {
+  __typename?: 'taxonomy_trans'
+  id: Scalars['ID']['output']
+  language?: Maybe<Languages>
+  name?: Maybe<Scalars['String']['output']>
+  taxonomy_id?: Maybe<Taxonomy>
+}
+
+export type Taxonomy_TransLanguageArgs = {
+  filter?: InputMaybe<Languages_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type Taxonomy_TransTaxonomy_IdArgs = {
+  filter?: InputMaybe<Taxonomy_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type Taxonomy_Trans_Aggregated = {
+  __typename?: 'taxonomy_trans_aggregated'
+  avg?: Maybe<Taxonomy_Trans_Aggregated_Fields>
+  avgDistinct?: Maybe<Taxonomy_Trans_Aggregated_Fields>
+  count?: Maybe<Taxonomy_Trans_Aggregated_Count>
+  countAll?: Maybe<Scalars['Int']['output']>
+  countDistinct?: Maybe<Taxonomy_Trans_Aggregated_Count>
+  group?: Maybe<Scalars['JSON']['output']>
+  max?: Maybe<Taxonomy_Trans_Aggregated_Fields>
+  min?: Maybe<Taxonomy_Trans_Aggregated_Fields>
+  sum?: Maybe<Taxonomy_Trans_Aggregated_Fields>
+  sumDistinct?: Maybe<Taxonomy_Trans_Aggregated_Fields>
+}
+
+export type Taxonomy_Trans_Aggregated_Count = {
+  __typename?: 'taxonomy_trans_aggregated_count'
+  id?: Maybe<Scalars['Int']['output']>
+  language?: Maybe<Scalars['Int']['output']>
+  name?: Maybe<Scalars['Int']['output']>
+  taxonomy_id?: Maybe<Scalars['Int']['output']>
+}
+
+export type Taxonomy_Trans_Aggregated_Fields = {
+  __typename?: 'taxonomy_trans_aggregated_fields'
+  language?: Maybe<Scalars['Float']['output']>
+}
+
+export type Taxonomy_Trans_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Taxonomy_Trans_Filter>>>
+  _or?: InputMaybe<Array<InputMaybe<Taxonomy_Trans_Filter>>>
+  id?: InputMaybe<String_Filter_Operators>
+  language?: InputMaybe<Languages_Filter>
+  name?: InputMaybe<String_Filter_Operators>
+  taxonomy_id?: InputMaybe<Taxonomy_Filter>
+}
+
+export type Taxonomy_Trans_Mutated = {
+  __typename?: 'taxonomy_trans_mutated'
+  data?: Maybe<Taxonomy_Trans>
+  event?: Maybe<EventEnum>
+  key: Scalars['ID']['output']
+}
+
 export type Update_Allowed_Setting_Value_Input = {
   caption?: InputMaybe<Scalars['String']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
@@ -9663,7 +10955,6 @@ export type Update_Campuses_Input = {
   id?: InputMaybe<Scalars['ID']['input']>
   images?: InputMaybe<Scalars['String']['input']>
   institutions_id?: InputMaybe<Update_Institutions_Input>
-  name?: InputMaybe<Scalars['String']['input']>
   phone?: InputMaybe<Scalars['String']['input']>
   postal_code?: InputMaybe<Scalars['String']['input']>
   street_address?: InputMaybe<Scalars['String']['input']>
@@ -9722,12 +11013,12 @@ export type Update_Courses_Input = {
   course_trans?: InputMaybe<Array<InputMaybe<Update_Courses_Trans_Input>>>
   degree_id?: InputMaybe<Scalars['Int']['input']>
   degree_type?: InputMaybe<Scalars['String']['input']>
-  disciplines?: InputMaybe<Array<InputMaybe<Update_Courses_Disciplines_Input>>>
   duration?: InputMaybe<Scalars['String']['input']>
   duration_class?: InputMaybe<Scalars['String']['input']>
   ects?: InputMaybe<Scalars['Int']['input']>
   end_date?: InputMaybe<Scalars['Date']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
+  id_mp?: InputMaybe<Scalars['String']['input']>
   images?: InputMaybe<Scalars['String']['input']>
   institutions?: InputMaybe<Array<InputMaybe<Update_Joininstitutioncourse_Input>>>
   is_dual?: InputMaybe<Scalars['Boolean']['input']>
@@ -9735,6 +11026,7 @@ export type Update_Courses_Input = {
   is_on_demand?: InputMaybe<Scalars['Boolean']['input']>
   learning_format_id?: InputMaybe<Array<InputMaybe<Update_Courses_Learning_Format_Input>>>
   learning_pace_id?: InputMaybe<Array<InputMaybe<Update_Courses_Learning_Pace_Input>>>
+  main_taxonomy?: InputMaybe<Array<InputMaybe<Update_Main_Taxonomy_Courses_Input>>>
   meta_tags?: InputMaybe<Scalars['JSON']['input']>
   official_data_source?: InputMaybe<Scalars['String']['input']>
   places_available?: InputMaybe<Scalars['Int']['input']>
@@ -9933,21 +11225,17 @@ export type Update_Institutions_Input = {
   acronym?: InputMaybe<Scalars['String']['input']>
   commercial_name?: InputMaybe<Scalars['String']['input']>
   courses?: InputMaybe<Array<InputMaybe<Update_Joininstitutioncourse_Input>>>
-  description?: InputMaybe<Scalars['String']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
+  id_mp?: InputMaybe<Scalars['String']['input']>
   images?: InputMaybe<Scalars['String']['input']>
   institution_campuses?: InputMaybe<Array<InputMaybe<Update_Campuses_Input>>>
   institutions_scholarships_courses?: InputMaybe<Array<InputMaybe<Update_Institutions_Scholarships_Courses_Input>>>
   institutions_trans?: InputMaybe<Array<InputMaybe<Update_Institutions_Trans_Input>>>
-  intro?: InputMaybe<Scalars['String']['input']>
   logo?: InputMaybe<Scalars['String']['input']>
   main_image?: InputMaybe<Scalars['String']['input']>
   meta_type_tags?: InputMaybe<Array<InputMaybe<Update_Institutions_Tag_Institutions_Input>>>
-  name?: InputMaybe<Scalars['String']['input']>
   official_data_source?: InputMaybe<Scalars['String']['input']>
   ownership?: InputMaybe<Scalars['String']['input']>
-  rank_and_rec?: InputMaybe<Scalars['JSON']['input']>
-  standsfor?: InputMaybe<Scalars['JSON']['input']>
   top_masters?: InputMaybe<Scalars['String']['input']>
   type?: InputMaybe<Scalars['String']['input']>
   url?: InputMaybe<Scalars['String']['input']>
@@ -10010,6 +11298,24 @@ export type Update_Learning_Format_Input = {
 export type Update_Learning_Pace_Input = {
   id?: InputMaybe<Scalars['ID']['input']>
   pace_name?: InputMaybe<Scalars['String']['input']>
+}
+
+export type Update_Main_Taxonomy_Courses_Input = {
+  courses_id?: InputMaybe<Update_Courses_Input>
+  id?: InputMaybe<Scalars['ID']['input']>
+  main_taxonomy_id?: InputMaybe<Update_Main_Taxonomy_Input>
+}
+
+export type Update_Main_Taxonomy_Input = {
+  courses?: InputMaybe<Array<InputMaybe<Update_Main_Taxonomy_Courses_Input>>>
+  discipline?: InputMaybe<Update_Taxonomy_Input>
+  discipline_visualization?: InputMaybe<Scalars['Boolean']['input']>
+  id?: InputMaybe<Scalars['ID']['input']>
+  menu?: InputMaybe<Scalars['String']['input']>
+  specialization_level1?: InputMaybe<Update_Taxonomy_Level1_Input>
+  specialization_level1_visualization?: InputMaybe<Scalars['Boolean']['input']>
+  specialization_level2?: InputMaybe<Update_Taxonomy_Level2_Input>
+  specialization_level2_visualization?: InputMaybe<Scalars['Boolean']['input']>
 }
 
 export type Update_Menu_Items_Input = {
@@ -10142,6 +11448,42 @@ export type Update_Tag_Posts_Input = {
   description?: InputMaybe<Scalars['String']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
   name?: InputMaybe<Scalars['String']['input']>
+}
+
+export type Update_Taxonomy_Input = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  taxonomy_trans?: InputMaybe<Array<InputMaybe<Update_Taxonomy_Trans_Input>>>
+}
+
+export type Update_Taxonomy_Level1_Input = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  taxonomy_level1_trans?: InputMaybe<Array<InputMaybe<Update_Taxonomy_Level1_Trans_Input>>>
+}
+
+export type Update_Taxonomy_Level1_Trans_Input = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  language?: InputMaybe<Update_Languages_Input>
+  name?: InputMaybe<Scalars['String']['input']>
+  taxonomy_level1_id?: InputMaybe<Update_Taxonomy_Level1_Input>
+}
+
+export type Update_Taxonomy_Level2_Input = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  taxonomy_level2_trans?: InputMaybe<Array<InputMaybe<Update_Taxonomy_Level2_Trans_Input>>>
+}
+
+export type Update_Taxonomy_Level2_Trans_Input = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  language?: InputMaybe<Update_Languages_Input>
+  name?: InputMaybe<Scalars['String']['input']>
+  taxonomy_level2_id?: InputMaybe<Update_Taxonomy_Level2_Input>
+}
+
+export type Update_Taxonomy_Trans_Input = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  language?: InputMaybe<Update_Languages_Input>
+  name?: InputMaybe<Scalars['String']['input']>
+  taxonomy_id?: InputMaybe<Update_Taxonomy_Input>
 }
 
 export type Update_User_Setting_Input = {
@@ -10336,7 +11678,6 @@ export type Version_Campuses = {
   id?: Maybe<Scalars['ID']['output']>
   images?: Maybe<Scalars['String']['output']>
   institutions_id?: Maybe<Scalars['JSON']['output']>
-  name?: Maybe<Scalars['String']['output']>
   phone?: Maybe<Scalars['String']['output']>
   postal_code?: Maybe<Scalars['String']['output']>
   street_address?: Maybe<Scalars['String']['output']>
@@ -10395,12 +11736,12 @@ export type Version_Courses = {
   course_trans?: Maybe<Scalars['JSON']['output']>
   degree_id?: Maybe<Scalars['Int']['output']>
   degree_type?: Maybe<Scalars['String']['output']>
-  disciplines?: Maybe<Scalars['JSON']['output']>
   duration?: Maybe<Scalars['String']['output']>
   duration_class?: Maybe<Scalars['String']['output']>
   ects?: Maybe<Scalars['Int']['output']>
   end_date?: Maybe<Scalars['Date']['output']>
   id?: Maybe<Scalars['ID']['output']>
+  id_mp?: Maybe<Scalars['String']['output']>
   images?: Maybe<Scalars['String']['output']>
   institutions?: Maybe<Scalars['JSON']['output']>
   is_dual?: Maybe<Scalars['Boolean']['output']>
@@ -10408,6 +11749,7 @@ export type Version_Courses = {
   is_on_demand?: Maybe<Scalars['Boolean']['output']>
   learning_format_id?: Maybe<Scalars['JSON']['output']>
   learning_pace_id?: Maybe<Scalars['JSON']['output']>
+  main_taxonomy?: Maybe<Scalars['JSON']['output']>
   meta_tags?: Maybe<Scalars['JSON']['output']>
   official_data_source?: Maybe<Scalars['String']['output']>
   places_available?: Maybe<Scalars['Int']['output']>
@@ -10518,21 +11860,17 @@ export type Version_Institutions = {
   acronym?: Maybe<Scalars['String']['output']>
   commercial_name?: Maybe<Scalars['String']['output']>
   courses?: Maybe<Scalars['JSON']['output']>
-  description?: Maybe<Scalars['String']['output']>
   id?: Maybe<Scalars['ID']['output']>
+  id_mp?: Maybe<Scalars['String']['output']>
   images?: Maybe<Scalars['String']['output']>
   institution_campuses?: Maybe<Scalars['JSON']['output']>
   institutions_scholarships_courses?: Maybe<Scalars['JSON']['output']>
   institutions_trans?: Maybe<Scalars['JSON']['output']>
-  intro?: Maybe<Scalars['String']['output']>
   logo?: Maybe<Scalars['String']['output']>
   main_image?: Maybe<Scalars['String']['output']>
   meta_type_tags?: Maybe<Scalars['JSON']['output']>
-  name?: Maybe<Scalars['String']['output']>
   official_data_source?: Maybe<Scalars['String']['output']>
   ownership?: Maybe<Scalars['String']['output']>
-  rank_and_rec?: Maybe<Scalars['JSON']['output']>
-  standsfor?: Maybe<Scalars['JSON']['output']>
   top_masters?: Maybe<Scalars['String']['output']>
   type?: Maybe<Scalars['String']['output']>
   url?: Maybe<Scalars['String']['output']>
@@ -10603,6 +11941,26 @@ export type Version_Learning_Pace = {
   __typename?: 'version_learning_pace'
   id?: Maybe<Scalars['ID']['output']>
   pace_name?: Maybe<Scalars['String']['output']>
+}
+
+export type Version_Main_Taxonomy = {
+  __typename?: 'version_main_taxonomy'
+  courses?: Maybe<Scalars['JSON']['output']>
+  discipline?: Maybe<Scalars['JSON']['output']>
+  discipline_visualization?: Maybe<Scalars['Boolean']['output']>
+  id?: Maybe<Scalars['ID']['output']>
+  menu?: Maybe<Scalars['String']['output']>
+  specialization_level1?: Maybe<Scalars['JSON']['output']>
+  specialization_level1_visualization?: Maybe<Scalars['Boolean']['output']>
+  specialization_level2?: Maybe<Scalars['JSON']['output']>
+  specialization_level2_visualization?: Maybe<Scalars['Boolean']['output']>
+}
+
+export type Version_Main_Taxonomy_Courses = {
+  __typename?: 'version_main_taxonomy_courses'
+  courses_id?: Maybe<Scalars['JSON']['output']>
+  id?: Maybe<Scalars['ID']['output']>
+  main_taxonomy_id?: Maybe<Scalars['JSON']['output']>
 }
 
 export type Version_Menu_Items = {
@@ -10754,6 +12112,48 @@ export type Version_Tag_Posts = {
   name?: Maybe<Scalars['String']['output']>
 }
 
+export type Version_Taxonomy = {
+  __typename?: 'version_taxonomy'
+  id?: Maybe<Scalars['ID']['output']>
+  taxonomy_trans?: Maybe<Scalars['JSON']['output']>
+}
+
+export type Version_Taxonomy_Level1 = {
+  __typename?: 'version_taxonomy_level1'
+  id?: Maybe<Scalars['ID']['output']>
+  taxonomy_level1_trans?: Maybe<Scalars['JSON']['output']>
+}
+
+export type Version_Taxonomy_Level1_Trans = {
+  __typename?: 'version_taxonomy_level1_trans'
+  id?: Maybe<Scalars['ID']['output']>
+  language?: Maybe<Scalars['JSON']['output']>
+  name?: Maybe<Scalars['String']['output']>
+  taxonomy_level1_id?: Maybe<Scalars['JSON']['output']>
+}
+
+export type Version_Taxonomy_Level2 = {
+  __typename?: 'version_taxonomy_level2'
+  id?: Maybe<Scalars['ID']['output']>
+  taxonomy_level2_trans?: Maybe<Scalars['JSON']['output']>
+}
+
+export type Version_Taxonomy_Level2_Trans = {
+  __typename?: 'version_taxonomy_level2_trans'
+  id?: Maybe<Scalars['ID']['output']>
+  language?: Maybe<Scalars['JSON']['output']>
+  name?: Maybe<Scalars['String']['output']>
+  taxonomy_level2_id?: Maybe<Scalars['JSON']['output']>
+}
+
+export type Version_Taxonomy_Trans = {
+  __typename?: 'version_taxonomy_trans'
+  id?: Maybe<Scalars['ID']['output']>
+  language?: Maybe<Scalars['JSON']['output']>
+  name?: Maybe<Scalars['String']['output']>
+  taxonomy_id?: Maybe<Scalars['JSON']['output']>
+}
+
 export type Version_User_Setting = {
   __typename?: 'version_user_setting'
   id?: Maybe<Scalars['ID']['output']>
@@ -10813,29 +12213,6 @@ export type CourseCampusesFragment = {
         intro?: string | null
         description?: string | null
         name?: string | null
-      } | null> | null
-    } | null
-  } | null> | null
-}
-
-export type CoursesDisciplineFragment = {
-  __typename?: 'courses'
-  disciplines?: Array<{
-    __typename?: 'courses_disciplines'
-    disciplines_id?: {
-      __typename?: 'disciplines'
-      menu: string
-      discipline_visualization?: boolean | null
-      specialization_level1_visualization?: boolean | null
-      specialization_level2_visualization?: boolean | null
-      visualization?: number | null
-      id: string
-      discipline_trans?: Array<{
-        __typename?: 'disciplines_trans'
-        discipline: string
-        specialization_level1?: string | null
-        specialization_level2?: string | null
-        keyword?: string | null
       } | null> | null
     } | null
   } | null> | null
@@ -11235,25 +12612,6 @@ export type GetCourseQuery = {
             } | null> | null
           } | null
         } | null> | null
-        disciplines?: Array<{
-          __typename?: 'courses_disciplines'
-          disciplines_id?: {
-            __typename?: 'disciplines'
-            menu: string
-            discipline_visualization?: boolean | null
-            specialization_level1_visualization?: boolean | null
-            specialization_level2_visualization?: boolean | null
-            visualization?: number | null
-            id: string
-            discipline_trans?: Array<{
-              __typename?: 'disciplines_trans'
-              discipline: string
-              specialization_level1?: string | null
-              specialization_level2?: string | null
-              keyword?: string | null
-            } | null> | null
-          } | null
-        } | null> | null
         profiles?: Array<{
           __typename?: 'profiles'
           content_title?: string | null
@@ -11283,6 +12641,41 @@ export type GetCourseQuery = {
       } | null
     } | null> | null
   } | null
+}
+
+export type GroupDisciplinesQueryVariables = Exact<{
+  languageName: Scalars['String']['input']
+  filter?: InputMaybe<Main_Taxonomy_Filter>
+}>
+
+export type GroupDisciplinesQuery = {
+  __typename?: 'Query'
+  main_taxonomy: Array<{
+    __typename?: 'main_taxonomy'
+    id: string
+    discipline_visualization?: boolean | null
+    specialization_level1_visualization?: boolean | null
+    specialization_level2_visualization?: boolean | null
+    discipline?: {
+      __typename?: 'taxonomy'
+      id: string
+      taxonomy_trans?: Array<{ __typename?: 'taxonomy_trans'; id: string; name?: string | null } | null> | null
+    } | null
+    specialization_level1?: {
+      __typename?: 'taxonomy_level1'
+      id: string
+      taxonomy_level1_trans?: Array<{ __typename?: 'taxonomy_level1_trans'; id: string; name?: string | null } | null> | null
+    } | null
+    specialization_level2?: {
+      __typename?: 'taxonomy_level2'
+      id: string
+      taxonomy_level2_trans?: Array<{ __typename?: 'taxonomy_level2_trans'; name?: string | null } | null> | null
+    } | null
+    courses?: Array<{
+      __typename?: 'main_taxonomy_courses'
+      courses_id?: { __typename?: 'courses'; id: string; id_mp?: string | null } | null
+    } | null> | null
+  }>
 }
 
 export type GetInstitutionsQueryVariables = Exact<{
@@ -11511,38 +12904,6 @@ export const CourseCampusesFragmentDoc = gql`
   }
   ${CampusesInfoFragmentDoc}
 `
-export const DisciplineInfoFragmentDoc = gql`
-  fragment DisciplineInfo on disciplines {
-    menu
-    discipline_visualization
-    specialization_level1_visualization
-    specialization_level2_visualization
-    visualization
-    id
-  }
-`
-export const DisciplineTransInfoFragmentDoc = gql`
-  fragment DisciplineTransInfo on disciplines_trans {
-    discipline
-    specialization_level1
-    specialization_level2
-    keyword
-  }
-`
-export const CoursesDisciplineFragmentDoc = gql`
-  fragment CoursesDiscipline on courses {
-    disciplines {
-      disciplines_id {
-        ...DisciplineInfo
-        discipline_trans(filter: { language: { name: { _eq: $languageName } } }) {
-          ...DisciplineTransInfo
-        }
-      }
-    }
-  }
-  ${DisciplineInfoFragmentDoc}
-  ${DisciplineTransInfoFragmentDoc}
-`
 export const InstitutionsTransAboutFragmentDoc = gql`
   fragment InstitutionsTransAbout on institutions_trans {
     intro
@@ -11651,6 +13012,24 @@ export const CourseTransTitleFragmentDoc = gql`
     title_career_opportunities
     pricing
     header_scholarships
+  }
+`
+export const DisciplineInfoFragmentDoc = gql`
+  fragment DisciplineInfo on disciplines {
+    menu
+    discipline_visualization
+    specialization_level1_visualization
+    specialization_level2_visualization
+    visualization
+    id
+  }
+`
+export const DisciplineTransInfoFragmentDoc = gql`
+  fragment DisciplineTransInfo on disciplines_trans {
+    discipline
+    specialization_level1
+    specialization_level2
+    keyword
   }
 `
 export const InstitutionsLocationsFragmentDoc = gql`
@@ -11924,7 +13303,6 @@ export const GetCourseDocument = gql`
             day
           }
           ...CoursesInstitution
-          ...CoursesDiscipline
           ...CoursesProfiles
           ...CourseCampuses
         }
@@ -11936,7 +13314,6 @@ export const GetCourseDocument = gql`
   ${CourseTransTitleFragmentDoc}
   ${CoursesLanguagesFragmentDoc}
   ${CoursesInstitutionFragmentDoc}
-  ${CoursesDisciplineFragmentDoc}
   ${CoursesProfilesFragmentDoc}
   ${CourseCampusesFragmentDoc}
 `
@@ -11979,6 +13356,83 @@ export type GetCourseQueryHookResult = ReturnType<typeof useGetCourseQuery>
 export type GetCourseLazyQueryHookResult = ReturnType<typeof useGetCourseLazyQuery>
 export type GetCourseSuspenseQueryHookResult = ReturnType<typeof useGetCourseSuspenseQuery>
 export type GetCourseQueryResult = Apollo.QueryResult<GetCourseQuery, GetCourseQueryVariables>
+export const GroupDisciplinesDocument = gql`
+  query GroupDisciplines($languageName: String!, $filter: main_taxonomy_filter) {
+    main_taxonomy {
+      id
+      discipline {
+        taxonomy_trans(filter: { language: { name: { _eq: $languageName } } }) {
+          id
+          name
+        }
+        id
+      }
+      discipline_visualization
+      specialization_level1 {
+        taxonomy_level1_trans(filter: { language: { name: { _eq: $languageName } } }) {
+          id
+          name
+        }
+        id
+      }
+      specialization_level1_visualization
+      specialization_level2 {
+        taxonomy_level2_trans(filter: { language: { name: { _eq: $languageName } } }) {
+          name
+        }
+        id
+      }
+      specialization_level2_visualization
+      courses {
+        courses_id {
+          id
+          id_mp
+        }
+      }
+    }
+  }
+`
+
+/**
+ * __useGroupDisciplinesQuery__
+ *
+ * To run a query within a React component, call `useGroupDisciplinesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGroupDisciplinesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGroupDisciplinesQuery({
+ *   variables: {
+ *      languageName: // value for 'languageName'
+ *      filter: // value for 'filter'
+ *   },
+ * });
+ */
+export function useGroupDisciplinesQuery(
+  baseOptions: Apollo.QueryHookOptions<GroupDisciplinesQuery, GroupDisciplinesQueryVariables> &
+    ({ variables: GroupDisciplinesQueryVariables; skip?: boolean } | { skip: boolean })
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<GroupDisciplinesQuery, GroupDisciplinesQueryVariables>(GroupDisciplinesDocument, options)
+}
+export function useGroupDisciplinesLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GroupDisciplinesQuery, GroupDisciplinesQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GroupDisciplinesQuery, GroupDisciplinesQueryVariables>(GroupDisciplinesDocument, options)
+}
+export function useGroupDisciplinesSuspenseQuery(
+  baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GroupDisciplinesQuery, GroupDisciplinesQueryVariables>
+) {
+  const options = baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions }
+  return Apollo.useSuspenseQuery<GroupDisciplinesQuery, GroupDisciplinesQueryVariables>(GroupDisciplinesDocument, options)
+}
+export type GroupDisciplinesQueryHookResult = ReturnType<typeof useGroupDisciplinesQuery>
+export type GroupDisciplinesLazyQueryHookResult = ReturnType<typeof useGroupDisciplinesLazyQuery>
+export type GroupDisciplinesSuspenseQueryHookResult = ReturnType<typeof useGroupDisciplinesSuspenseQuery>
+export type GroupDisciplinesQueryResult = Apollo.QueryResult<GroupDisciplinesQuery, GroupDisciplinesQueryVariables>
 export const GetInstitutionsDocument = gql`
   query GetInstitutions($languageName: String!, $filter: institutions_filter, $page: Int, $limit: Int) {
     institutions(filter: $filter, page: $page, limit: $limit) {

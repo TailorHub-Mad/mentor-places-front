@@ -1,3 +1,5 @@
+'use client'
+
 import AssetCard, { type IAssetCardProps } from '@components/AssetCard/AssetCard'
 import { SwiperNavigationPosition } from '@components/Swiper/components/SwiperNatigation'
 import CustomSwiper from '@components/Swiper/CustomSwiper'
@@ -5,7 +7,7 @@ import type { FC } from 'react'
 
 type TItem = IAssetCardProps & { image: string }
 
-interface IMonthHighlightsProps {
+export interface IMonthHighlightsProps {
   title: string
   items: TItem[]
 }

@@ -11,7 +11,7 @@ export const MOCK_MURAL: TMuralCard[] = [
   },
   {
     type: 'image',
-    src: '/images/blog-post-example-mentor.jpeg'
+    src: '/images/mural-1.jpg'
   },
   {
     type: 'text',
@@ -21,11 +21,11 @@ export const MOCK_MURAL: TMuralCard[] = [
   },
   {
     type: 'image',
-    src: '/images/blog-post-example-mentor.jpeg'
+    src: '/images/mural-2.jpg'
   },
   {
     type: 'image',
-    src: '/images/blog-post-example-mentor.jpeg'
+    src: '/images/mural-3.jpg'
   },
   {
     type: 'text',

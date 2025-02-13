@@ -20,7 +20,7 @@ const CourseDetail: FC<ICourseDetailProps> = ({ type, value }) => {
     <div>
       <div className="flex items-center gap-2">
         <Icon width={isMobile || isVerticalTablet ? 14 : 24} />
-        <p className="font-s lg:text-[21px]">{value}</p>
+        <p className="font-s lg:text-[21px] line-clamp-1">{value}</p>
       </div>
       <div className={'bg-BLACK opacity-25 w-full h-px my-2'} />
       <p className="font-s">{t(`courseDetails.${type}`)}</p>

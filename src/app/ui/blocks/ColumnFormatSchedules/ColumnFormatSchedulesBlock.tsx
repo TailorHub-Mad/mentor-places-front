@@ -10,7 +10,7 @@ const ColumnFormatSchedulesBlock: FC<IFormatSchedulesBlockProps> = ({ title, car
   return (
     <div className="column-format-shedules-block grid grid-cols-1 md:grid-cols-8">
       <div className="column-format-schedules-block__title md:col-span-3">
-        <h2 className="text-xl-mobile font-xl mb-10 leading-[1]">{title}</h2>
+        <h2 className="m md:text-xl-mobile md:font-xl mb-10 leading-[1]">{title}</h2>
       </div>
       <div className="column-format-schedules-block__content flex flex-col md:col-span-5 gap-4">
         {cards.map((card, index) => {
