@@ -48,8 +48,8 @@ const RichText: FC<IRichTextProps> = ({ content, maxLines = MAX_LINES_DEFAULT, w
           display: '-webkit-box',
           WebkitBoxOrient: 'vertical',
           overflow: 'hidden',
-          WebkitLineClamp: isExpanded ? 'unset' : maxLines.toString(),
-          maxHeight: isExpanded ? 'none' : `${maxLines * (lineHeight + RICH_TEXT_MB)}px`
+          WebkitLineClamp: isExpanded || disableTruncate ? 'unset' : maxLines.toString(),
+          maxHeight: isExpanded || disableTruncate ? 'none' : `${maxLines * (lineHeight + RICH_TEXT_MB)}px`
         }}
       />
       {isTruncated && !disableTruncate && <ShowMoreButton isExpanded={isExpanded} setIsExpanded={setIsExpanded} />}

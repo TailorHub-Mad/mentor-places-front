@@ -20,3 +20,11 @@ export const Default: Story = {
     width: '30%'
   }
 }
+
+export const DisableTruncate: Story = {
+  args: {
+    content: RICH_TEXT_MOCK,
+    width: '30%',
+    disableTruncate: true
+  }
+}
