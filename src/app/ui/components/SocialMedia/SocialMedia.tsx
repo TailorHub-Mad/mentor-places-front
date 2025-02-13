@@ -1,12 +1,13 @@
 'use client'
 
 import type { FC } from 'react'
-import { usePathname } from '../../../../navigation'
 import Button from '@components/Button/Button'
 import LinkedInIcon from '@components/icons/LinkedInIcon'
 import WhatsAppIcon from '@components/icons/WhatsAppIcon'
 import XIcon from '@components/icons/XIcon'
 import { useTranslations } from 'next-intl'
+import { usePathname } from 'next/navigation'
+import LinkIcon from '@components/icons/LinkIcon'
 
 interface ISocialMediaProps {
   title: string
@@ -45,6 +46,14 @@ const SocialMedia: FC<ISocialMediaProps> = ({ title }) => {
   const encodedUrl = encodeURIComponent(postUrl)
   const encodedTitle = encodeURIComponent(title)
 
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(postUrl)
+    } catch (error) {
+      console.error('Failed to copy:', error)
+    }
+  }
+
   return (
     <div>
       <h4 className="m">{t('sharePost')}</h4>
@@ -54,6 +63,9 @@ const SocialMedia: FC<ISocialMediaProps> = ({ title }) => {
             <Button variant="icon">{icon}</Button>
           </a>
         ))}
+        <Button variant="icon" onClick={copyToClipboard}>
+          <LinkIcon />
+        </Button>
       </div>
     </div>
   )
