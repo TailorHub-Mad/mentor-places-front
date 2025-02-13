@@ -1,10 +1,22 @@
 .rich-text {
   color: #666666;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.rich-text hr{
+  border-color: #666666;
 }
 
 .rich-text p, 
+.rich-text h1, 
+.rich-text h2, 
+.rich-text h3, 
+.rich-text img, 
+.rich-text hr, 
 .rich-text ul {
-  margin: 0 0 16px 0;
+  margin: 0 0 20px 0;
 }
 
 .rich-text ul {
@@ -19,4 +31,23 @@
 
 .rich-text a:hover {
   text-decoration: underline;
+}
+
+.rich-text img {
+  border-radius: 8px;
+  max-height: 300px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.rich-text h1 {
+  @apply text-xl font-xl leading-xl
+}
+
+.rich-text h2 {
+  @apply text-l font-l leading-l
+}
+
+.rich-text h3 {
+  @apply text-m font-m leading-m
 }
