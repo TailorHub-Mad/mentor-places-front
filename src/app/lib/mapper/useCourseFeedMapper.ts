@@ -12,7 +12,7 @@ export const useCourseFeedMapper = (courses: FilterCoursesQuery['courses']): IAs
   return filteredCourses.flatMap((course) => ({
     title: course?.commercial_name ?? '',
     assetThumbnailUrl: course?.course_id?.images ?? '/images/UAX-university-mentor.png',
-    ctaHref: course?.course_id ? `/courses/${course.course_id}` : '#',
+    ctaHref: course?.course_id ? `/courses/${course.course_id.id}` : '#',
     universityName: course?.course_id?.campuses_courses?.[0]?.campuses_id?.campuses_trans?.[0]?.name ?? '',
     universityLogo: course?.course_id?.institutions?.[0]?.institution_id?.logo || '/images/default-logo.png',
     details: [

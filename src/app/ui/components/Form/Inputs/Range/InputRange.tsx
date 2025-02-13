@@ -32,7 +32,7 @@ const InputRange: FC<IInputRangeProps> = ({
   const handleSetRange = (value: string[]) => {
     onChange({
       value: value,
-      id: id
+      id: 'price'
     })
   }
 

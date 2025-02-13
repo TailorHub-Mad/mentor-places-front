@@ -12643,12 +12643,36 @@ export type GetCourseQuery = {
   } | null
 }
 
-export type GroupDisciplinesQueryVariables = Exact<{
+export type GetDisciplinesQueryVariables = Exact<{
+  languageName: Scalars['String']['input']
+}>
+
+export type GetDisciplinesQuery = {
+  __typename?: 'Query'
+  disciplines: Array<{
+    __typename?: 'disciplines'
+    menu: string
+    discipline_visualization?: boolean | null
+    id: string
+    visualization?: number | null
+    specialization_level1_visualization?: boolean | null
+    specialization_level2_visualization?: boolean | null
+    discipline_trans?: Array<{
+      __typename?: 'disciplines_trans'
+      discipline: string
+      specialization_level1?: string | null
+      specialization_level2?: string | null
+      keyword?: string | null
+    } | null> | null
+  }>
+}
+
+export type DisciplinesQueryVariables = Exact<{
   languageName: Scalars['String']['input']
   filter?: InputMaybe<Main_Taxonomy_Filter>
 }>
 
-export type GroupDisciplinesQuery = {
+export type DisciplinesQuery = {
   __typename?: 'Query'
   main_taxonomy: Array<{
     __typename?: 'main_taxonomy'
@@ -13356,8 +13380,64 @@ export type GetCourseQueryHookResult = ReturnType<typeof useGetCourseQuery>
 export type GetCourseLazyQueryHookResult = ReturnType<typeof useGetCourseLazyQuery>
 export type GetCourseSuspenseQueryHookResult = ReturnType<typeof useGetCourseSuspenseQuery>
 export type GetCourseQueryResult = Apollo.QueryResult<GetCourseQuery, GetCourseQueryVariables>
-export const GroupDisciplinesDocument = gql`
-  query GroupDisciplines($languageName: String!, $filter: main_taxonomy_filter) {
+export const GetDisciplinesDocument = gql`
+  query GetDisciplines($languageName: String!) {
+    disciplines {
+      menu
+      discipline_visualization
+      id
+      visualization
+      specialization_level1_visualization
+      specialization_level2_visualization
+      discipline_trans(filter: { language: { name: { _eq: $languageName } } }) {
+        discipline
+        specialization_level1
+        specialization_level2
+        keyword
+      }
+    }
+  }
+`
+
+/**
+ * __useGetDisciplinesQuery__
+ *
+ * To run a query within a React component, call `useGetDisciplinesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetDisciplinesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetDisciplinesQuery({
+ *   variables: {
+ *      languageName: // value for 'languageName'
+ *   },
+ * });
+ */
+export function useGetDisciplinesQuery(
+  baseOptions: Apollo.QueryHookOptions<GetDisciplinesQuery, GetDisciplinesQueryVariables> &
+    ({ variables: GetDisciplinesQueryVariables; skip?: boolean } | { skip: boolean })
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<GetDisciplinesQuery, GetDisciplinesQueryVariables>(GetDisciplinesDocument, options)
+}
+export function useGetDisciplinesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetDisciplinesQuery, GetDisciplinesQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GetDisciplinesQuery, GetDisciplinesQueryVariables>(GetDisciplinesDocument, options)
+}
+export function useGetDisciplinesSuspenseQuery(
+  baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetDisciplinesQuery, GetDisciplinesQueryVariables>
+) {
+  const options = baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions }
+  return Apollo.useSuspenseQuery<GetDisciplinesQuery, GetDisciplinesQueryVariables>(GetDisciplinesDocument, options)
+}
+export type GetDisciplinesQueryHookResult = ReturnType<typeof useGetDisciplinesQuery>
+export type GetDisciplinesLazyQueryHookResult = ReturnType<typeof useGetDisciplinesLazyQuery>
+export type GetDisciplinesSuspenseQueryHookResult = ReturnType<typeof useGetDisciplinesSuspenseQuery>
+export type GetDisciplinesQueryResult = Apollo.QueryResult<GetDisciplinesQuery, GetDisciplinesQueryVariables>
+export const DisciplinesDocument = gql`
+  query Disciplines($languageName: String!, $filter: main_taxonomy_filter) {
     main_taxonomy {
       id
       discipline {
@@ -13394,45 +13474,43 @@ export const GroupDisciplinesDocument = gql`
 `
 
 /**
- * __useGroupDisciplinesQuery__
+ * __useDisciplinesQuery__
  *
- * To run a query within a React component, call `useGroupDisciplinesQuery` and pass it any options that fit your needs.
- * When your component renders, `useGroupDisciplinesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useDisciplinesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useDisciplinesQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGroupDisciplinesQuery({
+ * const { data, loading, error } = useDisciplinesQuery({
  *   variables: {
  *      languageName: // value for 'languageName'
  *      filter: // value for 'filter'
  *   },
  * });
  */
-export function useGroupDisciplinesQuery(
-  baseOptions: Apollo.QueryHookOptions<GroupDisciplinesQuery, GroupDisciplinesQueryVariables> &
-    ({ variables: GroupDisciplinesQueryVariables; skip?: boolean } | { skip: boolean })
+export function useDisciplinesQuery(
+  baseOptions: Apollo.QueryHookOptions<DisciplinesQuery, DisciplinesQueryVariables> &
+    ({ variables: DisciplinesQueryVariables; skip?: boolean } | { skip: boolean })
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<GroupDisciplinesQuery, GroupDisciplinesQueryVariables>(GroupDisciplinesDocument, options)
+  return Apollo.useQuery<DisciplinesQuery, DisciplinesQueryVariables>(DisciplinesDocument, options)
 }
-export function useGroupDisciplinesLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GroupDisciplinesQuery, GroupDisciplinesQueryVariables>
-) {
+export function useDisciplinesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<DisciplinesQuery, DisciplinesQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GroupDisciplinesQuery, GroupDisciplinesQueryVariables>(GroupDisciplinesDocument, options)
+  return Apollo.useLazyQuery<DisciplinesQuery, DisciplinesQueryVariables>(DisciplinesDocument, options)
 }
-export function useGroupDisciplinesSuspenseQuery(
-  baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GroupDisciplinesQuery, GroupDisciplinesQueryVariables>
+export function useDisciplinesSuspenseQuery(
+  baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<DisciplinesQuery, DisciplinesQueryVariables>
 ) {
   const options = baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions }
-  return Apollo.useSuspenseQuery<GroupDisciplinesQuery, GroupDisciplinesQueryVariables>(GroupDisciplinesDocument, options)
+  return Apollo.useSuspenseQuery<DisciplinesQuery, DisciplinesQueryVariables>(DisciplinesDocument, options)
 }
-export type GroupDisciplinesQueryHookResult = ReturnType<typeof useGroupDisciplinesQuery>
-export type GroupDisciplinesLazyQueryHookResult = ReturnType<typeof useGroupDisciplinesLazyQuery>
-export type GroupDisciplinesSuspenseQueryHookResult = ReturnType<typeof useGroupDisciplinesSuspenseQuery>
-export type GroupDisciplinesQueryResult = Apollo.QueryResult<GroupDisciplinesQuery, GroupDisciplinesQueryVariables>
+export type DisciplinesQueryHookResult = ReturnType<typeof useDisciplinesQuery>
+export type DisciplinesLazyQueryHookResult = ReturnType<typeof useDisciplinesLazyQuery>
+export type DisciplinesSuspenseQueryHookResult = ReturnType<typeof useDisciplinesSuspenseQuery>
+export type DisciplinesQueryResult = Apollo.QueryResult<DisciplinesQuery, DisciplinesQueryVariables>
 export const GetInstitutionsDocument = gql`
   query GetInstitutions($languageName: String!, $filter: institutions_filter, $page: Int, $limit: Int) {
     institutions(filter: $filter, page: $page, limit: $limit) {

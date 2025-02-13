@@ -1,13 +1,19 @@
 'use client'
 
-import { type FC, useState, useEffect } from 'react'
+import { type FC, useState, useEffect, useMemo } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import useAccordionItems from '@components/Accordion/useAccordionItems'
 import FilterBlock from '@components/Filters/SideBar/components/FilterBlock'
 import FilterSelectedControl from '@components/Filters/SideBar/components/FilterSelectedControl'
 import type { IFilterSelection, IFilterSideBarProps } from '@interfaces/filterSidebar.interfaces'
 import { cx } from '@utils/cx'
-import { parseCategoryFilters, parseDateFilter, parsePriceFilter, updateFilter } from '@components/Filters/SideBar/utils/handleFilters'
+import {
+  parseCategoryFilters,
+  parseDateFilter,
+  parsePriceFilter,
+  updateFilter,
+  updateURLSearchParams
+} from '@components/Filters/SideBar/utils/handleFilters'
 
 const FilterSideBar: FC<IFilterSideBarProps> = ({ filters, className }) => {
   const defaultOpen = ''
@@ -15,6 +21,7 @@ const FilterSideBar: FC<IFilterSideBarProps> = ({ filters, className }) => {
   const [filterSelected, setFilterSelected] = useState<IFilterSelection[]>([])
   const router = useRouter()
   const searchParams = useSearchParams()
+  const memoizedSearchParams = useMemo(() => searchParams.toString(), [searchParams])
 
   const onClear = () => setFilterSelected([])
 
@@ -23,6 +30,10 @@ const FilterSideBar: FC<IFilterSideBarProps> = ({ filters, className }) => {
   }
 
   // Initialize `filterSelected` from URLSearchParams only on the first render
+  const memoizedFilters = useMemo(() => {
+    return filters || []
+  }, [filters])
+
   useEffect(() => {
     const urlParams = searchParams
     if (!urlParams) return
@@ -30,15 +41,19 @@ const FilterSideBar: FC<IFilterSideBarProps> = ({ filters, className }) => {
     const parsedFilters: IFilterSelection[] = [
       ...parseDateFilter(urlParams),
       ...parsePriceFilter(urlParams),
-      ...parseCategoryFilters(urlParams, filters)
+      ...parseCategoryFilters(urlParams, memoizedFilters)
     ]
 
     setFilterSelected(parsedFilters)
-  }, [searchParams])
+  }, [memoizedSearchParams])
 
-  // Update `URLSearchParams` whenever `filterSelected` changes
   useEffect(() => {
-    const urlParams = new URLSearchParams(searchParams.toString())
+    const updatedParams = updateURLSearchParams(filterSelected, memoizedSearchParams)
+    router.replace(`?${updatedParams.toString()}`)
+  }, [filterSelected, memoizedSearchParams, router])
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(memoizedSearchParams)
     const categories: string[] = []
 
     filterSelected.forEach((filter) => {
@@ -65,18 +80,19 @@ const FilterSideBar: FC<IFilterSideBarProps> = ({ filters, className }) => {
         {filterSelected.length > 0 && <FilterSelectedControl filterSelected={filterSelected} onChange={handleChange} onClear={onClear} />}
       </div>
       {filters.map((filter, index) => {
-        const { filters, title, id } = filter
-        if (!filters) return null
+        const { filters: blockFilters, title, id } = filter
+
+        if (!blockFilters) return null
         return (
           <FilterBlock
-            key={`filter-block-${id}-${index}`}
+            key={`filter-block-${id}-${index}-${title}`}
             id={id}
             index={index}
             filterSelected={filterSelected}
             openItems={openItems}
             onToggle={handleAccordion}
             onChange={handleChange}
-            filters={filters}
+            filters={blockFilters}
             title={title}
           />
         )

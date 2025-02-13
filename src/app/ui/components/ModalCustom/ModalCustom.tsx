@@ -1,4 +1,6 @@
-import type { FC, PropsWithChildren } from 'react'
+'use client'
+
+import { type FC, type PropsWithChildren, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import CrossIcon from '@components/icons/CrossIcon'
 import { cx } from '@utils/cx'
@@ -10,16 +12,19 @@ export interface IModalCustomProps {
 }
 
 const ModalCustom: FC<PropsWithChildren<IModalCustomProps>> = ({ children, handleClose, isOpen, className }) => {
-  // Create a reference to the 'modal-root' element
-  const modalRoot = document.getElementById('modal-root') as HTMLElement
+  const [modalRoot, setModalRoot] = useState<HTMLElement | null>(null) // State to store modal root reference
 
-  // Ensure modal renders only if `modalRoot` exists
-  if (!modalRoot) {
-    console.error('No modal root element found. Please add a <div id="modal-root"></div> to your HTML.')
-    return null
-  }
+  useEffect(() => {
+    // This will run once the component is mounted
+    const rootElement = document.getElementById('modal-root') as HTMLElement
+    if (!rootElement) {
+      console.error('No modal root element found. Please add a <div id="modal-root"></div> to your HTML.')
+    }
+    setModalRoot(rootElement) // Assign modal-root to the state
+  }, [])
 
-  if (!isOpen) return null
+  // Only render when modalRoot is available and `isOpen` is true
+  if (!modalRoot || !isOpen) return null
 
   return createPortal(
     <div className="modal-custom absolute inset-0 flex items-center justify-center z-[1000]">
