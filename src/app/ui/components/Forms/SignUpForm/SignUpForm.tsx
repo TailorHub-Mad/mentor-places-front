@@ -9,7 +9,6 @@ import { useSignUpValidation } from '../../../../lib/validations/auth.validation
 import { useTranslations } from 'next-intl'
 import { checkIsFormCompleted } from '@utils/form.utils'
 import CheckboxInput from '@components/Checkbox'
-import { Link } from '../../../../../navigation'
 
 export interface ISignUpRequest {
   email: string
@@ -29,9 +28,10 @@ const defaultValues: ISignUpRequest = {
 
 interface ISignUpFormProps {
   onSubmit: (data: ISignUpRequest) => void
+  onLogInClick: () => void
 }
 
-const SignUpForm: FC<ISignUpFormProps> = ({ onSubmit }) => {
+const SignUpForm: FC<ISignUpFormProps> = ({ onSubmit, onLogInClick }) => {
   const t = useTranslations('forms')
   const signUpValidation = useSignUpValidation()
 
@@ -82,11 +82,10 @@ const SignUpForm: FC<ISignUpFormProps> = ({ onSubmit }) => {
       </form>
 
       <p className="s mt-7 text-BLACK_60">
-        {/* TODO - Link */}
         {t('signup.alreadyRegistered')}{' '}
-        <Link href={'/'}>
+        <button onClick={onLogInClick}>
           <span className="underline text-BLACK"> {t('signup.login')}</span>
-        </Link>
+        </button>
       </p>
     </div>
   )
