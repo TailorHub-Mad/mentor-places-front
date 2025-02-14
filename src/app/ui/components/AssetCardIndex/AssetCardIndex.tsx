@@ -6,6 +6,7 @@ import AssetDetailCard from '@components/AssetCard/components/AssetDetailCard'
 import { EAssetCardVariant } from '@components/AssetCard/AssetCard'
 import { useTranslations } from 'next-intl'
 import Button from '@components/Button/Button'
+import { cx } from '@utils/cx'
 
 export interface IAssetCardIndexProps extends IAssetCardData {
   title: string
@@ -33,16 +34,21 @@ const AssetCardIndex: FC<IAssetCardIndexProps> = (props) => {
   const t = useTranslations()
 
   return (
-    <div className="asset-card-index__wrapper flex flex-col md:flex-row relative md:py-[24px] py-[20px] md:px-[32px] px-[22px] shadow-md rounded-[8px] bg-WHITE max-w-full">
+    <div
+      className={cx('asset-card-index__wrapper flex flex-col py-[20px] px-[22px] shadow-md rounded-[8px] bg-WHITE max-w-full', {
+        'md:flex-row relative md:py-[24px] md:px-[32px]': !isOnFavPage
+      })}>
       <div
-        className="asset-card-index__image relative overflow-hidden h-[275px] w-auto md:w-[275px] md:h-[300px] md:mr-[50px] rounded-[8px] mb-[32px] md:mb-0"
+        className={cx('asset-card-index__image relative overflow-hidden h-[275px] w-auto rounded-[8px] mb-[32px]', {
+          'md:w-[275px] md:h-[300px] md:mr-[50px] md:mb-0': !isOnFavPage
+        })}
         style={{
           backgroundImage: `url(${assetThumbnailUrl})`,
           backgroundPosition: 'center',
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat'
         }}>
-        {!isOnFavPage && <WishListButton isTextHidden className="absolute md:hidden top-[14px] right-[14px]" />}
+        {!isOnFavPage && <WishListButton isTextHidden className={cx('absolute top-[14px] right-[14px]', { 'md:hidden': !isOnFavPage })} />}
       </div>
       <div className="asset-card-index__content flex flex-col flex-grow justify-between">
         <div className="asset-card-index__content__header flex flex-row justify-between items-center mb-[34px]">
@@ -52,12 +58,12 @@ const AssetCardIndex: FC<IAssetCardIndexProps> = (props) => {
               {universityName && <span>{universityName}</span>}
             </div>
           )}
-          {!isOnFavPage && <WishListButton className="hidden md:flex" />}
+          {!isOnFavPage && <WishListButton className={cx('hidden', { 'md:flex': !isOnFavPage })} />}
         </div>
         <div className="asset-card-index__content__info mb-[30px]">
           <h3 className="font-s text-m-mobile lg:text-m mb-[20px]">{title}</h3>
           {details && (
-            <div className="md:flex items-center gap-x-[24px] gap-y-[12px] md:gap-[12px] grid grid-cols-2">
+            <div className={cx('items-center gap-x-[24px] gap-y-[12px] grid grid-cols-2', { 'md:flex  md:gap-[12px]': !isOnFavPage })}>
               {details.map((item, index) => {
                 if (!item.value) return null
 
@@ -73,7 +79,7 @@ const AssetCardIndex: FC<IAssetCardIndexProps> = (props) => {
             </div>
           )}
         </div>
-        <div className="asset-card-index__content__footer flex items-center gap-[6px] md:gap-[16px]">
+        <div className={cx('asset-card-index__content__footer flex items-center gap-[6px]', { 'md:gap-[16px]': !isOnFavPage })}>
           <Button variant="primary" href={ctaHref}>
             {t('actions.showMore')}
           </Button>
