@@ -8,7 +8,6 @@ import { joiResolver } from '@hookform/resolvers/joi'
 import { useLogInValidation } from '../../../../lib/validations/auth.validations'
 import { useTranslations } from 'next-intl'
 import { checkIsFormCompleted } from '@utils/form.utils'
-import { Link } from '../../../../../navigation'
 
 export interface ILogInRequest {
   email: string
@@ -22,9 +21,10 @@ const defaultValues: ILogInRequest = {
 
 interface ILoginFormProps {
   onSubmit: (data: ILogInRequest) => void
+  onSignUpClick: () => void
 }
 
-const LogInForm: FC<ILoginFormProps> = ({ onSubmit }) => {
+const LogInForm: FC<ILoginFormProps> = ({ onSubmit, onSignUpClick }) => {
   const t = useTranslations('forms')
   const loginValidation = useLogInValidation()
 
@@ -57,11 +57,10 @@ const LogInForm: FC<ILoginFormProps> = ({ onSubmit }) => {
       </form>
 
       <p className="s mt-7 text-BLACK_60">
-        {/* TODO - Link */}
         {t('login.notRegisteredYet')}{' '}
-        <Link href={'/'}>
+        <button onClick={onSignUpClick}>
           <span className="underline text-BLACK"> {t('login.signUp')}</span>
-        </Link>
+        </button>
       </p>
     </div>
   )
