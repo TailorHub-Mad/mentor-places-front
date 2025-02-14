@@ -18,7 +18,7 @@ const AssetCard: FC<IAssetCardProps> = (props) => {
       })}>
       <AssetCardHeader
         variant={variant}
-        title={title}
+        title={title || ''}
         universityName={universityName}
         universityLogo={universityLogo}
         imageSrc={imageSrc}
@@ -27,7 +27,12 @@ const AssetCard: FC<IAssetCardProps> = (props) => {
       {details && (
         <div className="asset-card__content mb-[30px] px-[30px]">
           {details.map((item, index) => (
-            <AssetDetailCard variant={variant} text={item.value} type={item.type} key={`asset-card-feature-item-${item.type + index}`} />
+            <AssetDetailCard
+              variant={variant}
+              text={item.value || ''}
+              type={item.type}
+              key={`asset-card-feature-item-${item.type + index}`}
+            />
           ))}
         </div>
       )}
@@ -36,7 +41,7 @@ const AssetCard: FC<IAssetCardProps> = (props) => {
         variant={variant}
         universityLogo={universityLogo}
         universityName={universityName}
-        description={description}
+        description={description || ''}
       />
     </div>
   )

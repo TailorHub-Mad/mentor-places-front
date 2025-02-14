@@ -40,7 +40,7 @@ const AssetCardHeader: FC<AssetCardHeaderProps> = ({ title, universityName, univ
       return (
         <div className="">
           <div className="asset-card__header h-[166px] relative mb-[34px]">
-            <div className="absolute w-full h-full flex items-center justify-center bg-BLUE rounded-t-lg">
+            <div className="absolute w-full h-full flex items-center justify-center bg-BLUE rounded-t-lg overflow-hidden">
               <LogoFavicon />
             </div>
           </div>
