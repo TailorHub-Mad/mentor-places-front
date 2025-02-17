@@ -48,3 +48,24 @@ export const updateFilter = (newFilter: IFilterSelection, currentFilters: IFilte
     ? currentFilters.filter((filter) => filter.id !== newFilter.id)
     : [...currentFilters, newFilter]
 }
+
+export const updateURLSearchParams = (filters: IFilterSelection[], memoizedSearchParams: string) => {
+  const urlParams = new URLSearchParams(memoizedSearchParams)
+  const categories: string[] = []
+
+  filters.forEach((filter) => {
+    if (filter.id === 'date' || filter.id === 'price') {
+      urlParams.set(filter.id, Array.isArray(filter.value) ? filter.value.join(',') : String(filter.value))
+    } else {
+      categories.push(filter.id)
+    }
+  })
+
+  if (categories.length > 0) {
+    urlParams.set('cat', categories.join('|'))
+  } else {
+    urlParams.delete('cat')
+  }
+
+  return urlParams
+}

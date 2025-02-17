@@ -18,9 +18,7 @@ const FilterItem: FC<IFilterItemProps> = ({ type, onChange, selected, id, title,
   const typeRenderers: Record<EFilterType, () => ReactNode> = {
     [EFilterType.CHECKBOX]: () => <InputCheckbox id={id} label={title} checked={selected} onChange={onChange} count={count} />,
     [EFilterType.DATE]: () => <DateFilter id={id} filterSelected={filterSelected} onChange={onChange} />,
-    [EFilterType.PRICE]: () => (
-      <InputRange label={title} id={id} selectedFilterValues={filterSelected} onChange={onChange} filterType={'price'} />
-    )
+    [EFilterType.PRICE]: () => <InputRange label={title} id={id} selectedFilterValues={filterSelected} onChange={onChange} />
   }
 
   // Default to a fallback if the type doesn't match

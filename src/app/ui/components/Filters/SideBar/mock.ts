@@ -9,9 +9,9 @@ export const FILTER_SIDEBAR_MOCK: IFilterSideBarProps = {
       filters: [
         {
           title: 'Precio anual en Euros',
-          id: 'price_100',
+          id: 'price',
           type: EFilterType.PRICE,
-          value: 'price_100',
+          value: ['100', '12000'],
           count: 15
         }
       ]
