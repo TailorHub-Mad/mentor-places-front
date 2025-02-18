@@ -20,8 +20,8 @@ export const useCourseFeedMapper = (courses: FilterCoursesQuery['courses']): IAs
       { type: 'format', value: course?.course_id?.learning_format?.[0]?.learning_format_id?.format_name },
       { type: 'language', value: course?.course_id?.course_language?.[0]?.languages_format_id?.name },
       { type: 'campus', value: course?.course_id?.campuses_courses?.[0]?.campuses_id?.campuses_trans?.[0]?.name },
-      { type: 'startDate', value: course?.course_id?.start_date },
-      { type: 'price', value: course?.course_id?.average_price }
+      { type: 'startDate', value: course?.course_id?.start_date }
+      // { type: 'price', value: course?.course_id?.average_price }
     ]
   }))
 }
