@@ -40,14 +40,22 @@ export type Mutation = {
   create_campuses_items: Array<Campuses>
   create_campuses_trans_item?: Maybe<Campuses_Trans>
   create_campuses_trans_items: Array<Campuses_Trans>
+  create_categories_item?: Maybe<Categories>
+  create_categories_items: Array<Categories>
+  create_categories_trans_item?: Maybe<Categories_Trans>
+  create_categories_trans_items: Array<Categories_Trans>
   create_category_courses_item?: Maybe<Category_Courses>
   create_category_courses_items: Array<Category_Courses>
   create_category_posts_item?: Maybe<Category_Posts>
   create_category_posts_items: Array<Category_Posts>
+  create_category_relationships_item?: Maybe<Category_Relationships>
+  create_category_relationships_items: Array<Category_Relationships>
   create_course_languages_item?: Maybe<Course_Languages>
   create_course_languages_items: Array<Course_Languages>
   create_courses_category_courses_item?: Maybe<Courses_Category_Courses>
   create_courses_category_courses_items: Array<Courses_Category_Courses>
+  create_courses_category_relationships_item?: Maybe<Courses_Category_Relationships>
+  create_courses_category_relationships_items: Array<Courses_Category_Relationships>
   create_courses_disciplines_item?: Maybe<Courses_Disciplines>
   create_courses_disciplines_items: Array<Courses_Disciplines>
   create_courses_item?: Maybe<Courses>
@@ -148,14 +156,22 @@ export type Mutation = {
   delete_campuses_items?: Maybe<Delete_Many>
   delete_campuses_trans_item?: Maybe<Delete_One>
   delete_campuses_trans_items?: Maybe<Delete_Many>
+  delete_categories_item?: Maybe<Delete_One>
+  delete_categories_items?: Maybe<Delete_Many>
+  delete_categories_trans_item?: Maybe<Delete_One>
+  delete_categories_trans_items?: Maybe<Delete_Many>
   delete_category_courses_item?: Maybe<Delete_One>
   delete_category_courses_items?: Maybe<Delete_Many>
   delete_category_posts_item?: Maybe<Delete_One>
   delete_category_posts_items?: Maybe<Delete_Many>
+  delete_category_relationships_item?: Maybe<Delete_One>
+  delete_category_relationships_items?: Maybe<Delete_Many>
   delete_course_languages_item?: Maybe<Delete_One>
   delete_course_languages_items?: Maybe<Delete_Many>
   delete_courses_category_courses_item?: Maybe<Delete_One>
   delete_courses_category_courses_items?: Maybe<Delete_Many>
+  delete_courses_category_relationships_item?: Maybe<Delete_One>
+  delete_courses_category_relationships_items?: Maybe<Delete_Many>
   delete_courses_disciplines_item?: Maybe<Delete_One>
   delete_courses_disciplines_items?: Maybe<Delete_Many>
   delete_courses_item?: Maybe<Delete_One>
@@ -261,12 +277,21 @@ export type Mutation = {
   update_campuses_trans_batch: Array<Campuses_Trans>
   update_campuses_trans_item?: Maybe<Campuses_Trans>
   update_campuses_trans_items: Array<Campuses_Trans>
+  update_categories_batch: Array<Categories>
+  update_categories_item?: Maybe<Categories>
+  update_categories_items: Array<Categories>
+  update_categories_trans_batch: Array<Categories_Trans>
+  update_categories_trans_item?: Maybe<Categories_Trans>
+  update_categories_trans_items: Array<Categories_Trans>
   update_category_courses_batch: Array<Category_Courses>
   update_category_courses_item?: Maybe<Category_Courses>
   update_category_courses_items: Array<Category_Courses>
   update_category_posts_batch: Array<Category_Posts>
   update_category_posts_item?: Maybe<Category_Posts>
   update_category_posts_items: Array<Category_Posts>
+  update_category_relationships_batch: Array<Category_Relationships>
+  update_category_relationships_item?: Maybe<Category_Relationships>
+  update_category_relationships_items: Array<Category_Relationships>
   update_course_languages_batch: Array<Course_Languages>
   update_course_languages_item?: Maybe<Course_Languages>
   update_course_languages_items: Array<Course_Languages>
@@ -274,6 +299,9 @@ export type Mutation = {
   update_courses_category_courses_batch: Array<Courses_Category_Courses>
   update_courses_category_courses_item?: Maybe<Courses_Category_Courses>
   update_courses_category_courses_items: Array<Courses_Category_Courses>
+  update_courses_category_relationships_batch: Array<Courses_Category_Relationships>
+  update_courses_category_relationships_item?: Maybe<Courses_Category_Relationships>
+  update_courses_category_relationships_items: Array<Courses_Category_Relationships>
   update_courses_disciplines_batch: Array<Courses_Disciplines>
   update_courses_disciplines_item?: Maybe<Courses_Disciplines>
   update_courses_disciplines_items: Array<Courses_Disciplines>
@@ -480,6 +508,34 @@ export type MutationCreate_Campuses_Trans_ItemsArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
+export type MutationCreate_Categories_ItemArgs = {
+  data: Create_Categories_Input
+}
+
+export type MutationCreate_Categories_ItemsArgs = {
+  data?: InputMaybe<Array<Create_Categories_Input>>
+  filter?: InputMaybe<Categories_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationCreate_Categories_Trans_ItemArgs = {
+  data: Create_Categories_Trans_Input
+}
+
+export type MutationCreate_Categories_Trans_ItemsArgs = {
+  data?: InputMaybe<Array<Create_Categories_Trans_Input>>
+  filter?: InputMaybe<Categories_Trans_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
 export type MutationCreate_Category_Courses_ItemArgs = {
   data: Create_Category_Courses_Input
 }
@@ -508,6 +564,20 @@ export type MutationCreate_Category_Posts_ItemsArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
+export type MutationCreate_Category_Relationships_ItemArgs = {
+  data: Create_Category_Relationships_Input
+}
+
+export type MutationCreate_Category_Relationships_ItemsArgs = {
+  data?: InputMaybe<Array<Create_Category_Relationships_Input>>
+  filter?: InputMaybe<Category_Relationships_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
 export type MutationCreate_Course_Languages_ItemArgs = {
   data: Create_Course_Languages_Input
 }
@@ -529,6 +599,20 @@ export type MutationCreate_Courses_Category_Courses_ItemArgs = {
 export type MutationCreate_Courses_Category_Courses_ItemsArgs = {
   data?: InputMaybe<Array<Create_Courses_Category_Courses_Input>>
   filter?: InputMaybe<Courses_Category_Courses_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationCreate_Courses_Category_Relationships_ItemArgs = {
+  data: Create_Courses_Category_Relationships_Input
+}
+
+export type MutationCreate_Courses_Category_Relationships_ItemsArgs = {
+  data?: InputMaybe<Array<Create_Courses_Category_Relationships_Input>>
+  filter?: InputMaybe<Courses_Category_Relationships_Filter>
   limit?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
   page?: InputMaybe<Scalars['Int']['input']>
@@ -1206,6 +1290,22 @@ export type MutationDelete_Campuses_Trans_ItemsArgs = {
   ids: Array<InputMaybe<Scalars['ID']['input']>>
 }
 
+export type MutationDelete_Categories_ItemArgs = {
+  id: Scalars['ID']['input']
+}
+
+export type MutationDelete_Categories_ItemsArgs = {
+  ids: Array<InputMaybe<Scalars['ID']['input']>>
+}
+
+export type MutationDelete_Categories_Trans_ItemArgs = {
+  id: Scalars['ID']['input']
+}
+
+export type MutationDelete_Categories_Trans_ItemsArgs = {
+  ids: Array<InputMaybe<Scalars['ID']['input']>>
+}
+
 export type MutationDelete_Category_Courses_ItemArgs = {
   id: Scalars['ID']['input']
 }
@@ -1222,6 +1322,14 @@ export type MutationDelete_Category_Posts_ItemsArgs = {
   ids: Array<InputMaybe<Scalars['ID']['input']>>
 }
 
+export type MutationDelete_Category_Relationships_ItemArgs = {
+  id: Scalars['ID']['input']
+}
+
+export type MutationDelete_Category_Relationships_ItemsArgs = {
+  ids: Array<InputMaybe<Scalars['ID']['input']>>
+}
+
 export type MutationDelete_Course_Languages_ItemArgs = {
   id: Scalars['ID']['input']
 }
@@ -1235,6 +1343,14 @@ export type MutationDelete_Courses_Category_Courses_ItemArgs = {
 }
 
 export type MutationDelete_Courses_Category_Courses_ItemsArgs = {
+  ids: Array<InputMaybe<Scalars['ID']['input']>>
+}
+
+export type MutationDelete_Courses_Category_Relationships_ItemArgs = {
+  id: Scalars['ID']['input']
+}
+
+export type MutationDelete_Courses_Category_Relationships_ItemsArgs = {
   ids: Array<InputMaybe<Scalars['ID']['input']>>
 }
 
@@ -1728,6 +1844,58 @@ export type MutationUpdate_Campuses_Trans_ItemsArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
+export type MutationUpdate_Categories_BatchArgs = {
+  data?: InputMaybe<Array<Update_Categories_Input>>
+  filter?: InputMaybe<Categories_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationUpdate_Categories_ItemArgs = {
+  data: Update_Categories_Input
+  id: Scalars['ID']['input']
+}
+
+export type MutationUpdate_Categories_ItemsArgs = {
+  data: Update_Categories_Input
+  filter?: InputMaybe<Categories_Filter>
+  ids: Array<InputMaybe<Scalars['ID']['input']>>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationUpdate_Categories_Trans_BatchArgs = {
+  data?: InputMaybe<Array<Update_Categories_Trans_Input>>
+  filter?: InputMaybe<Categories_Trans_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationUpdate_Categories_Trans_ItemArgs = {
+  data: Update_Categories_Trans_Input
+  id: Scalars['ID']['input']
+}
+
+export type MutationUpdate_Categories_Trans_ItemsArgs = {
+  data: Update_Categories_Trans_Input
+  filter?: InputMaybe<Categories_Trans_Filter>
+  ids: Array<InputMaybe<Scalars['ID']['input']>>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
 export type MutationUpdate_Category_Courses_BatchArgs = {
   data?: InputMaybe<Array<Update_Category_Courses_Input>>
   filter?: InputMaybe<Category_Courses_Filter>
@@ -1772,6 +1940,32 @@ export type MutationUpdate_Category_Posts_ItemArgs = {
 export type MutationUpdate_Category_Posts_ItemsArgs = {
   data: Update_Category_Posts_Input
   filter?: InputMaybe<Category_Posts_Filter>
+  ids: Array<InputMaybe<Scalars['ID']['input']>>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationUpdate_Category_Relationships_BatchArgs = {
+  data?: InputMaybe<Array<Update_Category_Relationships_Input>>
+  filter?: InputMaybe<Category_Relationships_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationUpdate_Category_Relationships_ItemArgs = {
+  data: Update_Category_Relationships_Input
+  id: Scalars['ID']['input']
+}
+
+export type MutationUpdate_Category_Relationships_ItemsArgs = {
+  data: Update_Category_Relationships_Input
+  filter?: InputMaybe<Category_Relationships_Filter>
   ids: Array<InputMaybe<Scalars['ID']['input']>>
   limit?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
@@ -1834,6 +2028,32 @@ export type MutationUpdate_Courses_Category_Courses_ItemArgs = {
 export type MutationUpdate_Courses_Category_Courses_ItemsArgs = {
   data: Update_Courses_Category_Courses_Input
   filter?: InputMaybe<Courses_Category_Courses_Filter>
+  ids: Array<InputMaybe<Scalars['ID']['input']>>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationUpdate_Courses_Category_Relationships_BatchArgs = {
+  data?: InputMaybe<Array<Update_Courses_Category_Relationships_Input>>
+  filter?: InputMaybe<Courses_Category_Relationships_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type MutationUpdate_Courses_Category_Relationships_ItemArgs = {
+  data: Update_Courses_Category_Relationships_Input
+  id: Scalars['ID']['input']
+}
+
+export type MutationUpdate_Courses_Category_Relationships_ItemsArgs = {
+  data: Update_Courses_Category_Relationships_Input
+  filter?: InputMaybe<Courses_Category_Relationships_Filter>
   ids: Array<InputMaybe<Scalars['ID']['input']>>
   limit?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
@@ -3024,6 +3244,14 @@ export type Query = {
   campuses_trans_aggregated: Array<Campuses_Trans_Aggregated>
   campuses_trans_by_id?: Maybe<Campuses_Trans>
   campuses_trans_by_version?: Maybe<Version_Campuses_Trans>
+  categories: Array<Categories>
+  categories_aggregated: Array<Categories_Aggregated>
+  categories_by_id?: Maybe<Categories>
+  categories_by_version?: Maybe<Version_Categories>
+  categories_trans: Array<Categories_Trans>
+  categories_trans_aggregated: Array<Categories_Trans_Aggregated>
+  categories_trans_by_id?: Maybe<Categories_Trans>
+  categories_trans_by_version?: Maybe<Version_Categories_Trans>
   category_courses: Array<Category_Courses>
   category_courses_aggregated: Array<Category_Courses_Aggregated>
   category_courses_by_id?: Maybe<Category_Courses>
@@ -3032,6 +3260,10 @@ export type Query = {
   category_posts_aggregated: Array<Category_Posts_Aggregated>
   category_posts_by_id?: Maybe<Category_Posts>
   category_posts_by_version?: Maybe<Version_Category_Posts>
+  category_relationships: Array<Category_Relationships>
+  category_relationships_aggregated: Array<Category_Relationships_Aggregated>
+  category_relationships_by_id?: Maybe<Category_Relationships>
+  category_relationships_by_version?: Maybe<Version_Category_Relationships>
   course_languages: Array<Course_Languages>
   course_languages_aggregated: Array<Course_Languages_Aggregated>
   course_languages_by_id?: Maybe<Course_Languages>
@@ -3044,6 +3276,10 @@ export type Query = {
   courses_category_courses_aggregated: Array<Courses_Category_Courses_Aggregated>
   courses_category_courses_by_id?: Maybe<Courses_Category_Courses>
   courses_category_courses_by_version?: Maybe<Version_Courses_Category_Courses>
+  courses_category_relationships: Array<Courses_Category_Relationships>
+  courses_category_relationships_aggregated: Array<Courses_Category_Relationships_Aggregated>
+  courses_category_relationships_by_id?: Maybe<Courses_Category_Relationships>
+  courses_category_relationships_by_version?: Maybe<Version_Courses_Category_Relationships>
   courses_disciplines: Array<Courses_Disciplines>
   courses_disciplines_aggregated: Array<Courses_Disciplines_Aggregated>
   courses_disciplines_by_id?: Maybe<Courses_Disciplines>
@@ -3367,6 +3603,64 @@ export type QueryCampuses_Trans_By_VersionArgs = {
   version: Scalars['String']['input']
 }
 
+export type QueryCategoriesArgs = {
+  filter?: InputMaybe<Categories_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type QueryCategories_AggregatedArgs = {
+  filter?: InputMaybe<Categories_Filter>
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type QueryCategories_By_IdArgs = {
+  id: Scalars['ID']['input']
+  version?: InputMaybe<Scalars['String']['input']>
+}
+
+export type QueryCategories_By_VersionArgs = {
+  id: Scalars['ID']['input']
+  version: Scalars['String']['input']
+}
+
+export type QueryCategories_TransArgs = {
+  filter?: InputMaybe<Categories_Trans_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type QueryCategories_Trans_AggregatedArgs = {
+  filter?: InputMaybe<Categories_Trans_Filter>
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type QueryCategories_Trans_By_IdArgs = {
+  id: Scalars['ID']['input']
+  version?: InputMaybe<Scalars['String']['input']>
+}
+
+export type QueryCategories_Trans_By_VersionArgs = {
+  id: Scalars['ID']['input']
+  version: Scalars['String']['input']
+}
+
 export type QueryCategory_CoursesArgs = {
   filter?: InputMaybe<Category_Courses_Filter>
   limit?: InputMaybe<Scalars['Int']['input']>
@@ -3421,6 +3715,35 @@ export type QueryCategory_Posts_By_IdArgs = {
 }
 
 export type QueryCategory_Posts_By_VersionArgs = {
+  id: Scalars['ID']['input']
+  version: Scalars['String']['input']
+}
+
+export type QueryCategory_RelationshipsArgs = {
+  filter?: InputMaybe<Category_Relationships_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type QueryCategory_Relationships_AggregatedArgs = {
+  filter?: InputMaybe<Category_Relationships_Filter>
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type QueryCategory_Relationships_By_IdArgs = {
+  id: Scalars['ID']['input']
+  version?: InputMaybe<Scalars['String']['input']>
+}
+
+export type QueryCategory_Relationships_By_VersionArgs = {
   id: Scalars['ID']['input']
   version: Scalars['String']['input']
 }
@@ -3508,6 +3831,35 @@ export type QueryCourses_Category_Courses_By_IdArgs = {
 }
 
 export type QueryCourses_Category_Courses_By_VersionArgs = {
+  id: Scalars['ID']['input']
+  version: Scalars['String']['input']
+}
+
+export type QueryCourses_Category_RelationshipsArgs = {
+  filter?: InputMaybe<Courses_Category_Relationships_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type QueryCourses_Category_Relationships_AggregatedArgs = {
+  filter?: InputMaybe<Courses_Category_Relationships_Filter>
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type QueryCourses_Category_Relationships_By_IdArgs = {
+  id: Scalars['ID']['input']
+  version?: InputMaybe<Scalars['String']['input']>
+}
+
+export type QueryCourses_Category_Relationships_By_VersionArgs = {
   id: Scalars['ID']['input']
   version: Scalars['String']['input']
 }
@@ -4795,10 +5147,14 @@ export type Subscription = {
   campuses_courses_mutated?: Maybe<Campuses_Courses_Mutated>
   campuses_mutated?: Maybe<Campuses_Mutated>
   campuses_trans_mutated?: Maybe<Campuses_Trans_Mutated>
+  categories_mutated?: Maybe<Categories_Mutated>
+  categories_trans_mutated?: Maybe<Categories_Trans_Mutated>
   category_courses_mutated?: Maybe<Category_Courses_Mutated>
   category_posts_mutated?: Maybe<Category_Posts_Mutated>
+  category_relationships_mutated?: Maybe<Category_Relationships_Mutated>
   course_languages_mutated?: Maybe<Course_Languages_Mutated>
   courses_category_courses_mutated?: Maybe<Courses_Category_Courses_Mutated>
+  courses_category_relationships_mutated?: Maybe<Courses_Category_Relationships_Mutated>
   courses_disciplines_mutated?: Maybe<Courses_Disciplines_Mutated>
   courses_languages_format_mutated?: Maybe<Courses_Languages_Format_Mutated>
   courses_learning_format_mutated?: Maybe<Courses_Learning_Format_Mutated>
@@ -4887,6 +5243,14 @@ export type SubscriptionCampuses_Trans_MutatedArgs = {
   event?: InputMaybe<EventEnum>
 }
 
+export type SubscriptionCategories_MutatedArgs = {
+  event?: InputMaybe<EventEnum>
+}
+
+export type SubscriptionCategories_Trans_MutatedArgs = {
+  event?: InputMaybe<EventEnum>
+}
+
 export type SubscriptionCategory_Courses_MutatedArgs = {
   event?: InputMaybe<EventEnum>
 }
@@ -4895,11 +5259,19 @@ export type SubscriptionCategory_Posts_MutatedArgs = {
   event?: InputMaybe<EventEnum>
 }
 
+export type SubscriptionCategory_Relationships_MutatedArgs = {
+  event?: InputMaybe<EventEnum>
+}
+
 export type SubscriptionCourse_Languages_MutatedArgs = {
   event?: InputMaybe<EventEnum>
 }
 
 export type SubscriptionCourses_Category_Courses_MutatedArgs = {
+  event?: InputMaybe<EventEnum>
+}
+
+export type SubscriptionCourses_Category_Relationships_MutatedArgs = {
   event?: InputMaybe<EventEnum>
 }
 
@@ -5519,6 +5891,123 @@ export type Campuses_Trans_Mutated = {
   key: Scalars['ID']['output']
 }
 
+export type Categories = {
+  __typename?: 'categories'
+  category_trans?: Maybe<Array<Maybe<Categories_Trans>>>
+  category_trans_func?: Maybe<Count_Functions>
+  id: Scalars['ID']['output']
+}
+
+export type CategoriesCategory_TransArgs = {
+  filter?: InputMaybe<Categories_Trans_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type Categories_Aggregated = {
+  __typename?: 'categories_aggregated'
+  count?: Maybe<Categories_Aggregated_Count>
+  countAll?: Maybe<Scalars['Int']['output']>
+  countDistinct?: Maybe<Categories_Aggregated_Count>
+  group?: Maybe<Scalars['JSON']['output']>
+}
+
+export type Categories_Aggregated_Count = {
+  __typename?: 'categories_aggregated_count'
+  category_trans?: Maybe<Scalars['Int']['output']>
+  id?: Maybe<Scalars['Int']['output']>
+}
+
+export type Categories_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Categories_Filter>>>
+  _or?: InputMaybe<Array<InputMaybe<Categories_Filter>>>
+  category_trans?: InputMaybe<Categories_Trans_Filter>
+  category_trans_func?: InputMaybe<Count_Function_Filter_Operators>
+  id?: InputMaybe<String_Filter_Operators>
+}
+
+export type Categories_Mutated = {
+  __typename?: 'categories_mutated'
+  data?: Maybe<Categories>
+  event?: Maybe<EventEnum>
+  key: Scalars['ID']['output']
+}
+
+export type Categories_Trans = {
+  __typename?: 'categories_trans'
+  category_id?: Maybe<Categories>
+  id: Scalars['ID']['output']
+  language?: Maybe<Languages>
+  name?: Maybe<Scalars['String']['output']>
+  name_normalized?: Maybe<Scalars['String']['output']>
+}
+
+export type Categories_TransCategory_IdArgs = {
+  filter?: InputMaybe<Categories_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type Categories_TransLanguageArgs = {
+  filter?: InputMaybe<Languages_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type Categories_Trans_Aggregated = {
+  __typename?: 'categories_trans_aggregated'
+  avg?: Maybe<Categories_Trans_Aggregated_Fields>
+  avgDistinct?: Maybe<Categories_Trans_Aggregated_Fields>
+  count?: Maybe<Categories_Trans_Aggregated_Count>
+  countAll?: Maybe<Scalars['Int']['output']>
+  countDistinct?: Maybe<Categories_Trans_Aggregated_Count>
+  group?: Maybe<Scalars['JSON']['output']>
+  max?: Maybe<Categories_Trans_Aggregated_Fields>
+  min?: Maybe<Categories_Trans_Aggregated_Fields>
+  sum?: Maybe<Categories_Trans_Aggregated_Fields>
+  sumDistinct?: Maybe<Categories_Trans_Aggregated_Fields>
+}
+
+export type Categories_Trans_Aggregated_Count = {
+  __typename?: 'categories_trans_aggregated_count'
+  category_id?: Maybe<Scalars['Int']['output']>
+  id?: Maybe<Scalars['Int']['output']>
+  language?: Maybe<Scalars['Int']['output']>
+  name?: Maybe<Scalars['Int']['output']>
+  name_normalized?: Maybe<Scalars['Int']['output']>
+}
+
+export type Categories_Trans_Aggregated_Fields = {
+  __typename?: 'categories_trans_aggregated_fields'
+  language?: Maybe<Scalars['Float']['output']>
+}
+
+export type Categories_Trans_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Categories_Trans_Filter>>>
+  _or?: InputMaybe<Array<InputMaybe<Categories_Trans_Filter>>>
+  category_id?: InputMaybe<Categories_Filter>
+  id?: InputMaybe<String_Filter_Operators>
+  language?: InputMaybe<Languages_Filter>
+  name?: InputMaybe<String_Filter_Operators>
+  name_normalized?: InputMaybe<String_Filter_Operators>
+}
+
+export type Categories_Trans_Mutated = {
+  __typename?: 'categories_trans_mutated'
+  data?: Maybe<Categories_Trans>
+  event?: Maybe<EventEnum>
+  key: Scalars['ID']['output']
+}
+
 export type Category_Courses = {
   __typename?: 'category_courses'
   category_courses?: Maybe<Array<Maybe<Category_Courses>>>
@@ -5650,6 +6139,75 @@ export type Category_Posts_Mutated = {
   key: Scalars['ID']['output']
 }
 
+export type Category_Relationships = {
+  __typename?: 'category_relationships'
+  child_id?: Maybe<Categories>
+  courses?: Maybe<Array<Maybe<Courses_Category_Relationships>>>
+  courses_func?: Maybe<Count_Functions>
+  id: Scalars['ID']['output']
+  parent_id?: Maybe<Categories>
+}
+
+export type Category_RelationshipsChild_IdArgs = {
+  filter?: InputMaybe<Categories_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type Category_RelationshipsCoursesArgs = {
+  filter?: InputMaybe<Courses_Category_Relationships_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type Category_RelationshipsParent_IdArgs = {
+  filter?: InputMaybe<Categories_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type Category_Relationships_Aggregated = {
+  __typename?: 'category_relationships_aggregated'
+  count?: Maybe<Category_Relationships_Aggregated_Count>
+  countAll?: Maybe<Scalars['Int']['output']>
+  countDistinct?: Maybe<Category_Relationships_Aggregated_Count>
+  group?: Maybe<Scalars['JSON']['output']>
+}
+
+export type Category_Relationships_Aggregated_Count = {
+  __typename?: 'category_relationships_aggregated_count'
+  child_id?: Maybe<Scalars['Int']['output']>
+  courses?: Maybe<Scalars['Int']['output']>
+  id?: Maybe<Scalars['Int']['output']>
+  parent_id?: Maybe<Scalars['Int']['output']>
+}
+
+export type Category_Relationships_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Category_Relationships_Filter>>>
+  _or?: InputMaybe<Array<InputMaybe<Category_Relationships_Filter>>>
+  child_id?: InputMaybe<Categories_Filter>
+  courses?: InputMaybe<Courses_Category_Relationships_Filter>
+  courses_func?: InputMaybe<Count_Function_Filter_Operators>
+  id?: InputMaybe<String_Filter_Operators>
+  parent_id?: InputMaybe<Categories_Filter>
+}
+
+export type Category_Relationships_Mutated = {
+  __typename?: 'category_relationships_mutated'
+  data?: Maybe<Category_Relationships>
+  event?: Maybe<EventEnum>
+  key: Scalars['ID']['output']
+}
+
 export type Count_Function_Filter_Operators = {
   count?: InputMaybe<Number_Filter_Operators>
 }
@@ -5717,6 +6275,8 @@ export type Courses = {
   campuses_courses_func?: Maybe<Count_Functions>
   careers_list?: Maybe<Scalars['JSON']['output']>
   careers_list_func?: Maybe<Count_Functions>
+  categories?: Maybe<Array<Maybe<Courses_Category_Relationships>>>
+  categories_func?: Maybe<Count_Functions>
   course_language?: Maybe<Array<Maybe<Courses_Languages_Format>>>
   course_language_func?: Maybe<Count_Functions>
   course_trans?: Maybe<Array<Maybe<Courses_Trans>>>
@@ -5768,6 +6328,15 @@ export type CoursesBilinguals_IdArgs = {
 
 export type CoursesCampuses_CoursesArgs = {
   filter?: InputMaybe<Campuses_Courses_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type CoursesCategoriesArgs = {
+  filter?: InputMaybe<Courses_Category_Relationships_Filter>
   limit?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
   page?: InputMaybe<Scalars['Int']['input']>
@@ -5859,6 +6428,7 @@ export type Courses_Aggregated_Count = {
   bilinguals_id?: Maybe<Scalars['Int']['output']>
   campuses_courses?: Maybe<Scalars['Int']['output']>
   careers_list?: Maybe<Scalars['Int']['output']>
+  categories?: Maybe<Scalars['Int']['output']>
   course_language?: Maybe<Scalars['Int']['output']>
   course_trans?: Maybe<Scalars['Int']['output']>
   degree_id?: Maybe<Scalars['Int']['output']>
@@ -5964,6 +6534,73 @@ export type Courses_Category_Courses_Mutated = {
   key: Scalars['ID']['output']
 }
 
+export type Courses_Category_Relationships = {
+  __typename?: 'courses_category_relationships'
+  category_relationships_id?: Maybe<Category_Relationships>
+  courses_id?: Maybe<Courses>
+  id: Scalars['ID']['output']
+}
+
+export type Courses_Category_RelationshipsCategory_Relationships_IdArgs = {
+  filter?: InputMaybe<Category_Relationships_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type Courses_Category_RelationshipsCourses_IdArgs = {
+  filter?: InputMaybe<Courses_Filter>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type Courses_Category_Relationships_Aggregated = {
+  __typename?: 'courses_category_relationships_aggregated'
+  avg?: Maybe<Courses_Category_Relationships_Aggregated_Fields>
+  avgDistinct?: Maybe<Courses_Category_Relationships_Aggregated_Fields>
+  count?: Maybe<Courses_Category_Relationships_Aggregated_Count>
+  countAll?: Maybe<Scalars['Int']['output']>
+  countDistinct?: Maybe<Courses_Category_Relationships_Aggregated_Count>
+  group?: Maybe<Scalars['JSON']['output']>
+  max?: Maybe<Courses_Category_Relationships_Aggregated_Fields>
+  min?: Maybe<Courses_Category_Relationships_Aggregated_Fields>
+  sum?: Maybe<Courses_Category_Relationships_Aggregated_Fields>
+  sumDistinct?: Maybe<Courses_Category_Relationships_Aggregated_Fields>
+}
+
+export type Courses_Category_Relationships_Aggregated_Count = {
+  __typename?: 'courses_category_relationships_aggregated_count'
+  category_relationships_id?: Maybe<Scalars['Int']['output']>
+  courses_id?: Maybe<Scalars['Int']['output']>
+  id?: Maybe<Scalars['Int']['output']>
+}
+
+export type Courses_Category_Relationships_Aggregated_Fields = {
+  __typename?: 'courses_category_relationships_aggregated_fields'
+  courses_id?: Maybe<Scalars['Float']['output']>
+  id?: Maybe<Scalars['Float']['output']>
+}
+
+export type Courses_Category_Relationships_Filter = {
+  _and?: InputMaybe<Array<InputMaybe<Courses_Category_Relationships_Filter>>>
+  _or?: InputMaybe<Array<InputMaybe<Courses_Category_Relationships_Filter>>>
+  category_relationships_id?: InputMaybe<Category_Relationships_Filter>
+  courses_id?: InputMaybe<Courses_Filter>
+  id?: InputMaybe<Number_Filter_Operators>
+}
+
+export type Courses_Category_Relationships_Mutated = {
+  __typename?: 'courses_category_relationships_mutated'
+  data?: Maybe<Courses_Category_Relationships>
+  event?: Maybe<EventEnum>
+  key: Scalars['ID']['output']
+}
+
 export type Courses_Disciplines = {
   __typename?: 'courses_disciplines'
   courses_id?: Maybe<Courses>
@@ -6043,6 +6680,8 @@ export type Courses_Filter = {
   campuses_courses_func?: InputMaybe<Count_Function_Filter_Operators>
   careers_list?: InputMaybe<String_Filter_Operators>
   careers_list_func?: InputMaybe<Count_Function_Filter_Operators>
+  categories?: InputMaybe<Courses_Category_Relationships_Filter>
+  categories_func?: InputMaybe<Count_Function_Filter_Operators>
   course_language?: InputMaybe<Courses_Languages_Format_Filter>
   course_language_func?: InputMaybe<Count_Function_Filter_Operators>
   course_trans?: InputMaybe<Courses_Trans_Filter>
@@ -6478,6 +7117,19 @@ export type Create_Campuses_Trans_Input = {
   name?: InputMaybe<Scalars['String']['input']>
 }
 
+export type Create_Categories_Input = {
+  category_trans?: InputMaybe<Array<InputMaybe<Create_Categories_Trans_Input>>>
+  id?: InputMaybe<Scalars['ID']['input']>
+}
+
+export type Create_Categories_Trans_Input = {
+  category_id?: InputMaybe<Create_Categories_Input>
+  id?: InputMaybe<Scalars['ID']['input']>
+  language?: InputMaybe<Create_Languages_Input>
+  name?: InputMaybe<Scalars['String']['input']>
+  name_normalized?: InputMaybe<Scalars['String']['input']>
+}
+
 export type Create_Category_Courses_Input = {
   category_courses?: InputMaybe<Array<InputMaybe<Create_Category_Courses_Input>>>
   category_courses_id?: InputMaybe<Create_Category_Courses_Input>
@@ -6493,6 +7145,13 @@ export type Create_Category_Posts_Input = {
   name?: InputMaybe<Scalars['String']['input']>
 }
 
+export type Create_Category_Relationships_Input = {
+  child_id?: InputMaybe<Create_Categories_Input>
+  courses?: InputMaybe<Array<InputMaybe<Create_Courses_Category_Relationships_Input>>>
+  id?: InputMaybe<Scalars['ID']['input']>
+  parent_id?: InputMaybe<Create_Categories_Input>
+}
+
 export type Create_Course_Languages_Input = {
   direction?: InputMaybe<Scalars['String']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
@@ -6501,6 +7160,12 @@ export type Create_Course_Languages_Input = {
 
 export type Create_Courses_Category_Courses_Input = {
   category_courses_id?: InputMaybe<Create_Category_Courses_Input>
+  courses_id?: InputMaybe<Create_Courses_Input>
+  id?: InputMaybe<Scalars['ID']['input']>
+}
+
+export type Create_Courses_Category_Relationships_Input = {
+  category_relationships_id?: InputMaybe<Create_Category_Relationships_Input>
   courses_id?: InputMaybe<Create_Courses_Input>
   id?: InputMaybe<Scalars['ID']['input']>
 }
@@ -6517,6 +7182,7 @@ export type Create_Courses_Input = {
   bilinguals_id?: InputMaybe<Create_Bilinguals_Input>
   campuses_courses?: InputMaybe<Array<InputMaybe<Create_Campuses_Courses_Input>>>
   careers_list?: InputMaybe<Scalars['JSON']['input']>
+  categories?: InputMaybe<Array<InputMaybe<Create_Courses_Category_Relationships_Input>>>
   course_language?: InputMaybe<Array<InputMaybe<Create_Courses_Languages_Format_Input>>>
   course_trans?: InputMaybe<Array<InputMaybe<Create_Courses_Trans_Input>>>
   degree_id?: InputMaybe<Scalars['Int']['input']>
@@ -10970,6 +11636,19 @@ export type Update_Campuses_Trans_Input = {
   name?: InputMaybe<Scalars['String']['input']>
 }
 
+export type Update_Categories_Input = {
+  category_trans?: InputMaybe<Array<InputMaybe<Update_Categories_Trans_Input>>>
+  id?: InputMaybe<Scalars['ID']['input']>
+}
+
+export type Update_Categories_Trans_Input = {
+  category_id?: InputMaybe<Update_Categories_Input>
+  id?: InputMaybe<Scalars['ID']['input']>
+  language?: InputMaybe<Update_Languages_Input>
+  name?: InputMaybe<Scalars['String']['input']>
+  name_normalized?: InputMaybe<Scalars['String']['input']>
+}
+
 export type Update_Category_Courses_Input = {
   category_courses?: InputMaybe<Array<InputMaybe<Update_Category_Courses_Input>>>
   category_courses_id?: InputMaybe<Update_Category_Courses_Input>
@@ -10985,6 +11664,13 @@ export type Update_Category_Posts_Input = {
   name?: InputMaybe<Scalars['String']['input']>
 }
 
+export type Update_Category_Relationships_Input = {
+  child_id?: InputMaybe<Update_Categories_Input>
+  courses?: InputMaybe<Array<InputMaybe<Update_Courses_Category_Relationships_Input>>>
+  id?: InputMaybe<Scalars['ID']['input']>
+  parent_id?: InputMaybe<Update_Categories_Input>
+}
+
 export type Update_Course_Languages_Input = {
   direction?: InputMaybe<Scalars['String']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
@@ -10993,6 +11679,12 @@ export type Update_Course_Languages_Input = {
 
 export type Update_Courses_Category_Courses_Input = {
   category_courses_id?: InputMaybe<Update_Category_Courses_Input>
+  courses_id?: InputMaybe<Update_Courses_Input>
+  id?: InputMaybe<Scalars['ID']['input']>
+}
+
+export type Update_Courses_Category_Relationships_Input = {
+  category_relationships_id?: InputMaybe<Update_Category_Relationships_Input>
   courses_id?: InputMaybe<Update_Courses_Input>
   id?: InputMaybe<Scalars['ID']['input']>
 }
@@ -11009,6 +11701,7 @@ export type Update_Courses_Input = {
   bilinguals_id?: InputMaybe<Update_Bilinguals_Input>
   campuses_courses?: InputMaybe<Array<InputMaybe<Update_Campuses_Courses_Input>>>
   careers_list?: InputMaybe<Scalars['JSON']['input']>
+  categories?: InputMaybe<Array<InputMaybe<Update_Courses_Category_Relationships_Input>>>
   course_language?: InputMaybe<Array<InputMaybe<Update_Courses_Languages_Format_Input>>>
   course_trans?: InputMaybe<Array<InputMaybe<Update_Courses_Trans_Input>>>
   degree_id?: InputMaybe<Scalars['Int']['input']>
@@ -11701,6 +12394,21 @@ export type Version_Campuses_Trans = {
   name?: Maybe<Scalars['String']['output']>
 }
 
+export type Version_Categories = {
+  __typename?: 'version_categories'
+  category_trans?: Maybe<Scalars['JSON']['output']>
+  id?: Maybe<Scalars['ID']['output']>
+}
+
+export type Version_Categories_Trans = {
+  __typename?: 'version_categories_trans'
+  category_id?: Maybe<Scalars['JSON']['output']>
+  id?: Maybe<Scalars['ID']['output']>
+  language?: Maybe<Scalars['JSON']['output']>
+  name?: Maybe<Scalars['String']['output']>
+  name_normalized?: Maybe<Scalars['String']['output']>
+}
+
 export type Version_Category_Courses = {
   __typename?: 'version_category_courses'
   category_courses?: Maybe<Scalars['JSON']['output']>
@@ -11718,6 +12426,14 @@ export type Version_Category_Posts = {
   name?: Maybe<Scalars['String']['output']>
 }
 
+export type Version_Category_Relationships = {
+  __typename?: 'version_category_relationships'
+  child_id?: Maybe<Scalars['JSON']['output']>
+  courses?: Maybe<Scalars['JSON']['output']>
+  id?: Maybe<Scalars['ID']['output']>
+  parent_id?: Maybe<Scalars['JSON']['output']>
+}
+
 export type Version_Course_Languages = {
   __typename?: 'version_course_languages'
   direction?: Maybe<Scalars['String']['output']>
@@ -11732,6 +12448,7 @@ export type Version_Courses = {
   bilinguals_id?: Maybe<Scalars['JSON']['output']>
   campuses_courses?: Maybe<Scalars['JSON']['output']>
   careers_list?: Maybe<Scalars['JSON']['output']>
+  categories?: Maybe<Scalars['JSON']['output']>
   course_language?: Maybe<Scalars['JSON']['output']>
   course_trans?: Maybe<Scalars['JSON']['output']>
   degree_id?: Maybe<Scalars['Int']['output']>
@@ -11764,6 +12481,13 @@ export type Version_Courses = {
 export type Version_Courses_Category_Courses = {
   __typename?: 'version_courses_category_courses'
   category_courses_id?: Maybe<Scalars['JSON']['output']>
+  courses_id?: Maybe<Scalars['JSON']['output']>
+  id?: Maybe<Scalars['ID']['output']>
+}
+
+export type Version_Courses_Category_Relationships = {
+  __typename?: 'version_courses_category_relationships'
+  category_relationships_id?: Maybe<Scalars['JSON']['output']>
   courses_id?: Maybe<Scalars['JSON']['output']>
   id?: Maybe<Scalars['ID']['output']>
 }
@@ -13438,7 +14162,7 @@ export type GetDisciplinesSuspenseQueryHookResult = ReturnType<typeof useGetDisc
 export type GetDisciplinesQueryResult = Apollo.QueryResult<GetDisciplinesQuery, GetDisciplinesQueryVariables>
 export const DisciplinesDocument = gql`
   query Disciplines($languageName: String!, $filter: main_taxonomy_filter) {
-    main_taxonomy {
+    main_taxonomy(filter: $filter) {
       id
       discipline {
         taxonomy_trans(filter: { language: { name: { _eq: $languageName } } }) {
