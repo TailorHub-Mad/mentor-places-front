@@ -17,7 +17,6 @@ export const Default: Story = {
     title: 'Precios',
     description:
       'Se requiere estar en posesión de un título de grado del EES o convalidado, de titulaciones afines. Para otros grados pueden ser necesarios complementos de formación.',
-    cta: { action: 'contact', text: 'Llámanos' },
     prices: [
       { title: 'Precio oficial', infoHeaderTitle: '€12.000/ año', type: 'official' },
       { title: 'Precio descuento', infoHeaderTitle: '€8.000/ año', type: 'discount' }
