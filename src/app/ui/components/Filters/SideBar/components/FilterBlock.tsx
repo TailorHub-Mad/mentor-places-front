@@ -16,7 +16,7 @@ const FilterBlock: FC<IFilterBlockProps> = ({ title, filters, openItems, onToggl
       const isNested = isIFilterItemArray(filter.value) // Use type guard here
       const isFilterSelected = filterSelected?.some((f) => f.id === filter.id) || false
 
-      if (!isNested) {
+      if (!isNested && !(filter.children && filter.children.length)) {
         // Render a single filter item
         return (
           <FilterItem
@@ -40,7 +40,7 @@ const FilterBlock: FC<IFilterBlockProps> = ({ title, filters, openItems, onToggl
           index={currentIndex}
           openItems={openItems}
           onToggle={onToggle}>
-          {renderFilters(filter.value as IFilterItem[], currentIndex)} {/* Recursion */}
+          {renderFilters((filter.children || filter.value) as IFilterItem[], currentIndex)} {/* Recursion */}
         </AccordionBlock>
       )
     })

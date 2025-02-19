@@ -1,100 +1,77 @@
 import { EFilterType, type IFilterItem } from '@interfaces/filterSidebar.interfaces'
 import { type DisciplinesQuery } from '../../../graphql/generated/client'
 
-type TDiscipline = { title: string; id: string; type: EFilterType; value: string; count: number }
+type TDiscipline = { title: string; id: string; type: EFilterType; value: string; count: number; children?: TFilterDiscipline }
+
+type TDisciplineMapper = { title: string; id: string; type: EFilterType; value: string; count: number; children?: TDisciplineMapper[] }
 
 type TFilterDiscipline = { [key: string]: TDiscipline }
-
 export const useDisciplinesMapper = (disciplines: DisciplinesQuery['main_taxonomy']): IFilterItem[] => {
-  const filter_disciplines: TFilterDiscipline = {}
-  // const filter_level1 = {}
-  // const filter_level2 = {}
+  const filterDisciplines: TFilterDiscipline = {}
 
-  disciplines.forEach((taxonomy) => {
-    if (taxonomy.discipline_visualization && taxonomy.discipline?.id) {
-      const disciplineId = taxonomy.discipline.id
-      if (!filter_disciplines[disciplineId]) {
-        filter_disciplines[disciplineId] = {
-          title: taxonomy.discipline?.taxonomy_trans?.[0]?.name ?? '',
-          id: disciplineId,
+  for (const taxonomy of disciplines) {
+    if (!taxonomy.discipline_visualization || !taxonomy.discipline?.id) continue
+
+    const coursesCount = taxonomy.courses?.length ?? 0
+    const disciplineId = taxonomy.discipline.id
+    const disciplineName = taxonomy.discipline.taxonomy_trans?.[0]?.name ?? ''
+
+    if (!filterDisciplines[disciplineId]) {
+      filterDisciplines[disciplineId] = {
+        title: disciplineName,
+        id: disciplineId,
+        type: EFilterType.CHECKBOX,
+        value: disciplineName,
+        count: coursesCount,
+        children: {}
+      }
+    } else {
+      filterDisciplines[disciplineId].count += coursesCount
+    }
+
+    if (taxonomy.specialization_level1_visualization && taxonomy.specialization_level1?.id) {
+      const level1Id = taxonomy.specialization_level1.id
+      const level1Name = taxonomy.specialization_level1.taxonomy_level1_trans?.[0]?.name ?? ''
+      const disciplineChildren = filterDisciplines[disciplineId].children!
+
+      if (!disciplineChildren[level1Id]) {
+        disciplineChildren[level1Id] = {
+          title: level1Name,
+          id: level1Id,
           type: EFilterType.CHECKBOX,
-          value: disciplineId,
-          count: taxonomy.courses?.length ?? 0
+          value: level1Name,
+          count: coursesCount,
+          children: {}
         }
       } else {
-        filter_disciplines[disciplineId].count += taxonomy.courses?.length ?? 0
+        disciplineChildren[level1Id].count += coursesCount
+      }
+
+      if (taxonomy.specialization_level2_visualization && taxonomy.specialization_level2?.id) {
+        const level2Id = taxonomy.specialization_level2.id
+        const level2Name = taxonomy.specialization_level2.taxonomy_level2_trans?.[0]?.name ?? ''
+        const level1Children = disciplineChildren[level1Id].children!
+
+        if (!level1Children[level2Id]) {
+          level1Children[level2Id] = {
+            title: level2Name,
+            id: level2Id,
+            type: EFilterType.CHECKBOX,
+            value: level2Name,
+            count: coursesCount
+          }
+        } else {
+          level1Children[level2Id].count += coursesCount
+        }
       }
     }
-  })
+  }
 
-  return Object.values(filter_disciplines)
+  const transformChildren = (items: { [key: string]: TDiscipline }): TDisciplineMapper[] =>
+    Object.values(items).map(({ children, ...rest }) => ({
+      ...rest,
+      children: children ? transformChildren(children) : []
+    }))
+
+  return transformChildren(filterDisciplines)
 }
-
-// filters: [
-//         {
-//           title: 'Marketing Digital',
-//           id: 'id_digital_marketing',
-//           type: EFilterType.CHECKBOX,
-//           value: 'id_digital_marketing',
-//           count: 15
-//         },
-//         {
-//           title: 'Diseño gráfico',
-//           id: 'id_diseno_grafico',
-//           type: EFilterType.CHECKBOX,
-//           value: 'id_diseno_grafico',
-//           count: 60
-//         },
-//         {
-//           title: 'Administración',
-//           id: 'id_administracion',
-//           type: EFilterType.CHECKBOX,
-//           value: 'id_administracion',
-//           count: 40
-//         },
-//         {
-//           title: 'Derecho',
-//           id: 'id_derecho',
-//           type: EFilterType.CHECKBOX,
-//           value: 'id_derecho',
-//           count: 15
-//         }
-//       ]
-
-// {
-//   "menu": "ES_master",
-//   "specialization_level2": null,
-//   "discipline": {
-//       "id": "e2929329-ff7f-42d7-9276-b54e8e11874f",
-//       "taxonomy_trans": [
-//           {
-//               "name": "Artes, Música y Diseño",
-//               "id": "cd49f603-8607-4713-b9d4-6b08cdba0133"
-//           }
-//       ]
-//   },
-//   "specialization_level1": {
-//       "id": "bfea534a-60e8-461a-a0ed-b31d27ccb6e6",
-//       "taxonomy_level1_trans": [
-//           {
-//               "name": "Pedagogía"
-//           }
-//       ]
-//   },
-//   "discipline_visualization": true,
-//   "specialization_level1_visualization": true,
-//   "specialization_level2_visualization": false,
-//   "courses": [
-//       {
-//           "courses_id": {
-//               "id": "1",
-//               "id_mp": "ES1256789",
-//               "course_trans": [
-//                   {
-//                       "commercial_name": "Z Máster en Business Analytics, Inteligencia Artificial & Machine Learning"
-//                   }
-//               ]
-//           }
-//       }
-//   ]
-// },
