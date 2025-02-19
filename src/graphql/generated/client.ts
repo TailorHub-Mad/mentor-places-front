@@ -13367,6 +13367,10 @@ export type GetCourseQuery = {
   } | null
 }
 
+export type IdCoursesQueryVariables = Exact<{ [key: string]: never }>
+
+export type IdCoursesQuery = { __typename?: 'Query'; courses: Array<{ __typename?: 'courses'; id: string }> }
+
 export type GetDisciplinesQueryVariables = Exact<{
   languageName: Scalars['String']['input']
 }>
@@ -13504,6 +13508,10 @@ export type GetInstitutionsQuery = {
     } | null> | null
   }>
 }
+
+export type IdInstitutionsQueryVariables = Exact<{ [key: string]: never }>
+
+export type IdInstitutionsQuery = { __typename?: 'Query'; institutions: Array<{ __typename?: 'institutions'; id: string }> }
 
 export type GetUniversityQueryVariables = Exact<{
   id: Scalars['ID']['input']
@@ -14104,6 +14112,47 @@ export type GetCourseQueryHookResult = ReturnType<typeof useGetCourseQuery>
 export type GetCourseLazyQueryHookResult = ReturnType<typeof useGetCourseLazyQuery>
 export type GetCourseSuspenseQueryHookResult = ReturnType<typeof useGetCourseSuspenseQuery>
 export type GetCourseQueryResult = Apollo.QueryResult<GetCourseQuery, GetCourseQueryVariables>
+export const IdCoursesDocument = gql`
+  query IdCourses {
+    courses {
+      id
+    }
+  }
+`
+
+/**
+ * __useIdCoursesQuery__
+ *
+ * To run a query within a React component, call `useIdCoursesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useIdCoursesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useIdCoursesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useIdCoursesQuery(baseOptions?: Apollo.QueryHookOptions<IdCoursesQuery, IdCoursesQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<IdCoursesQuery, IdCoursesQueryVariables>(IdCoursesDocument, options)
+}
+export function useIdCoursesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<IdCoursesQuery, IdCoursesQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<IdCoursesQuery, IdCoursesQueryVariables>(IdCoursesDocument, options)
+}
+export function useIdCoursesSuspenseQuery(
+  baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<IdCoursesQuery, IdCoursesQueryVariables>
+) {
+  const options = baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions }
+  return Apollo.useSuspenseQuery<IdCoursesQuery, IdCoursesQueryVariables>(IdCoursesDocument, options)
+}
+export type IdCoursesQueryHookResult = ReturnType<typeof useIdCoursesQuery>
+export type IdCoursesLazyQueryHookResult = ReturnType<typeof useIdCoursesLazyQuery>
+export type IdCoursesSuspenseQueryHookResult = ReturnType<typeof useIdCoursesSuspenseQuery>
+export type IdCoursesQueryResult = Apollo.QueryResult<IdCoursesQuery, IdCoursesQueryVariables>
 export const GetDisciplinesDocument = gql`
   query GetDisciplines($languageName: String!) {
     disciplines {
@@ -14306,6 +14355,47 @@ export type GetInstitutionsQueryHookResult = ReturnType<typeof useGetInstitution
 export type GetInstitutionsLazyQueryHookResult = ReturnType<typeof useGetInstitutionsLazyQuery>
 export type GetInstitutionsSuspenseQueryHookResult = ReturnType<typeof useGetInstitutionsSuspenseQuery>
 export type GetInstitutionsQueryResult = Apollo.QueryResult<GetInstitutionsQuery, GetInstitutionsQueryVariables>
+export const IdInstitutionsDocument = gql`
+  query IdInstitutions {
+    institutions {
+      id
+    }
+  }
+`
+
+/**
+ * __useIdInstitutionsQuery__
+ *
+ * To run a query within a React component, call `useIdInstitutionsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useIdInstitutionsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useIdInstitutionsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useIdInstitutionsQuery(baseOptions?: Apollo.QueryHookOptions<IdInstitutionsQuery, IdInstitutionsQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<IdInstitutionsQuery, IdInstitutionsQueryVariables>(IdInstitutionsDocument, options)
+}
+export function useIdInstitutionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<IdInstitutionsQuery, IdInstitutionsQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<IdInstitutionsQuery, IdInstitutionsQueryVariables>(IdInstitutionsDocument, options)
+}
+export function useIdInstitutionsSuspenseQuery(
+  baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<IdInstitutionsQuery, IdInstitutionsQueryVariables>
+) {
+  const options = baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions }
+  return Apollo.useSuspenseQuery<IdInstitutionsQuery, IdInstitutionsQueryVariables>(IdInstitutionsDocument, options)
+}
+export type IdInstitutionsQueryHookResult = ReturnType<typeof useIdInstitutionsQuery>
+export type IdInstitutionsLazyQueryHookResult = ReturnType<typeof useIdInstitutionsLazyQuery>
+export type IdInstitutionsSuspenseQueryHookResult = ReturnType<typeof useIdInstitutionsSuspenseQuery>
+export type IdInstitutionsQueryResult = Apollo.QueryResult<IdInstitutionsQuery, IdInstitutionsQueryVariables>
 export const GetUniversityDocument = gql`
   query getUniversity($id: ID!, $languageName: String!) {
     institutions_by_id(id: $id) {
