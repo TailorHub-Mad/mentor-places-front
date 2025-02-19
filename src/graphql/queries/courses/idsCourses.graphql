@@ -1,0 +1,8 @@
+query IdCourses {
+  courses {
+    id
+    institutions {
+      id
+    }
+  }
+}

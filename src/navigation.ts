@@ -13,9 +13,19 @@ export const pathnames = {
 
   // If locales use different paths, you can
   // specify each external path per locale.
-  '/test': {
-    es: '/prueba',
-    en: '/test'
+  '/courses': {
+    es: '/cursos',
+    en: '/courses'
+  },
+
+  '/[university]': {
+    es: '/[universidad]',
+    en: '/[university]'
+  },
+
+  '/[university]/[master]': {
+    es: '/[universidad]/[master]',
+    en: '/[university]/[master]'
   }
 } satisfies Pathnames<typeof LOCALES>
 
