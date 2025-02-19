@@ -143,9 +143,13 @@ export const Default: Story = {
                     type: 'master',
                     duration: '10',
                     duration_class: 'months',
-                    learning_format_id: {
-                      format_name: 'online'
-                    },
+                    learning_format_id: [
+                      {
+                        learning_format_id: {
+                          format_name: 'online'
+                        }
+                      }
+                    ],
                     meta_tags: ['Top 5', 'Promo'],
                     images:
                       'https://www.shutterstock.com/shutterstock/photos/284687528/display_1500/stock-photo-master-word-cloud-education-concept-284687528.jpg',
