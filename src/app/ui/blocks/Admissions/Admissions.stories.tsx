@@ -15,10 +15,6 @@ type Story = StoryObj<typeof Admissions>
 export const Default: Story = {
   args: {
     title: 'Admisiones',
-    cta: {
-      text: 'Llámanos',
-      action: 'contact'
-    },
     description:
       'Se requiere estar en posesión de un título de grado del EES o convalidado, de titulaciones afines. Para otros grados pueden ser necesarios complementos de formación.',
     start: { date: 'Sep-25', text: 'Inicio de curso' },

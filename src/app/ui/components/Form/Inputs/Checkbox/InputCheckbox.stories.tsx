@@ -16,7 +16,6 @@ const Template: StoryFn<IInputCheckboxProps> = (args) => {
 
   const handleChange = () => {
     setIsChecked(!isChecked)
-    args.onChange(args.id, !isChecked)
   }
 
   return <InputCheckbox {...args} checked={isChecked} onChange={handleChange} />

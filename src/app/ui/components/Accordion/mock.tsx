@@ -32,6 +32,5 @@ export const ACCORDION_ITEMS_MOCK: IAccordionItemsProps = {
       id: 'id_fecha',
       children: CHILDREN_MOCK
     }
-  ],
-  firstItemOpen: true
+  ]
 }
