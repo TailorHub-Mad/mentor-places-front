@@ -1,6 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react'
 import Pagination, { type IPaginationProps } from '@components/Pagination/Pagination'
-// import { useState } from 'react'
 
 const meta: Meta = {
   component: Pagination,
