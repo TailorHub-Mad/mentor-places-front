@@ -2,14 +2,22 @@ import { type FC } from 'react'
 import { unstable_setRequestLocale } from 'next-intl/server'
 import type { ELocale } from '../../lib/enums/globals.enums'
 import client from '@configs/apolloClient'
-import type { GetUniversityQuery, GetUniversityQueryVariables } from '../../../graphql/generated/client'
-import { GetUniversityDocument } from '../../../graphql/generated/client'
+import {
+  GetUniversityDocument,
+  IdInstitutionsDocument,
+  type IdInstitutionsQuery,
+  type GetUniversityQuery,
+  type GetUniversityQueryVariables
+} from '../../../graphql/generated/client'
 import { LOCALES_GRAPHQL } from '../../../graphql/constants'
 import InstitutionPageBuilder from '../../ui/blocks/InstitutionPageBuilder/InstitutionPageBuilder'
 
+export const revalidate = 3600
 interface IPageProps {
   params: { lng: string; university: string }
 }
+
+export const dynamic = 'force-dynamic'
 
 const Page: FC<IPageProps> = async ({ params: { lng, university } }) => {
   unstable_setRequestLocale(lng)
@@ -27,11 +35,11 @@ const Page: FC<IPageProps> = async ({ params: { lng, university } }) => {
 export default Page
 
 export async function generateStaticParams({ params: { locale } }: { params: { locale: ELocale } }) {
-  const mock: Record<ELocale, string[]> = {
-    es: ['1'],
-    en: ['1']
-  }
-  const universities: string[] = mock[locale] // TODO
+  const { data } = await client.query<IdInstitutionsQuery>({
+    query: IdInstitutionsDocument
+  })
+
+  const universities: string[] = data.institutions.map((institution) => institution.id)
 
   const universityPaths: { lng: ELocale; university: string }[] = []
 
