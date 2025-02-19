@@ -33,5 +33,4 @@ export const ACCORDION_ITEMS_MOCK: IAccordionItemsProps = {
       children: CHILDREN_MOCK
     }
   ]
-  // firstItemOpen: true
 }
