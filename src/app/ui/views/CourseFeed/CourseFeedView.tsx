@@ -20,8 +20,6 @@ const CourseFeedView: FC<ICourseFeedViewProps> = ({ courses, disciplines }) => {
   const filterDisciplines = useDisciplinesMapper(disciplines)
   const t = useTranslations()
 
-  console.log('filterDisciplines', filterDisciplines)
-
   FILTER_SIDEBAR_MOCK.filters[2].filters = filterDisciplines
 
   return (
