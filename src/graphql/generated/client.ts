@@ -14211,7 +14211,7 @@ export type GetDisciplinesSuspenseQueryHookResult = ReturnType<typeof useGetDisc
 export type GetDisciplinesQueryResult = Apollo.QueryResult<GetDisciplinesQuery, GetDisciplinesQueryVariables>
 export const DisciplinesDocument = gql`
   query Disciplines($languageName: String!, $filter: main_taxonomy_filter) {
-    main_taxonomy {
+    main_taxonomy(filter: $filter) {
       id
       discipline {
         taxonomy_trans(filter: { language: { name: { _eq: $languageName } } }) {

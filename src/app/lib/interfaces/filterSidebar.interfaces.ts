@@ -13,6 +13,7 @@ export interface IFilterItem extends IFilterValue {
   id: string
   type: EFilterType
   count?: number
+  children?: IFilterItem[]
 }
 
 export interface IFilterCategory {
