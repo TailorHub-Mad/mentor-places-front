@@ -1,6 +1,6 @@
 import { type FC } from 'react'
 import { unstable_setRequestLocale } from 'next-intl/server'
-import type { ELocale } from '../../../lib/enums/globals.enums'
+// import type { ELocale } from '../../../lib/enums/globals.enums'
 import client from '@configs/apolloClient'
 import type { GetCourseQuery, GetCourseQueryVariables } from '../../../../graphql/generated/client'
 import { GetCourseDocument } from '../../../../graphql/generated/client'
@@ -10,6 +10,8 @@ import CoursePageBuilder from '../../../ui/blocks/CoursePageBuilder/CoursePageBu
 interface IPageProps {
   params: { lng: string; master: string }
 }
+
+export const dynamic = 'force-dynamic'
 
 const Page: FC<IPageProps> = async ({ params: { lng, master } }) => {
   unstable_setRequestLocale(lng)
@@ -29,28 +31,3 @@ const Page: FC<IPageProps> = async ({ params: { lng, master } }) => {
 }
 
 export default Page
-
-export async function generateStaticParams({ params: { locale } }: { params: { locale: ELocale } }) {
-  const mock: Record<ELocale, Record<string, string[]>> = {
-    es: {
-      ['1']: ['1', '2']
-    },
-    en: {
-      ['1']: ['1', '2']
-    }
-  }
-
-  const masterPaths: { lng: ELocale; university: string; master: string }[] = [] // TODO
-
-  Object.entries(mock[locale]).forEach(([university, masters]) => {
-    masters.forEach((master) => {
-      masterPaths.push({
-        lng: locale,
-        university,
-        master
-      })
-    })
-  })
-
-  return masterPaths
-}

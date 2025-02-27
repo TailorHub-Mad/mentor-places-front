@@ -1,11 +1,11 @@
 import { type FC } from 'react'
 import { unstable_setRequestLocale } from 'next-intl/server'
-import type { ELocale } from '../../lib/enums/globals.enums'
+// import type { ELocale } from '../../lib/enums/globals.enums'
 import client from '@configs/apolloClient'
 import {
   GetUniversityDocument,
-  IdInstitutionsDocument,
-  type IdInstitutionsQuery,
+  // IdInstitutionsDocument,
+  // type IdInstitutionsQuery,
   type GetUniversityQuery,
   type GetUniversityQueryVariables
 } from '../../../graphql/generated/client'
@@ -34,21 +34,21 @@ const Page: FC<IPageProps> = async ({ params: { lng, university } }) => {
 
 export default Page
 
-export async function generateStaticParams({ params: { locale } }: { params: { locale: ELocale } }) {
-  const { data } = await client.query<IdInstitutionsQuery>({
-    query: IdInstitutionsDocument
-  })
+// export async function generateStaticParams({ params: { locale } }: { params: { locale: ELocale } }) {
+//   const { data } = await client.query<IdInstitutionsQuery>({
+//     query: IdInstitutionsDocument
+//   })
 
-  const universities: string[] = data.institutions.map((institution) => institution.id)
+//   const universities: string[] = data.institutions.map((institution) => institution.id)
 
-  const universityPaths: { lng: ELocale; university: string }[] = []
+//   const universityPaths: { lng: ELocale; university: string }[] = []
 
-  universities.forEach((university) => {
-    universityPaths.push({
-      lng: locale,
-      university
-    })
-  })
+//   universities.forEach((university) => {
+//     universityPaths.push({
+//       lng: locale,
+//       university
+//     })
+//   })
 
-  return universityPaths
-}
+//   return universityPaths
+// }

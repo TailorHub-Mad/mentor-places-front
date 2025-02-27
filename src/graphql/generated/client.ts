@@ -12956,6 +12956,7 @@ export type CoursesInstitutionFragment = {
     __typename?: 'joininstitutioncourse'
     institution_id?: {
       __typename?: 'institutions'
+      id: string
       logo?: string | null
       main_image?: string | null
       top_masters?: string | null
@@ -13337,6 +13338,7 @@ export type GetCourseQuery = {
           __typename?: 'joininstitutioncourse'
           institution_id?: {
             __typename?: 'institutions'
+            id: string
             logo?: string | null
             main_image?: string | null
             top_masters?: string | null
@@ -13777,6 +13779,7 @@ export const CoursesInstitutionFragmentDoc = gql`
   fragment CoursesInstitution on courses {
     institutions {
       institution_id {
+        id
         institutions_trans(filter: { language_id: { name: { _eq: $languageName } } }) {
           ...InstitutionsTransAbout
           ...InstitutionsTransHead
