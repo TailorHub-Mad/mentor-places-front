@@ -11,6 +11,7 @@ const CourseSyllabus: FC<ICourseSyllabusProps> = ({ terms, tabs }) => {
   const [openTab, setOpenTab] = useState(0)
   const [showAllSubjects, setShowAllSubjects] = useState(false) // State for toggling between limited and full view
 
+  if (termsLength === 0) return null
   const handleOpenTab = (index: number) => setOpenTab(index)
 
   const SUBJECTS_LIMIT = 6 // Define limit for initial subjects

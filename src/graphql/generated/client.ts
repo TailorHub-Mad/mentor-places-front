@@ -5667,6 +5667,7 @@ export type Campuses = {
   institutions_id?: Maybe<Institutions>
   phone?: Maybe<Scalars['String']['output']>
   postal_code?: Maybe<Scalars['String']['output']>
+  state?: Maybe<Scalars['String']['output']>
   street_address?: Maybe<Scalars['String']['output']>
   type?: Maybe<Scalars['String']['output']>
 }
@@ -5713,6 +5714,7 @@ export type Campuses_Aggregated_Count = {
   institutions_id?: Maybe<Scalars['Int']['output']>
   phone?: Maybe<Scalars['Int']['output']>
   postal_code?: Maybe<Scalars['Int']['output']>
+  state?: Maybe<Scalars['Int']['output']>
   street_address?: Maybe<Scalars['Int']['output']>
   type?: Maybe<Scalars['Int']['output']>
 }
@@ -5803,6 +5805,7 @@ export type Campuses_Filter = {
   institutions_id?: InputMaybe<Institutions_Filter>
   phone?: InputMaybe<String_Filter_Operators>
   postal_code?: InputMaybe<String_Filter_Operators>
+  state?: InputMaybe<String_Filter_Operators>
   street_address?: InputMaybe<String_Filter_Operators>
   type?: InputMaybe<String_Filter_Operators>
 }
@@ -7104,6 +7107,7 @@ export type Create_Campuses_Input = {
   institutions_id?: InputMaybe<Create_Institutions_Input>
   phone?: InputMaybe<Scalars['String']['input']>
   postal_code?: InputMaybe<Scalars['String']['input']>
+  state?: InputMaybe<Scalars['String']['input']>
   street_address?: InputMaybe<Scalars['String']['input']>
   type?: InputMaybe<Scalars['String']['input']>
 }
@@ -11623,6 +11627,7 @@ export type Update_Campuses_Input = {
   institutions_id?: InputMaybe<Update_Institutions_Input>
   phone?: InputMaybe<Scalars['String']['input']>
   postal_code?: InputMaybe<Scalars['String']['input']>
+  state?: InputMaybe<Scalars['String']['input']>
   street_address?: InputMaybe<Scalars['String']['input']>
   type?: InputMaybe<Scalars['String']['input']>
 }
@@ -12373,6 +12378,7 @@ export type Version_Campuses = {
   institutions_id?: Maybe<Scalars['JSON']['output']>
   phone?: Maybe<Scalars['String']['output']>
   postal_code?: Maybe<Scalars['String']['output']>
+  state?: Maybe<Scalars['String']['output']>
   street_address?: Maybe<Scalars['String']['output']>
   type?: Maybe<Scalars['String']['output']>
 }
@@ -12911,6 +12917,7 @@ export type CampusesInfoFragment = {
   images?: string | null
   phone?: string | null
   type?: string | null
+  state?: string | null
   campuses_trans?: Array<{
     __typename?: 'campuses_trans'
     intro?: string | null
@@ -12932,6 +12939,7 @@ export type CourseCampusesFragment = {
       images?: string | null
       phone?: string | null
       type?: string | null
+      state?: string | null
       campuses_trans?: Array<{
         __typename?: 'campuses_trans'
         intro?: string | null
@@ -12983,6 +12991,7 @@ export type CoursesInstitutionFilterFragment = {
       main_image?: string | null
       top_masters?: string | null
       institutions_trans?: Array<{ __typename?: 'institutions_trans'; commercial_name?: string | null } | null> | null
+      institution_campuses?: Array<{ __typename?: 'campuses'; state?: string | null } | null> | null
     } | null
   } | null> | null
 }
@@ -13057,6 +13066,7 @@ export type InstitutionsLocationsFragment = {
     images?: string | null
     phone?: string | null
     type?: string | null
+    state?: string | null
     campuses_trans?: Array<{
       __typename?: 'campuses_trans'
       intro?: string | null
@@ -13212,6 +13222,7 @@ export type FilterCoursesQuery = {
             main_image?: string | null
             top_masters?: string | null
             institutions_trans?: Array<{ __typename?: 'institutions_trans'; commercial_name?: string | null } | null> | null
+            institution_campuses?: Array<{ __typename?: 'campuses'; state?: string | null } | null> | null
           } | null
         } | null> | null
         campuses_courses?: Array<{
@@ -13225,6 +13236,7 @@ export type FilterCoursesQuery = {
             images?: string | null
             phone?: string | null
             type?: string | null
+            state?: string | null
             campuses_trans?: Array<{
               __typename?: 'campuses_trans'
               intro?: string | null
@@ -13233,6 +13245,18 @@ export type FilterCoursesQuery = {
             } | null> | null
           } | null
         } | null> | null
+      } | null
+    } | null> | null
+    main_taxonomy?: Array<{
+      __typename?: 'main_taxonomy_courses'
+      main_taxonomy_id?: {
+        __typename?: 'main_taxonomy'
+        discipline_visualization?: boolean | null
+        specialization_level1_visualization?: boolean | null
+        specialization_level2_visualization?: boolean | null
+        discipline?: { __typename?: 'taxonomy'; id: string } | null
+        specialization_level1?: { __typename?: 'taxonomy_level1'; id: string } | null
+        specialization_level2?: { __typename?: 'taxonomy_level2'; id: string } | null
       } | null
     } | null> | null
   }>
@@ -13354,6 +13378,7 @@ export type GetCourseQuery = {
             images?: string | null
             phone?: string | null
             type?: string | null
+            state?: string | null
             campuses_trans?: Array<{
               __typename?: 'campuses_trans'
               intro?: string | null
@@ -13369,7 +13394,72 @@ export type GetCourseQuery = {
 
 export type IdCoursesQueryVariables = Exact<{ [key: string]: never }>
 
-export type IdCoursesQuery = { __typename?: 'Query'; courses: Array<{ __typename?: 'courses'; id: string }> }
+export type IdCoursesQuery = {
+  __typename?: 'Query'
+  courses: Array<{
+    __typename?: 'courses'
+    id: string
+    institutions?: Array<{ __typename?: 'joininstitutioncourse'; id: string } | null> | null
+  }>
+}
+
+export type TestCoursesQueryVariables = Exact<{
+  languageName: Scalars['String']['input']
+  filter?: InputMaybe<Courses_Filter>
+  page?: InputMaybe<Scalars['Int']['input']>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  sort?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>
+}>
+
+export type TestCoursesQuery = {
+  __typename?: 'Query'
+  courses: Array<{
+    __typename?: 'courses'
+    course_trans?: Array<{
+      __typename?: 'courses_trans'
+      commercial_name?: string | null
+      course_id?: {
+        __typename?: 'courses'
+        id: string
+        type: string
+        is_official?: boolean | null
+        duration_class?: string | null
+        duration?: string | null
+        tuition_price?: any | null
+        average_price?: string | null
+        places_available?: number | null
+        start_date?: any | null
+        course_language?: Array<{
+          __typename?: 'courses_languages_format'
+          languages_format_id?: { __typename?: 'languages_format'; name?: string | null } | null
+        } | null> | null
+        start_date_func?: { __typename?: 'date_functions'; year?: number | null; month?: number | null; day?: number | null } | null
+        institutions?: Array<{
+          __typename?: 'joininstitutioncourse'
+          institution_id?: {
+            __typename?: 'institutions'
+            logo?: string | null
+            main_image?: string | null
+            top_masters?: string | null
+            institutions_trans?: Array<{ __typename?: 'institutions_trans'; commercial_name?: string | null } | null> | null
+          } | null
+        } | null> | null
+      } | null
+    } | null> | null
+    main_taxonomy?: Array<{
+      __typename?: 'main_taxonomy_courses'
+      main_taxonomy_id?: {
+        __typename?: 'main_taxonomy'
+        discipline_visualization?: boolean | null
+        specialization_level1_visualization?: boolean | null
+        specialization_level2_visualization?: boolean | null
+        discipline?: { __typename?: 'taxonomy'; id: string } | null
+        specialization_level1?: { __typename?: 'taxonomy_level1'; id: string } | null
+        specialization_level2?: { __typename?: 'taxonomy_level2'; id: string } | null
+      } | null
+    } | null> | null
+  }>
+}
 
 export type GetDisciplinesQueryVariables = Exact<{
   languageName: Scalars['String']['input']
@@ -13474,6 +13564,7 @@ export type GetInstitutionsQuery = {
           images?: string | null
           phone?: string | null
           type?: string | null
+          state?: string | null
           campuses_trans?: Array<{
             __typename?: 'campuses_trans'
             intro?: string | null
@@ -13561,6 +13652,7 @@ export type GetUniversityQuery = {
           images?: string | null
           phone?: string | null
           type?: string | null
+          state?: string | null
           campuses_trans?: Array<{
             __typename?: 'campuses_trans'
             intro?: string | null
@@ -13643,6 +13735,7 @@ export const CampusesInfoFragmentDoc = gql`
     images
     phone
     type
+    state
     campuses_trans(filter: { language_id: { name: { _eq: $languageName } } }) {
       intro
       description
@@ -13714,6 +13807,9 @@ export const CoursesInstitutionFilterFragmentDoc = gql`
         logo
         main_image
         top_masters
+        institution_campuses {
+          state
+        }
       }
     }
   }
@@ -13949,6 +14045,22 @@ export const FilterCoursesDocument = gql`
           ...CourseCampuses
         }
       }
+      main_taxonomy {
+        main_taxonomy_id {
+          discipline {
+            id
+          }
+          discipline_visualization
+          specialization_level1 {
+            id
+          }
+          specialization_level2 {
+            id
+          }
+          specialization_level1_visualization
+          specialization_level2_visualization
+        }
+      }
     }
   }
   ${CoursesLanguagesFragmentDoc}
@@ -14116,6 +14228,9 @@ export const IdCoursesDocument = gql`
   query IdCourses {
     courses {
       id
+      institutions {
+        id
+      }
     }
   }
 `
@@ -14153,6 +14268,104 @@ export type IdCoursesQueryHookResult = ReturnType<typeof useIdCoursesQuery>
 export type IdCoursesLazyQueryHookResult = ReturnType<typeof useIdCoursesLazyQuery>
 export type IdCoursesSuspenseQueryHookResult = ReturnType<typeof useIdCoursesSuspenseQuery>
 export type IdCoursesQueryResult = Apollo.QueryResult<IdCoursesQuery, IdCoursesQueryVariables>
+export const TestCoursesDocument = gql`
+  query testCourses($languageName: String!, $filter: courses_filter, $page: Int, $limit: Int, $sort: [String!]) {
+    courses(filter: $filter, page: $page, limit: $limit, sort: $sort) {
+      course_trans(filter: { language_id: { name: { _eq: $languageName } } }) {
+        commercial_name
+        course_id {
+          id
+          type
+          is_official
+          course_language(filter: { languages_format_id: { language_id: { name: { _eq: $languageName } } } }) {
+            languages_format_id {
+              name
+            }
+          }
+          duration_class
+          duration
+          tuition_price
+          average_price
+          places_available
+          start_date_func {
+            year
+            month
+            day
+          }
+          start_date
+          institutions {
+            institution_id {
+              institutions_trans(filter: { language_id: { name: { _eq: $languageName } } }) {
+                commercial_name
+              }
+              logo
+              main_image
+              top_masters
+            }
+          }
+        }
+      }
+      main_taxonomy {
+        main_taxonomy_id {
+          discipline {
+            id
+          }
+          discipline_visualization
+          specialization_level1 {
+            id
+          }
+          specialization_level2 {
+            id
+          }
+          specialization_level1_visualization
+          specialization_level2_visualization
+        }
+      }
+    }
+  }
+`
+
+/**
+ * __useTestCoursesQuery__
+ *
+ * To run a query within a React component, call `useTestCoursesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTestCoursesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTestCoursesQuery({
+ *   variables: {
+ *      languageName: // value for 'languageName'
+ *      filter: // value for 'filter'
+ *      page: // value for 'page'
+ *      limit: // value for 'limit'
+ *      sort: // value for 'sort'
+ *   },
+ * });
+ */
+export function useTestCoursesQuery(
+  baseOptions: Apollo.QueryHookOptions<TestCoursesQuery, TestCoursesQueryVariables> &
+    ({ variables: TestCoursesQueryVariables; skip?: boolean } | { skip: boolean })
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<TestCoursesQuery, TestCoursesQueryVariables>(TestCoursesDocument, options)
+}
+export function useTestCoursesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TestCoursesQuery, TestCoursesQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<TestCoursesQuery, TestCoursesQueryVariables>(TestCoursesDocument, options)
+}
+export function useTestCoursesSuspenseQuery(
+  baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<TestCoursesQuery, TestCoursesQueryVariables>
+) {
+  const options = baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions }
+  return Apollo.useSuspenseQuery<TestCoursesQuery, TestCoursesQueryVariables>(TestCoursesDocument, options)
+}
+export type TestCoursesQueryHookResult = ReturnType<typeof useTestCoursesQuery>
+export type TestCoursesLazyQueryHookResult = ReturnType<typeof useTestCoursesLazyQuery>
+export type TestCoursesSuspenseQueryHookResult = ReturnType<typeof useTestCoursesSuspenseQuery>
+export type TestCoursesQueryResult = Apollo.QueryResult<TestCoursesQuery, TestCoursesQueryVariables>
 export const GetDisciplinesDocument = gql`
   query GetDisciplines($languageName: String!) {
     disciplines {

@@ -7,6 +7,7 @@ import { type IFilterSelection } from '@interfaces/filterSidebar.interfaces'
 
 export interface IInputCheckboxProps extends ICheckboxInputProps {
   id: string
+  value?: string
   label: string | ReactNode // Support string or custom JSX for the label
   checked: boolean
   onChange: (value: IFilterSelection) => void
@@ -20,6 +21,7 @@ export interface IInputCheckboxProps extends ICheckboxInputProps {
 
 const InputCheckbox: FC<IInputCheckboxProps> = ({
   id,
+  value,
   label,
   checked,
   onChange,
@@ -31,7 +33,7 @@ const InputCheckbox: FC<IInputCheckboxProps> = ({
   countClassName = ''
 }) => {
   const handleIsChecked = () => {
-    onChange({ id, value: id, label: typeof label === 'string' ? label : id })
+    onChange({ id, value: value || id, label: typeof label === 'string' ? label : id })
   }
 
   return (

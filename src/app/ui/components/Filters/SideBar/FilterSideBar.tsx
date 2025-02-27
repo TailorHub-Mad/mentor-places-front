@@ -45,6 +45,7 @@ const FilterSideBar: FC<IFilterSideBarProps> = ({ filters, className }) => {
     ]
 
     setFilterSelected(parsedFilters)
+    console.log('parsedFilters', parsedFilters)
   }, [memoizedSearchParams])
 
   useEffect(() => {
@@ -55,13 +56,19 @@ const FilterSideBar: FC<IFilterSideBarProps> = ({ filters, className }) => {
   useEffect(() => {
     const urlParams = new URLSearchParams(memoizedSearchParams)
     const categories: string[] = []
+    const states: string[] = []
+    console.log(filterSelected)
 
     filterSelected.forEach((filter) => {
       if (filter.id === 'date' || filter.id === 'price') {
         urlParams.set(filter.id, Array.isArray(filter.value) ? filter.value.join(',') : String(filter.value))
       } else {
-        // Only include `id` for category filters
-        categories.push(filter.id)
+        if (filter.id === 'states') {
+          states.push(filter.value as string)
+        } else {
+          // Only include `id` for category filters
+          categories.push(filter.id)
+        }
       }
     })
 
@@ -69,6 +76,11 @@ const FilterSideBar: FC<IFilterSideBarProps> = ({ filters, className }) => {
       urlParams.set('cat', categories.join('|'))
     } else {
       urlParams.delete('cat')
+    }
+    if (states.length > 0) {
+      urlParams.set('states', states.join('|'))
+    } else {
+      urlParams.delete('states')
     }
 
     router.replace(`?${urlParams.toString()}`)

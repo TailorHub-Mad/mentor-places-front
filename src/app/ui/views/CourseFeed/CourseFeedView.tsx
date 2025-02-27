@@ -7,20 +7,25 @@ import { FILTER_SIDEBAR_MOCK } from '@components/Filters/SideBar/mock'
 import HeroCourseFeed from '../../blocks/HeroCourseFeed/HeroCourseFeed'
 import { HERO_COURSE_FEED_MOCK } from '../../blocks/HeroCourseFeed/mock'
 import FilterSidebarBlock from '../../blocks/FilterSidebar/FilterSidebarBlock'
-import { useDisciplinesMapper } from '../../../lib/mapper/useDisciplinesMapper'
+import { useDisciplinesMapper, useDisciplinesSearch } from '../../../lib/mapper/useDisciplinesMapper'
 
 export interface ICourseFeedViewProps {
   courses: FilterCoursesQuery['courses']
+  states: FilterCoursesQuery['courses']
   disciplines: DisciplinesQuery['main_taxonomy']
 }
 
 const CourseFeedView: FC<ICourseFeedViewProps> = ({ courses, disciplines }) => {
   const filteredCourses = useCourseFeedMapper(courses)
+  // const filterStates = useCourseStateMapper(states)
 
   const filterDisciplines = useDisciplinesMapper(disciplines)
+  const searchDisciplines = useDisciplinesSearch(filterDisciplines)
   const t = useTranslations()
 
   FILTER_SIDEBAR_MOCK.filters[2].filters = filterDisciplines
+  HERO_COURSE_FEED_MOCK.options.discipline = searchDisciplines
+  // FILTER_SIDEBAR_MOCK.filters[3] = filterStates
 
   return (
     <div className="course-feed-view page">

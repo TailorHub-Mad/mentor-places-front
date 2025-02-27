@@ -41,7 +41,7 @@ const SearchBar: FC<ISearchBarProps> = ({ onChange, valuesSelected, options, onS
   }
 
   return (
-    <div className="search-bar flex flex-wrap items-center gap-3 justify-start py-6">
+    <div className="search-bar flex flex-wrap items-center gap-3 justify-start ">
       <div className="search-bar__discipline">
         <InputSearch
           type={ESearchType.DISCIPLINE}
@@ -53,14 +53,14 @@ const SearchBar: FC<ISearchBarProps> = ({ onChange, valuesSelected, options, onS
         />
       </div>
       <div className="search-bar__location">
-        <InputSearch
+        {/* <InputSearch
           type={ESearchType.LOCATION}
           valueSelected={selectedValues?.location || valuesSelected?.location}
           onChange={(value) => updateSearchQuery(value.id, ESearchType.LOCATION)}
           placeholder={t('search.locationPlaceholder')}
           options={options.location}
           onSearch={updateSearchQuery}
-        />
+        /> */}
       </div>
       <div className="search-bar__button">
         <Button onClick={() => onChange(selectedValues)}>{t('actions.search')}</Button>

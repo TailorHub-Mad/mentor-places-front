@@ -15,14 +15,15 @@ const FilterBlock: FC<IFilterBlockProps> = ({ title, filters, openItems, onToggl
       const currentIndex = `${parentIndex}-${childIndex}`
       const isNested = isIFilterItemArray(filter.value) // Use type guard here
       const isFilterSelected = filterSelected?.some((f) => f.id === filter.id) || false
-
       if (!isNested && !(filter.children && filter.children.length)) {
+        const value = id === 'states' ? (filter.value as string) : undefined
         // Render a single filter item
         return (
           <FilterItem
             key={filter.id}
             type={filter.type}
             id={filter.id}
+            value={value}
             title={filter.title}
             selected={isFilterSelected}
             filterSelected={filterSelected}

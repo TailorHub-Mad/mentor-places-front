@@ -7,6 +7,9 @@ fragment CoursesInstitutionFilter on courses {
       logo
       main_image
       top_masters
+      institution_campuses {
+        state
+      }
     }
   }
 }
