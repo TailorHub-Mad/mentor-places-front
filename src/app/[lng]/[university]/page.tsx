@@ -19,17 +19,21 @@ interface IPageProps {
 
 export const dynamic = 'force-dynamic'
 
-const Page: FC<IPageProps> = async ({ params: { lng, university } }) => {
+const Page: FC<IPageProps> = async ({ params: { lng } }) => {
   unstable_setRequestLocale(lng)
   const { data } = await client.query<GetUniversityQuery, GetUniversityQueryVariables>({
     query: GetUniversityDocument,
     variables: {
       languageName: LOCALES_GRAPHQL.es,
-      id: university
+      id: '1'
     }
   })
 
-  return <InstitutionPageBuilder data={data} />
+  return (
+    <div className="flex justify-center">
+      <InstitutionPageBuilder data={data} />
+    </div>
+  )
 }
 
 export default Page

@@ -28,7 +28,9 @@ const UniversityInfo: FC<IUniversityInfoProps> = ({ institutions }) => {
       <div className="flex flex-col gap-7 md:gap-[118px] md:flex-row">
         <div>
           <h3 className="text-m font-m md:text-xl-mobile md:font-xl">{commercial_name}</h3>
-          <Button className="mt-7">{t('contactBanner.button')}</Button>
+          <Button href={`/${institution.id}`} className="mt-7">
+            {t('contactBanner.button')}
+          </Button>
         </div>
         <div>
           {!isExpanded && <StringToRichText text={intro} />}
