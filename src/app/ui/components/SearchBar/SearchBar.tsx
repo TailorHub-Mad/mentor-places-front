@@ -46,7 +46,8 @@ const SearchBar: FC<ISearchBarProps> = ({ onChange, valuesSelected, options, onS
         <InputSearch
           type={ESearchType.DISCIPLINE}
           valueSelected={selectedValues?.discipline || valuesSelected?.discipline}
-          onChange={(value) => updateSearchQuery(value.id, ESearchType.DISCIPLINE)}
+          // onChange={(value) => updateSearchQuery(value.id, ESearchType.DISCIPLINE)}
+          onChange={() => {}}
           placeholder={t('search.disciplinePlaceholder')}
           options={options.discipline}
           onSearch={updateSearchQuery}
