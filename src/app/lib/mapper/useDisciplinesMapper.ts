@@ -1,5 +1,6 @@
 import { EFilterType, type IFilterItem } from '@interfaces/filterSidebar.interfaces'
 import { type DisciplinesQuery } from '../../../graphql/generated/client'
+import { type ISelectOption } from '@components/Form/Inputs/Select/InputSelect'
 
 type TDiscipline = { title: string; id: string; type: EFilterType; value: string; count: number; children?: TFilterDiscipline }
 
@@ -74,4 +75,18 @@ export const useDisciplinesMapper = (disciplines: DisciplinesQuery['main_taxonom
     }))
 
   return transformChildren(filterDisciplines)
+}
+
+export const useDisciplinesSearch = (disciplines: IFilterItem[]) => {
+  const searchDisciplines: ISelectOption[] = []
+
+  const transformChildren = (items: IFilterItem[]) => {
+    items.forEach(({ children, ...rest }) => {
+      searchDisciplines.push({ label: rest.title, value: rest.id })
+      if (children) transformChildren(children)
+    })
+  }
+  transformChildren(disciplines)
+
+  return searchDisciplines
 }

@@ -22,7 +22,7 @@ export const parsePriceFilter = (params: URLSearchParams): IFilterSelection[] =>
 
 export const parseCategoryFilters = (params: URLSearchParams, filters: IFilterCategory[]): IFilterSelection[] => {
   if (!params.has('cat')) return []
-  return params
+  const cat = params
     .get('cat')!
     .split('|')
     .map((catFilter) => {
@@ -34,6 +34,8 @@ export const parseCategoryFilters = (params: URLSearchParams, filters: IFilterCa
 
       return { id, value: nestedFilter?.title || id }
     })
+  const discipline = params.has('discipline') ? params.get('discipline')!.split(',') : []
+  return cat.concat(discipline.map((id) => ({ id, value: id })))
 }
 
 export const updateFilter = (newFilter: IFilterSelection, currentFilters: IFilterSelection[] = []): IFilterSelection[] => {

@@ -1,6 +1,7 @@
 fragment CoursesInstitution on courses {
   institutions {
     institution_id {
+      id
       institutions_trans(filter: { language_id: { name: { _eq: $languageName } } }) {
         ...InstitutionsTransAbout
         ...InstitutionsTransHead

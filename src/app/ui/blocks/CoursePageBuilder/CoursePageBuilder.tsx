@@ -80,10 +80,11 @@ const CoursePageBuilder: FC<ICoursePageBuilderProps> = ({ data }) => {
             <ReasonsWhy {...reasonsWhyData} />
           </div>
         )}
-
-        <div id={titleToBlockId(t('syllabus'))}>
-          <CourseSyllabusBlock {...courseSyllabusData} />
-        </div>
+        {courseSyllabusData.courseSyllabus.terms.length > 0 && (
+          <div id={titleToBlockId(t('syllabus'))}>
+            <CourseSyllabusBlock {...courseSyllabusData} />
+          </div>
+        )}
 
         {format_schedules && formatSchedulesData && (
           <div id={titleToBlockId(format_schedules)}>

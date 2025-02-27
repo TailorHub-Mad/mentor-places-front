@@ -6,6 +6,7 @@ import { EFilterType, type IFilterSelection } from '@interfaces/filterSidebar.in
 
 interface IFilterItemProps {
   id: string
+  value?: string
   title: string
   count?: number
   selected: boolean
@@ -14,9 +15,11 @@ interface IFilterItemProps {
   filterSelected?: IFilterSelection[]
 }
 
-const FilterItem: FC<IFilterItemProps> = ({ type, onChange, selected, id, title, count, filterSelected }) => {
+const FilterItem: FC<IFilterItemProps> = ({ type, onChange, selected, id, title, count, filterSelected, value }) => {
   const typeRenderers: Record<EFilterType, () => ReactNode> = {
-    [EFilterType.CHECKBOX]: () => <InputCheckbox id={id} label={title} checked={selected} onChange={onChange} count={count} />,
+    [EFilterType.CHECKBOX]: () => (
+      <InputCheckbox id={id} label={title} checked={selected} onChange={onChange} count={count} value={value} />
+    ),
     [EFilterType.DATE]: () => <DateFilter id={id} filterSelected={filterSelected} onChange={onChange} />,
     [EFilterType.PRICE]: () => <InputRange label={title} id={id} selectedFilterValues={filterSelected} onChange={onChange} />
   }

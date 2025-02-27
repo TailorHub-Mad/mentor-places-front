@@ -40,7 +40,7 @@ const HeroCourseFeed: FC<IHeroCourseFeedProps> = ({ title, description, imageSrc
         {description && <p className="text-s font-s mt-4">{description}</p>}
       </div>
       <ImageContainer imageSrc={imageSrc} />
-      <div className="hero-course-feed__search">
+      <div className="hero-course-feed__search py-6">
         <SearchBar
           options={filteredOptions}
           onChange={handleSelectionChange}

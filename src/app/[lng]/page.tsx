@@ -6,6 +6,9 @@ import { HOME_PAGE_BUILDER_MOCK } from '../ui/blocks/HomePageBuilder/mock'
 interface IPageProps {
   params: { lng: string }
 }
+
+export const dynamic = 'force-dynamic'
+
 const Page: FC<IPageProps> = async ({ params: { lng } }) => {
   unstable_setRequestLocale(lng)
 

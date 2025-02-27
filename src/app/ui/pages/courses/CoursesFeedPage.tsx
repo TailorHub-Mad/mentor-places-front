@@ -14,6 +14,7 @@ import { type ELocale } from '../../../lib/enums/globals.enums'
 import { LOCALES_GRAPHQL } from '../../../../graphql/constants'
 import { getPaginationFromParams } from '@utils/getPaginationFromParams'
 import { getSortingString } from '@utils/getSortingString'
+import { parseCategoryFilters } from '@components/Filters/SideBar/utils/handleFilters'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const CoursesFeedPage: FC<{ params: { lng: ELocale }; searchParams: any }> = async ({ params: { lng }, searchParams }) => {
@@ -21,6 +22,7 @@ const CoursesFeedPage: FC<{ params: { lng: ELocale }; searchParams: any }> = asy
 
   const sortArray = getSortingString(searchParams)
   const pagination = getPaginationFromParams(new URLSearchParams(searchParams)) // Extract pagination info
+  const selectedDisciplines = parseCategoryFilters(new URLSearchParams(searchParams), []) // Extract disciplines
 
   const { page, limit } = pagination
 
@@ -33,6 +35,22 @@ const CoursesFeedPage: FC<{ params: { lng: ELocale }; searchParams: any }> = asy
       sort: sortArray
     }
   })
+
+  const idDisciplines = selectedDisciplines.map((discipline) => discipline.id)
+
+  const courses =
+    idDisciplines.length > 0
+      ? data.courses.filter((course) => {
+          return course.main_taxonomy?.some(
+            (taxonomy) =>
+              idDisciplines.includes(taxonomy?.main_taxonomy_id?.discipline?.id || '') ||
+              (taxonomy?.main_taxonomy_id?.specialization_level1_visualization &&
+                idDisciplines.includes(taxonomy?.main_taxonomy_id?.specialization_level1?.id || '')) ||
+              (taxonomy?.main_taxonomy_id?.specialization_level2_visualization &&
+                idDisciplines.includes(taxonomy?.main_taxonomy_id?.specialization_level2?.id || ''))
+          )
+        })
+      : data.courses
 
   const { data: disciplines } = await client
     .query<DisciplinesQuery, DisciplinesQueryVariables>({
@@ -47,8 +65,8 @@ const CoursesFeedPage: FC<{ params: { lng: ELocale }; searchParams: any }> = asy
     })
 
   return (
-    <div className="course-feed-page">
-      <CourseFeedView courses={data.courses} disciplines={disciplines.main_taxonomy} />
+    <div className="course-feed-page flex justify-center">
+      <CourseFeedView courses={courses} disciplines={disciplines.main_taxonomy} states={data.courses} />
     </div>
   )
 }

@@ -54,16 +54,17 @@ export const buildCards = (standsFor: TCoursesStandsfor) =>
   }))
 
 export const buildCourseSyllabus = (academicYears: IAcademicYear[]) => {
-  const terms: ICourseSyllabus[] = academicYears.map((elm) => ({
-    subjects: elm.subjects.map((subject) => ({
-      title: subject.name,
-      type: subject.type,
-      ects: subject.duration,
-      period: subject.period || '-'
-    }))
-  }))
+  const terms: ICourseSyllabus[] =
+    academicYears?.map((elm) => ({
+      subjects: elm.subjects.map((subject) => ({
+        title: subject.name,
+        type: subject.type,
+        ects: subject.duration,
+        period: subject.period || '-'
+      }))
+    })) || []
 
-  const tabs = academicYears.map((elm) => elm.year)
+  const tabs = academicYears?.map((elm) => elm.year) || []
 
   return { tabs, terms }
 }

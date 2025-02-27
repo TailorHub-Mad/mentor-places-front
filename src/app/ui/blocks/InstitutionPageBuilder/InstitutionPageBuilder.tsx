@@ -79,7 +79,7 @@ const InstitutionPageBuilder: FC<IInstitutionPageBuilderProps> = ({ data }) => {
         </div>
       )}
 
-      {certificatesAndAwardsData && (
+      {certificatesAndAwardsData && rank_and_rec.items?.lenght > 0 && (
         <div id={titleToBlockId(header_rank_and_rec)}>
           <CertificatesAndAwards title={header_rank_and_rec} cards={rank_and_rec.items} />
         </div>
